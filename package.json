@@ -1,0 +1,23 @@
+{
+  "name": "grupo-07",
+  "version": "1.0.0",
+  "description": "Tipografia:\r font-family: 'Oswald', sans-serif;",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0921CDFSNCN22LAED/grupo-07.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0921CDFSNCN22LAED/grupo-07/issues"
+  },
+  "homepage": "https://github.com/0921CDFSNCN22LAED/grupo-07#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
