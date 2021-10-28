@@ -1,3 +1,153 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Oswald", sans-serif;
+}
+
+/* .header-ppal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.logo-sp {
+  width: 90%;
+} */
+
+.header-bottom {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.social {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
+}
+.icon-contact {
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
+}
+
+.nav-login {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+.categories {
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
+}
+
+.login {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+.txt-ingresar {
+  display: none;
+}
+.prof-zona {
+  display: none;
+}
+
+.title-per-device {
+  font-size: 1.1em;
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+  padding: 3px;
+  width: 90%;
+
+  font-weight: 700;
+}
+
+.services-carousel {
+  width: 95%;
+  height: 7em;
+
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+.dot-carousel {
+  width: 30%;
+  text-align: center;
+  margin: auto;
+}
+.work-with-us-button {
+  font-size: 16px;
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  height: 10%;
+  border: black solid 2px;
+  box-shadow: 4px 4px 5px black;
+}
+
+.title-categories {
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+.icon-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.icon-article {
+  width: 40%;
+
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.icon-txt {
+  font-size: 0.5em;
+}
+
+.ad {
+  width: 95%;
+  height: 7em;
+
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.partner-companies {
+  width: 95%;
+  height: 7em;
+
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+.phrase-footer {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.titles-footer {
+  flex-wrap: wrap;
+}
+
+.list-footer {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  width: 95%;
+  justify-content: space-evenly;
+  font-size: 0.9em;
+}
+
+.Copyright {
+  font-size: 0.8em;
+  margin-top: 10px;
 }

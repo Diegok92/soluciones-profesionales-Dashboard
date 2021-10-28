@@ -1,40 +1,36 @@
 <!-- pag Home -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- para dispositivos -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- fuentes a usar -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap"
-      rel="stylesheet"
-    />
-    <!-- iconos -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- estilos -->
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
 
-    <title>estas en index</title>
-  </head>
-  <body>
-    <h1 class="title">Bienvenido a index</h1>
-    <header>
-      <div class="brand-y-search">
-        <div class="logo-sp">
-          <img src="/images/logo-sin-fondo.svg" alt="logo sin fondo" />
-        </div>
-        <div>
-          <p>Barra de busqueda <i class="fas fa-search"></i></p>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- para dispositivos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- fuentes a usar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;700&display=swap" rel="stylesheet">
+  <!-- iconos -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <!-- estilos -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/theme.css" />
+
+  <title>estas en index</title>
+</head>
+
+<body>
+  <header class="header-ppal">
+    <div class="header-top">
+      <div class="logo-sp">
+        <img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" />
       </div>
+      <div>
+        <p>Barra de busqueda <i class="fas fa-search"></i></p>
+      </div>
+    </div>
+    <div class="header-bottom">
       <div class="social">
         <div class="logo-ig"><i class="fab fa-instagram"></i></div>
         <div class="logo-face">
@@ -46,6 +42,8 @@
         <div class="logo-youtube">
           <i class="fab fa-youtube"></i>
         </div>
+      </div>
+      <div class="icon-contact">
         <div class="logo-gmail">
           <i class="fas fa-envelope"></i>
         </div>
@@ -53,43 +51,109 @@
           <i class="fab fa-whatsapp"></i>
         </div>
       </div>
-    </header>
-    <nav>
-      <div class="navbar">
-        <div>
-          <p>Boton Categorias</p>
-        </div>
-        <div>
-          <p>Boton Prof. por Zona <i class="fas fa-hard-hat"></i></p>
-        </div>
-        <div>
-          <p>Boton "ingresar"</p>
-        </div>
-        <div>
-          <i class="fas fa-shopping-cart"></i>
-        </div>
+    </div>
+  </header>
+  <nav class="nav-login">
+    <section class="categories">
+      <div>
+        <p>Categorias <i class="fas fa-chevron-down"></i></p>
       </div>
-    </nav>
-    <footer class="footer">
-      <section>
-        <div class="titles-footer">
-          <ul class="list-footer" type="none">
-            <li><a href="">Terminos y Condiciones</a></li>
-            <li><a href="">Ayuda</a></li>
-            <li>
-              <a href="registerProf">Trabaja con Nosotros</a>
-            </li>
-            <li><a href="">Contacto</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="frase-footer">Servicios para Empresas y Pymes</h4>
-        </div>
-        <div>
-          <p>Copyright © 2021-2021</p>
-          <p>Calle Falsa 123, Springfield</p>
-        </div>
-      </section>
-    </footer>
-  </body>
+      <div class="prof-zona">
+        <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
+        <!-- ocultar boton en mobile, mostrar en el resto -->
+      </div>
+    </section>
+    <div class="login">
+      <div>
+        <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+        <p class="txt-ingresar">Ingresar</p>
+        <!-- ocultar txt en mobile, mostrar en el resto -->
+      </div>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div>
+      <p class="title-per-device">La solución que buscas, con el profesionalismo que necesitas</p>
+      <!-- modificar tamaño -->
+    </div>
+    <section class="services-carousel">
+      <p>Lugar para imagenes de servicios en carousel</p>
+    </section>
+    <div class="dot-carousel">
+      <p><i class="fas fa-ellipsis-h"></i></p>
+    </div>
+    <div>
+      <h2 class="work-with-us-button">Sumate a nuestro equipo de Profesionales</h2>
+    </div>
+    <h3 class="title-categories">Categorias mas Solicitadas</h3>
+    <section class="icon-categories">
+      <article class="icon-article">
+        <!-- mecanica auto -->
+        <i class="fas fa-wrench"></i>
+        <p class="icon-txt">Categoria</p>
+      </article>
+      <article class="icon-article">
+        <!-- electricista -->
+        <i class="fas fa-plug"></i>
+        <p class="icon-txt">Categoria</p>
+      </article>
+      <article class="icon-article">
+        <!-- dentistas -->
+        <i class="fas fa-tooth"></i>
+        <p class="icon-txt">Categoria</p>
+      </article>
+      <article class="icon-article">
+        <!-- plomeria -->
+        <i class="fas fa-faucet"></i>
+        <p class="icon-txt">Categoria</p>
+      </article>
+      <article class="icon-article">
+        <!-- carpinteria -->
+        <i class="fas fa-hammer"></i>
+        <p class="icon-txt">Categoria</p>
+      </article>
+      <article class="icon-article">
+        <!-- pintores -->
+        <i class="fas fa-paint-roller"></i>
+        <p class="icon-txt">Categoria</p>
+      </article>
+    </section>
+    <section class="ad">
+      <p>Publicidad Animada</p>
+    </section>
+    <section class="partner-companies">
+      <p>empresas que confiaron en nosotros</p>
+      <p>Logos de empresas</p>
+    </section>
+    <div class="dot-carousel">
+      <p><i class="fas fa-ellipsis-h"></i></p>
+    </div>
+  </main>
+  <footer class="footer">
+    <div>
+      <h4 class="phrase-footer">Servicios para Empresas y Pymes</h4>
+    </div>
+    <section>
+      <div class="titles-footer">
+        <ul class="list-footer">
+          <li><a href="">Terminos y Condiciones</a></li>
+          <li><a href="">Ayuda</a></li>
+          <li>
+            <a href="registerProf">Trabaja con Nosotros</a>
+          </li>
+          <li><a href="">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="Copyright">
+        <p>Copyright © 2021-2021</p>
+        <p>Calle Falsa 123, Springfield</p>
+      </div>
+    </section>
+  </footer>
+</body>
+
 </html>
