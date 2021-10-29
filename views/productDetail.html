@@ -1,20 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/theme.css" />
-    <title>estas en index</title>
-  </head>
-  <body>
-    <h1>Bienvenido a product</h1>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/css/productDetail.css" />
+
+  <title>estas en index</title>
+</head>
+
+<body>
+  <header class="header-ppal">
+    <div class="header-top">
+      <div class="logo-sp">
+        <img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" />
+      </div>
+      <div>
+        <p>Barra de busqueda <i class="fas fa-search"></i></p>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="social">
+        <div class="logo-ig"><i class="fab fa-instagram"></i></div>
+        <div class="logo-face">
+          <i class="fab fa-facebook-f"></i>
+        </div>
+        <div class="logo-twitter">
+          <i class="fab fa-twitter"></i>
+        </div>
+        <div class="logo-youtube">
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+      <div class="icon-contact">
+        <div class="logo-gmail">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="logo-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-login">
+    <section class="categories">
+      <div>
+        <p>Categorias <i class="fas fa-chevron-down"></i></p>
+      </div>
+      <div class="prof-zona">
+        <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
+        <!-- ocultar boton en mobile, mostrar en el resto -->
+      </div>
+    </section>
+    <div class="login">
+      <div>
+        <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+        <p class="txt-ingresar">Ingresar</p>
+        <!-- ocultar txt en mobile, mostrar en el resto -->
+      </div>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="columns-productDetail-father">
+      <div class="column12-productDetail">
+        <div>
+          <p class="title-per-device-productDetail">Plomero</p>
+        </div>
+        <div class="prof-avatar">
+          <!-- Avatar cargada por el prof (.jpg, .png, .bmp) -->
+        </div>
+        <div class="buttons-below-avatar">
+          <button type="submit">
+            Agregar Servicio
+          </button>
+          <p>Ver Disponibilidad:</p>
+          <input type="date">
+          </button>
+        </div>
+        <div class="rating-father">
+          <div>
+            <p>
+              Resultado
+            </p>
+            <p>
+              Precio
+            </p>
+            <p>
+              Rapidez
+            </p>
+          </div>
+          <div class="rating-star">
+            <div class="empty-star">
+              <i class="far fa-star"></i>
+            </div>
+            <div class="full-star">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="full-star">
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+        <p class="average-phrase">Promedio entre: n Opiniones</p>
+      </div>
+      <div class="column22-productDetail">
+        <p>Nombre</p>
+        <div class="details">
+          <div>
+            <div>
+              <p>Edad</p>
+              <p>Matricula</p>
+              <p>Trabaja en Equipo</p>
+            </div>
+            <div>
+              <p>Años de Experiencia</p>
+              <p>Zona</p>
+              <p>Lleva Herramientas</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p>Razones por cuales elegirme</p>
+          <p class="prof-txt">txt dadas por el prof</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- categorias -->
+    <h3 class="title-categories">Tambien te Puede Interesar</h3>
+    <section class="icon-categories-product">
+      <article class="icon-article productDetail">
+        <!-- mecanica auto -->
+        <i class="fas fa-wrench"></i>
+        <p class="icon-txt">Mecanicos/as</p>
+      </article>
+      <article class="icon-article">
+        <!-- electricista -->
+        <i class="fas fa-plug"></i>
+        <p class="icon-txt">Electricistas</p>
+      </article>
+      <article class="icon-article">
+        <!-- dentistas -->
+        <i class="fas fa-tooth"></i>
+        <p class="icon-txt">Odontologos/as</p>
+      </article>
+      <article class="icon-article">
+        <!-- plomeria -->
+        <i class="fas fa-faucet"></i>
+        <p class="icon-txt">Plomeros/as</p>
+      </article>
+      <article class="icon-article">
+        <!-- carpinteria -->
+        <i class="fas fa-hammer"></i>
+        <p class="icon-txt">Carpinteros/as/p>
+      </article>
+      <article class="icon-article">
+        <!-- pintores -->
+        <i class="fas fa-paint-roller"></i>
+        <p class="icon-txt">Pintores/as</p>
+      </article>
+    </section>
+    <section class="ad">
+      <p>Publicidad Animada</p>
+    </section>
+    <section class="partner-companies">
+      <p>empresas que confiaron en nosotros</p>
+      <p>Logos de empresas</p>
+    </section>
+    <div class="dot-carousel">
+      <p><i class="fas fa-ellipsis-h"></i></p>
+    </div>
+  </main>
+  <footer class="footer">
+    <div>
+      <h4 class="phrase-footer">Servicios para Empresas y Pymes</h4>
+    </div>
+    <section>
+      <div class="titles-footer">
+        <ul class="list-footer">
+          <li><a href="">Terminos y Condiciones</a></li>
+          <li><a href="">Ayuda</a></li>
+          <li>
+            <a href="registerProf">Trabaja con Nosotros</a>
+          </li>
+          <li><a href="">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="Copyright">
+        <p>Copyright © 2021-2021</p>
+        <p>Calle Falsa 123, Springfield</p>
+      </div>
+    </section>
+  </footer>
+</body>
+
 </html>
