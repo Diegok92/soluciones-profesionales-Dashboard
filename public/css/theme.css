@@ -6,21 +6,42 @@
 
 body {
   font-family: "Oswald", sans-serif;
+  background-color: rgb(49, 71, 92);
 }
 
-/* .header-ppal {
-  display: flex;
-  flex-wrap: wrap;
+main {
+  background-color: rgb(230, 230, 230);
 }
 
-.logo-sp {
-  width: 90%;
-} */
-
-.header-bottom {
+.header-top img {
+  width: 30%;
+  max-width: 150px;
+}
+.header-top {
   display: flex;
   justify-content: space-around;
+  text-align: center;
   padding: 10px;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 90%;
+}
+
+.search-bar {
+  flex-grow: 1;
+}
+.search-bar input {
+  width: 60%;
+  margin-top: 27px;
+}
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 10px black double;
+  margin: auto;
+  width: 90%;
+  font-size: 1.5em;
 }
 
 .social {
@@ -36,8 +57,12 @@ body {
 
 .nav-login {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 10px;
+  color: rgb(248, 212, 92);
+  width: 90%;
+  margin: auto;
+  font-size: 1.1em;
 }
 .categories {
   display: flex;
@@ -45,10 +70,33 @@ body {
   justify-content: space-around;
 }
 
+.fa-chevron-down {
+  color: white;
+  padding-left: 5px;
+}
+.fa-twitter {
+  color: rgb(29 161 242);
+}
+.fa-youtube {
+  color: rgb(255, 0, 0);
+}
+
+.fa-whatsapp {
+  color: rgb(37 211 102);
+}
+.fa-instagram {
+  color: rgb(193 53 132);
+}
+.fa-facebook-f {
+  color: rgb(66, 103, 178);
+}
+.fa-envelope {
+  color: rgb(216, 215, 215);
+}
 .login {
   display: flex;
   width: 30%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .txt-ingresar {
   display: none;
@@ -70,10 +118,10 @@ body {
 .services-carousel {
   width: 95%;
   height: 7em;
-
   margin: auto;
   text-align: center;
   margin-top: 20px;
+  border: 10px black double;
 }
 .dot-carousel {
   width: 30%;
@@ -98,35 +146,62 @@ body {
 .icon-categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 .icon-article {
   width: 40%;
-
   text-align: center;
   font-size: 2.5em;
+  margin: 10px;
+  border: 10px rgb(49, 71, 92) double;
 }
 
 .icon-txt {
   font-size: 0.5em;
+  background-color: rgb(49, 71, 92);
+  color: rgb(248, 212, 92);
+  font-weight: 400;
 }
+/* .fa-wrench {
+  color: rgb(248, 212, 92);
+  font-weight: 800;
+}
+.fa-plug {
+  color: rgb(248, 212, 92);
+  font-weight: 800;
+}
+.fa-tooth {
+  color: rgb(248, 212, 92);
+  font-weight: 800;
+}
+.fa-faucet {
+  color: rgb(248, 212, 92);
+}
+.fa-hammer {
+  color: rgb(248, 212, 92);
+  font-weight: 800;
+}
+.fa-paint-roller {
+  color: rgb(248, 212, 92);
+  font-weight: 800;
+} */
 
 .ad {
   width: 95%;
   height: 7em;
-
   margin: auto;
   text-align: center;
   margin-top: 20px;
+  border: 10px black double;
 }
 
 .partner-companies {
   width: 95%;
   height: 7em;
-
   margin: auto;
   text-align: center;
   margin-top: 20px;
+  border: 10px black double;
 }
 .phrase-footer {
   text-align: center;
