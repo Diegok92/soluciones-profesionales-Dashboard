@@ -14,12 +14,12 @@ main {
 }
 
 .header-top img {
-  width: 30%;
+  width: 40%;
   max-width: 150px;
 }
 .header-top {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
   padding: 10px;
   flex-wrap: wrap;
@@ -29,9 +29,10 @@ main {
 
 .search-bar {
   flex-grow: 1;
+  text-align: right;
 }
 .search-bar input {
-  width: 60%;
+  width: 80%;
   margin-top: 27px;
 }
 .header-bottom {

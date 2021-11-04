@@ -1,0 +1,33 @@
+.form-login {
+  margin: auto;
+
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.username {
+  width: 100%;
+}
+.username input {
+  width: 100%;
+}
+.password {
+  width: 100%;
+}
+.password input {
+  width: 100%;
+}
+.login-button {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.password-forgotten {
+  text-align: center;
+  margin-bottom: 20px;
+  border: solid 3px red;
+}

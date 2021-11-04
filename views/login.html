@@ -11,6 +11,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/css/login.css" />
   <title>estas en index</title>
 </head>
 
@@ -46,7 +47,67 @@
       </div>
     </div>
   </header>
-  <h1>Bienvenido a login</h1>
+  <nav class="nav-login">
+    <section class="categories">
+      <div>
+        <p>CATEGORIAS <i class="fas fa-chevron-down"></i></p>
+      </div>
+      <div class="prof-zona">
+        <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
+        <!-- ocultar boton en mobile, mostrar en el resto -->
+      </div>
+    </section>
+    <div class="login">
+      <div>
+        <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+        <p class="txt-ingresar">Ingresar</p>
+        <!-- ocultar txt en mobile, mostrar en el resto -->
+      </div>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <form action="/" method="" class="form-login">
+      <div class="username">
+        <label for="username">Nombre de Usuario:</label>
+        <input type="text" name="username" id="username">
+      </div>
+      <div class="password">
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password">
+      </div>
+      <div class="login-button">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+    <div class="password-forgotten">
+      <a href="">¿Olvidaste la Contraseña?</a>
+    </div>
+  </main>
+  <footer class="footer">
+    <div>
+      <h4 class="phrase-footer">Servicios para Empresas y Pymes</h4>
+    </div>
+    <section>
+      <div class="titles-footer">
+        <ul class="list-footer">
+          <li><a href="">Terminos y Condiciones</a></li>
+          <li><a href="">Ayuda</a></li>
+          <li>
+            <a href="registerProf">Trabaja con Nosotros</a>
+          </li>
+          <li><a href="">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="Copyright">
+        <p>Copyright © 2021-2021</p>
+        <p>Calle Falsa 123, Springfield</p>
+      </div>
+    </section>
+  </footer>
 </body>
 
 </html>
