@@ -1,8 +1,8 @@
-.prof-avatar {
-  border: 10px black double;
-  width: 60px;
-  height: 60px;
-  margin: 10px;
+main h2 {
+  text-align: center;
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .top-flex-mobile {
@@ -12,21 +12,50 @@
   align-items: center;
   height: 100px;
   border-bottom: 10px black double;
+  border-top: 10px black double;
   padding-left: 10px;
   padding-right: 10px;
+  margin-bottom: 10px;
+  background-color: white;
 }
 
-.description {
+main {
+  background-color: rgb(49, 71, 92);
+}
+.div-avatar {
+  width: 20%;
+}
+
+.prof-avatar {
+  border: 10px black double;
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+}
+
+.div-descrption {
+  width: 20%;
+}
+
+/* .description {
   display: flex;
   flex-wrap: wrap;
   width: 11%;
-}
+} */
 
 .reserved-date {
-  margin: 10px;
   font-size: 14px;
   text-align: center;
-  margin-bottom: 35px;
+  width: 20%;
+}
+
+.price-button-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  justify-content: space-around;
+  width: 20%;
 }
 
 .price-preview p {
@@ -57,10 +86,18 @@
   font-size: 20px;
 }
 
-.price-button-preview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 90%;
-  justify-content: space-between;
+.confirm-button {
+  border-color: red;
+  margin: auto;
+  padding: 15px;
+  width: 60%;
+  text-align: center;
+}
+.confirm-button button {
+  font-size: 25px;
+  border-radius: 5px;
+  background-color: rgb(49, 71, 92);
+  color: rgb(248, 212, 92);
+  box-shadow: 8px 8px 5px black;
+  width: 95%;
 }
