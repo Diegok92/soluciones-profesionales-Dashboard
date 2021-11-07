@@ -16,6 +16,8 @@
   <!-- estilos -->
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/css/tablet-index.css" />
+  <link rel="stylesheet" href="/css/desktop-index.css" />
 
   <title>estas en index</title>
 </head>
@@ -23,10 +25,16 @@
 <body>
   <header class="header-ppal">
     <div class="header-top">
-      <img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" />
+      <a href="/"><img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" /></a>
       <div class="search-bar">
         <input type="text" name="search-item">
         <button class="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="top-phrase">
+
+        <p><i class="fas fa-handshake"></i>Reservá Sin Problemas,</p>
+        <p>Cancela Sin Costo Agregado<i class="fas fa-handshake-slash"></i></p>
+
       </div>
     </div>
     <div class="header-bottom">
@@ -41,6 +49,10 @@
         <div class="logo-youtube">
           <i class="fab fa-youtube"></i>
         </div>
+      </div>
+      <div>
+        <p class="top-title-per-device">La Solución que Buscás, con el Profesionalismo que Necesitás</p>
+        <!-- modificar tamaño per device -->
       </div>
       <div class="icon-contact">
         <div class="logo-gmail">
@@ -85,8 +97,8 @@
     <div class="dot-carousel">
       <p><i class="fas fa-ellipsis-h"></i></p>
     </div>
-    <div>
-      <h2 class="work-with-us-button">Sumate a nuestro equipo de Profesionales</h2>
+    <div class="work-with-us-button">
+      <a href="registerProf"><button type="submit">Sumáte a Nuestro Equipo de Profesionales</button></a>
     </div>
     <h3 class="title-categories">Categorias mas Solicitadas</h3>
     <section class="icon-categories">
@@ -121,6 +133,7 @@
         <i class="fas fa-paint-roller"></i>
         <p class="icon-txt">Pintores/as</p>
       </article>
+
     </section>
     <section class="ad">
       <p>Publicidad Animada</p>

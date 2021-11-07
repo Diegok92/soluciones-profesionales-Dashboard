@@ -1,0 +1,37 @@
+.clientForm {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+
+.registerInput {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.registerInput input {
+  width: 100%;
+}
+
+.clientForm label {
+  font-weight: 700;
+}
+
+.localidad-list label select {
+  width: 100%;
+}
+
+.confirm-button {
+  margin: auto;
+  padding: 15px;
+  width: 60%;
+  text-align: center;
+}
+.confirm-button button {
+  font-size: 25px;
+  border-radius: 5px;
+  background-color: rgb(49, 71, 92);
+  color: rgb(248, 212, 92);
+  box-shadow: 8px 8px 5px black;
+  width: 95%;
+}

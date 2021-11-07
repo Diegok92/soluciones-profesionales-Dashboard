@@ -1,0 +1,32 @@
+@media (min-width: 480px) {
+  .social {
+    max-width: 250px;
+  }
+  .icon-contact {
+    max-width: 150px;
+  }
+  .categories {
+    max-width: 250px;
+  }
+  .login {
+    max-width: 150px;
+  }
+  .work-with-us-button {
+    margin: auto;
+    padding: 15px;
+    width: 80%;
+    text-align: center;
+  }
+  .work-with-us-button button {
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: rgb(49, 71, 92);
+    color: rgb(248, 212, 92);
+    /* box-shadow: 8px 8px 5px rgb(248, 212, 92); */
+    width: 95%;
+    padding: 10px;
+  }
+  .work-with-us-button button:hover {
+    box-shadow: 6px 6px 30px rgb(248, 212, 92);
+  }
+}

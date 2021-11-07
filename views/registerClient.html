@@ -11,13 +11,14 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/theme.css" />
-  <title>estas en index</title>
+  <link rel="stylesheet" href="/css/register.css" />
+  <title>Registro Cliente</title>
 </head>
 
 <body>
   <header class="header-ppal">
     <div class="header-top">
-      <img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" />
+      <a href="/"><img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" /></a>
       <div class="search-bar">
         <input type="text" name="search-item">
         <button class="search-button"><i class="fas fa-search"></i></button>
@@ -46,7 +47,95 @@
       </div>
     </div>
   </header>
-  <h1>Bienvenido a cliente</h1>
+  <nav class="nav-login">
+    <section class="categories">
+      <div>
+        <p>Categorias <i class="fas fa-chevron-down"></i></p>
+      </div>
+      <div class="prof-zona">
+        <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
+        <!-- ocultar boton en mobile, mostrar en el resto -->
+      </div>
+    </section>
+    <div class="login">
+      <div>
+        <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+        <p class="txt-ingresar">Ingresar</p>
+        <!-- ocultar txt en mobile, mostrar en el resto -->
+      </div>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <form action="" method="" class="clientForm">
+      <div class="registerInput">
+        <label for="nombre">Nombre y Apellido:
+          <input type="text" name="name" id="nombre" placeholder="Cosme Fulanito">
+        </label>
+      </div>
+      <div class="registerInput">
+        <label for="email">Email:
+          <input type="email" name="email" id="email">
+        </label>
+      </div>
+      <div class="registerInput localidad-list">
+        <label>Localidad
+          <select name="localidad">
+            <option value="Capital Federal" selected>Capital Federal</option>
+            <option value="Conurbano">Conurbano</option>
+            <option value="Interior">Interior</option>
+          </select>
+        </label>
+      </div>
+      <div class="registerInput">
+        <label for="adress">Dirección:
+          <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A">
+        </label>
+      </div>
+      <div class="registerInput">
+        <label for="dni">DNI:
+          <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
+        </label>
+      </div>
+      <div class="registerInput">
+        <label for="password">Contraseña:
+          <input type="password" name="password" id="password">
+        </label>
+      </div>
+      <div class="registerInput">
+        <label for="passwordConfirm">Confirmar Contraseña:
+          <input type="password" name="passwordConfirm" id="passwordConfirm">
+        </label>
+      </div>
+      <div class="confirm-button">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </main>
+  <footer class="footer">
+    <div>
+      <h4 class="phrase-footer">Servicios para Empresas y Pymes</h4>
+    </div>
+    <section>
+      <div class="titles-footer">
+        <ul class="list-footer">
+          <li><a href="">Terminos y Condiciones</a></li>
+          <li><a href="">Ayuda</a></li>
+          <li>
+            <a href="registerProf">Trabaja con Nosotros</a>
+          </li>
+          <li><a href="">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="Copyright">
+        <p>Copyright © 2021-2021</p>
+        <p>Calle Falsa 123, Springfield</p>
+      </div>
+    </section>
+  </footer>
 </body>
 
 </html>

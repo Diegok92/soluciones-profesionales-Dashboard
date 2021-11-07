@@ -1,0 +1,83 @@
+@media (min-width: 1000px) {
+  header {
+    font-size: 22px;
+  }
+  .nav-login {
+    font-size: 22px;
+  }
+
+  .top-phrase {
+    display: block;
+    color: rgb(248, 212, 92);
+    text-align: justify;
+  }
+  .top-phrase p {
+    padding: 5px;
+  }
+  .top-phrase i {
+    padding: 15px;
+  }
+
+  .search-bar input {
+    width: 80%;
+    margin-top: 40px;
+    height: 45px;
+  }
+
+  .search-bar button {
+    height: 45px;
+    width: 40px;
+  }
+
+  .top-title-per-device {
+    display: block;
+    color: rgb(248, 212, 92);
+    text-align: center;
+  }
+  .title-per-device {
+    display: none;
+  }
+  main {
+    padding-top: 20px;
+  }
+
+  .work-with-us-button {
+    margin: auto;
+    padding: 15px;
+    width: 80%;
+    text-align: center;
+  }
+  .work-with-us-button button {
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: rgb(49, 71, 92);
+    color: rgb(248, 212, 92);
+    /* box-shadow: 8px 8px 5px rgb(248, 212, 92); */
+    width: 95%;
+    padding: 10px;
+  }
+  .work-with-us-button button:hover {
+    box-shadow: 6px 6px 30px rgb(248, 212, 92);
+  }
+  .icon-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 36px;
+  }
+  .icon-article {
+    width: 40%;
+    max-width: 200px;
+    text-align: center;
+    font-size: 36px;
+    margin: 10px;
+    border: 10px rgb(49, 71, 92) double;
+  }
+
+  .icon-txt {
+    font-size: 16px;
+    background-color: rgb(49, 71, 92);
+    color: rgb(248, 212, 92);
+    font-weight: 400;
+  }
+}
