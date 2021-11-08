@@ -1,0 +1,58 @@
+@media (min-width: 1000px) {
+  .top-flex-mobile {
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 70%;
+    position: relative;
+  }
+  .title-cart {
+    width: 70%;
+    margin: auto;
+    font-size: 36px;
+    text-align: center;
+    background-color: white;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .div-descrption div {
+    font-size: 22px;
+  }
+  .reserved-date {
+    font-size: 22px;
+  }
+  .price-button-preview p {
+    font-size: 22px;
+    position: absolute;
+    top: 1em;
+    right: 5em;
+  }
+  .trash-button .fa-trash-alt {
+    font-size: 30px;
+  }
+  .trash-button {
+    padding-top: 10px;
+    position: absolute;
+    bottom: 2em;
+    right: 8em;
+  }
+  .confirm-button button:hover {
+    box-shadow: 6px 6px 30px rgb(248, 212, 92);
+  }
+
+  .keepShopping-button {
+    margin: auto;
+    padding: 15px;
+    width: 60%;
+    text-align: center;
+  }
+  .keepShopping-button button {
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: rgb(49, 71, 92);
+    color: rgb(248, 212, 92);
+    width: 95%;
+  }
+}

@@ -1,8 +1,12 @@
-main h2 {
+.title-cart {
+  width: 90%;
+  margin: auto;
+  font-size: 22px;
   text-align: center;
   background-color: white;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .top-flex-mobile {
@@ -10,13 +14,16 @@ main h2 {
   font-weight: bold;
   flex-wrap: wrap;
   align-items: center;
-  height: 100px;
+
   border-bottom: 10px black double;
   border-top: 10px black double;
   padding-left: 10px;
   padding-right: 10px;
-  margin-bottom: 10px;
   background-color: white;
+  max-width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 main {
@@ -108,13 +115,14 @@ main {
 .keepShopping-button {
   margin: auto;
   padding: 15px;
-  width: 60%;
+  width: 80%;
   text-align: center;
 }
 .keepShopping-button button {
-  font-size: 25px;
+  font-size: 16px;
   border-radius: 5px;
   background-color: rgb(49, 71, 92);
   color: rgb(248, 212, 92);
-  width: 95%;
+  width: 80%;
+  height: 30px;
 }
