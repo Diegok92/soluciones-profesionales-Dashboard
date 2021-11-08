@@ -1,16 +1,4 @@
 @media (min-width: 480px) {
-  .social {
-    max-width: 250px;
-  }
-  .icon-contact {
-    max-width: 150px;
-  }
-  .categories {
-    max-width: 250px;
-  }
-  .login {
-    max-width: 150px;
-  }
   .work-with-us-button {
     margin: auto;
     padding: 15px;

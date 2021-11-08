@@ -1,0 +1,25 @@
+@media (min-width: 480px) {
+  .txt-ingresar {
+    display: block;
+  }
+  .login a {
+    color: rgb(248, 212, 92);
+    text-decoration: none;
+  }
+  .social {
+    max-width: 250px;
+  }
+  .icon-contact {
+    max-width: 150px;
+  }
+  .categories {
+    max-width: 300px;
+  }
+  .login {
+    max-width: 200px;
+  }
+  .prof-zona {
+    display: block;
+    text-align: center;
+  }
+}

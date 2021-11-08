@@ -30,6 +30,11 @@ main {
   height: 30px;
 }
 
+.team-list label select {
+  width: 100%;
+  height: 30px;
+}
+
 /* .confirm-button {
   margin: auto;
   padding: 15px;

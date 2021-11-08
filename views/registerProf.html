@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/theme.css" />
   <link rel="stylesheet" href="/css/tablet-index.css" />
+  <link rel="stylesheet" href="/css/tablet.css" />
   <link rel="stylesheet" href="/css/desktop-index.css" />
   <link rel="stylesheet" href="/css/registerProf.css" />
   <title>estas en index</title>
@@ -70,11 +71,15 @@
       </div>
     </section>
     <div class="login">
+      <a href="login">
+        <p class="txt-ingresar">Ingresar</p>
+      </a>
       <div>
         <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
-        <p class="txt-ingresar">Ingresar</p>
+
         <!-- ocultar txt en mobile, mostrar en el resto -->
       </div>
+
       <div class="cart">
         <i class="fas fa-shopping-cart"></i>
         <i class="fas fa-chevron-down"></i>
@@ -82,154 +87,165 @@
     </div>
   </nav>
   <main>
-    <form action="" method="" class="prof-form">
-      <div class="registerInput">
-        <label for="nombre">Nombre y Apellido:
-          <input type="text" name="name" id="nombre" placeholder="Cosme Fulanito">
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="email">Email:
-          <input type="email" name="email" id="email">
-        </label>
-      </div>
-      <div class="registerInput localidad-list">
-        <label>Localidad
-          <select name="localidad">
-            <option value="Capital Federal" selected>Capital Federal</option>
-            <option value="Conurbano">Conurbano</option>
-            <option value="Interior">Interior</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="adress">Dirección:
-          <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A">
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="tel">Telefono:
-          <input type="number" name="tel" id="tel" placeholder="011-12345678">
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="tel2">Telefono2:
-          <input type="number" name="tel2" id="tel2" placeholder="011-12345678">
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="dni">DNI:
-          <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
-        </label>
-      </div>
-      <div class="registerInput profesiones-list">
-        <label>Profesiones:
-          <select name="profesiones">
-            <option value="carpenter" selected>Carpintero/a</option>
-            <option value="plumber">Plomero/a</option>
-            <option value="painter">Pintor/a</option>
-            <option value="electrician">Electricista</option>
-            <option value="odontologo">Odontologo/a</option>
-            <option value="mechanic">Mecanico/a</option>
-            <option value="other">Otro</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput expirience-list">
-        <label>Años de Experiencia:
-          <select name="expirience">
-            <option value="under-1" selected>Menor a 1 Año</option>
-            <option value="1-3">Entre 1 y 3 Años</option>
-            <option value="3-5">Entre 3 y 5 Años</option>
-            <option value="5-more">Mayor a 5 Años</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput expirience-list">
-        <label>Posee Matricula:
-          <select name="expirience">
-            <option value="yes" selected>Si</option>
-            <option value="no">No</option>
-            <option value="na">N/A</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="matricula">Matricula:
-          <input type="number" name="matricula" id="matricula">
-        </label>
-      </div>
-      <div class="registerInput localidad-list">
-        <label>Zona de Prestacion de Servicio:
-          <select name="localidad">
-            <option value="Capital Federal" selected>Capital Federal</option>
-            <option value="Conurbano">Conurbano</option>
-            <option value="Interior">Interior</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput team-list">
-        <label>Posee Equipo de Trabajo?
-          <select name="team">
-            <option value="yes" selected>Si</option>
-            <option value="no">No</option>
-            <option value="maybe">Depende</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput tool-list">
-        <label>Lleva sus Propias Herramientas?
-          <select name="tool">
-            <option value="yes" selected>Si</option>
-            <option value="no">No</option>
-            <option value="maybe">Depende</option>
-          </select>
-        </label>
-      </div>
-      <div class="registerInput disponibilidad-list">
-        <label>Zona de Prestacion de Servicio:
-          <select name="disponibilidad">
-            <option value="morning" selected>Turno Mañana (9-12am)</option>
-            <option value="afternoon">Turno Tarde (1pm-5pm)</option>
-          </select>
-        </label>
-      </div>
-      <div class="whyme">
-        <label for="whyme">Porque Deberian Elegirte?
-          <textarea name="whyme" id="whyme" placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-          mollitia"></textarea>
-        </label>
-      </div>
-      <div class="avatar">
-        <label for="avatar">Foto de Perfil
-          <input type="file" name="avatar" accept=".jpg, .png, .bmp">
-        </label>
-      </div>
-      <div class="jobs">
-        <label for="jobs">Fotos de Trabajos Realizados (max 10)
-          <input type="file" name="jobs" accept=".jpg, .png, .bmp" multiple>
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="cbu">N° de CBU/CVU (para deposito de reservas):
-          <input type="number" name="cbu" id="cbu">
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="password">Contraseña:
-          <input type="password" name="password" id="password">
-        </label>
-      </div>
-      <div class="registerInput">
-        <label for="passwordConfirm">Confirmar Contraseña:
-          <input type="password" name="passwordConfirm" id="passwordConfirm">
-        </label>
-      </div>
-      <div class="confirm-button">
-        <button type="submit">Crear Usuario</button>
-      </div>
-
+    <div class="all-registerProf">
+      <form action="" method="" class="prof-form">
+        <div class="registerInput">
+          <label for="nombre">Nombre y Apellido:
+            <input type="text" name="name" id="nombre" placeholder="Ej: Cosme Fulanito">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="email">Email:
+            <input type="email" name="email" id="email">
+          </label>
+        </div>
+        <div class="registerInput localidad-list">
+          <label>Localidad
+            <select name="localidad">
+              <option value="Capital Federal" selected>Capital Federal</option>
+              <option value="Conurbano">Conurbano</option>
+              <option value="Interior">Interior</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="adress">Dirección:
+            <input type="text" name="adress" id="adress" placeholder="Ej: Calle falsa 123 2A">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="tel">Telefono:
+            <input type="number" name="tel" id="tel" placeholder="Ej: 011-12345678">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="tel2">Telefono 2 (Opcional):
+            <input type="number" name="tel2" id="tel2" placeholder="Ej: 011-12345678">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="dni">DNI (Sin Puntos):
+            <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="cuit">CUIT (Sin Puntos ni Guiones):
+            <input type="cuit" name="cuit" id="cuit" placeholder="Clave Unica de Identificacion Tributaria">
+          </label>
+        </div>
+        <div class="registerInput profesiones-list">
+          <label>Profesiones:
+            <select name="profesiones">
+              <option value="carpenter" selected>Carpintero/a</option>
+              <option value="plumber">Plomero/a</option>
+              <option value="painter">Pintor/a</option>
+              <option value="electrician">Electricista</option>
+              <option value="odontologo">Odontologo/a</option>
+              <option value="mechanic">Mecanico/a</option>
+              <option value="other">Otro</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="other-prof">Profesión (En Caso de No Estar Listada):
+            <input type="text" name="other-prof" id="other-prof" placeholder="Ej: Programador WEB Full Stack">
+          </label>
+        </div>
+        <div class="registerInput expirience-list">
+          <label>Años de Experiencia:
+            <select name="expirience">
+              <option value="under-1" selected>Menor a 1 Año</option>
+              <option value="1-3">Entre 1 y 3 Años</option>
+              <option value="3-5">Entre 3 y 5 Años</option>
+              <option value="5-more">Mayor a 5 Años</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput expirience-list">
+          <label>Posee Matricula:
+            <select name="expirience">
+              <option value="yes" selected>Si</option>
+              <option value="no">No</option>
+              <option value="na">N/A</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="matricula">Matricula (en Caso de Aplicar):
+            <input type="number" name="matricula" id="matricula">
+          </label>
+        </div>
+        <div class="registerInput localidad-list">
+          <label>Zona de Prestacion de Servicio:
+            <select name="localidad">
+              <option value="Capital Federal" selected>Capital Federal</option>
+              <option value="Conurbano">Conurbano</option>
+              <option value="Interior">Interior</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput team-list">
+          <label>Posee Equipo de Trabajo?
+            <select name="team">
+              <option value="yes" selected>Si</option>
+              <option value="no">No</option>
+              <option value="maybe">Depende</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput tool-list">
+          <label>Lleva sus Propias Herramientas?
+            <select name="tool">
+              <option value="yes" selected>Si</option>
+              <option value="no">No</option>
+              <option value="maybe">Depende</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput disponibilidad-list">
+          <label>Zona de Prestacion de Servicio:
+            <select name="disponibilidad">
+              <option value="morning" selected>Turno Mañana (9-12am)</option>
+              <option value="afternoon">Turno Tarde (1pm-5pm)</option>
+            </select>
+          </label>
+        </div>
+        <div class="registerInput whyme">
+          <label for="whyme">Porque Deberian Elegirte?
+            <textarea name="whyme" id="whyme" placeholder="Max 600 Caracteres"></textarea>
+          </label>
+        </div>
+        <div class="registerInput avatar">
+          <label for="avatar">Foto de Perfil
+            <input type="file" name="avatar" accept=".jpg, .png, .bmp">
+          </label>
+        </div>
+        <div class="registerInput jobs">
+          <label for="jobs">Fotos de Trabajos Realizados (max 10)
+            <input type="file" name="jobs" accept=".jpg, .png, .bmp" multiple>
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="cbu">N° de CBU/CVU (para deposito de reservas):
+            <input type="number" name="cbu" id="cbu">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="password">Contraseña:
+            <input type="password" name="password" id="password">
+          </label>
+        </div>
+        <div class="registerInput">
+          <label for="passwordConfirm">Confirmar Contraseña:
+            <input type="password" name="passwordConfirm" id="passwordConfirm">
+          </label>
+        </div>
+        <div class="confirm-button">
+          <button type="submit">Crear</button>
+        </div>
+    </div>
     </form>
+    </div>
     </section>
     <section class="ad">
       <p>Publicidad Animada</p>
@@ -241,7 +257,7 @@
     <div class="dot-carousel">
       <p><i class="fas fa-ellipsis-h"></i></p>
     </div>
-    </div>
+
   </main>
   <footer class="footer">
     <div>
