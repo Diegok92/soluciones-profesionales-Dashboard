@@ -26,14 +26,10 @@
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.login-button {
-  margin: auto;
-  margin-top: 20px;
   width: 60%;
   text-align: center;
 }
+
 .login-button button {
   font-size: 25px;
   border-radius: 5px;

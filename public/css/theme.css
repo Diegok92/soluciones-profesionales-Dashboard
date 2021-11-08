@@ -10,7 +10,13 @@ body {
 }
 
 main {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(49, 71, 92);
+}
+.all-index {
+  background-color: white;
+  padding: 10px;
+  width: 90%;
+  margin: auto;
 }
 
 .header-top a {

@@ -59,9 +59,12 @@
     width: 50%;
     flex-direction: column;
   }
-
+  .prof-detail-text {
+    font-size: 22px;
+  }
   .prof-detail-title-text {
     text-align: center;
+    font-weight: bold;
   }
   .title-prof-name {
     font-size: 20px;
