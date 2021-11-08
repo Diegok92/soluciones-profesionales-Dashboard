@@ -1,5 +1,17 @@
+main {
+  background-color: rgb(49, 71, 92);
+}
+
+.allProduct {
+  width: 90%;
+  background-color: white;
+  margin: auto;
+  padding: 10px;
+}
+
 .prof-title-father {
   display: flex;
+  justify-content: space-around;
 }
 
 .title-per-device-productDetail {
@@ -24,6 +36,8 @@
   width: 30vw;
   height: 30vw;
   margin: 10px;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 .rating-star {
@@ -48,7 +62,7 @@
   display: flex;
   justify-content: space-between;
   margin: 10px;
-  width: 80vw;
+  width: 80%;
   font-weight: bold;
 }
 .buttons-below-avatar button {

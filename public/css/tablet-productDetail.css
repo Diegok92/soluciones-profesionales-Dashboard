@@ -1,44 +1,20 @@
 @media (min-width: 480px) {
-  .title-per-device-productDetail {
-    color: red;
-    font-size: 1.8em;
-    margin-top: 10px;
-    padding: 3px;
+  .social {
+    max-width: 250px;
+  }
+  .icon-contact {
+    max-width: 150px;
+  }
+  .categories {
+    max-width: 250px;
+  }
+  .login {
+    max-width: 150px;
+  }
+  .allProduct {
     width: 90%;
-    font-weight: 700;
-    margin-left: 10px;
-  }
-  .prof-avatar {
-    border: red 2px dotted;
-    width: 100px;
-    height: 100px;
-    margin-left: 10px;
-  }
-
-  .rating-star {
-    border: dotted red 2px;
-    width: 100px;
-    margin-left: 10px;
-  }
-  .rating-star p {
-    font-size: 12px;
-  }
-
-  .rating-father {
-    display: flex;
-  }
-  .buttons-below-avatar {
-    display: flex;
-  }
-  .columns-productDetail-father {
-    display: flex;
-  }
-  .title-prof-name {
-    font-size: 1.3em;
-    text-align: center;
-    font-weight: 700;
-  }
-  .details {
-    display: flex;
+    background-color: white;
+    margin: auto;
+    padding: 10px;
   }
 }
