@@ -16,230 +16,110 @@
   <link rel="stylesheet" href="/css/tablet.css" />
   <link rel="stylesheet" href="/css/desktop-index.css" />
   <link rel="stylesheet" href="/css/desktop-productDetail.css" />
-  <title>Profesional</title>
+  <title>Soluciones Profesionales</title>
 </head>
 
 <body>
-  <header class="header-ppal">
-    <div class="header-top">
-      <a href="/"><img src="/images/logo-soluciones-profesionales.png" alt="logo sin fondo" /></a>
-      <div class="search-bar">
-        <input type="text" name="search-item">
-        <button class="search-button"><i class="fas fa-search"></i></button>
-      </div>
-      <div class="top-phrase">
 
-        <p><i class="fas fa-handshake"></i>Reservá Sin Problemas,</p>
-        <p>Cancela Sin Costo Agregado<i class="fas fa-handshake-slash"></i></p>
+  <%- include("./partials/header") %>
 
-      </div>
-    </div>
-    <div class="header-bottom">
-      <div class="social">
-        <div class="logo-ig"><i class="fab fa-instagram"></i></div>
-        <div class="logo-face">
-          <i class="fab fa-facebook-f"></i>
+    <main>
+      <div class="allProduct">
+        <div class="prof-title-father">
+          <p class="title-per-device-productDetail">Odontologo:</p>
+          <p class="name-per-device-productDetail">"Mario Don King Kong"</p>
+          <!--el nombre cambia segun el profesonial  -->
         </div>
-        <div class="logo-twitter">
-          <i class="fab fa-twitter"></i>
-        </div>
-        <div class="logo-youtube">
-          <i class="fab fa-youtube"></i>
-        </div>
-      </div>
-      <div>
-        <p class="top-title-per-device">La Solución que Buscás, con el Profesionalismo que Necesitás</p>
-        <!-- modificar tamaño per device -->
-      </div>
-      <div class="icon-contact">
-        <div class="logo-gmail">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <div class="logo-whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </div>
-      </div>
-    </div>
-  </header>
-  <nav class="nav-login">
-    <section class="categories">
-      <div>
-        <p>CATEGORIAS <i class="fas fa-chevron-down"></i></p>
-      </div>
-      <div class="prof-zona">
-        <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
-        <!-- ocultar boton en mobile, mostrar en el resto -->
-      </div>
-    </section>
-    <div class="login">
-      <a href="login">
-        <p class="txt-ingresar">Ingresar</p>
-      </a>
-      <div>
-        <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+        <div class="columns-productDetail-father">
+          <div class="column12-productDetail">
 
-        <!-- ocultar txt en mobile, mostrar en el resto -->
-      </div>
-
-      <div class="cart">
-        <a href="productCart"><i class="fas fa-shopping-cart"></i></a>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-    </div>
-  </nav>
-  <main>
-    <div class="allProduct">
-      <div class="prof-title-father">
-        <p class="title-per-device-productDetail">Odontologo:</p>
-        <p class="name-per-device-productDetail">"Mario Don King Kong"</p>
-        <!--el nombre cambia segun el profesonial  -->
-      </div>
-      <div class="columns-productDetail-father">
-        <div class="column12-productDetail">
-
-          <div class="top-flex-mobile">
-            <div class="prof-avatar">
-              <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
-            </div>
-
-            <div class="rating-father">
-              <div class="rating-star">
-                <div class="empty-star">
-                  <span>Resultado</span>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <div class="full-star">
-                  <span>Precio</span>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
-                <div class="half-star">
-                  <span>Rapidez</span>
-                  <i class="fas fa-star-half-alt"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i>
-                </div>
+            <div class="top-flex-mobile">
+              <div class="prof-avatar">
+                <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
               </div>
-              <p class="average-phrase">Promedio entre: n Opiniones</p>
+
+              <div class="rating-father">
+                <div class="rating-star">
+                  <div class="empty-star">
+                    <span>Resultado</span>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <div class="full-star">
+                    <span>Precio</span>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <div class="half-star">
+                    <span>Rapidez</span>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <p class="average-phrase">Promedio entre: n Opiniones</p>
+              </div>
+            </div>
+            <div class="buttons-below-avatar">
+              <div>
+                <p>Disponibilidad:</p>
+                <input type="date" id="date">
+              </div>
+              <button type="submit" style="width: 25vw;">
+                Agregar Servicio
+              </button>
             </div>
           </div>
-          <div class="buttons-below-avatar">
-            <div>
-              <p>Disponibilidad:</p>
-              <input type="date" id="date">
+          <div class="column22-productDetail">
+            <p class="title-prof-name">Detalles</p>
+            <p>Zona:</p>
+            <div class="details">
+              <div>
+                <p>Edad:</p>
+                <p>Matricula:</p>
+                <p>Trabaja en Equipo:</p>
+              </div>
+              <div>
+                <p>Años de Experiencia:</p>
+                <p>Lleva Herramientas:</p>
+              </div>
             </div>
-            <button type="submit" style="width: 25vw;">
-              Agregar Servicio
-            </button>
-          </div>
-        </div>
-        <div class="column22-productDetail">
-          <p class="title-prof-name">Detalles</p>
-          <p>Zona:</p>
-          <div class="details">
-            <div>
-              <p>Edad:</p>
-              <p>Matricula:</p>
-              <p>Trabaja en Equipo:</p>
-            </div>
-            <div>
-              <p>Años de Experiencia:</p>
-              <p>Lleva Herramientas:</p>
-            </div>
+
           </div>
 
         </div>
+        <div class="prof-detail-text">
+          <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
+          <p class="prof-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
+            mollitia
+            odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
+            explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
+            mollitia
+            odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
+            explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
+            mollitia
+            odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
+            explicabo unde vel.</p>
+        </div>
+        <!-- categorias -->
+        <h3 class="title-categories">Tambien te Puede Interesar</h3>
+        <%- include("./partials/categories-examples") %>
+
+          <%- include("./partials/ad-bottom-body") %>
 
       </div>
-      <div class="prof-detail-text">
-        <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
-        <p class="prof-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-          mollitia
-          odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
-          explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-          mollitia
-          odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
-          explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-          mollitia
-          odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
-          explicabo unde vel.</p>
-      </div>
-      <!-- categorias -->
-      <h3 class="title-categories">Tambien te Puede Interesar</h3>
-      <section class="icon-categories-product">
-        <article class="icon-article productDetail">
-          <!-- mecanica auto -->
-          <i class="fas fa-wrench"></i>
-          <p class="icon-txt">Mecanicos/as</p>
-        </article>
-        <article class="icon-article">
-          <!-- electricista -->
-          <i class="fas fa-plug"></i>
-          <p class="icon-txt">Electricistas</p>
-        </article>
-        <article class="icon-article">
-          <!-- dentistas -->
-          <i class="fas fa-tooth"></i>
-          <p class="icon-txt">Odontologos/as</p>
-        </article>
-        <article class="icon-article">
-          <!-- plomeria -->
-          <i class="fas fa-faucet"></i>
-          <p class="icon-txt">Plomeros/as</p>
-        </article>
-        <article class="icon-article">
-          <!-- carpinteria -->
-          <i class="fas fa-hammer"></i>
-          <p class="icon-txt">Carpinteros/as/p>
-        </article>
-        <article class="icon-article">
-          <!-- pintores -->
-          <i class="fas fa-paint-roller"></i>
-          <p class="icon-txt">Pintores/as</p>
-        </article>
-      </section>
-      <section class="ad">
-        <p>Publicidad Animada</p>
-      </section>
-      <section class="partner-companies">
-        <p>empresas que confiaron en nosotros</p>
-        <p>Logos de empresas</p>
-      </section>
-      <div class="dot-carousel">
-        <p><i class="fas fa-ellipsis-h"></i></p>
-      </div>
-    </div>
-  </main>
-  <footer class="footer">
-    <div>
-      <h4 class="phrase-footer">Servicios para Empresas y Pymes</h4>
-    </div>
-    <section>
-      <div class="titles-footer">
-        <ul class="list-footer">
-          <li><a href="">Terminos y Condiciones</a></li>
-          <li><a href="">Ayuda</a></li>
-          <li>
-            <a href="registerProf">Trabaja con Nosotros</a>
-          </li>
-          <li><a href="">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="Copyright">
-        <p>Copyright © 2021-2021</p>
-        <p>Calle Falsa 123, Springfield</p>
-      </div>
-    </section>
-  </footer>
+    </main>
+
+    <%- include("./partials/footer") %>
+
 </body>
 
 </html>
