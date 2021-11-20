@@ -2,25 +2,21 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/css/theme.css" />
-  <link rel="stylesheet" href="/css/tablet-index.css" />
-  <link rel="stylesheet" href="/css/tablet.css" />
-  <link rel="stylesheet" href="/css/desktop-index.css" />
-  <link rel="stylesheet" href="/css/registerProf.css" />
-  <title>Soluciones Profesionales</title>
+
+  <%- include("../partials/head-no-css") %>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/tablet-index.css" />
+    <link rel="stylesheet" href="/css/tablet.css" />
+    <link rel="stylesheet" href="/css/desktop-index.css" />
+    <link rel="stylesheet" href="/css/registerProf.css" />
+    <title>Soluciones Profesionales</title>
 </head>
 
 <body>
 
-  <%- include("./partials/header") %>
+  <%- include("../partials/header") %>
 
     <main>
       <div class="all-registerProf">
@@ -93,7 +89,7 @@
                 <option value="under-1" selected>Menor a 1 Año</option>
                 <option value="1-3">Entre 1 y 3 Años</option>
                 <option value="3-5">Entre 3 y 5 Años</option>
-                <option value="5-more">Mayor a 5 Años</option>
+                <option value="5-ttre">Mayor a 5 Años</option>
               </select>
             </label>
           </div>
@@ -138,14 +134,41 @@
               </select>
             </label>
           </div>
-          <div class="registerInput disponibilidad-list">
-            <label>Zona de Prestacion de Servicio:
-              <select name="disponibilidad">
-                <option value="morning" selected>Turno Mañana (9-12am)</option>
-                <option value="afternoon">Turno Tarde (1pm-5pm)</option>
-              </select>
-            </label>
+          <div class="dispo-dias">
+            <p>Dias de Prestacion de Servicio:</p>
+            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dias" value="lunes-tm" selected>
+              </option>
+              <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="lunes-tt" selected>
+              </option>
+            </p>
+            <p>Martes<label>(9-12am)</label><input type="checkbox" name="dias" value="martes-tm" selected>
+              </option>
+              <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="martes-tt" selected>
+              </option>
+            </p>
+            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dias" value="miercoles-tm" selected>
+              </option>
+              <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="miercoles-tt" selected>
+              </option>
+            </p>
+            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dias" value="jueves-tm" selected>
+              </option>
+              <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="jueves-tt" selected>
+              </option>
+            </p>
+            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dias" value="viernes-tm" selected>
+              </option>
+              <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="viernes-tt" selected>
+              </option>
+            </p>
+            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dias" value="sabado-tm" selected>
+              </option>
+              <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="sabado-tt" selected>
+              </option>
+            </p>
+
           </div>
+
           <div class="registerInput whyme">
             <label for="whyme">Porque Deberian Elegirte?
               <textarea name="whyme" id="whyme" placeholder="Max 600 Caracteres"></textarea>
@@ -184,11 +207,11 @@
       </div>
       </section>
 
-      <%- include("./partials/ad-bottom-body") %>
+      <%- include("../partials/ad-bottom-body") %>
 
     </main>
 
-    <%- include("./partials/footer") %>
+    <%- include("../partials/footer") %>
 
 </body>
 

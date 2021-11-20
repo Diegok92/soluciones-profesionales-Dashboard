@@ -65,3 +65,17 @@ main {
 .confirm-button button:hover {
   box-shadow: 6px 6px 30px rgb(248, 212, 92);
 }
+
+.dispo-dias {
+  padding: 10px;
+}
+
+.dispo-dias p {
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+.dispo-dias label {
+  padding-left: 15px;
+  font-size: 13px;
+}

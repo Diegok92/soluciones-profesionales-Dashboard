@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include("../partials/head-no-css") %>
+
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/theme.css" />
+        <link rel="stylesheet" href="/css/productDetail.css" />
+        <link rel="stylesheet" href="/css/tablet-productDetail.css" />
+        <link rel="stylesheet" href="/css/tablet.css" />
+        <link rel="stylesheet" href="/css/desktop-index.css" />
+        <link rel="stylesheet" href="/css/desktop-productDetail.css" />
+        <title>Soluciones Profesionales</title>
+</head>
+
+<body>
+
+    <%- include("../partials/header") %>
+
+        <main>
+            <div class="allProduct">
+                <div class="prof-title-father">
+                    <p class="title-per-device-productDetail">Odontologo:</p>
+                    <p class="name-per-device-productDetail">"Mario Don King Kong"</p>
+                    <!--el nombre cambia segun el profesonial  -->
+                </div>
+                <div class="columns-productDetail-father">
+                    <div class="column12-productDetail">
+
+                        <div class="top-flex-mobile">
+                            <div class="prof-avatar">
+                                <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
+                            </div>
+
+                            <div class="rating-father">
+                                <div class="rating-star">
+                                    <div class="empty-star">
+                                        <span>Resultado</span>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="full-star">
+                                        <span>Precio</span>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <div class="half-star">
+                                        <span>Rapidez</span>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="average-phrase">Promedio entre: n Opiniones</p>
+                            </div>
+                        </div>
+                        <div class="buttons-below-avatar">
+                            <div>
+                                <p>Disponibilidad:</p>
+                                <input type="date" id="date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column22-productDetail">
+                        <p class="title-prof-name">Detalles</p>
+                        <p>Zona:</p>
+                        <div class="details">
+                            <div>
+                                <p>Edad:</p>
+                                <p>Matricula:</p>
+                                <p>Trabaja en Equipo:</p>
+                            </div>
+                            <div>
+                                <p>Años de Experiencia:</p>
+                                <p>Lleva Herramientas:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="prof-detail-text">
+                    <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
+                    <p class="prof-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa
+                        officiis
+                        mollitia
+                        odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo
+                        qui, et
+                        explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa
+                        officiis
+                        mollitia
+                        odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo
+                        qui, et
+                        explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa
+                        officiis
+                        mollitia
+                        odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo
+                        qui, et
+                        explicabo unde vel.</p>
+                </div>
+                <div class="confirm-button">
+                    <button type="submit">
+                        Editar Info Personal
+                    </button>
+                </div>
+
+                <!-- categorias -->
+                <h3 class="title-categories">Tambien te Puede Interesar</h3>
+                <%- include("../partials/categories-examples") %>
+
+                    <%- include("../partials/ad-bottom-body") %>
+
+            </div>
+        </main>
+
+        <%- include("../partials/footer") %>
+
+</body>
+
+</html>

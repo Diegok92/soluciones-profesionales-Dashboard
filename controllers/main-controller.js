@@ -4,18 +4,21 @@ module.exports = {
     res.render("index");
   },
   login: (req, res) => {
-    res.render("login");
+    res.render("users/login");
   },
   productCart: (req, res) => {
     res.render("productCart");
   },
-  productDetail: (req, res) => {
-    res.render("productDetail");
+  professionalDetail: (req, res) => {
+    res.render("professionals/professionalDetail");
   },
   registerClient: (req, res) => {
-    res.render("registerClient");
+    res.render("users/registerClient");
   },
   registerProf: (req, res) => {
-    res.render("registerProf");
+    res.render("professionals/registerProf");
+  },
+  profManagement: (req, res) => {
+    res.render("professionals/profManagement");
   },
 };
