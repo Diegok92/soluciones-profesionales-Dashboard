@@ -45,3 +45,14 @@ Paginas de Referencia
 
 1- Lo utilizamos para inspirarnos la interfaz del home, footer y header.
 2/3/4/5 Las utilizamos para conocer los rubros que se pueden brindar y que suelen ser requeridos.
+
+---
+
+Info Sprint 3:
+
+TENER EN CUENTA:
+En virtud de que nuestra plataforma ofrece servicios (no productos), no tendremos el archivo solicitado "productAdd.html"
+
+Tendremos en su lugar el archivo "registerProf.ejs" en el cual las propias personas cargan su perfil en nuestra Web, a su vez creamos el archivo "profManagement.ejs" para que dichas personas puedan editar su info
+
+---

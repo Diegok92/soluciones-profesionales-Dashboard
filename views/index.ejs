@@ -20,34 +20,35 @@
 <body>
 
   <%- include("./partials/header") %>
+    <%- include("./partials/nav-bar") %>
 
-    <main>
-      <div class="all-index">
+      <main>
+        <div class="all-index">
 
-        <div>
-          <p class="title-per-device">La solución que buscas, con el profesionalismo que necesitas</p>
-          <!-- modificar tamaño per device -->
+          <div>
+            <p class="title-per-device">La solución que buscas, con el profesionalismo que necesitas</p>
+            <!-- modificar tamaño per device -->
+          </div>
+          <section class="services-carousel">
+            <p>Lugar para imagenes de servicios en carousel</p>
+          </section>
+          <div class="dot-carousel">
+            <p><i class="fas fa-ellipsis-h"></i></p>
+          </div>
+          <div class="work-with-us-button">
+            <a href="registerProf"><button type="submit">Sumáte a Nuestro Equipo de Profesionales</button></a>
+          </div>
+          <h3 class="title-categories">Categorias mas Solicitadas</h3>
+          <%- include("./partials/categories-examples") %>
+
+
+            <%- include("./partials/ad-bottom-body") %>
+
         </div>
-        <section class="services-carousel">
-          <p>Lugar para imagenes de servicios en carousel</p>
-        </section>
-        <div class="dot-carousel">
-          <p><i class="fas fa-ellipsis-h"></i></p>
-        </div>
-        <div class="work-with-us-button">
-          <a href="registerProf"><button type="submit">Sumáte a Nuestro Equipo de Profesionales</button></a>
-        </div>
-        <h3 class="title-categories">Categorias mas Solicitadas</h3>
-        <%- include("./partials/categories-examples") %>
+      </main>
 
-
-          <%- include("./partials/ad-bottom-body") %>
-
-      </div>
-    </main>
-
-    <!-- footer -->
-    <%- include("./partials/footer") %>
+      <!-- footer -->
+      <%- include("./partials/footer") %>
 </body>
 
 </html>

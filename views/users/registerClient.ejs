@@ -17,59 +17,60 @@
 <body>
 
   <%- include("../partials/header") %>
+    <%- include("../partials/nav-bar") %>
 
-    <main>
-      <form action="" method="" class="clientForm">
-        <div class="registerInput">
-          <label for="nombre">Nombre y Apellido:
-            <input type="text" name="name" id="nombre" placeholder="Cosme Fulanito">
-          </label>
-        </div>
-        <div class="registerInput">
-          <label for="email">Email:
-            <input type="email" name="email" id="email">
-          </label>
-        </div>
-        <div class="registerInput localidad-list">
-          <label>Localidad
-            <select name="localidad">
-              <option value="Capital Federal" selected>Capital Federal</option>
-              <option value="Conurbano">Conurbano</option>
-              <option value="Interior">Interior</option>
-            </select>
-          </label>
-        </div>
-        <div class="registerInput">
-          <label for="adress">Dirección:
-            <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A">
-          </label>
-        </div>
-        <div class="registerInput">
-          <label for="dni">DNI:
-            <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
-          </label>
-        </div>
-        <div class="registerInput">
-          <label for="password">Contraseña:
-            <input type="password" name="password" id="password">
-          </label>
-        </div>
-        <div class="registerInput">
-          <label for="passwordConfirm">Confirmar Contraseña:
-            <input type="password" name="passwordConfirm" id="passwordConfirm">
-          </label>
-        </div>
-        <div class="confirm-button">
-          <button type="submit">Enviar</button>
-        </div>
-      </form>
-      </section>
+      <main>
+        <form action="" method="" class="clientForm">
+          <div class="registerInput">
+            <label for="nombre">Nombre y Apellido:
+              <input type="text" name="name" id="nombre" placeholder="Cosme Fulanito">
+            </label>
+          </div>
+          <div class="registerInput">
+            <label for="email">Email:
+              <input type="email" name="email" id="email">
+            </label>
+          </div>
+          <div class="registerInput localidad-list">
+            <label>Localidad
+              <select name="localidad">
+                <option value="Capital Federal" selected>Capital Federal</option>
+                <option value="Conurbano">Conurbano</option>
+                <option value="Interior">Interior</option>
+              </select>
+            </label>
+          </div>
+          <div class="registerInput">
+            <label for="adress">Dirección:
+              <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A">
+            </label>
+          </div>
+          <div class="registerInput">
+            <label for="dni">DNI:
+              <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
+            </label>
+          </div>
+          <div class="registerInput">
+            <label for="password">Contraseña:
+              <input type="password" name="password" id="password">
+            </label>
+          </div>
+          <div class="registerInput">
+            <label for="passwordConfirm">Confirmar Contraseña:
+              <input type="password" name="passwordConfirm" id="passwordConfirm">
+            </label>
+          </div>
+          <div class="confirm-button">
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+        </section>
 
-      <%- include("../partials/ad-bottom-body") %>
+        <%- include("../partials/ad-bottom-body") %>
 
-    </main>
+      </main>
 
-    <%- include("../partials/footer") %>
+      <%- include("../partials/footer") %>
 
 </body>
 

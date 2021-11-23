@@ -9,6 +9,9 @@ module.exports = {
   productCart: (req, res) => {
     res.render("productCart");
   },
+  professionals: (req, res) => {
+    res.render("professionals");
+  },
   professionalDetail: (req, res) => {
     res.render("professionals/professionalDetail");
   },
