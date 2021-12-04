@@ -213,30 +213,32 @@ main {
   background-color: rgb(49, 71, 92);
   color: rgb(248, 212, 92);
   font-weight: 400;
+  text-decoration: underline;
 }
-/* .fa-wrench {
-  color: rgb(248, 212, 92);
+.fa-wrench {
+  color: black;
   font-weight: 800;
 }
+
 .fa-plug {
-  color: rgb(248, 212, 92);
+  color: black;
   font-weight: 800;
 }
 .fa-tooth {
-  color: rgb(248, 212, 92);
+  color: black;
   font-weight: 800;
 }
 .fa-faucet {
-  color: rgb(248, 212, 92);
+  color: black;
 }
 .fa-hammer {
-  color: rgb(248, 212, 92);
+  color: black;
   font-weight: 800;
 }
 .fa-paint-roller {
-  color: rgb(248, 212, 92);
+  color: black;
   font-weight: 800;
-} */
+}
 
 .ad {
   width: 95%;

@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="/css/tablet.css" />
     <link rel="stylesheet" href="/css/desktop-index.css" />
     <link rel="stylesheet" href="/css/registerProf.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
     <title>Soluciones Profesionales</title>
 </head>
@@ -26,22 +26,18 @@
         <div class="all-registerProf">
           <form action="" method="" class="prof-form">
             <div class="registerInput">
-              <label for="nombre">Nombre y Apellido:
-                <input type="text" name="name" id="nombre" placeholder="Ej: Cosme Fulanito">
+              <label for="first-name">Nombre:
+                <input type="text" name="first-name" id="first-nombre" placeholder="Ej: Cosme">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="last-name">Apellido:
+                <input type="text" name="last-name" id="last-name" placeholder="Ej: Fulanito">
               </label>
             </div>
             <div class="registerInput">
               <label for="email">Email:
                 <input type="email" name="email" id="email">
-              </label>
-            </div>
-            <div class="registerInput localidad-list">
-              <label>Localidad
-                <select name="localidad">
-                  <option value="Capital Federal" selected>Capital Federal</option>
-                  <option value="Conurbano">Conurbano</option>
-                  <option value="Interior">Interior</option>
-                </select>
               </label>
             </div>
             <div class="registerInput">
@@ -54,16 +50,7 @@
                 <input type="number" name="tel" id="tel" placeholder="Ej: 011-12345678">
               </label>
             </div>
-            <div class="registerInput">
-              <label for="tel2">Telefono 2 (Opcional):
-                <input type="number" name="tel2" id="tel2" placeholder="Ej: 011-12345678">
-              </label>
-            </div>
-            <div class="registerInput">
-              <label for="dni">DNI (Sin Puntos):
-                <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
-              </label>
-            </div>
+
             <div class="registerInput">
               <label for="cuit">CUIT (Sin Puntos ni Guiones):
                 <input type="cuit" name="cuit" id="cuit" placeholder="Clave Unica de Identificacion Tributaria">
@@ -88,16 +75,7 @@
                 <input type="text" name="other-prof" id="other-prof" placeholder="Ej: Programador WEB Full Stack">
               </label>
             </div>
-            <div class="registerInput expirience-list">
-              <label>Años de Experiencia:
-                <select name="expirience">
-                  <option value="under-1" selected>Menor a 1 Año</option>
-                  <option value="1-3">Entre 1 y 3 Años</option>
-                  <option value="3-5">Entre 3 y 5 Años</option>
-                  <option value="5-ttre">Mayor a 5 Años</option>
-                </select>
-              </label>
-            </div>
+
             <div class="registerInput expirience-list">
               <label>Posee Matricula:
                 <select name="expirience">
@@ -121,24 +99,7 @@
                 </select>
               </label>
             </div>
-            <div class="registerInput team-list">
-              <label>Posee Equipo de Trabajo?
-                <select name="team">
-                  <option value="yes" selected>Si</option>
-                  <option value="no">No</option>
-                  <option value="maybe">Depende</option>
-                </select>
-              </label>
-            </div>
-            <div class="registerInput tool-list">
-              <label>Lleva sus Propias Herramientas?
-                <select name="tool">
-                  <option value="yes" selected>Si</option>
-                  <option value="no">No</option>
-                  <option value="maybe">Depende</option>
-                </select>
-              </label>
-            </div>
+
             <div class="dispo-dias">
               <p>Dias de Prestacion de Servicio:</p>
               <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dias" value="lunes-tm" selected>
@@ -171,12 +132,22 @@
                 <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="sabado-tt" selected>
                 </option>
               </p>
+              <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dias" value="domingo-tm" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="domingo-tt" selected>
+                </option>
+              </p>
 
             </div>
 
             <div class="registerInput whyme">
               <label for="whyme">Porque Deberian Elegirte?
                 <textarea name="whyme" id="whyme" placeholder="Max 600 Caracteres"></textarea>
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="price">Precio de tu Reserva en $:
+                <input type="number" name="price" id="price" placeholder="300" value="300">
               </label>
             </div>
             <div class="registerInput avatar">
