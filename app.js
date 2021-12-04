@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 
 app.use("/", mainRoute); // req es la "/" y el res es el main-router, el encargado de redirigir
 
-app.use("/professionals", profRoute);
+app.use("/rubros", profRoute);
 
 app.listen(3000, function () {
   console.log("servidor activo");

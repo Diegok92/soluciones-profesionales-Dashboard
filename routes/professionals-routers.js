@@ -4,15 +4,16 @@ const profRoute = express.Router();
 
 const profController = require("../controllers/professionals-controller.js");
 
-profRoute.get("/", profController.professionals);
+profRoute.get("/", profController.rubros);
 
-profRoute.get("/professionalDetail", profController.professionalDetail);
+profRoute.get("/:rubro/:cuit", profController.professionalDetail);
 
 profRoute.get("/registerProf", profController.registerProf);
+profRoute.post("/registerProf", profController.registerProf);
 
-profRoute.get("/profManagement", profController.profManagement);
+profRoute.get("/:rubro/:cuit/editProf", profController.profManagement);
 
-profRoute.get("/plumbers", profController.plumbers);
+profRoute.get("/:rubro", profController.profPerRubro);
 
 //profRoute.get("/:category", profController.plumbers);
 

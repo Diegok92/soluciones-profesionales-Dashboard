@@ -49,8 +49,13 @@
     <main>
       <div class="allProduct">
         <div class="prof-title-father">
-          <p class="title-per-device-productDetail">Odontologo:</p>
-          <p class="name-per-device-productDetail">"Mario Don King Kong"</p>
+          <p class="title-per-device-productDetail">
+            <%=profObject[0].jobTitle %>
+
+          </p>
+          <p class="name-per-device-productDetail">
+            <%= profObject[0].firstName + " " + profObject[0].lastName %>
+          </p>
           <!--el nombre cambia segun el profesonial  -->
         </div>
         <div class="columns-productDetail-father">
@@ -103,42 +108,57 @@
           </div>
           <div class="column22-productDetail">
             <p class="title-prof-name">Detalles</p>
-            <p>Zona:</p>
-            <div class="details">
-              <div>
-                <p>Edad:</p>
-                <p>Matricula:</p>
-                <p>Trabaja en Equipo:</p>
-              </div>
-              <div>
-                <p>Años de Experiencia:</p>
-                <p>Lleva Herramientas:</p>
-              </div>
-            </div>
+            <p>Zona:<%=" " +profObject[0].jobZone %>
+            </p>
+            <div class=" details">
+                <div>
+                  <p>Matricula:<%if(profObject[0].license){%>
+                      <%=" " +profObject[0].license %> 
+                  <%}else{ %>
+                    <%=" No Posee" %>
+                        <% } %>
+                  </p>
+                </div>
+                <div>
 
+                </div>
           </div>
 
         </div>
-        <div class="prof-detail-text">
-          <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
-          <p class="prof-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-            mollitia
-            odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
-            explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-            mollitia
-            odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
-            explicabo unde vel.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, sit culpa officiis
-            mollitia
-            odit eum tempore dolor. Cum necessitatibus quibusdam praesentium deleniti maxime similique illo qui, et
-            explicabo unde vel.</p>
-        </div>
-        <!-- categorias -->
-        <h3 class="title-categories">Tambien te Puede Interesar</h3>
-        <%- include("../partials/categories-examples") %>
-
-          <%- include("../partials/ad-bottom-body") %>
 
       </div>
+      <div class=" prof-detail-text">
+        <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
+        <p class="prof-txt">
+          <%=profObject[0].whyMe %>
+        </p>
+      </div>
+      <div class=" prof-detail-text">
+        <p class="prof-detail-title-text">Fotos de mis Trabajos Realizados:</p>
+        <p class="prof-txt">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus repellat dolor quo inventore expedita
+          aperiam quae dicta totam nihil delectus eveniet, beatae dignissimos architecto a dolorum, deleniti, non quia
+          corrupti?
+        </p>
+      </div>
+      <div class="buttons-below-avatar">
+        <div>
+          <button type="submit" style="width: 25vw;">
+            <a href="/rubros/<%=profObject[0].jobTitle %>/<%=profObject[0].cuit %>/editProf">Editar Perfil
+            </a>
+          </button>
+        </div>
+        <button type="submit" style="width: 25vw;">
+          Eliminar Perfil
+        </button>
+      </div>
+
+      <h3 class=" title-categories">Tambien te Puede Interesar</h3>
+      <%- include("../partials/categories-examples") %>
+
+        <%- include("../partials/ad-bottom-body") %>
+
+          </div>
     </main>
 
     <%- include("../partials/footer") %>
