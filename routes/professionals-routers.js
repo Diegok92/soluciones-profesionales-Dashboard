@@ -9,7 +9,7 @@ profRoute.get("/", profController.rubros);
 profRoute.get("/:rubro/:cuit", profController.professionalDetail);
 
 profRoute.get("/registerProf", profController.registerProf);
-profRoute.post("/registerProf", profController.registerProf);
+profRoute.post("/registerProf", profController.createProf);
 
 profRoute.get("/:rubro/:cuit/editProf", profController.editProf); //muestro form de edicion
 profRoute.put("/:rubro/:cuit", profController.updateProf);

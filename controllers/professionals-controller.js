@@ -34,6 +34,16 @@ module.exports = {
     res.render("professionals/registerProf");
   },
 
+  createProf: (req, res) => {
+    const newProfessional = { ...req.body };
+
+    professionals.push(newProfessional);
+
+    saveProf();
+
+    res.redirect("/");
+  },
+
   editProf: (req, res) => {
     const aEditar = professionals.filter(function (prof) {
       return prof.cuit == req.params.cuit;
