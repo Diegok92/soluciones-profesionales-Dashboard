@@ -36,6 +36,10 @@ Diego Kleiman: Tengo 29 soy de CABA, Villa Crespo, vengo de la ingeniería Mecá
 
 Leonel Nardo: Soy Leonel, tengo 32 años. Soy de Castelar. Me gusta el anime, los videojuegos y el futbol. Esta es mi primera experiencia en programación!!!!!
 
+Agustin Boccio: Me encanta aprender, viajar, correr y comer. Disfruto de conocer gente y culturas nuevas. En el camino que estoy recorriendo me doy cuenta que nunca es tarde, solo hay que animarse.
+
+José Di Loreto: Mi nombre es José Diloreto, soy argentino, tengo 25 años. Soy muy curioso y me encanta aprender cosas nuevas. Trabajé siempre en atención al público y mis hobbys son los deportes.
+
 Paginas de Referencia
 1- https://www.mercadolibre.com.ar/c/servicios
 2- https://maridosdealquiler.net/
