@@ -14,6 +14,9 @@ profRoute.post("/registerProf", profController.createProf);
 profRoute.get("/:rubro/:cuit/editProf", profController.editProf); //muestro form de edicion
 profRoute.put("/:rubro/:cuit", profController.updateProf);
 
+profRoute.get("/:rubro/:cuit/deleteProf", profController.showDeleteProf); //muestro form de confirmación de eliminación
+profRoute.delete("/:rubro/:cuit", profController.deleteProf);
+
 profRoute.get("/:rubro", profController.profPerRubro);
 
 //profRoute.get("/:category", profController.plumbers);

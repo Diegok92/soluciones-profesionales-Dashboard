@@ -77,13 +77,27 @@ module.exports = {
       // cbu: professionals[indexProfBuscado].cbu,
       // password: professionals[indexProfBuscado].password,
     };
-
+    
     professionals[indexProfBuscado] = updateProf; //reemplazo el actualizado en el listado original
 
     saveProf();
 
     const profession = req.params.jobTitle;
     const cuit = req.params.cuit;
+    res.redirect("/rubros");
+  },
+
+  showDeleteProf: (req, res) => {
+    const toDelete = professionals.filter( (prof) => {
+      return prof.cuit == req.params.cuit;
+    });
+    res.render("professionals/deleteProf", { toDelete: toDelete });
+  },
+
+  deleteProf: (req, res) => {
+    let profToDelete = professionals.findIndex( prof => prof.cuit == req.params.cuit);
+    professionals.splice(profToDelete, 1);
+    saveProf();
     res.redirect("/rubros");
   },
 
