@@ -23,65 +23,65 @@
         <%- include("../partials/nav-bar") %>
 
             <main>
-                hola mundo
                 <div class="all-registerProf">
-                    <form action="" method="" class="prof-form">
+                    <form action="/rubros/<%=aEditar[0].jobTitle %>/<%=aEditar[0].cuit %>?_method=PUT" method="POST"
+                        class="prof-form">
+                        <!-- la ruta de "action", debe ser la ruta a la que tiene q ir la info del formulario -->
                         <div class="registerInput">
                             <label for="first-name">Nombre:
-                                <input type="text" name="first-name" id="first-nombre" placeholder="Ej: Cosme">
+                                <input type="text" name="firstName" id="first-nombre"
+                                    value="<%=aEditar[0].firstName %>">
                             </label>
                         </div>
                         <div class="registerInput">
                             <label for="last-name">Apellido:
-                                <input type="text" name="last-name" id="last-name" placeholder="Ej: Fulanito">
+                                <input type="text" name="lastName" id="last-name" value="<%=aEditar[0].lastName %>">
                             </label>
                         </div>
                         <div class="registerInput">
                             <label for="email">Email:
-                                <input type="email" name="email" id="email">
+                                <input type="email" name="email" id="email" value="<%=aEditar[0].email %>">
                             </label>
                         </div>
                         <div class="registerInput">
                             <label for="adress">Dirección:
-                                <input type="text" name="adress" id="adress" placeholder="Ej: Calle falsa 123 2A">
+                                <input type="text" name="adress" id="adress" value="<%=aEditar[0].adress %>">
                             </label>
                         </div>
                         <div class="registerInput">
                             <label for="tel">Telefono:
-                                <input type="number" name="tel" id="tel" placeholder="Ej: 011-12345678">
+                                <input type="text" name="mobile" id="tel" value="<%=aEditar[0].mobile %>">
                             </label>
                         </div>
 
                         <div class="registerInput">
                             <label for="cuit">CUIT (Sin Puntos ni Guiones):
-                                <input type="cuit" name="cuit" id="cuit"
-                                    placeholder="Clave Unica de Identificacion Tributaria">
+                                <input type="cuit" name="cuit" id="cuit" value="<%=aEditar[0].cuit %>">
                             </label>
                         </div>
                         <div class="registerInput profesiones-list">
                             <label>Profesiones:
                                 <!-- class="selectpicker" multiple -->
-                                <select name="profesiones">
-                                    <option value="carpenter" selected>Carpintero/a</option>
-                                    <option value="plumber">Plomero/a</option>
-                                    <option value="painter">Pintor/a</option>
-                                    <option value="electrician">Electricista</option>
-                                    <option value="odontologo">Odontologo/a</option>
-                                    <option value="mechanic">Mecanico/a</option>
-                                    <option value="other">Otro</option>
+                                <select name="otherjobTitle">
+                                    <option value="Carpintero">Carpintero/a</option>
+                                    <option value="Plomero">Plomero/a</option>
+                                    <option value="Pintor">Pintor/a</option>
+                                    <option value="Electricista">Electricista</option>
+                                    <option value="Odontologo">Odontologo/a</option>
+                                    <option value="Mecanico">Mecanico/a</option>
+                                    <option value="Otro" selected>Otro</option>
                                 </select>
                             </label>
                         </div>
                         <div class="registerInput">
-                            <label for="other-prof">Profesión (En Caso de No Estar Listada):
-                                <input type="text" name="other-prof" id="other-prof"
-                                    placeholder="Ej: Programador WEB Full Stack">
+                            <label for="jobTitle">Profesión (En Caso de No Estar Listada):
+                                <input type="text" name="jobTitle" id="other-prof" value="<%=aEditar[0].jobTitle %>">
                             </label>
                         </div>
 
                         <div class="registerInput expirience-list">
                             <label>Posee Matricula:
-                                <select name="expirience">
+                                <select name="matricula">
                                     <option value="yes" selected>Si</option>
                                     <option value="no">No</option>
                                     <option value="na">N/A</option>
@@ -90,12 +90,12 @@
                         </div>
                         <div class="registerInput">
                             <label for="matricula">Matricula (en Caso de Aplicar):
-                                <input type="number" name="matricula" id="matricula">
+                                <input type="text" name="license" id="matricula" value="<%=aEditar[0].license %>">
                             </label>
                         </div>
                         <div class="registerInput localidad-list">
                             <label>Zona de Prestacion de Servicio:
-                                <select name="localidad">
+                                <select name="jobZone">
                                     <option value="Capital Federal" selected>Capital Federal</option>
                                     <option value="Conurbano">Conurbano</option>
                                     <option value="Interior">Interior</option>
@@ -105,46 +105,49 @@
 
                         <div class="dispo-dias">
                             <p>Dias de Prestacion de Servicio:</p>
-                            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dias" value="lunes-tm" selected>
+                            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="lunes-tm"
+                                    selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="lunes-tt" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="lunes-tt" selected>
                                 </option>
                             </p>
-                            <p>Martes<label>(9-12am)</label><input type="checkbox" name="dias" value="martes-tm"
+                            <p>Martes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="martes-tm"
                                     selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="martes-tt" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="martes-tt" selected>
                                 </option>
                             </p>
-                            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dias" value="miercoles-tm"
+                            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="jobDay" value="miercoles-tm"
                                     selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="miercoles-tt"
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="miercoles-tt"
                                     selected>
                                 </option>
                             </p>
-                            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dias" value="jueves-tm"
+                            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="jobDay" value="jueves-tm"
                                     selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="jueves-tt" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="jueves-tt" selected>
                                 </option>
                             </p>
-                            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dias" value="viernes-tm"
+                            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="viernes-tm"
                                     selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="viernes-tt" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="viernes-tt"
+                                    selected>
                                 </option>
                             </p>
-                            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dias" value="sabado-tm"
+                            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="jobDay" value="sabado-tm"
                                     selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="sabado-tt" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="sabado-tt" selected>
                                 </option>
                             </p>
-                            <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dias" value="domingo-tm"
+                            <p>Domingo<label>(9-12am)</label><input type="checkbox" name="jobDay" value="domingo-tm"
                                     selected>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dias" value="domingo-tt" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="domingo-tt"
+                                    selected>
                                 </option>
                             </p>
 
@@ -152,12 +155,12 @@
 
                         <div class="registerInput whyme">
                             <label for="whyme">Porque Deberian Elegirte?
-                                <textarea name="whyme" id="whyme" placeholder="Max 600 Caracteres"></textarea>
+                                <textarea name="whyMe" id="whyme"><%=aEditar[0].whyMe %></textarea>
                             </label>
                         </div>
                         <div class="registerInput">
                             <label for="price">Precio de tu Reserva en $:
-                                <input type="number" name="price" id="price" placeholder="300" value="300">
+                                <input type="text" name="price" id="price" value="<%=aEditar[0].price %>">
                             </label>
                         </div>
                         <div class="registerInput avatar">
@@ -172,21 +175,12 @@
                         </div>
                         <div class="registerInput">
                             <label for="cbu">N° de CBU/CVU (para deposito de reservas):
-                                <input type="number" name="cbu" id="cbu">
+                                <input type="number" name="cbu" id="cbu" value="<%=aEditar[0].cbu %>">
                             </label>
                         </div>
-                        <div class="registerInput">
-                            <label for="password">Contraseña:
-                                <input type="password" name="password" id="password">
-                            </label>
-                        </div>
-                        <div class="registerInput">
-                            <label for="passwordConfirm">Confirmar Contraseña:
-                                <input type="password" name="passwordConfirm" id="passwordConfirm">
-                            </label>
-                        </div>
+
                         <div class="confirm-button">
-                            <button type="submit">Crear</button>
+                            <button type="submit">Confirmar</button>
                         </div>
                 </div>
                 </form>
