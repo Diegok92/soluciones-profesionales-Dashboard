@@ -25,9 +25,9 @@
   <%- include("../partials/header") %>
     <nav class="nav-login">
       <section class="categories">
-        <div class="rubros">
+        <div class="login">
           <a href="/rubros">
-            <p>RUBROS <i class="fas fa-chevron-down"></i></p>
+            <p>RUBROS</p>
           </a>
         </div>
         <div class="prof-zona">
@@ -57,7 +57,6 @@
       <p class="title-cart">
         <%=rubro[0].jobTitle %>
       </p>
-      <i class="fas fa-trash-alt"></i>
       <% for(let i=0; i<rubro.length; i++){ %>
         <div class="top-flex-mobile">
           <a href="/rubros/<%=rubro[i].jobTitle%>/<%=rubro[i].cuit%>">
@@ -87,105 +86,16 @@
               <%=rubro[i].price %>
             </p>
           </div>
-          <div class="trash-button">
-            <button type="submit">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </div>
         </div>
 
         </div>
         <% } %>
-          <!--
-        <div class="top-flex-mobile">
-          <div class="div-avatar">
-            <div class="prof-avatar">
-
-            </div>
-          </div>
-          <div class="div-descrption">
-            <div class="title-per-device-productCart">Plomero:</div>
-            <div class="name-per-device-productCart">"Bob el Constructor"</div>
-             </div>
-              <div class="reserved-date">
-                <p>Ma-Vi</p>
-                <p>T. Mañana</p>
-              </div>
-              <div class="price-button-preview">
-                <div class="price-preview">
-                  <p>$100.00</p>
-                </div>
-                <div class="trash-button">
-                  <button type="submit">
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </div>
-              </div>
-          </div>
-          <div class="top-flex-mobile">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-
-              </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">Plomero:</div>
-              <div class="name-per-device-productCart">"Luigi Bros"</div>
-
-            </div>
-            <div class="reserved-date">
-              <p>Ju-Sa</p>
-              <p>T. Tarde</p>
-            </div>
-            <div class="price-button-preview">
-              <div class="price-preview">
-                <p>$100.00</p>
-              </div>
-              <div class="trash-button">
-                <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="top-flex-mobile">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-
-              </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">Plomero:</div>
-              <div class="name-per-device-productCart">"Los Magios"</div>
-
-            </div>
-            <div class="reserved-date">
-              <p>Lu-Ma-Sa</p>
-              <p>T. Mañana</p>
-            </div>
-            <div class="price-button-preview">
-              <div class="price-preview">
-                <p>$100.00</p>
-              </div>
-              <div class="trash-button">
-                <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div> -->
-
           <div class="keepShopping-button">
-            <a href="/">
+            <a href="/rubros">
               <button type="submit">
-                Agregar Mas Servicios
+                Ver Mas Servicios
               </button>
             </a>
-          </div>
-          <div class="confirm-button">
-            <button type="submit">
-              CONFIRMAR
-            </button>
           </div>
 
           <%- include("../partials/ad-bottom-body") %>

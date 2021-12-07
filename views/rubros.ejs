@@ -1,6 +1,3 @@
-<!-- PAGINA EN DESARROLLO, no entregable aun -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +7,10 @@
 
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/theme.css" />
-    <link rel="stylesheet" href="/css/productDetail.css" />
-    <link rel="stylesheet" href="/css/productCart.css" />
     <link rel="stylesheet" href="/css/tablet.css" />
     <link rel="stylesheet" href="/css/tablet-index.css" />
     <link rel="stylesheet" href="/css/desktop-index.css" />
-    <link rel="stylesheet" href="/css/desktop-productCart.css" />
+    <link rel="stylesheet" href="/css/rubros.css" />
 
     <title>Soluciones Profesionales</title>
 </head>
@@ -26,128 +21,149 @@
     <%- include("./partials/nav-bar") %>
 
       <main>
-        <p class="title-cart">Profesionales</p>
-        <!-- <i class="fas fa-trash-alt"></i> -->
-        <%- include("./partials/categories-examples") %>
-          <div class="top-flex-mobile">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-                <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
-              </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">Plomero:</div>
-              <div class="name-per-device-productCart">"Mario Bros"</div>
-              <!--el nombre cambia segun el profesonial  -->
-            </div>
-            <div class="reserved-date">
-              <p>Lu-Ju-Sa</p>
-              <p>T. Mañana</p>
-            </div>
-            <div class="price-button-preview">
-              <div class="price-preview">
-                <p>$100.00</p>
-              </div>
-              <div class="trash-button">
-                <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="top-flex-mobile">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-                <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
-              </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">Plomero:</div>
-              <div class="name-per-device-productCart">"Bob el Constructor"</div>
-              <!--el nombre cambia segun el profesonial  -->
-            </div>
-            <div class="reserved-date">
-              <p>Ma-Vi</p>
-              <p>T. Mañana</p>
-            </div>
-            <div class="price-button-preview">
-              <div class="price-preview">
-                <p>$100.00</p>
-              </div>
-              <div class="trash-button">
-                <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="top-flex-mobile">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-                <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
-              </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">Plomero:</div>
-              <div class="name-per-device-productCart">"Luigi Bros"</div>
-              <!--el nombre cambia segun el profesonial  -->
-            </div>
-            <div class="reserved-date">
-              <p>Ju-Sa</p>
-              <p>T. Tarde</p>
-            </div>
-            <div class="price-button-preview">
-              <div class="price-preview">
-                <p>$100.00</p>
-              </div>
-              <div class="trash-button">
-                <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="top-flex-mobile">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-                <!-- Foto cargada por el prof (.jpg, .png, .bmp) -->
-              </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">Plomero:</div>
-              <div class="name-per-device-productCart">"Los Magios"</div>
-              <!--el nombre cambia segun el profesonial  -->
-            </div>
-            <div class="reserved-date">
-              <p>Lu-Ma-Sa</p>
-              <p>T. Mañana</p>
-            </div>
-            <div class="price-button-preview">
-              <div class="price-preview">
-                <p>$100.00</p>
-              </div>
-              <div class="trash-button">
-                <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+        <p class="title-rubros">Todos Nuestros Profesionales de:</p>
+        <div class="all-index">
+          <section class="icon-categories">
+            <article class="icon-article">
 
-          <div class="keepShopping-button">
-            <a href="/">
-              <button type="submit">
-                Agregar Mas Servicios
-              </button>
-            </a>
-          </div>
-          <div class="confirm-button">
-            <button type="submit">
-              CONFIRMAR
-            </button>
-          </div>
+              <a href="rubros/Mecanico">
 
-          <%- include("./partials/ad-bottom-body") %>
+                <i class=" prueba fas fa-wrench"></i>
+                <p class="icon-txt">Mecanica</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Electricista">
+
+                <i class=" prueba fas fa-plug"></i>
+                <p class="icon-txt">Electricidad</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Odontologo">
+
+                <i class=" prueba fas fa-tooth"></i>
+                <p class="icon-txt">Odontologia</p>
+              </a>
+            </article>
+
+            <article class="icon-article">
+              <a href="rubros/Plomero">
+
+                <i class=" prueba fas fa-faucet"></i>
+                <p class="icon-txt">Plomeria</p>
+              </a>
+            </article>
+
+            <article class="icon-article">
+              <a href="rubros/Carpintero">
+
+                <i class=" prueba fas fa-hammer"></i>
+                <p class="icon-txt">Carpinteria</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Pintor">
+
+                <i class=" prueba fas fa-paint-roller"></i>
+                <p class="icon-txt">Pintura</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Abogado">
+                <i class=" prueba fas fa-gavel"></i>
+                <p class="icon-txt">Abogacia</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Full-Stack-Web-Dev">
+                <i class=" prueba fas fa-laptop-code"></i>
+                <p class="icon-txt">Full Stack Web Developer</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Gasista">
+                <i class=" prueba fas fa-burn"></i>
+                <p class="icon-txt">Gas</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Destapador">
+                <i class=" prueba fas fa-sink"></i>
+                <p class="icon-txt">Destapaciones</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Catering">
+                <i class=" prueba fas fa-utensils"></i>
+                <p class="icon-txt">Catering</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Empapelador">
+                <i class=" prueba fas fa-scroll"></i>
+                <p class="icon-txt">Empapelacion</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Jardinero">
+                <i class=" prueba fas fa-seedling"></i>
+                <p class="icon-txt">Jardineria</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Jardinero-Deluxe">
+                <i class=" prueba fas fa-cannabis"></i>
+                <p class="icon-txt">Jardineria Deluxe</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Instalador-AC">
+                <i class=" prueba fas fa-wind"></i>
+                <p class="icon-txt">instalacion de AC</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Fletero">
+                <i class=" prueba fas fa-people-carry"></i>
+                <p class="icon-txt">Mudanzas</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Fumigador">
+                <i class=" prueba fas fa-bug"></i>
+                <p class="icon-txt">Fumigacion</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Niñera">
+                <i class=" prueba fas fa-baby"></i>
+                <p class="icon-txt">Cuidado de Menores</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Prof-Particular">
+                <i class=" prueba fas fa-chalkboard-teacher"></i>
+                <p class="icon-txt">Enseñanza Particular</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Paseador">
+                <i class=" prueba fas fa-paw"></i>
+                <p class="icon-txt">Paseo Animal</p>
+              </a>
+            </article>
+            <article class="icon-article">
+              <a href="rubros/Piletero">
+                <i class=" prueba fas fa-swimming-pool"></i>
+                <p class="icon-txt">Pileteria</p>
+              </a>
+            </article>
+
+          </section>
+        </div>
+
+        <%- include("./partials/ad-bottom-body") %>
 
       </main>
 
