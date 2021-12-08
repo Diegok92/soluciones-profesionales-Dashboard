@@ -62,29 +62,65 @@
                         <div class="registerInput profesiones-list">
                             <label>Profesiones:
                                 <!-- class="selectpicker" multiple -->
-                                <select name="otherjobTitle">
-                                    <option value="Carpintero">Carpintero/a</option>
-                                    <option value="Plomero">Plomero/a</option>
-                                    <option value="Pintor">Pintor/a</option>
-                                    <option value="Electricista">Electricista</option>
-                                    <option value="Odontologo">Odontologo/a</option>
-                                    <option value="Mecanico">Mecanico/a</option>
-                                    <option value="Otro" selected>Otro</option>
+                                <select name="jobTitle">
+                                    <option value="Carpintero" <%=(aEditar[0].jobTitle=="Carpintero" ) ? "selected" : ""
+                                        %>>Carpintero/a</option>
+                                    <option value="Plomero" <%=(aEditar[0].jobTitle=="Plomero" ) ? "selected" : "" %>
+                                        >Plomero/a</option>
+                                    <option value="Pintor" <%=(aEditar[0].jobTitle=="Pintor" ) ? "selected" : "" %>
+                                        >Pintor/a</option>
+                                    <option value="Electricista" <%=(aEditar[0].jobTitle=="Electricista" ) ? "selected"
+                                        : "" %>>Electricista</option>
+                                    <option value="Odontologo" <%=(aEditar[0].jobTitle=="Odontologo" ) ? "selected" : ""
+                                        %>>Odontologo/a</option>
+                                    <option value="Mecanico" <%=(aEditar[0].jobTitle=="Mecanico" ) ? "selected" : "" %>
+                                        >Mecanico/a</option>
+                                    <option value="Fletero" <%=(aEditar[0].jobTitle=="Fletero" ) ? "selected" : "" %>
+                                        >Mudanza</option>
+                                    <option value="Jardinero" <%=aEditar[0].jobTitle=="Jardinero" ? "selected" : "" %>
+                                        >Jardinero</option>
+                                    <option value="Instalador AC" <%=(aEditar[0].jobTitle=="Instalador AC" )
+                                        ? "selected" : "" %>>Instalador AC</option>
+                                    <option value="Catering" <%=(aEditar[0].jobTitle=="Catering" ) ? "selected" : "" %>
+                                        >Catering</option>
+                                    <option value="Abogado" <%=(aEditar[0].jobTitle=="Abogado" ) ? "selected" : "" %>
+                                        >Abogado/a</option>
+                                    <option value="Full Stack Web Dev" <%=(aEditar[0].jobTitle=="Full Stack Web Dev" )
+                                        ? "selected" : "" %>>Full Stack Web Dev</option>
+                                    <option value="Gasista" <%=(aEditar[0].jobTitle=="Gasista" ) ? "selected" : "" %>
+                                        >Gasista</option>
+                                    <option value="Destapador" <%=(aEditar[0].jobTitle=="Destapador" ) ? "selected" : ""
+                                        %>>Destapador/a</option>
+                                    <option value="Empapelador" <%=(aEditar[0].jobTitle=="Empapelador" ) ? "selected"
+                                        : "" %>>Empapelador/a</option>
+                                    <option value="Fumigador" <%=(aEditar[0].jobTitle=="Fumigador" ) ? "selected" : ""
+                                        %>>Fumigador/a</option>
+                                    <option value="Prof Particular" <%=(aEditar[0].jobTitle=="Prof Particular" )
+                                        ? "selected" : "" %>>Prof. Particular</option>
+                                    <option value="Paseador" <%=(aEditar[0].jobTitle=="Paseador" ) ? "selected" : "" %>
+                                        >Paseador/a</option>
+                                    <option value="Piletero" <%=(aEditar[0].jobTitle=="Piletero" ) ? "selected" : "" %>
+                                        >Piletero/a</option>
+                                    <option value="Contador" <%=(aEditar[0].jobTitle=="Contador" ) ? "selected" : "" %>
+                                        >Contador/a</option>
+                                    <option value="Cuidado de Menores" <%=(aEditar[0].jobTitle=="Cuidado de Menores" )
+                                        ? "selected" : "" %>>Cuidado de Menores</option>
+                                    <option value="Otro" <%=(aEditar[0].otherJob) ? "selected" : "" %>>Otro</option>
                                 </select>
                             </label>
                         </div>
                         <div class="registerInput">
-                            <label for="jobTitle">Profesión (En Caso de No Estar Listada):
-                                <input type="text" name="jobTitle" id="other-prof" value="<%=aEditar[0].jobTitle %>">
+                            <label for="otherJob">Profesión (En Caso de No Estar Listada):
+                                <input type="text" name="otherJob" id="otherJob"
+                                    placeholder="Ej: Programador WEB Full Stack" value=<%=aEditar[0].otherJob %>>
                             </label>
                         </div>
 
                         <div class="registerInput expirience-list">
                             <label>Posee Matricula:
                                 <select name="matricula">
-                                    <option value="yes" selected>Si</option>
-                                    <option value="no">No</option>
-                                    <option value="na">N/A</option>
+                                    <option value="yes" <%=(aEditar[0].license) ? "selected" : "" %>>Si</option>
+                                    <option value="no" <%=(!aEditar[0].license) ? "selected" : "" %>>No</option>
                                 </select>
                             </label>
                         </div>
@@ -96,9 +132,31 @@
                         <div class="registerInput localidad-list">
                             <label>Zona de Prestacion de Servicio:
                                 <select name="jobZone">
-                                    <option value="Capital Federal" selected>Capital Federal</option>
-                                    <option value="Conurbano">Conurbano</option>
-                                    <option value="Interior">Interior</option>
+                                    <option value="Capital Federal" <%=(aEditar[0].jobZone=="CABA" ) ? "selected" : ""
+                                        %>>Capital Federal</option>
+                                    <option value="GBA Norte" <%=(aEditar[0].jobZone=="GBA Norte" ) ? "selected" : "" %>
+                                        >GBA Norte</option>
+                                    <option value="GBA Oeste" <%=(aEditar[0].jobZone=="GBA Oeste" ) ? "selected" : "" %>
+                                        >GBA Oeste</option>
+                                    <option value="GBA Sur" <%=(aEditar[0].jobZone=="GBA Sur" ) ? "selected" : "" %>
+                                        >GBA Sur</option>
+                                    <option value="Mendoza" <%=(aEditar[0].jobZone=="Mendoza" ) ? "selected" : "" %>
+                                        >Mendoza</option>
+                                    <option value="Cordoba" <%=(aEditar[0].jobZone=="Cordoba" ) ? "selected" : "" %>
+                                        >Cordoba</option>
+                                    <option value="Rosario" <%=(aEditar[0].jobZone=="Rosario" ) ? "selected" : "" %>
+                                        >Rosario</option>
+                                    <option value="Lejano Oeste" <%=(aEditar[0].jobZone=="Lejano Oeste" ) ? "selected"
+                                        : "" %>>Lejano Oeste</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="registerInput expirience-list">
+                            <label>Atiende Emergencias:
+                                <select name="emergency">
+                                    <option value="true" <%=(aEditar[0].emergency) ? "selected" : "" %>>Si</option>
+                                    <option value="false" <%=(!aEditar[0].emergency) ? "selected" : "" %>>No
+                                    </option>
                                 </select>
                             </label>
                         </div>
@@ -106,48 +164,52 @@
                         <div class="dispo-dias">
                             <p>Dias de Prestacion de Servicio:</p>
                             <p>Lunes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Lunes-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Lunes-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Lunes-TT" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Lunes-TT"
+                                    <%=aEditar[0].jobDay.includes("Lunes-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Martes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Martes-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Martes-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Martes-TT" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Martes-TT"
+                                    <%=aEditar[0].jobDay.includes("Martes-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Miercoles-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Miercoles-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Miercoles-TT"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Miercoles-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Jueves<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Jueves-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Jueves-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Jueves-TT" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Jueves-TT"
+                                    <%=aEditar[0].jobDay.includes("Jueves-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Viernes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Viernes-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Viernes-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Viernes-TT"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Viernes-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Sabado<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Sabado-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Sabado-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Sabado-TT" selected>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Sabado-TT"
+                                    <%=aEditar[0].jobDay.includes("Sabado-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Domingo<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Domingo-TM"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Domingo-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Domingo-TT"
-                                    selected>
+                                    <%=aEditar[0].jobDay.includes("Domingo-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
 
@@ -160,7 +222,7 @@
                         </div>
                         <div class="registerInput">
                             <label for="price">Precio de tu Reserva en $:
-                                <input type="text" name="price" id="price" value="<%=aEditar[0].price %>">
+                                <input type="number" name="price" id="price" value="<%=aEditar[0].price %>">
                             </label>
                         </div>
                         <div class="registerInput avatar">
@@ -184,7 +246,6 @@
                         </div>
                 </div>
                 </form>
-                </div>
                 </section>
 
                 <%- include("../partials/ad-bottom-body") %>

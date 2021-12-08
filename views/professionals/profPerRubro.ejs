@@ -53,7 +53,6 @@
     </nav>
 
     <main>
-
       <p class="title-cart">
         <%=rubro[0].jobTitle %>
       </p>
@@ -76,14 +75,23 @@
           <p>
             <%=rubro[i].jobDay %>
           </p>
+        </div>
+        <div class="reserved-date">
           <p>
-            <%=rubro[i].jobTime %>
+            <% if(rubro[i].emergency){ %>
+              <i class="fas fa-shipping-fast"></i>
+              Urgencias
+              <% } %>
+          </p>
+          <p>
+            <%= rubro[i].jobZone %>
           </p>
         </div>
+
         <div class="price-button-preview">
           <div class="price-preview">
             <p>
-              <%=rubro[i].price %>
+              $<%=rubro[i].price %>
             </p>
           </div>
         </div>

@@ -21,8 +21,10 @@
 
     <nav class="nav-login">
       <section class="categories">
-        <div>
-          <p>CATEGORIAS <i class="fas fa-chevron-down"></i></p>
+        <div class="login">
+          <a href="../../rubros">
+            <p>RUBROS </p>
+          </a>
         </div>
         <div class="prof-zona">
           <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
@@ -30,7 +32,7 @@
         </div>
       </section>
       <div class="login">
-        <a href="../login">
+        <a href="../../login">
           <p class="txt-ingresar">Ingresar</p>
         </a>
         <div>
@@ -40,7 +42,7 @@
         </div>
 
         <div class="cart">
-          <a href="../productCart"><i class="fas fa-shopping-cart"></i></a>
+          <a href="../../productCart"><i class="fas fa-shopping-cart"></i></a>
           <i class="fas fa-chevron-down"></i>
         </div>
       </div>
@@ -108,57 +110,109 @@
           </div>
           <div class="column22-productDetail">
             <p class="title-prof-name">Detalles</p>
-            <p>Zona:<%=" " +profObject[0].jobZone %>
-            </p>
+
             <div class=" details">
-                <div>
+              <div>
+                <p>Zona:<%=" " +profObject[0].jobZone %>
+                  </p>
                   <p>Matricula:<%if(profObject[0].license){%>
                       <%=" " +profObject[0].license %> 
                   <%}else{ %>
                     <%=" No Posee" %>
-                        <% } %>
-                  </p>
-                </div>
-                <div>
+                    <% } %>
+                </p>
+                <p>Atiende Emergencias: <% if(profObject[0].emergency){ %>
+                    Si
+                    <% }else{ %>
+                      No
+                      <% } %>
+                </p>
+                <p>Precio de Reserva: $<%=profObject[0].price %>
+                </p>
+              </div>
+            </div>
 
-                </div>
           </div>
 
         </div>
-
-      </div>
-      <div class=" prof-detail-text">
-        <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
-        <p class="prof-txt">
-          <%=profObject[0].whyMe %>
-        </p>
-      </div>
-      <div class=" prof-detail-text">
-        <p class="prof-detail-title-text">Fotos de mis Trabajos Realizados:</p>
-        <p class="prof-txt">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus repellat dolor quo inventore expedita
-          aperiam quae dicta totam nihil delectus eveniet, beatae dignissimos architecto a dolorum, deleniti, non quia
-          corrupti?
-        </p>
-      </div>
-      <div class="buttons-below-avatar">
-        <div>
-          <button type="submit" style="width: 25vw;">
-            <a href="/rubros/<%=profObject[0].jobTitle %>/<%=profObject[0].cuit %>/editProf">Editar Perfil
-            </a>
-          </button>
+        <div class=" prof-detail-text">
+          <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
+          <p class="prof-txt">
+            <%=profObject[0].whyMe %>
+          </p>
         </div>
-        <button type="submit" style="width: 25vw;">
-          <a href="/rubros/<%= profObject[0].jobTitle %>/<%= profObject[0].cuit %>/deleteProf">Eliminar Perfil</a>
-        </button>
-      </div>
+        <div class=" prof-detail-text">
+          <p class="prof-detail-title-text">Fotos de mis Trabajos Realizados:</p>
+          <p class="prof-txt">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus repellat dolor quo inventore expedita
+            aperiam quae dicta totam nihil delectus eveniet, beatae dignissimos architecto a dolorum, deleniti, non quia
+            corrupti?
+          </p>
+        </div>
+        <div class="buttons-below-avatar">
+          <div>
+            <a href="/rubros/<%=profObject[0].jobTitle %>/<%=profObject[0].cuit %>/editProf">
+              <button type="submit" style="width: 25vw;">Editar Perfil</button>
+            </a>
+          </div>
+          <a href="/rubros/<%= profObject[0].jobTitle %>/<%= profObject[0].cuit %>/deleteProf">
+            <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
+          </a>
+        </div>
 
-      <h3 class=" title-categories">Tambien te Puede Interesar</h3>
-      <%- include("../partials/categories-examples") %>
+        <h3 class=" title-categories">Tambien te Puede Interesar</h3>
+        <section class="icon-categories">
+          <article class="icon-article">
+            <!-- meter if en los links para /rubros/plomero o /dentista -->
+            <a href="../Mecanico">
+              <!-- mecanica auto 1-->
+              <i class="fas fa-wrench"></i>
+              <p class="icon-txt">Mecanicos/as</p>
+            </a>
+          </article>
+          <article class="icon-article">
+            <a href="../Electricista">
+              <!-- electricista 2-->
+              <i class="fas fa-plug"></i>
+              <p class="icon-txt">Electricistas</p>
+            </a>
+          </article>
+          <article class="icon-article">
+            <a href="../Odontologo">
+              <!-- dentistas 3-->
+              <i class="fas fa-tooth"></i>
+              <p class="icon-txt">Odontologos/as</p>
+            </a>
+          </article>
+
+          <article class="icon-article">
+            <a href="../Plomero">
+              <!-- plomeria 4-->
+              <i class="fas fa-faucet"></i>
+              <p class="icon-txt">Plomeros/as</p>
+            </a>
+          </article>
+
+          <article class="icon-article">
+            <a href="../Carpintero">
+              <!-- carpinteria 5-->
+              <i class="fas fa-hammer"></i>
+              <p class="icon-txt">Carpinteros/as/
+                <p>
+            </a>
+          </article>
+          <article class="icon-article">
+            <a href="../Pintor">
+              <!-- pintores 6-->
+              <i class="fas fa-paint-roller"></i>
+              <p class="icon-txt">Pintores/as</p>
+            </a>
+          </article>
+        </section>
 
         <%- include("../partials/ad-bottom-body") %>
 
-          </div>
+      </div>
     </main>
 
     <%- include("../partials/footer") %>

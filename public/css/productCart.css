@@ -10,6 +10,7 @@
 }
 
 .top-flex-mobile {
+  overflow-wrap: break-word;
   justify-content: space-between;
   font-weight: bold;
   flex-wrap: wrap;

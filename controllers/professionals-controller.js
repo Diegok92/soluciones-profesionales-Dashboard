@@ -16,6 +16,13 @@ function saveProf() {
   fs.writeFileSync(professionalsFilePath, profEnTxt, "utf-8"); //sobreescribo el JSON
 }
 
+//hacemos esto para cuando se registran con una prof != al standard
+for (let i = 0; i < professionals.length; i++) {
+  if (professionals[i].jobTitle == "Otro") {
+    professionals[i].jobTitle = professionals[i].otherJob;
+  }
+}
+
 module.exports = {
   rubros: (req, res) => {
     res.render("rubros");
@@ -77,7 +84,7 @@ module.exports = {
       // cbu: professionals[indexProfBuscado].cbu,
       // password: professionals[indexProfBuscado].password,
     };
-    
+
     professionals[indexProfBuscado] = updateProf; //reemplazo el actualizado en el listado original
 
     saveProf();
@@ -88,14 +95,16 @@ module.exports = {
   },
 
   showDeleteProf: (req, res) => {
-    const toDelete = professionals.filter( (prof) => {
+    const toDelete = professionals.filter((prof) => {
       return prof.cuit == req.params.cuit;
     });
     res.render("professionals/deleteProf", { toDelete: toDelete });
   },
 
   deleteProf: (req, res) => {
-    let profToDelete = professionals.findIndex( prof => prof.cuit == req.params.cuit);
+    let profToDelete = professionals.findIndex(
+      (prof) => prof.cuit == req.params.cuit
+    );
     professionals.splice(profToDelete, 1);
     saveProf();
     res.redirect("/rubros");
