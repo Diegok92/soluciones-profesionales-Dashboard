@@ -93,6 +93,11 @@ main {
   font-size: 1.1em;
 }
 
+.login a {
+  color: rgb(248, 212, 92);
+  text-decoration: none;
+}
+
 .fa-shopping-cart {
   color: rgb(248, 212, 92);
 }

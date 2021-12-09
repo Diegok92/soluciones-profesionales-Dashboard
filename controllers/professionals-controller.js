@@ -16,7 +16,7 @@ function saveProf() {
   fs.writeFileSync(professionalsFilePath, profEnTxt, "utf-8"); //sobreescribo el JSON
 }
 
-//hacemos esto para cuando se registran con una prof != al standard
+//hacemos esto para cuando se registran con una prof != al standard que tenemos
 for (let i = 0; i < professionals.length; i++) {
   if (professionals[i].jobTitle == "Otro") {
     professionals[i].jobTitle = professionals[i].otherJob;
