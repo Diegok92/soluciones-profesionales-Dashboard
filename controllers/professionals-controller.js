@@ -3,6 +3,7 @@
 const { application } = require("express");
 const fs = require("fs");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const professionalsFilePath = path.join(
   __dirname,
@@ -42,7 +43,11 @@ module.exports = {
   },
 
   createProf: (req, res) => {
-    const newProfessional = { ...req.body };
+    const newProfessional = {
+      ...req.body,
+      password: bcrypt.hashSync(req.body.password, 10),
+      avatar: req.file.filename,
+    };
 
     professionals.push(newProfessional);
 
@@ -59,30 +64,13 @@ module.exports = {
   },
 
   updateProf: (req, res) => {
+    //por aca viaja el boton "confirmar" del form editProf
     const indexProfBuscado = professionals.findIndex(function (prof) {
       return prof.cuit == req.params.cuit;
     });
 
     const updateProf = {
-      //cuit: professionals[indexProfBuscado].cuit,
-      //jobTitle: professionals[indexProfBuscado].jobTitle, //mantego los valores originales
       ...req.body,
-
-      // firstName: professionals[indexProfBuscado].firstName,
-      // lastName: professionals[indexProfBuscado].lastName,
-      // email: professionals[indexProfBuscado].email,
-      // adress: professionals[indexProfBuscado].adress,
-      // cuit: professionals[indexProfBuscado].cuit,
-      // jobTitle: professionals[indexProfBuscado].jobTitle,
-      // license: professionals[indexProfBuscado].license,
-      // jobZone: professionals[indexProfBuscado].jobZone,
-      // jobDay: professionals[indexProfBuscado].jobDay,
-      // jobTime: professionals[indexProfBuscado].jobTime,
-      // price: professionals[indexProfBuscado].price,
-      // emergency: professionals[indexProfBuscado].emergency,
-      // whyMe: professionals[indexProfBuscado].whyMe,
-      // cbu: professionals[indexProfBuscado].cbu,
-      // password: professionals[indexProfBuscado].password,
     };
 
     professionals[indexProfBuscado] = updateProf; //reemplazo el actualizado en el listado original
