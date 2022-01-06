@@ -498,5 +498,27 @@
     "address": "67 Ilene Park",
     "avatar": null,
     "password": "Ue7EjfFCCln"
+  },
+  {
+    "first-name": "Diego",
+    "last-name": "Kleiman",
+    "email": "",
+    "localidad": "Capital Federal",
+    "adress": "Gascon",
+    "dni": "3576257",
+    "password": "$2a$10$/vj4blm.lb49lASUL8GFVukPQUAbnpOaZX3CaiujsR.UF8PUgNfDq",
+    "passwordConfirm": "",
+    "avatar": "3576257-avatar.jpg"
+  },
+  {
+    "firstName": "cosme",
+    "lastName": "fulanito",
+    "email": "wrgwvrvwr@ssdv.com",
+    "city": "Capital Federal",
+    "address": "SGsv",
+    "dni": "12345",
+    "password": "$2a$10$AbsSwIh6BOigWpqAZ9g9BuoufvemdjcYEi/y1IN3aW9m6qWysT7Ei",
+    "passwordConfirm": "",
+    "avatar": "12345-avatar.jpg"
   }
 ]
