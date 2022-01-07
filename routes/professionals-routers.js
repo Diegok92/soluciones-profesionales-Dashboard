@@ -2,6 +2,9 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const authLoggedtMiddleware = require("../middlewares/authLoggedMiddleware");
+const authNotProftMiddleware = require("../middlewares/authNotProfMiddleware");
+const authPrivateProfMiddleware = require("../middlewares/authPrivateProfMiddleware");
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -25,32 +28,37 @@ const profController = require("../controllers/professionals-controller.js");
 
 profRoute.get("/", profController.rubros);
 
-profRoute.get("/:rubro/:cuit", profController.professionalDetail);
+profRoute.get(
+  "/:rubro/:cuit",
+  authLoggedtMiddleware,
+  profController.professionalDetail
+);
 
-profRoute.get("/registerProf", profController.registerProf);
+profRoute.get(
+  "/registerProf",
+  authNotProftMiddleware,
+  profController.registerProf
+);
 profRoute.post(
   "/registerProf",
   uploadFile.single("avatar"),
   profController.createProf
 );
 
-profRoute.get("/:rubro/:cuit/editProf", profController.editProf); //muestro form de edicion
+profRoute.get(
+  "/:rubro/:cuit/editProf",
+  authPrivateProfMiddleware,
+  profController.editProf
+); //muestro form de edicion
 profRoute.put("/:rubro/:cuit", profController.updateProf);
 
-profRoute.get("/:rubro/:cuit/deleteProf", profController.showDeleteProf); //muestro form de confirmación de eliminación
+profRoute.get(
+  "/:rubro/:cuit/deleteProf",
+  authPrivateProfMiddleware,
+  profController.showDeleteProf
+); //muestro form de confirmación de eliminación
 profRoute.delete("/:rubro/:cuit", profController.deleteProf);
 
 profRoute.get("/:rubro", profController.profPerRubro);
 
-//profRoute.get("/:category", profController.plumbers);
-
-// profRoute.get("/:category/:cuit", profController.plumbers); //por category viene el rubro del profesional
-
 module.exports = profRoute;
-
-//plomeros/cuit
-
-// app.post("/register", uploadFile.single("avatar"), function (req, res) {
-//   console.log(req.file); //obj con la info del archivo
-//   res.send("archivo subido");
-// });

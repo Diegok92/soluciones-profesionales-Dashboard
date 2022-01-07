@@ -44,7 +44,6 @@ module.exports = {
             bcrypt.compareSync(req.body.password, clientFound.password) == true
           ) {
             req.session.clientFound = clientFound; //obj del cliente logueado
-            res.redirect("/");
           } else {
             res.render("login", {
               errors: [{ msg: "Credenciales Invalidas" }],
@@ -60,7 +59,6 @@ module.exports = {
             bcrypt.compareSync(req.body.password, profFound.password) == true
           ) {
             req.session.profFound = profFound; //obj del prof logueado
-            res.redirect("/");
           } else {
             res.render("login", {
               errors: [{ msg: "Credenciales Invalidas" }],
@@ -69,6 +67,7 @@ module.exports = {
           }
         }
       }
+      return res.redirect("/");
     }
 
     //checkear en ambas bases de datos la existencia del usuario (email)
