@@ -45,7 +45,7 @@ module.exports = {
   createProf: (req, res) => {
     const newProfessional = {
       ...req.body,
-      password: bcrypt.hashSync(req.body.password, 10),
+      password: bcrypt.hashSync(req.body.password, 10), //hash
       avatar: req.file.filename,
     };
 

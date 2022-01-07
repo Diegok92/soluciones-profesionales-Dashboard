@@ -21,24 +21,34 @@
     <%- include("partials/nav-bar") %>
 
       <main>
-        <form action="" method="" class="form-login">
-          <div class="username">
-            <label for="username">Nombre de Usuario:</label>
-            <input type="text" name="username" id="username">
-          </div>
-          <div class="password">
-            <label for="password">Contraseña:</label>
-            <input type="password" name="password" id="password">
-          </div>
-          <div class="login-button">
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
-        <div class="password-forgotten">
-          <a href="">¿Olvidaste la Contraseña?</a>
-        </div>
 
-        <%- include("partials/ad-bottom-body") %>
+        <% if(locals.errors !=undefined){ %>
+          <% for(let i=0; i<errors.length; i++){ %>
+            <ul>
+              <li>
+                <%= errors[i].msg %>
+              </li>
+            </ul>
+            <% } %>
+              <% } %>
+                <form action="/login" method="POST" class="form-login">
+                  <div class="username">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                  </div>
+                  <div class="password">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password">
+                  </div>
+                  <div class="login-button">
+                    <button type="submit">Enviar</button>
+                  </div>
+                </form>
+                <div class="password-forgotten">
+                  <a href="">¿Olvidaste la Contraseña?</a>
+                </div>
+
+                <%- include("partials/ad-bottom-body") %>
 
       </main>
 
