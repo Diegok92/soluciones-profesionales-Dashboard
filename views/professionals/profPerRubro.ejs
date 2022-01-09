@@ -23,97 +23,67 @@
 <body>
 
   <%- include("../partials/header") %>
-    <nav class="nav-login">
-      <section class="categories">
-        <div class="login">
-          <a href="/rubros">
-            <p>RUBROS</p>
-          </a>
-        </div>
-        <div class="prof-zona">
-          <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
-          <!-- ocultar boton en mobile, mostrar en el resto -->
-        </div>
-      </section>
-      <div class="login">
-        <a href="/login">
-          <p class="txt-ingresar">Ingresar</p>
-        </a>
-        <a href="registerClient">
-          <p class="txt-ingresar">Registrate</p>
-        </a>
-        <div>
-          <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+    <%- include("../partials/nav-bar") %>
 
-          <!-- ocultar txt en mobile, mostrar en el resto -->
-        </div>
+      <main>
+        <p class="title-cart">
+          <%=rubro[0].jobTitle %>
+        </p>
+        <% for(let i=0; i<rubro.length; i++){ %>
+          <div class="top-flex-mobile">
+            <a href="/rubros/<%=rubro[i].jobTitle%>/<%=rubro[i].cuit%>">
+              <div class="div-avatar">
+                <div class="prof-avatar">
 
-        <div class="cart">
-          <a href="/productCart"><i class="fas fa-shopping-cart"></i></a>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-      </div>
-    </nav>
-
-    <main>
-      <p class="title-cart">
-        <%=rubro[0].jobTitle %>
-      </p>
-      <% for(let i=0; i<rubro.length; i++){ %>
-        <div class="top-flex-mobile">
-          <a href="/rubros/<%=rubro[i].jobTitle%>/<%=rubro[i].cuit%>">
-            <div class="div-avatar">
-              <div class="prof-avatar">
-
+                </div>
               </div>
-            </div>
-            <div class="div-descrption">
-              <div class="title-per-device-productCart">
-                <%=rubro[i].jobTitle %>:
-              </div>
-              <div class="name-per-device-productCart">"<%=rubro[i].firstName +" "+ rubro[i].lastName%>" </div>
-          </a>
-        </div>
-        <div class="reserved-date">
-          <p>
-            <%=rubro[i].jobDay %>
-          </p>
-        </div>
-        <div class="reserved-date">
-          <p>
-            <% if(rubro[i].emergency=="Si" ){ %>
-              <i class="fas fa-shipping-fast"></i>
-              Urgencias
-              <% } %>
-          </p>
-          <p>
-            <%= rubro[i].jobZone %>
-          </p>
-        </div>
-
-        <div class="price-button-preview">
-          <div class="price-preview">
-            <p>
-              $<%=rubro[i].price %>
-            </p>
-          </div>
-        </div>
-
-        </div>
-        <% } %>
-          <div class="keepShopping-button">
-            <a href="/rubros">
-              <button type="submit">
-                Ver Mas Servicios
-              </button>
+              <div class="div-descrption">
+                <div class="title-per-device-productCart">
+                  <%=rubro[i].jobTitle %>:
+                </div>
+                <div class="name-per-device-productCart">"<%=rubro[i].firstName +" "+ rubro[i].lastName%>" </div>
             </a>
           </div>
+          <div class="reserved-date">
+            <p>
+              <%=rubro[i].jobDay %>
+            </p>
+          </div>
+          <div class="reserved-date">
+            <p>
+              <% if(rubro[i].emergency=="Si" ){ %>
+                <i class="fas fa-shipping-fast"></i>
+                Urgencias
+                <% } %>
+            </p>
+            <p>
+              <%= rubro[i].jobZone %>
+            </p>
+          </div>
 
-          <%- include("../partials/ad-bottom-body") %>
+          <div class="price-button-preview">
+            <div class="price-preview">
+              <p>
+                $<%=rubro[i].price %>
+              </p>
+            </div>
+          </div>
 
-    </main>
+          </div>
+          <% } %>
+            <div class="keepShopping-button">
+              <a href="/rubros">
+                <button type="submit">
+                  Ver Mas Servicios
+                </button>
+              </a>
+            </div>
 
-    <%- include("../partials/footer") %>
+            <%- include("../partials/ad-bottom-body") %>
+
+      </main>
+
+      <%- include("../partials/footer") %>
 
 </body>
 

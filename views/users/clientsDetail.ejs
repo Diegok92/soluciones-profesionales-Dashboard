@@ -18,145 +18,118 @@
 <body>
 
     <%- include("../partials/header") %>
+        <%- include("../partials/nav-bar") %>
 
-        <nav class="nav-login">
-            <section class="categories">
-                <div class="login">
-                    <a href="../../rubros">
-                        <p>RUBROS </p>
-                    </a>
-                </div>
-                <div class="prof-zona">
-                    <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
-                    <!-- ocultar boton en mobile, mostrar en el resto -->
-                </div>
-            </section>
-            <div class="login">
-                <a href="../../login">
-                    <p class="txt-ingresar">Ingresar</p>
-                </a>
-                <div>
-                    <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
 
-                    <!-- ocultar txt en mobile, mostrar en el resto -->
-                </div>
+            <main>
+                <div class="allProduct">
+                    <div class="prof-title-father">
+                        <p class="title-per-device-productDetail">
+                        <h2>Perfil de:</h2>
 
-                <div class="cart">
-                    <a href="../../productCart"><i class="fas fa-shopping-cart"></i></a>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-        </nav>
+                        </p>
+                        <p class="name-per-device-productDetail">
+                            <%= clientsObject[0].firstName + " " + clientsObject[0].lastName %>
+                        </p>
+                        <!--el nombre cambia segun el profesonial  -->
+                    </div>
+                    <div class="columns-productDetail-father">
+                        <div class="column12-productDetail">
 
-        <main>
-            <div class="allProduct">
-                <div class="prof-title-father">
-                    <p class="title-per-device-productDetail">
-                    <h2>Perfil de:</h2>
+                            <div class="top-flex-mobile">
+                                <div class="prof-avatar">
+                                    <!-- Foto cargada por el cliente (.jpg, .png, .bmp) -->
+                                </div>
 
-                    </p>
-                    <p class="name-per-device-productDetail">
-                        <%= clientsObject[0].firstName + " " + clientsObject[0].lastName %>
-                    </p>
-                    <!--el nombre cambia segun el profesonial  -->
-                </div>
-                <div class="columns-productDetail-father">
-                    <div class="column12-productDetail">
+                            </div>
+                        </div>
+                        <div class="column22-productDetail">
+                            <p class="title-prof-name">Mis Datos</p>
 
-                        <div class="top-flex-mobile">
-                            <div class="prof-avatar">
-                                <!-- Foto cargada por el cliente (.jpg, .png, .bmp) -->
+                            <div class=" details">
+                                <div>
+                                    <p>Email: <%=clientsObject[0].email %>
+                                    </p>
+                                    <p>DNI: <%=clientsObject[0].dni%>
+                                    </p>
+                                    <p>Ciudad: <%=clientsObject[0].city%>
+                                    </p>
+                                    <p>Direccion: <%=clientsObject[0].adress %>
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
-                    </div>
-                    <div class="column22-productDetail">
-                        <p class="title-prof-name">Mis Datos</p>
 
-                        <div class=" details">
-                            <div>
-                                <p>Email: <%=clientsObject[0].email %>
-                                </p>
-                                <p>DNI: <%=clientsObject[0].dni%>
-                                </p>
-                                <p>Ciudad: <%=clientsObject[0].city%>
-                                </p>
-                                <p>Direccion: <%=clientsObject[0].address %>
-                                </p>
-                            </div>
+                    </div>
+
+                    <div class="buttons-below-avatar">
+                        <div>
+                            <a href="/clients/<%=clientsObject[0].dni %>/editClients">
+                                <button type="submit" style="width: 25vw;">Editar Perfil</button>
+                            </a>
                         </div>
-
-                    </div>
-
-                </div>
-
-                <div class="buttons-below-avatar">
-                    <div>
-                        <a href="/clients/<%=clientsObject[0].dni %>/editClients">
-                            <button type="submit" style="width: 25vw;">Editar Perfil</button>
+                        <a href="/clients/<%= clientsObject[0].dni %>/deleteClients">
+                            <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
                         </a>
                     </div>
-                    <a href="/clients/<%= clientsObject[0].dni %>/deleteClients">
-                        <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
-                    </a>
+
+                    <h3 class=" title-categories">Tambien te Puede Interesar</h3>
+                    <section class="icon-categories">
+                        <article class="icon-article">
+                            <!-- meter if en los links para /rubros/plomero o /dentista -->
+                            <a href="../Mecanico">
+                                <!-- mecanica auto 1-->
+                                <i class="fas fa-wrench"></i>
+                                <p class="icon-txt">Mecanicos/as</p>
+                            </a>
+                        </article>
+                        <article class="icon-article">
+                            <a href="../Electricista">
+                                <!-- electricista 2-->
+                                <i class="fas fa-plug"></i>
+                                <p class="icon-txt">Electricistas</p>
+                            </a>
+                        </article>
+                        <article class="icon-article">
+                            <a href="../Odontologo">
+                                <!-- dentistas 3-->
+                                <i class="fas fa-tooth"></i>
+                                <p class="icon-txt">Odontologos/as</p>
+                            </a>
+                        </article>
+
+                        <article class="icon-article">
+                            <a href="../Plomero">
+                                <!-- plomeria 4-->
+                                <i class="fas fa-faucet"></i>
+                                <p class="icon-txt">Plomeros/as</p>
+                            </a>
+                        </article>
+
+                        <article class="icon-article">
+                            <a href="../Carpintero">
+                                <!-- carpinteria 5-->
+                                <i class="fas fa-hammer"></i>
+                                <p class="icon-txt">Carpinteros/as/
+                                    <p>
+                            </a>
+                        </article>
+                        <article class="icon-article">
+                            <a href="../Pintor">
+                                <!-- pintores 6-->
+                                <i class="fas fa-paint-roller"></i>
+                                <p class="icon-txt">Pintores/as</p>
+                            </a>
+                        </article>
+                    </section>
+
+                    <%- include("../partials/ad-bottom-body") %>
+
                 </div>
+            </main>
 
-                <h3 class=" title-categories">Tambien te Puede Interesar</h3>
-                <section class="icon-categories">
-                    <article class="icon-article">
-                        <!-- meter if en los links para /rubros/plomero o /dentista -->
-                        <a href="../Mecanico">
-                            <!-- mecanica auto 1-->
-                            <i class="fas fa-wrench"></i>
-                            <p class="icon-txt">Mecanicos/as</p>
-                        </a>
-                    </article>
-                    <article class="icon-article">
-                        <a href="../Electricista">
-                            <!-- electricista 2-->
-                            <i class="fas fa-plug"></i>
-                            <p class="icon-txt">Electricistas</p>
-                        </a>
-                    </article>
-                    <article class="icon-article">
-                        <a href="../Odontologo">
-                            <!-- dentistas 3-->
-                            <i class="fas fa-tooth"></i>
-                            <p class="icon-txt">Odontologos/as</p>
-                        </a>
-                    </article>
-
-                    <article class="icon-article">
-                        <a href="../Plomero">
-                            <!-- plomeria 4-->
-                            <i class="fas fa-faucet"></i>
-                            <p class="icon-txt">Plomeros/as</p>
-                        </a>
-                    </article>
-
-                    <article class="icon-article">
-                        <a href="../Carpintero">
-                            <!-- carpinteria 5-->
-                            <i class="fas fa-hammer"></i>
-                            <p class="icon-txt">Carpinteros/as/
-                                <p>
-                        </a>
-                    </article>
-                    <article class="icon-article">
-                        <a href="../Pintor">
-                            <!-- pintores 6-->
-                            <i class="fas fa-paint-roller"></i>
-                            <p class="icon-txt">Pintores/as</p>
-                        </a>
-                    </article>
-                </section>
-
-                <%- include("../partials/ad-bottom-body") %>
-
-            </div>
-        </main>
-
-        <%- include("../partials/footer") %>
+            <%- include("../partials/footer") %>
 
 </body>
 

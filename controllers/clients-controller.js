@@ -16,7 +16,12 @@ function saveClients() {
 
 module.exports = {
   registerClients: (req, res) => {
-    res.render("users/registerClients");
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    res.render("users/registerClients", {
+      userClient: userClient,
+      userProf: userProf,
+    });
   },
 
   clientsDetail: (req, res) => {
@@ -25,7 +30,15 @@ module.exports = {
       //"client" es c/ pos del array (un obj en particular)
       //filtro el array de obj y devuelvo aquel obj con dni pasado por dni
     });
-    res.render("users/clientsDetail", { clientsObject: clientsObject }); //ruta en carpeta
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+
+    res.render("users/clientsDetail", {
+      clientsObject: clientsObject,
+      userClient: userClient,
+      userProf: userProf,
+    });
+    //ruta en carpeta
   },
 
   createClients: (req, res) => {
@@ -43,13 +56,22 @@ module.exports = {
   },
 
   editClients: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+
     const aEditar = clients.filter(function (clients) {
       return clients.dni == req.params.dni;
     });
-    res.render("clients/editClients", { aEditar: aEditar }); //carpeta professionals
+    res.render("users/editClient", {
+      aEditar: aEditar,
+      userClient: userClient,
+      userProf: userProf,
+    }); //carpeta professionals
   },
 
   updateClients: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     //por aca viaja el boton "confirmar" del form editClient
     const indexClientsBuscado = clients.findIndex(function (clients) {
       return clients.dni == req.params.dni;
@@ -63,14 +85,24 @@ module.exports = {
 
     saveClients();
 
-    res.redirect("clients/clientsDetail", { aEditar: aEditar });
+    res.redirect("clients/clientsDetail", {
+      aEditar: aEditar,
+      userClient: userClient,
+      userProf: userProf,
+    });
   },
 
   showDeleteClients: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     const toDelete = clients.filter((clients) => {
       return clients.dni == req.params.dni;
     });
-    res.render("clients/deleteClients", { toDelete: toDelete });
+    res.render("users/deleteClient", {
+      toDelete: toDelete,
+      userClient: userClient,
+      userProf: userProf,
+    });
   },
 
   deleteClients: (req, res) => {

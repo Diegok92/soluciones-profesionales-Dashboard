@@ -26,20 +26,37 @@ for (let i = 0; i < professionals.length; i++) {
 
 module.exports = {
   rubros: (req, res) => {
-    res.render("rubros");
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    res.render("rubros", { userClient: userClient, userProf: userProf });
   },
 
   professionalDetail: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+
+    let user = req.session.profFound;
     const profObject = professionals.filter(function (prof) {
       return prof.cuit == req.params.cuit;
+
       //"prof" es c/ pos del array (un obj en particular)
       //filtro el array de obj y devuelvo aquel obj con cuit pasado por url
     });
-    res.render("professionals/professionalDetail", { profObject: profObject }); //carpeta professionals
+    res.render("professionals/professionalDetail", {
+      profObject: profObject,
+      user: user,
+      userClient: userClient,
+      userProf: userProf,
+    }); //carpeta professionals
   },
 
   registerProf: (req, res) => {
-    res.render("professionals/registerProf");
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    res.render("professionals/registerProf", {
+      userClient: userClient,
+      userProf: userProf,
+    });
   },
 
   createProf: (req, res) => {
@@ -57,13 +74,21 @@ module.exports = {
   },
 
   editProf: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     const aEditar = professionals.filter(function (prof) {
       return prof.cuit == req.params.cuit;
     });
-    res.render("professionals/editProf", { aEditar: aEditar }); //carpeta professionals
+    res.render("professionals/editProf", {
+      aEditar: aEditar,
+      userClient: userClient,
+      userProf: userProf,
+    }); //carpeta professionals
   },
 
   updateProf: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     //por aca viaja el boton "confirmar" del form editProf
     const indexProfBuscado = professionals.findIndex(function (prof) {
       return prof.cuit == req.params.cuit;
@@ -79,30 +104,44 @@ module.exports = {
 
     const profession = req.params.jobTitle;
     const cuit = req.params.cuit;
-    res.redirect("/rubros");
+    res.redirect("/rubros", { userClient: userClient, userProf: userProf });
   },
 
   showDeleteProf: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     const toDelete = professionals.filter((prof) => {
       return prof.cuit == req.params.cuit;
     });
-    res.render("professionals/deleteProf", { toDelete: toDelete });
+    res.render("professionals/deleteProf", {
+      toDelete: toDelete,
+      userClient: userClient,
+      userProf: userProf,
+    });
   },
 
   deleteProf: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     let profToDelete = professionals.findIndex(
       (prof) => prof.cuit == req.params.cuit
     );
     professionals.splice(profToDelete, 1);
     saveProf();
-    res.redirect("/rubros");
+    res.redirect("/rubros", { userClient: userClient, userProf: userProf });
   },
 
   profPerRubro: (req, res) => {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
     const rubro = professionals.filter(function (prof) {
       return prof.jobTitle == req.params.rubro;
     });
-    res.render("professionals/profPerRubro", { rubro: rubro });
+    res.render("professionals/profPerRubro", {
+      rubro: rubro,
+      userClient: userClient,
+      userProf: userProf,
+    });
     //uso el req.params para filtrar por rubro
   },
 };

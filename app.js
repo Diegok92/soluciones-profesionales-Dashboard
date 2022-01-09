@@ -9,6 +9,7 @@ const methodOverride = require("method-override");
 const mainRoute = require("./routes/main-routers.js");
 const profRoute = require("./routes/professionals-routers.js");
 const clientRoute = require("./routes/clients-routers.js");
+const loginStatusMiddleware = require("./middlewares/loginStatusMiddleware");
 
 app.set("view engine", "ejs");
 

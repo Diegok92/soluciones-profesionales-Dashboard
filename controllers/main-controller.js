@@ -17,16 +17,38 @@ const professionalsList = JSON.parse(professionalsFileText); //lo parseo para po
 
 module.exports = {
   home: (req, res) => {
-    res.render("index");
+    if (
+      req.session.profFound != undefined &&
+      req.session.clientFound != undefined
+    ) {
+      let userProf = req.session.profFound;
+      let userClient = req.session.clientFound;
+      res.render("index", { userClient: userClient, userProf: userProf });
+    }
+
+    if (req.session.profFound != undefined) {
+      let userProf = req.session.profFound;
+      res.render("index", { userProf: userProf });
+    } else if (req.session.clientFound != undefined) {
+      let userClient = req.session.clientFound;
+      res.render("index", { userClient: userClient });
+    } else {
+      res.render("index");
+    }
   },
   productCart: (req, res) => {
-    res.render("productCart");
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+
+    res.render("productCart", { userClient: userClient, userProf: userProf });
   },
   login: (req, res) => {
-    res.render("login");
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    res.render("login", { userClient: userClient, userProf: userProf });
   },
   verificator: (req, res) => {
-    //verificamos si hay errores en el formulario
+    //verificamos si hay errores en el formulario LOGIN
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
       //si hay errores

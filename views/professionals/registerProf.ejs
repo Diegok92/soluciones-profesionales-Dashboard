@@ -20,232 +20,203 @@
 <body>
 
   <%- include("../partials/header") %>
-    <nav class="nav-login">
-      <section class="categories">
-        <div class="login">
-          <a href="../rubros">
-            <p>RUBROS </p>
-          </a>
+    <%- include("../partials/nav-bar") %>
+
+
+      <main>
+        <div class="all-registerProf">
+          <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form">
+            <div class="registerInput">
+              <label for="firstName">Nombre:
+                <input type="text" name="firstName" id="firstName" placeholder="Ej: Cosme">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="lastName">Apellido:
+                <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="email">Email:
+                <input type="email" name="email" id="email">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="adress">Dirección:
+                <input type="text" name="adress" id="adress" placeholder="Ej: Calle falsa 123 2A">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="mobile">Telefono:
+                <input type="number" name="mobile" id="mobile" placeholder="Ej: 011-12345678">
+              </label>
+            </div>
+
+            <div class="registerInput">
+              <label for="cuit">CUIT (Sin Puntos ni Guiones):
+                <input type="cuit" name="cuit" id="cuit" placeholder="Clave Unica de Identificacion Tributaria">
+              </label>
+            </div>
+            <div class="registerInput profesiones-list">
+              <label>Profesiones:
+                <!-- class="selectpicker" multiple -->
+                <select name="jobTitle">
+                  <option value="Carpintero" selected>Carpintero/a</option>
+                  <option value="Plomero">Plomero/a</option>
+                  <option value="Pintor">Pintor/a</option>
+                  <option value="Electricista">Electricista</option>
+                  <option value="Odontologo">Odontologo/a</option>
+                  <option value="Mecanico">Mecanico/a</option>
+                  <option value="Fletero">Mudanza</option>
+                  <option value="Jardinero">Jardinero</option>
+                  <option value="Instalador AC">Instalador AC</option>
+                  <option value="Catering">Catering</option>
+                  <option value="Abogado">Abogado/a</option>
+                  <option value="Full Stack Web Dev">Full Stack Web Dev</option>
+                  <option value="Gasista">Gasista</option>
+                  <option value="Destapador">Destapador/a</option>
+                  <option value="Empapelador">Empapelador/a</option>
+                  <option value="Fumigador">Fumigador/a</option>
+                  <option value="Prof Particular">Prof. Particular</option>
+                  <option value="Paseador">Paseador/a</option>
+                  <option value="Piletero">Piletero/a</option>
+                  <option value="Contador">Contador/a</option>
+                  <option value="Cuidado de Menores">Cuidado de Menores</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="otherJob">Profesión (En Caso de No Estar Listada):
+                <input type="text" name="otherJob" id="otherJob" placeholder="Ej: Programador WEB Full Stack">
+              </label>
+            </div>
+
+
+            <div class="registerInput expirience-list">
+              <label>Posee Matricula:
+                <select name="expirience">
+                  <option value="yes" selected>Si</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="license">Matricula (en Caso de Aplicar):
+                <input type="text" name="license" id="license">
+              </label>
+            </div>
+            <div class="registerInput localidad-list">
+              <label>Zona de Prestacion de Servicio:
+                <select name="jobZone">
+                  <option value="Capital Federal" selected>Capital Federal</option>
+                  <option value="GBA Norte">GBA Norte</option>
+                  <option value="GBA Oeste">GBA Oeste</option>
+                  <option value="GBA Sur">GBA Sur</option>
+                  <option value="Mendoza">Mendoza</option>
+                  <option value="Cordoba">Cordoba</option>
+                  <option value="Rosario">Rosario</option>
+                  <option value="Lejano Oeste">Lejano Oeste</option>
+                </select>
+              </label>
+            </div>
+            <div class="registerInput expirience-list">
+              <label>Atiende Emergencias:
+                <select name="emergency">
+                  <option value="Si" selected>Si</option>
+                  <option value="No">No</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="dispo-dias">
+              <p>Dias de Prestacion de Servicio:</p>
+              <p>Lunes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Lunes-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Lunes-TT" selected>
+                </option>
+              </p>
+              <p>Martes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Martes-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Martes-TT" selected>
+                </option>
+              </p>
+              <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Miercoles-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Miercoles-TT" selected>
+                </option>
+              </p>
+              <p>Jueves<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Jueves-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Jueves-TT" selected>
+                </option>
+              </p>
+              <p>Viernes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Viernes-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Viernes-TT" selected>
+                </option>
+              </p>
+              <p>Sabado<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Sabado-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Sabado-TT" selected>
+                </option>
+              </p>
+              <p>Domingo<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Domingo-TM" selected>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Domingo-TT" selected>
+                </option>
+              </p>
+
+            </div>
+
+            <div class="registerInput whyme">
+              <label for="whyMe">Porque Deberian Elegirte?
+                <textarea name="whyMe" id="whyMe" placeholder="Max 600 Caracteres"></textarea>
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="price">Precio de tu Reserva en $:
+                <input type="number" name="price" id="price" placeholder="300" value="300">
+              </label>
+            </div>
+            <div class="registerInput avatar">
+              <label for="avatar">Foto de Perfil
+                <input type="file" name="avatar" accept=".jpg, .png, .bmp">
+              </label>
+            </div>
+            <div class="registerInput jobs">
+              <label for="jobImages">Fotos de Trabajos Realizados (max 10)
+                <input type="file" name="jobImages" accept=".jpg, .png, .bmp" multiple>
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="cbu">N° de CBU/CVU (para deposito de reservas):
+                <input type="number" name="cbu" id="cbu">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="password">Contraseña:
+                <input type="password" name="password" id="password">
+              </label>
+            </div>
+            <div class="registerInput">
+              <label for="passwordConfirm">Confirmar Contraseña:
+                <input type="password" name="passwordConfirm" id="passwordConfirm">
+              </label>
+            </div>
+            <div class="confirm-button">
+              <button type="submit">Crear</button>
+            </div>
         </div>
-        <div class="prof-zona">
-          <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
-          <!-- ocultar boton en mobile, mostrar en el resto -->
+        </form>
         </div>
-      </section>
-      <div class="login">
-        <a href="../login">
-          <p class="txt-ingresar">Ingresar</p>
-        </a>
-        <a href="registerClient">
-          <p class="txt-ingresar">Registrate</p>
-        </a>
-        <div>
-          <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+        </section>
 
-          <!-- ocultar txt en mobile, mostrar en el resto -->
-        </div>
+        <%- include("../partials/ad-bottom-body") %>
 
-        <div class="cart">
-          <a href="../productCart"><i class="fas fa-shopping-cart"></i></a>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-      </div>
-    </nav>
+      </main>
 
-    <main>
-      <div class="all-registerProf">
-        <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form">
-          <div class="registerInput">
-            <label for="firstName">Nombre:
-              <input type="text" name="firstName" id="firstName" placeholder="Ej: Cosme">
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="lastName">Apellido:
-              <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito">
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="email">Email:
-              <input type="email" name="email" id="email">
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="adress">Dirección:
-              <input type="text" name="adress" id="adress" placeholder="Ej: Calle falsa 123 2A">
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="mobile">Telefono:
-              <input type="number" name="mobile" id="mobile" placeholder="Ej: 011-12345678">
-            </label>
-          </div>
-
-          <div class="registerInput">
-            <label for="cuit">CUIT (Sin Puntos ni Guiones):
-              <input type="cuit" name="cuit" id="cuit" placeholder="Clave Unica de Identificacion Tributaria">
-            </label>
-          </div>
-          <div class="registerInput profesiones-list">
-            <label>Profesiones:
-              <!-- class="selectpicker" multiple -->
-              <select name="jobTitle">
-                <option value="Carpintero" selected>Carpintero/a</option>
-                <option value="Plomero">Plomero/a</option>
-                <option value="Pintor">Pintor/a</option>
-                <option value="Electricista">Electricista</option>
-                <option value="Odontologo">Odontologo/a</option>
-                <option value="Mecanico">Mecanico/a</option>
-                <option value="Fletero">Mudanza</option>
-                <option value="Jardinero">Jardinero</option>
-                <option value="Instalador AC">Instalador AC</option>
-                <option value="Catering">Catering</option>
-                <option value="Abogado">Abogado/a</option>
-                <option value="Full Stack Web Dev">Full Stack Web Dev</option>
-                <option value="Gasista">Gasista</option>
-                <option value="Destapador">Destapador/a</option>
-                <option value="Empapelador">Empapelador/a</option>
-                <option value="Fumigador">Fumigador/a</option>
-                <option value="Prof Particular">Prof. Particular</option>
-                <option value="Paseador">Paseador/a</option>
-                <option value="Piletero">Piletero/a</option>
-                <option value="Contador">Contador/a</option>
-                <option value="Cuidado de Menores">Cuidado de Menores</option>
-                <option value="Otro">Otro</option>
-              </select>
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="otherJob">Profesión (En Caso de No Estar Listada):
-              <input type="text" name="otherJob" id="otherJob" placeholder="Ej: Programador WEB Full Stack">
-            </label>
-          </div>
-
-
-          <div class="registerInput expirience-list">
-            <label>Posee Matricula:
-              <select name="expirience">
-                <option value="yes" selected>Si</option>
-                <option value="no">No</option>
-              </select>
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="license">Matricula (en Caso de Aplicar):
-              <input type="text" name="license" id="license">
-            </label>
-          </div>
-          <div class="registerInput localidad-list">
-            <label>Zona de Prestacion de Servicio:
-              <select name="jobZone">
-                <option value="Capital Federal" selected>Capital Federal</option>
-                <option value="GBA Norte">GBA Norte</option>
-                <option value="GBA Oeste">GBA Oeste</option>
-                <option value="GBA Sur">GBA Sur</option>
-                <option value="Mendoza">Mendoza</option>
-                <option value="Cordoba">Cordoba</option>
-                <option value="Rosario">Rosario</option>
-                <option value="Lejano Oeste">Lejano Oeste</option>
-              </select>
-            </label>
-          </div>
-          <div class="registerInput expirience-list">
-            <label>Atiende Emergencias:
-              <select name="emergency">
-                <option value="Si" selected>Si</option>
-                <option value="No">No</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="dispo-dias">
-            <p>Dias de Prestacion de Servicio:</p>
-            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Lunes-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Lunes-TT" selected>
-              </option>
-            </p>
-            <p>Martes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Martes-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Martes-TT" selected>
-              </option>
-            </p>
-            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Miercoles-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Miercoles-TT" selected>
-              </option>
-            </p>
-            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Jueves-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Jueves-TT" selected>
-              </option>
-            </p>
-            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Viernes-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Viernes-TT" selected>
-              </option>
-            </p>
-            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Sabado-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Sabado-TT" selected>
-              </option>
-            </p>
-            <p>Domingo<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Domingo-TM" selected>
-              </option>
-              <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Domingo-TT" selected>
-              </option>
-            </p>
-
-          </div>
-
-          <div class="registerInput whyme">
-            <label for="whyMe">Porque Deberian Elegirte?
-              <textarea name="whyMe" id="whyMe" placeholder="Max 600 Caracteres"></textarea>
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="price">Precio de tu Reserva en $:
-              <input type="number" name="price" id="price" placeholder="300" value="300">
-            </label>
-          </div>
-          <div class="registerInput avatar">
-            <label for="avatar">Foto de Perfil
-              <input type="file" name="avatar" accept=".jpg, .png, .bmp">
-            </label>
-          </div>
-          <div class="registerInput jobs">
-            <label for="jobImages">Fotos de Trabajos Realizados (max 10)
-              <input type="file" name="jobImages" accept=".jpg, .png, .bmp" multiple>
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="cbu">N° de CBU/CVU (para deposito de reservas):
-              <input type="number" name="cbu" id="cbu">
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="password">Contraseña:
-              <input type="password" name="password" id="password">
-            </label>
-          </div>
-          <div class="registerInput">
-            <label for="passwordConfirm">Confirmar Contraseña:
-              <input type="password" name="passwordConfirm" id="passwordConfirm">
-            </label>
-          </div>
-          <div class="confirm-button">
-            <button type="submit">Crear</button>
-          </div>
-      </div>
-      </form>
-      </div>
-      </section>
-
-      <%- include("../partials/ad-bottom-body") %>
-
-    </main>
-
-    <%- include("../partials/footer") %>
+      <%- include("../partials/footer") %>
 
 </body>
 

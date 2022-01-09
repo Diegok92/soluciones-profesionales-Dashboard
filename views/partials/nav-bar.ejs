@@ -10,22 +10,38 @@
             <!-- ocultar boton en mobile, mostrar en el resto -->
         </div>
     </section>
-    <div class="login">
-        <a href="/login">
-            <p class="txt-ingresar">Ingresar</p>
-        </a>
-        <a href="/clients/registerClients">
-            <p class="txt-ingresar">Registrate</p>
-        </a>
-        <div>
-            <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+    <% console.log(locals.userClient) %>
+        <div class="login">
 
-            <!-- ocultar txt en mobile, mostrar en el resto -->
-        </div>
 
-        <div class="cart">
-            <a href="productCart"><i class="fas fa-shopping-cart"></i></a>
-            <i class="fas fa-chevron-down"></i>
+            <% if(locals.userClient==undefined && locals.userProf==undefined){ %>
+                <a href="/login">
+                    <p class="txt-ingresar">Ingresar</p>
+                </a>
+                <% }else if(locals.userClient !=undefined){ %>
+                    <div>
+                        <a href="/clients/<%= locals.userClient.dni %>">
+                            <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+                        </a>
+                    </div>
+                    <% }else if(locals.userProf !=undefined){ %>
+                        <div>
+                            <a href="/rubros/<%= locals.userProf.jobTitle %>/<%= locals.userProf.cuit %>">
+                                <p><i class="fas fa-user"></i> <i class="fas fa-chevron-down"></i></p>
+                            </a>
+                        </div>
+
+                        <% } %>
+                            <% if(locals.userClient==undefined){ %>
+                                <p> | </p>
+                                <a href="/clients/registerClients">
+                                    <p class="txt-ingresar">Registrate</p>
+                                </a>
+                                <% } %>
+
+                                    <div class="cart">
+                                        <a href="productCart"><i class="fas fa-shopping-cart"></i></a>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
         </div>
-    </div>
 </nav>

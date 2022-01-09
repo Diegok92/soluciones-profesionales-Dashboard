@@ -52,3 +52,22 @@ menos co-working ya que ahora si estamos parejos en los conocimientos (hasta spr
 
 Stop Doing:
 Dedicarle menos tiempo a los detalles cuando aun no esta terminado lo escencial
+
+---
+
+Reunion Retrospectiva dia 11/12/21 - Sprint 4
+
+Start Doing/Empezar a Hacer:
+Reafirmar Compromiso de definir responsables en trello, para luego Dividir Tareas y en las mid-weekly comentar avances entre commits. Lograr llegar a la entrega con mas tiempo de anticipacion para poder cumplir con todos los opcionales
+
+More of/Mas de:
+Efectuar mas Reuniones informativas en lugar de co-working constante
+
+Keep Doing/Seguir Haciendo :
+Mantener las comunicaciones semi-diarias, trabajo en equipo y reuniones de una periodicidad entre daily y weekly (mid-weekly).
+
+Less of/Menos de:
+menos co-working ya que ahora si estamos parejos en los conocimientos entre todos los integrantes
+
+Stop Doing:
+TBD
