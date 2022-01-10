@@ -71,8 +71,11 @@ module.exports = {
               errors: [{ msg: "Credenciales Invalidas" }],
               old: req.body,
             });
-          }
-        }
+          }}
+        //  else {res.render("login", {
+        //   errors: [{ msg: "Credenciales Invalidas" }],
+        //   old: req.body,
+        // })};
       }
       for (let i = 0; i < professionalsList.length; i++) {
         if (professionalsList[i].email == user) {
@@ -88,7 +91,10 @@ module.exports = {
             });
           }
         }
-      }
+      } if(profFound == undefined && clientFound== undefined){res.render("login", {
+          errors: [{ msg: "Credenciales Invalidas" }],
+          old: req.body,
+        }) }
       return res.redirect("/");
     }
 

@@ -522,17 +522,6 @@
     "avatar": "12345-avatar.jpg"
   },
   {
-    "firstName": "pili",
-    "lastName": "ghost",
-    "email": "123@123.com",
-    "localidad": "Capital Federal",
-    "adress": "",
-    "dni": "123456",
-    "password": "$2a$10$Wls07OmivHMA0rOb4L6kd.lTTGFqas6cLR.h2iwm81r3HhQ5p.QcC",
-    "passwordConfirm": "",
-    "avatar": "123456-avatar.jpg"
-  },
-  {
     "firstName": "Prueba",
     "lastName": "Cliente",
     "email": "prueba@cliente.com",
@@ -542,5 +531,27 @@
     "password": "$2a$10$tnzRzZJwOur89H4X0whOyeGAbFRoBBpKBxacgCeATMvxuZismy2cW",
     "passwordConfirm": "",
     "avatar": "1234567890-avatar.jpg"
+  },
+  {
+    "firstName": "Leonel",
+    "lastName": "Nardo",
+    "email": "leo@leo.com",
+    "localidad": "Capital Federal",
+    "adress": "",
+    "dni": "12345678",
+    "password": "$2a$10$JT7Jub7CN/AVMFov05xYx.jQ6k1hULv47lypdhQq/hWwfM8bPWPKC",
+    "passwordConfirm": "",
+    "avatar": "12345678-avatar.jpg"
+  },
+  {
+    "firstName": "leo",
+    "lastName": "nel",
+    "email": "leo@leonel.com",
+    "localidad": "Capital Federal",
+    "adress": "",
+    "dni": "456",
+    "password": "$2a$10$K8Xghm88ATe3sgDO33jaLu/sI0XqRgEy7XPbuMqgg08IOyDhLhCDO",
+    "passwordConfirm": "",
+    "avatar": "456-avatar.jpg"
   }
 ]
