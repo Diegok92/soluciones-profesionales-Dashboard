@@ -93,9 +93,10 @@ module.exports = {
     const indexProfBuscado = professionals.findIndex(function (prof) {
       return prof.cuit == req.params.cuit;
     });
-
+console.log(req.body);
     const updateProf = {
       ...req.body,
+      password: userProf.password
     };
 
     professionals[indexProfBuscado] = updateProf; //reemplazo el actualizado en el listado original
@@ -104,7 +105,7 @@ module.exports = {
 
     const profession = req.params.jobTitle;
     const cuit = req.params.cuit;
-    res.redirect("/rubros", { userClient: userClient, userProf: userProf });
+    res.redirect("/");
   },
 
   showDeleteProf: (req, res) => {
@@ -121,14 +122,14 @@ module.exports = {
   },
 
   deleteProf: (req, res) => {
-    let userProf = req.session.profFound;
-    let userClient = req.session.clientFound;
+    
     let profToDelete = professionals.findIndex(
       (prof) => prof.cuit == req.params.cuit
     );
     professionals.splice(profToDelete, 1);
     saveProf();
-    res.redirect("/rubros", { userClient: userClient, userProf: userProf });
+    req.session.destroy();
+    res.redirect("/rubros");
   },
 
   profPerRubro: (req, res) => {

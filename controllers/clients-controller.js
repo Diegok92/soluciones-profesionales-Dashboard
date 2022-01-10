@@ -1,6 +1,6 @@
 // parte en la carpeta views y entra a cada carpeta segun pedido
 
-//const { application } = require("express");
+const { application } = require("express");
 const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcryptjs");
@@ -74,29 +74,26 @@ module.exports = {
     let userClient = req.session.clientFound;
     //por aca viaja el boton "confirmar" del form editClient
     const indexClientsBuscado = clients.findIndex(function (clients) {
-      return clients.dni == req.params.dni;
+      return clients.dni == userClient.dni;
     });
-
+    console.log(req);
     const updateClients = {
       ...req.body,
+      password: userClient.password
     };
 
     clients[indexClientsBuscado] = updateClients; //reemplazo el actualizado en el listado original
-
+console.log(updateClients);
     saveClients();
 
-    res.redirect("clients/clientsDetail", {
-      aEditar: aEditar,
-      userClient: userClient,
-      userProf: userProf,
-    });
+    res.redirect("/");
   },
 
   showDeleteClients: (req, res) => {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
     const toDelete = clients.filter((clients) => {
-      return clients.dni == req.params.dni;
+      return clients.dni == userClient.dni;
     });
     res.render("users/deleteClient", {
       toDelete: toDelete,
@@ -106,11 +103,13 @@ module.exports = {
   },
 
   deleteClients: (req, res) => {
+   
     let clientsToDelete = clients.findIndex(
       (clients) => clients.dni == req.params.dni
     );
     clients.splice(clientsToDelete, 1);
     saveClients();
+    req.session.destroy();
     res.redirect("/");
   },
 };

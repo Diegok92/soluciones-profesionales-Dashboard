@@ -3942,24 +3942,24 @@
     "avatar": "-avatar.jpg"
   },
   {
-    "firstName": "Cosme",
-    "lastName": "Fula",
+    "firstName": "Cosmes",
+    "lastName": "Fulan",
     "email": "1234@1234.com",
     "adress": "",
     "mobile": "",
     "cuit": "123456",
     "jobTitle": "Carpintero",
     "otherJob": "",
-    "expirience": "yes",
+    "matricula": "no",
     "license": "",
     "jobZone": "Capital Federal",
     "emergency": "Si",
     "jobDay": ["Lunes-TM", "Lunes-TT"],
     "whyMe": "",
     "price": "300",
+    "avatar": "foto-d.jpg",
+    "jobs": "",
     "cbu": "",
-    "password": "$2a$10$bNIuWVrS4UxC/P69/4yk.u5iagSsIKnspakU0LHmPZLEJV0pxDDm2",
-    "passwordConfirm": "",
-    "avatar": "-avatar.jpg"
+    "password": "123"
   }
 ]

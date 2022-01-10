@@ -533,25 +533,14 @@
     "avatar": "1234567890-avatar.jpg"
   },
   {
-    "firstName": "Leonel",
-    "lastName": "Nardo",
-    "email": "leo@leo.com",
-    "localidad": "Capital Federal",
-    "adress": "",
-    "dni": "12345678",
-    "password": "$2a$10$JT7Jub7CN/AVMFov05xYx.jQ6k1hULv47lypdhQq/hWwfM8bPWPKC",
-    "passwordConfirm": "",
-    "avatar": "12345678-avatar.jpg"
-  },
-  {
     "firstName": "leo",
     "lastName": "nel",
-    "email": "leo@leonel.com",
+    "email": "1@1.com",
     "localidad": "Capital Federal",
     "adress": "",
-    "dni": "456",
-    "password": "$2a$10$K8Xghm88ATe3sgDO33jaLu/sI0XqRgEy7XPbuMqgg08IOyDhLhCDO",
+    "dni": "101010",
+    "password": "$2a$10$1FL97R7GkuGFgZOQR1y14emFEqmE5GAJeSEa9j/RdbiEltYfwFuB.",
     "passwordConfirm": "",
-    "avatar": "456-avatar.jpg"
+    "avatar": "101010-avatar.jpg"
   }
 ]

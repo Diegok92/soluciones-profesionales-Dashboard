@@ -20,60 +20,52 @@
         <%- include("../partials/nav-bar") %>
 
             <main>
-                <form action="/clients/registerClients" method="POST" enctype="multipart/form-data" class="clientForm">
-                    <div class="registerInput">
-                        <label for="firstName">Nombre:
-                            <input type="text" name="firstName" id="firstNombre" placeholder="Ej: Cosme">
-                        </label>
-                    </div>
-                    <div class="registerInput">
-                        <label for="lastName">Apellido:
-                            <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito">
-                        </label>
-                    </div>
-                    <div class="registerInput">
-                        <label for="email">Email:
-                            <input type="email" name="email" id="email">
-                        </label>
-                    </div>
-                    <div class="registerInput localidad-list">
-                        <label>Localidad
-                            <select name="localidad">
-                                <option value="Capital Federal" selected>Capital Federal</option>
-                                <option value="Conurbano">Conurbano</option>
-                                <option value="Interior">Interior</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="registerInput">
-                        <label for="adress">Dirección:
-                            <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A">
-                        </label>
-                    </div>
-                    <div class="registerInput">
-                        <label for="dni">DNI:
-                            <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
-                        </label>
-                    </div>
-                    <div class="registerInput avatar">
-                        <label for="avatar">Foto de Perfil
-                            <input type="file" name="avatar" accept=".jpg, .png, .bmp">
-                        </label>
-                    </div>
-                    <div class="registerInput">
-                        <label for="password">Contraseña:
-                            <input type="password" name="password" id="password">
-                        </label>
-                    </div>
-                    <div class="registerInput">
-                        <label for="passwordConfirm">Confirmar Contraseña:
-                            <input type="password" name="passwordConfirm" id="passwordConfirm">
-                        </label>
-                    </div>
-                    <div class="confirm-button">
-                        <button type="submit">Enviar</button>
-                    </div>
-                </form>
+                <form action="/clients/<%=aEditar[0].dni%>?_method=PUT" method="POST" class="clientForm">
+                    
+                        <div class="registerInput">
+                            <label for="firstName">Nombre:
+                                <input type="text" name="firstName" id="firstNombre" placeholder="Ej: Cosme" value="<%=aEditar[0].firstName %>">
+                            </label>
+                        </div>
+                        <div class="registerInput">
+                            <label for="lastName">Apellido:
+                                <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito" value="<%=aEditar[0].lastName%>">
+                            </label>
+                        </div>
+                        <div class="registerInput">
+                            <label for="email">Email:
+                                <input type="email" name="email" id="email" value="<%=aEditar[0].email%>">
+                            </label>
+                        </div>
+                        <div class="registerInput localidad-list">
+                            <label>Localidad
+                                <select name="localidad">
+                                    <option value="Capital Federal" <%=(aEditar[0].localidad=="Capital Federal" ) ? "selected" : "" %>>Capital Federal</option>
+                                    <option value="Conurbano" <%=(aEditar[0].localidad=="Conurbano" ) ? "selected" : "" %>>Conurbano</option>
+                                    <option value="Interior" <%=(aEditar[0].localidad=="Interior" ) ? "selected" : "" %>>Interior</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="registerInput">
+                            <label for="adress">Dirección:
+                                <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A" value="<%=aEditar[0].adress%>">
+                            </label>
+                        </div>
+                        <div class="registerInput">
+                            <label for="dni">DNI:
+                                <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad" value="<%=aEditar[0].dni%>">
+                            </label>
+                        </div>
+                        <div class="registerInput avatar">
+                            <label for="avatar">Foto de Perfil
+                                <input type="file" name="avatar" accept=".jpg, .png, .bmp" >
+                            </label>
+                        </div>
+                        
+                        <div class="confirm-button">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
                 </section>
 
                 <%- include("../partials/ad-bottom-body") %>
