@@ -4,7 +4,8 @@
   "description": "Tipografia:\r font-family: 'Oswald', sans-serif;",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon -e js ./src/bin/www"
+    "start": "node app.js",
+    "test": "nodemon -e js app.js"
   },
   "repository": {
     "type": "git",

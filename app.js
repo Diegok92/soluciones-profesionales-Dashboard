@@ -13,7 +13,11 @@ const loginStatusMiddleware = require("./middlewares/loginStatusMiddleware");
 
 app.set("view engine", "ejs");
 
-app.use(session({ secret: "Sol. Profesionales para todes" }));
+app.use(session({ 
+  secret: "Sol. Profesionales para todes",
+  resave: false,
+  saveUninitialized: false,
+}));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
