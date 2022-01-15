@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     timestamps: false,
   };
 
-  const Professionals = sequelize.define(alias, cols, config);
+  const Professional = sequelize.define(alias, cols, config);
 
-  return Professionals;
+  return Professional;
 };
