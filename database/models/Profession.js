@@ -8,11 +8,11 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-   
+
     profession: Sequelize.STRING,
   };
   const config = {
-    tableName: "Professions",
+    tableName: "professions",
     timestamps: false,
   };
 

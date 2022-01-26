@@ -8,13 +8,13 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-   
+
     workDay_id: Sequelize.STRING,
     professional_id: Sequelize.STRING,
-    shift_id : Sequelize.STRING
+    shift_id: Sequelize.STRING,
   };
   const config = {
-    tableName: "Professionals_WorkDays_Shifts",
+    tableName: "professionals_workdays",
     timestamps: false,
   };
 

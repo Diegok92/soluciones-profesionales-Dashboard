@@ -8,15 +8,15 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-   
+
     professional_id: Sequelize.STRING,
-    client_id:Sequelize.STRING,
+    client_id: Sequelize.STRING,
     reservedDay: Sequelize.STRING,
     reservedShift: Sequelize.STRING,
     totalPrice: Sequelize.STRING,
   };
   const config = {
-    tableName: "Carts",
+    tableName: "carts",
     timestamps: false,
   };
 

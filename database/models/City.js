@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     district: Sequelize.STRING,
   };
   const config = {
-    tableName: "Ciudades",
+    tableName: "cities",
     timestamps: false,
   };
 

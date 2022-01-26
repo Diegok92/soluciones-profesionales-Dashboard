@@ -1,5 +1,10 @@
 // parte en la carpeta views y entra a cada carpeta segun pedido
 
+const db = require("../database/models");
+const sequelize = db.sequelize;
+
+const clients = db.Client;
+
 const { application } = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -93,10 +98,10 @@ module.exports = {
     const indexProfBuscado = professionals.findIndex(function (prof) {
       return prof.cuit == req.params.cuit;
     });
-console.log(req.body);
+    console.log(req.body);
     const updateProf = {
       ...req.body,
-      password: userProf.password
+      password: userProf.password,
     };
 
     professionals[indexProfBuscado] = updateProf; //reemplazo el actualizado en el listado original
@@ -122,7 +127,6 @@ console.log(req.body);
   },
 
   deleteProf: (req, res) => {
-    
     let profToDelete = professionals.findIndex(
       (prof) => prof.cuit == req.params.cuit
     );
@@ -143,6 +147,37 @@ console.log(req.body);
       userClient: userClient,
       userProf: userProf,
     });
+
+    async function busquedaClient() {
+      let clienteBuscado = await db.Client.findAll();
+      console.log(clienteBuscado);
+    }
+    busquedaClient();
+    // clients.findAll().then((client) => {
+    //   console.log(clients);
+    // });
     //uso el req.params para filtrar por rubro
   },
 };
+
+// let moviescontroller = {
+//   list: function (req,res){
+//     db.peliculas.findAll()
+//     .then(function (peliculas) {
+//       res.render("listadoPeliculas",{peliculas:peliculas})
+//     })
+//   }
+// }
+
+// let professionalsController = {
+//   profPerRubro: function(req,res){
+//     db.professions.findAll()
+//     .then(function(req,res){
+//       res.render("professionals/profPerRubro", {
+//         rubro: rubro,
+//         userClient: userClient,
+//         userProf: userProf,
+//       })
+//     })
+//   }
+// }

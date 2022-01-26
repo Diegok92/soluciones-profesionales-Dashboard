@@ -8,11 +8,10 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    province: Sequelize.STRING,
-    district: Sequelize.STRING,
+    location: Sequelize.STRING,
   };
   const config = {
-    tableName: "WorkZones",
+    tableName: "workzones",
     timestamps: false,
   };
 

@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    emergency: Sequelize.BOOLEAN,//si no anda pasarlo a string
+    emergency: Sequelize.INTEGER, //si no anda pasarlo a string (mokaroo da 1/0)
     whyMe: Sequelize.TEXT,
     price: Sequelize.INTEGER,
     cbu: Sequelize.BIGINT,
@@ -18,10 +18,9 @@ module.exports = (sequelize) => {
     workZone_id: Sequelize.STRING,
     professional_WorkDay_id: Sequelize.STRING,
     workImage_id: Sequelize.STRING,
-
   };
   const config = {
-    tableName: "Professionals",
+    tableName: "professionals",
     timestamps: false,
   };
 

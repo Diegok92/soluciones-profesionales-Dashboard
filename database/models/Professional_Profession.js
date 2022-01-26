@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     profession_id: Sequelize.STRING,
   };
   const config = {
-    tableName: "Professionals_Professionals",
+    tableName: "professionals_professionals",
     timestamps: false,
   };
 

@@ -16,12 +16,12 @@ module.exports = (sequelize) => {
     avatar: Sequelize.STRING,
     password: Sequelize.STRING,
     adress: Sequelize.STRING,
-    city: Sequelize.STRING,
-    cart: Sequelize.STRING,
+    city_Id: Sequelize.STRING,
+    cart_Id: Sequelize.STRING,
     role: Sequelize.STRING,
   };
   const config = {
-    tableName: "Clients",
+    tableName: "clients",
     timestamps: false,
   };
 
