@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
     workImage_id: Sequelize.STRING,
   };
   const config = {
-    tableName: "professionals",
+    tableName: "professional",
     timestamps: false,
   };
 

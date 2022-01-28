@@ -1,9 +1,9 @@
 // parte en la carpeta views y entra a cada carpeta segun pedido
 
-const db = require("../database/models");
-const sequelize = db.sequelize;
+let db = require("../database/models");
+//const sequelize = db.sequelize;
 
-const clients = db.Client;
+//const clients = db.Clientes;
 
 const { application } = require("express");
 const fs = require("fs");
@@ -148,26 +148,23 @@ module.exports = {
       userProf: userProf,
     });
 
-    async function busquedaClient() {
-      let clienteBuscado = await db.Client.findAll();
-      console.log(clienteBuscado);
+    function prueba() {
+      db.ZonadeTrabajo.findAll().then(function (Client) {
+        console.log(Client);
+      });
     }
-    busquedaClient();
+    prueba();
+    // async function busquedaClient() {
+    //   let clienteBuscado = await clients.findAll();
+    //   console.log(clienteBuscado);
+    // }
+    // busquedaClient();
     // clients.findAll().then((client) => {
     //   console.log(clients);
     // });
     //uso el req.params para filtrar por rubro
   },
 };
-
-// let moviescontroller = {
-//   list: function (req,res){
-//     db.peliculas.findAll()
-//     .then(function (peliculas) {
-//       res.render("listadoPeliculas",{peliculas:peliculas})
-//     })
-//   }
-// }
 
 // let professionalsController = {
 //   profPerRubro: function(req,res){

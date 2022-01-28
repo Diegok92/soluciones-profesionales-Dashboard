@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     timestamps: false,
   };
 
-  const Client = sequelize.define(alias, cols, config);
+  const Clientes2 = sequelize.define(alias, cols, config);
 
-  return Client;
+  return Clientes2;
 };
