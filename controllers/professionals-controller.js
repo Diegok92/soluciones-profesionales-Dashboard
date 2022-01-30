@@ -147,34 +147,19 @@ module.exports = {
       userClient: userClient,
       userProf: userProf,
     });
-
     function prueba() {
-      db.ZonadeTrabajo.findAll().then(function (Client) {
+      db.Clientes.findAll().then(function (Client) {
         console.log(Client);
       });
     }
     prueba();
-    // async function busquedaClient() {
-    //   let clienteBuscado = await clients.findAll();
-    //   console.log(clienteBuscado);
-    // }
-    // busquedaClient();
-    // clients.findAll().then((client) => {
-    //   console.log(clients);
-    // });
-    //uso el req.params para filtrar por rubro
   },
 };
 
-// let professionalsController = {
-//   profPerRubro: function(req,res){
-//     db.professions.findAll()
-//     .then(function(req,res){
-//       res.render("professionals/profPerRubro", {
-//         rubro: rubro,
-//         userClient: userClient,
-//         userProf: userProf,
-//       })
-//     })
-//   }
+//verificacion de las tablas
+// function prueba() {
+//   db.ZonadeTrabajo.findAll().then(function (Client) {
+//     console.log(Client);
+//   });
 // }
+// prueba();

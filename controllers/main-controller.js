@@ -1,4 +1,6 @@
 // para todos los links del home, nosotros, about, etc
+const db = require("../database/models");
+
 const path = require("path");
 const fs = require("fs");
 const { validationResult } = require("express-validator"); //trae los datos guardados en "validator"
@@ -59,45 +61,76 @@ module.exports = {
       const user = req.body.email;
       let clientFound;
       let profFound;
-      for (let i = 0; i < clientsList.length; i++) {
-        if (clientsList[i].email == user) {
-          clientFound = clientsList[i];
-          if (
-            bcrypt.compareSync(req.body.password, clientFound.password) == true
-          ) {
-            req.session.clientFound = clientFound; //obj del cliente logueado
-          } else {
-            res.render("login", {
-              errors: [{ msg: "Credenciales Invalidas" }],
-              old: req.body,
-            });
-          }}
-        //  else {res.render("login", {
-        //   errors: [{ msg: "Credenciales Invalidas" }],
-        //   old: req.body,
-        // })};
-      }
-      for (let i = 0; i < professionalsList.length; i++) {
-        if (professionalsList[i].email == user) {
-          profFound = professionalsList[i];
-          if (
-            bcrypt.compareSync(req.body.password, profFound.password) == true
-          ) {
-            req.session.profFound = profFound; //obj del prof logueado
-          } else {
-            res.render("login", {
-              errors: [{ msg: "Credenciales Invalidas" }],
-              old: req.body,
-            });
-          }
-        }
-      } if(profFound == undefined && clientFound== undefined){res.render("login", {
-          errors: [{ msg: "Credenciales Invalidas" }],
-          old: req.body,
-        }) }
-      return res.redirect("/");
-    }
+      let admin;
+      let userFound;
 
-    //checkear en ambas bases de datos la existencia del usuario (email)
+      //Busqueda en Listado Clientes
+      db.Clientes.findOne({
+        where: {
+          email: req.body.email,
+        },
+      }).then((result) => {
+        userFound = result;
+        console.log(userFound);
+
+        if (userFound == undefined) {
+          res.render("login", {
+            errors: [{ msg: "email - Credenciales Invalidas" }],
+            old: req.body,
+          });
+          return res.redirect("/");
+        }
+
+        if (bcrypt.compareSync(req.body.password, userFound.password) == true) {
+          if (userFound.role == "Client") {
+            req.session.clientFound = userFound;
+            clientFound = userFound;
+          } else if (userFound.role == "Professional") {
+            req.session.profFound = userFound;
+            profFound = userFound;
+          } else if (userFound.role == "Admin") {
+            req.session.admin = userFound;
+            admin = userFound;
+          }
+        } else {
+          res.render("login", {
+            errors: [{ msg: "pass - Credenciales Invalidas" }],
+            old: req.body,
+          });
+        }
+
+        return res.redirect("/");
+      });
+    }
   },
+
+  //Busqueda Vieja (en JSON)
+  // for (let i = 0; i < clientsList.length; i++) {
+  //   if (clientsList[i].email == user) {
+  //     clientFound = clientsList[i];
+  //     if (
+  //       bcrypt.compareSync(req.body.password, clientFound.password) == true
+  //     ) {
+  //       req.session.clientFound = clientFound; //obj del cliente logueado
+  //     } else {
+  //       res.render("login", {
+  //         errors: [{ msg: "Credenciales Invalidas" }],
+  //         old: req.body,
+  //       });
+  //     }}
+  // }
+  // for (let i = 0; i < professionalsList.length; i++) {
+  //   if (professionalsList[i].email == user) {
+  //     profFound = professionalsList[i];
+  //     if (
+  //       bcrypt.compareSync(req.body.password, profFound.password) == true
+  //     ) {
+  //       req.session.profFound = profFound; //obj del prof logueado
+  //     } else {
+  //       res.render("login", {
+  //         errors: [{ msg: "Credenciales Invalidas" }],
+  //         old: req.body,
+  //       });
+  //     }
+  //   }
 };

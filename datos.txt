@@ -1,0 +1,30 @@
+  Profesionales {
+    dataValues: {
+      id: 100,
+      emergency: '0',
+      whyMe: 'orci luctus et ultricesipit a',
+      price: '$9510.66',
+      cbu: 'IS74 3493 0542 2584 1298 8646 70',
+      licence: 'pDZNvyPYZ9oE',
+      client_id: 100,
+      professional_profession_id: 100,
+      workZone_id: 50,
+      professional_WorkDay_id: 100,
+      workImage_id: 100
+]
+
+Clientes {
+    dataValues: {
+      id: 100,
+      firstName: 'Tiphanie',
+      lastName: 'Byfford',
+      email: 'tbyfford2r@wix.com',
+      cuit: 'SK55 4423 4903 9317 3615 1465',
+      mobile: '3005909869',
+      avatar: 'http://dummyimage.com/190x100.png/ff4444/ffffff',
+      password: 'TzUZF6j',
+      adress: '7992 Schmedeman Plaza',
+      city_Id: 50,
+      cart_Id: null,
+      role: 'Professional'
+    },

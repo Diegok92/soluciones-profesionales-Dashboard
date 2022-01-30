@@ -542,5 +542,16 @@
     "password": "$2a$10$1FL97R7GkuGFgZOQR1y14emFEqmE5GAJeSEa9j/RdbiEltYfwFuB.",
     "passwordConfirm": "",
     "avatar": "101010-avatar.jpg"
+  },
+  {
+    "firstName": "cliente",
+    "lastName": "1",
+    "email": "fgh@fgh.com",
+    "localidad": "Capital Federal",
+    "adress": "",
+    "dni": "123321",
+    "password": "$2a$10$n4uropYPFpkdvE1m.sHTxOUhlXOKQtPfBxRGschxkFSMdU.keJGze",
+    "passwordConfirm": "123",
+    "avatar": "123321-avatar.PNG"
   }
 ]
