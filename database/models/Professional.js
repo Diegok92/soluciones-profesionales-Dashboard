@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "Profesionales";
+  const alias = "Professional";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -25,6 +25,18 @@ module.exports = (sequelize) => {
   };
 
   const Professional = sequelize.define(alias, cols, config);
+
+  Professional.associate = function(models){ 
+
+    Professional.belongsToMany(models.Profession, {
+
+      as: "profesiones",  //nombre de la asociación
+      through: "professionals_profession",
+      foreignKey: "professional_id",
+      otherKey : "profession_id",
+      timestamps: false
+    })
+  };
 
   return Professional;
 };
