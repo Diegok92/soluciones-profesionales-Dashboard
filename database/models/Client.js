@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "Clientes";
+  const alias = "Client";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     timestamps: false,
   };
 
-  const Clientes2 = sequelize.define(alias, cols, config);
+  const Client = sequelize.define(alias, cols, config);
 
-  return Clientes2;
+  return Client;
 };

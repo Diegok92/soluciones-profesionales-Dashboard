@@ -65,7 +65,7 @@ module.exports = {
       let userFound;
 
       //Busqueda en Listado Clientes
-      db.Clientes.findOne({
+      db.Client.findOne({
         where: {
           email: req.body.email,
         },

@@ -35,7 +35,33 @@ module.exports = (sequelize) => {
       foreignKey: "professional_id",
       otherKey : "profession_id",
       timestamps: false
-    })
+    });
+
+    Professional.belongsTo(models.Client, {
+      as: "clientes",
+      foreignKey: "client_id"
+    });
+
+    Professional.hasMany(models.WorkImage, {
+      as: "workImages",
+      foreignKey: "workImage_id"
+    });
+
+    Professional.belongsTo(models.WorkZone, {
+      as: "workZones",
+      foreignKey: "workZone_id"
+    });
+
+    Professional.belongsToMany(models.Professional_WorkDay, {
+
+      as: "professional_workDays",  //nombre de la asociación
+      through: "professionals_workDays",
+      foreignKey: "professional_id",
+      otherKey : "workDay_id",
+      otherKey : "shift_id",
+      timestamps: false
+    });
+
   };
 
   return Professional;
