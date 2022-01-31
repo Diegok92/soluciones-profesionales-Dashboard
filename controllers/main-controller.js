@@ -54,7 +54,7 @@ module.exports = {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
       //si hay errores
-      console.log(errors);
+      //console.log(errors);
       res.render("login", { errors: errors.errors, old: req.body });
     } else {
       //si no hay errores:
@@ -71,7 +71,7 @@ module.exports = {
         },
       }).then((result) => {
         userFound = result;
-        console.log(userFound);
+        //console.log(userFound);
 
         if (userFound == undefined) {
           res.render("login", {
