@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "Ciudades";
+  const alias = "City";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -17,6 +17,21 @@ module.exports = (sequelize) => {
   };
 
   const City = sequelize.define(alias, cols, config);
+
+  City.associate = function(models){
+
+    City.hasMany(models.Client, {
+      as: "clients",
+      foreignKey: "city_id"
+    });
+
+
+
+
+
+  };
+
+
 
   return City;
 };

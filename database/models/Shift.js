@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "Turnos";
+  const alias = "Shift";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -17,6 +17,27 @@ module.exports = (sequelize) => {
   };
 
   const Shift = sequelize.define(alias, cols, config);
+
+
+Shift.associate = function(models){
+
+
+  Shift.belongsToMany(models.Professional, {
+
+    as: "professionals",  //nombre de la asociación
+    through: "professionals_workDays",
+    foreignKey: "shift_id",
+    otherKey : "workDay_id",
+    otherKey :"professional_id",
+    timestamps: false
+  });
+
+
+
+
+}
+
+
 
   return Shift;
 };

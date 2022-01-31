@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "UnionProfesionalDiasTurnos";
+  const alias = "Professional_WorkDay";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -20,5 +20,8 @@ module.exports = (sequelize) => {
 
   const Professional_WorkDay_Shift = sequelize.define(alias, cols, config);
 
+
+
+  
   return Professional_WorkDay_Shift;
 };

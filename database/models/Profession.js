@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
 
     Profession.belongsToMany(models.Professional, {
 
-        as: "profesionales",  //nombre de la asociación
+        as: "professionals",  //nombre de la asociación
         through: "professionals_profession",
         foreignKey : "profession_id",
         otherKey: "professional_id",

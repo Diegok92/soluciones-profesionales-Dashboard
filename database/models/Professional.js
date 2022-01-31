@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
 
     Professional.belongsToMany(models.Profession, {
 
-      as: "profesiones",  //nombre de la asociación
+      as: "professions",  //nombre de la asociación
       through: "professionals_profession",
       foreignKey: "professional_id",
       otherKey : "profession_id",
@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
     });
 
     Professional.belongsTo(models.Client, {
-      as: "clientes",
+      as: "clients",
       foreignKey: "client_id"
     });
 
@@ -52,9 +52,19 @@ module.exports = (sequelize) => {
       foreignKey: "workZone_id"
     });
 
-    Professional.belongsToMany(models.Professional_WorkDay, {
+    Professional.belongsToMany(models.Shift, {
 
-      as: "professional_workDays",  //nombre de la asociación
+      as: "shift",  //nombre de la asociación
+      through: "professionals_workDays",
+      foreignKey: "professional_id",
+      otherKey : "workDay_id",
+      otherKey : "shift_id",
+      timestamps: false
+    });
+
+    Professional.belongsToMany(models.WorkDay, {
+
+      as: "workDays",  //nombre de la asociación
       through: "professionals_workDays",
       foreignKey: "professional_id",
       otherKey : "workDay_id",

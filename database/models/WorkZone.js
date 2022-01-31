@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "ZonadeTrabajo";
+  const alias = "WorkZone";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -16,6 +16,18 @@ module.exports = (sequelize) => {
   };
 
   const WorkZone = sequelize.define(alias, cols, config);
+
+
+WorkZone.associate= function(models){
+
+  WorkZone.hasMany(models.Professional, {
+    as: "professional",
+    foreignKey: "workZone_id"
+  });
+
+
+
+}
 
   return WorkZone;
 };

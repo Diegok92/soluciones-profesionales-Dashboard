@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       autoIncrement: true,
     },
     imageTitle: Sequelize.STRING,
-    professional_id: Sequelize.STRING,
+    
   };
   const config = {
     tableName: "workimages",
@@ -17,6 +17,21 @@ module.exports = (sequelize) => {
   };
 
   const WorkImage = sequelize.define(alias, cols, config);
+
+WorkImage.associate= function(models){
+
+  WorkImage.belongsTo(models.Professional, {
+    as: "workImages",
+    foreignKey: "workImage_id"
+  });
+
+
+
+
+
+
+}
+
 
   return WorkImage;
 };

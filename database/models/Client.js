@@ -27,5 +27,23 @@ module.exports = (sequelize) => {
 
   const Client = sequelize.define(alias, cols, config);
 
+
+Client.associate = function(models){
+
+  Client.belongsTo(models.Professional, {
+    as: "profesionals",
+    foreignKey: "client_id"
+  });
+
+  Client.belongsTo(models.City, {
+    as: "cities",
+    foreignKey: "city_id"
+  });
+
+
+
+
+
+}
   return Client;
 };

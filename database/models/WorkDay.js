@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "DiasdeTrabajo";
+  const alias = "WorkDay";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
@@ -17,6 +17,20 @@ module.exports = (sequelize) => {
   };
 
   const WorkDay = sequelize.define(alias, cols, config);
+
+  WorkDay.associate = function(models){
+
+
+    WorkDay.belongsToMany(models.Professional, {
+  
+      as: "professionals",  //nombre de la asociación
+      through: "professionals_workDays",
+      foreignKey: "workDay_id",
+      otherKey : "shift_id",
+      otherKey :"professional_id",
+      timestamps: false
+    })};
+
 
   return WorkDay;
 };
