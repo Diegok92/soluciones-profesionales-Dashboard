@@ -19,6 +19,7 @@ const professionalsList = JSON.parse(professionalsFileText); //lo parseo para po
 
 module.exports = {
   home: (req, res) => {
+
     if (
       req.session.profFound != undefined &&
       req.session.clientFound != undefined
@@ -66,12 +67,13 @@ module.exports = {
 
       //Busqueda en Listado Clientes
       db.Client.findOne({
+
         where: {
           email: req.body.email,
         },
       }).then((result) => {
         userFound = result;
-        //console.log(userFound);
+        console.log(userFound);
 
         if (userFound == undefined) {
           res.render("login", {

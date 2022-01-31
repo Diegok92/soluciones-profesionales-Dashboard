@@ -23,10 +23,11 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage: storage });
 
 const profRoute = express.Router();
-
+const professionalDBController= require("../controllers/professionals-db-controller.js") 
 const profController = require("../controllers/professionals-controller.js");
-
-profRoute.get("/", profController.rubros);
+//aca hicimos los cambios
+//profRoute.get("/", profController.rubros);
+profRoute.get("/", professionalDBController.professionsList);
 
 profRoute.get(
   "/:rubro/:cuit",

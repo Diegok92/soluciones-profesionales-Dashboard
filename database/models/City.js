@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
 
     City.hasMany(models.Client, {
       as: "clients",
-      foreignKey: "city_id"
+      foreignKey: "city_Id"
     });
 
 

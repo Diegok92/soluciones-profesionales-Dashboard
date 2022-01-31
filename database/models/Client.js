@@ -30,14 +30,15 @@ module.exports = (sequelize) => {
 
 Client.associate = function(models){
 
-  Client.belongsTo(models.Professional, {
-    as: "profesionals",
-    foreignKey: "client_id"
-  });
+//Consultar con Pablo
+  // Client.hasOne(models.Professional, {
+  //   as: "profesionals",
+  //   foreignKey: "client_id"
+  // });
 
   Client.belongsTo(models.City, {
     as: "cities",
-    foreignKey: "city_id"
+    foreignKey: "city_Id"
   });
 
 
