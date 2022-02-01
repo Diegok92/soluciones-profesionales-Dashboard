@@ -1,5 +1,8 @@
 const express = require("express");
+const { sequelize } = require("../database/models");
 const db = require("../database/models");
+const Op = db.Sequelize.Op;
+const profRoute = require("../routes/professionals-routers");
 
 const professionalDBController = {
   //cambiar nombre en enroutador anterior 'rubros'
@@ -17,7 +20,24 @@ const professionalDBController = {
     });
   },
 
-  profPerProfession: function (req, res) {},
+  profPerProfession: function (req, res) {
+    profRequested = req.params.rubro;
+    console.log(profRequested);
+    //console.log(Professional);
+    db.Professional.findAll({
+      include: [{ association: "clients" }, { association: "professions" }],
+      where: {
+        "$professions.profession$": {
+          //magia de pablo...
+          [Op.like]: "%" + profRequested + "%",
+          // `%${profRequested}%`
+        },
+      },
+    }).then(function (result) {
+      //console.log(result);
+      res.render("prueba", { result: result });
+    });
+  },
   professionalDetail: function (req, res) {},
 
   //Delete

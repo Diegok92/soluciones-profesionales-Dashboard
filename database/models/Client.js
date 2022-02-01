@@ -27,24 +27,17 @@ module.exports = (sequelize) => {
 
   const Client = sequelize.define(alias, cols, config);
 
+  Client.associate = function (models) {
+    //Consultar con Pablo
+    Client.hasOne(models.Professional, {
+      as: "profesionals",
+      foreignKey: "client_id",
+    });
 
-Client.associate = function(models){
-
-//Consultar con Pablo
-  // Client.hasOne(models.Professional, {
-  //   as: "profesionals",
-  //   foreignKey: "client_id"
-  // });
-
-  Client.belongsTo(models.City, {
-    as: "cities",
-    foreignKey: "city_Id"
-  });
-
-
-
-
-
-}
+    Client.belongsTo(models.City, {
+      as: "cities",
+      foreignKey: "city_Id",
+    });
+  };
   return Client;
 };

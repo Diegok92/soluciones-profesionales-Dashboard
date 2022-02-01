@@ -23,8 +23,9 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage: storage });
 
 const profRoute = express.Router();
-const professionalDBController= require("../controllers/professionals-db-controller.js") 
+const professionalDBController = require("../controllers/professionals-db-controller.js");
 const profController = require("../controllers/professionals-controller.js");
+
 //aca hicimos los cambios
 //profRoute.get("/", profController.rubros);
 profRoute.get("/", professionalDBController.professionsList);
@@ -60,6 +61,6 @@ profRoute.get(
 ); //muestro form de confirmación de eliminación
 profRoute.delete("/:rubro/:cuit", profController.deleteProf);
 
-profRoute.get("/:rubro", profController.profPerRubro);
-
+//profRoute.get("/:rubro", profController.profPerRubro);
+profRoute.get("/:rubro", professionalDBController.profPerProfession);
 module.exports = profRoute;
