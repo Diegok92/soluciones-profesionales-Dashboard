@@ -22,6 +22,7 @@ const professionalDBController = {
 
   profPerProfession: function (req, res) {
     profRequested = req.params.rubro;
+    //
     console.log(profRequested);
     //console.log(Professional);
     db.Professional.findAll({
@@ -38,7 +39,25 @@ const professionalDBController = {
       res.render("prueba", { result: result });
     });
   },
-  professionalDetail: function (req, res) {},
+  professionalDetail: function (req, res) {
+    profRequested = req.params.cuit;
+    db.Professional.findOne({
+      include: [{ association: "clients" }, { association: "professions" }],
+      where: {
+        cuit: 'FR52 8027 7475 87US VXDM EVK8%'
+      }
+        //     {
+        // "$professions.profession$": {
+        //   //magia de pablo...
+        //   [Op.like]: "%" + profRequested + "%",
+        //   // `%${profRequested}%`
+        // },
+        // },
+    }).then(function (result) {
+      console.log(result);
+      res.render("prueba", { result: result });
+    });
+  },
 
   //Delete
   showDeleteProf: function (req, res) {},

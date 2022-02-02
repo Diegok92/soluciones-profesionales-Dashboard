@@ -249,7 +249,7 @@ CREATE TABLE `shifts` (
 
 LOCK TABLES `shifts` WRITE;
 /*!40000 ALTER TABLE `shifts` DISABLE KEYS */;
-INSERT INTO `shifts` VALUES (1,'Turno Mañana'),(2,'Turno Tarde'),(3,'Ambos Turnos');
+INSERT INTO `shifts` VALUES (1,'Turno Maï¿½ana'),(2,'Turno Tarde'),(3,'Ambos Turnos');
 /*!40000 ALTER TABLE `shifts` ENABLE KEYS */;
 UNLOCK TABLES;
 

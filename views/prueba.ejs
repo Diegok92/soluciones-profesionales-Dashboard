@@ -12,14 +12,20 @@
     <div>
         <% for(let i=0; i<result.length; i++){ %>
             <p>
+                <a href="/<% result[i].professions[0].profession %>/<% result[i].cuit %> ">
                 <%= result[i].clients.firstName %>
                     <!--magia de leo -->
+                </a>
             </p>
             <p>
                 <%= result[i].professions[0].profession %>
             </p>
             <% } %>
                 <% %>
+    </div>
+
+    <div>
+         
     </div>
 </body>
 
