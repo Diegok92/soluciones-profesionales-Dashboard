@@ -20,24 +20,33 @@ const professionalsList = JSON.parse(professionalsFileText); //lo parseo para po
 module.exports = {
   home: (req, res) => {
 
+   db.Profession.findAll()
+    .then(function (response) {
+      return response;
+    })
+    .then( function (professions){
+  
+
+
     if (
       req.session.profFound != undefined &&
       req.session.clientFound != undefined
     ) {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
-      res.render("index", { userClient: userClient, userProf: userProf });
+      res.render("index", { userClient: userClient, userProf: userProf, professions : professions });
     }
 
     if (req.session.profFound != undefined) {
       let userProf = req.session.profFound;
-      res.render("index", { userProf: userProf });
+      res.render("index", { userProf: userProf, professions : professions });
     } else if (req.session.clientFound != undefined) {
       let userClient = req.session.clientFound;
-      res.render("index", { userClient: userClient });
+      res.render("index", { userClient: userClient, professions : professions });
     } else {
-      res.render("index");
+      res.render("index", {professions : professions});
     }
+  })
   },
   productCart: (req, res) => {
     let userProf = req.session.profFound;

@@ -1,138 +1,63 @@
 <section class="icon-categories">
-    <article class="icon-article">
-        <!-- meter if en los links para /rubros/plomero o /dentista -->
-        <a href="rubros/Mecanico">
-            <!-- mecanica auto 1-->
-            <i class="fas fa-wrench"></i>
-            <p class="icon-txt">Mecanicos/as</p>
-        </a>
-    </article>
-    <article class="icon-article">
-        <a href="rubros/Electricista">
-            <!-- electricista 2-->
-            <i class="fas fa-plug"></i>
-            <p class="icon-txt">Electricistas</p>
-        </a>
-    </article>
-    <article class="icon-article">
-        <a href="rubros/Odontologo">
-            <!-- dentistas 3-->
-            <i class="fas fa-tooth"></i>
-            <p class="icon-txt">Odontologos/as</p>
-        </a>
-    </article>
 
-    <article class="icon-article">
-        <a href="rubros/Plomero">
-            <!-- plomeria 4-->
-            <i class="fas fa-faucet"></i>
-            <p class="icon-txt">Plomeros/as</p>
-        </a>
-    </article>
+    <% for (let i =0 ; i< 6; i++  ) { %> 
 
-    <article class="icon-article">
-        <a href="rubros/Carpintero">
-            <!-- carpinteria 5-->
-            <i class="fas fa-hammer"></i>
-            <p class="icon-txt">Carpinteros/as/
-                <p>
+      <article class="icon-article">
+
+        <a href="rubros/<%= professions[i].profession %>">
+
+          <i class=" prueba fas <% if (professions[i].profession) {
+            switch (professions[i].profession) {
+              case 'Mecanica':%><%= 'fa-wrench' %><%
+                break;
+              case 'Electricidad':%><%= 'fa-plug' %><%
+                break;
+              case 'Odontologia':%><%= 'fa-tooth' %><%
+                break;
+              case 'Plomeria':%><%= 'fa-faucet' %><%
+                break;
+              case 'Carpinteria':%><%= 'fa-hammer' %><%
+                break;
+              case 'Pintura':%><%= 'fa-paint-roller' %><%
+                break;
+              case 'Abogacia':%><%= 'fa-gavel' %><%
+                break;
+              case 'Full Stack Web Developer':%><%= 'fa-laptop-code' %><%
+                break;
+              case 'Gas':%><%= 'fa-burn' %><%
+                break;
+              case 'Destapaciones':%><%= 'fa-sink' %><%
+                break;
+              case 'Catering':%><%= 'fa-utensils' %><%
+                break;
+              case 'Empapelacion':%><%= 'fa-scroll' %><%
+                break;
+              case 'Jardineria':%><%= 'fa-seedling' %><%
+                break;
+              case 'Contaduria':%><%= 'fa-search-dollar' %><%
+                break;
+              case 'Instalacion de AC':%><%= 'fa-wind' %><%
+                break;
+              case 'Mudanzas':%><%= 'fa-people-carry' %><%
+                break;
+              case 'Fumigacion':%><%= 'fa-bug' %><%
+                break;
+              case 'Cuidado de Menores':%><%= 'fa-baby' %><%
+                break;
+              case 'Clases Particulares':%><%= 'fa-chalkboard-teacher' %><%
+                break;
+              case 'Paseo Animal':%><%= 'fa-paw' %><%
+                break;
+              case 'Pileteria':%><%= 'fa-swimming-pool' %><%
+                break;
+              default:%><%= 'fa-cannabis' %><%
+                break;
+            } 
+          } %> "></i>
+
+          <p class="icon-txt"><%= professions[i].profession %></p>
         </a>
-    </article>
-    <article class="icon-article">
-        <a href="rubros/Pintor">
-            <!-- pintores 6-->
-            <i class="fas fa-paint-roller"></i>
-            <p class="icon-txt">Pintores/as</p>
-        </a>
-    </article>
-</section>
-<!--     7<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-gavel"></i>
-            <p class="icon-txt">Abogados/as</p>
-        </a>
-    </article> -->
-<!--     8<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-laptop-code"></i>
-            <p class="icon-txt">Full Stack Web Dev</p>
-        </a>
-    </article> -->
-<!--     9<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-burn"></i>
-            <p class="icon-txt">Gasistas</p>
-        </a>
-    </article> -->
-<!--     10<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-sink"></i>
-            <p class="icon-txt">Destapadores/as</p>
-        </a>
-    </article> -->
-<!--     11<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-utensils"></i>
-            <p class="icon-txt">Catering</p>
-        </a>
-    </article> -->
-<!--     12<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-scroll"></i>
-            <p class="icon-txt">Empapeladores/as</p>
-        </a>
-    </article> -->
-<!--     13<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-cannabis"></i>
-            <p class="icon-txt">Traficantes</p>
-        </a>
-    </article> -->
-<!--     14<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-wind"></i>
-            <p class="icon-txt">instaladores de AC</p>
-        </a>
-    </article> -->
-<!--     15<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-people-carry"></i>
-            <p class="icon-txt">Mudanzas</p>
-        </a>
-    </article> -->
-<!--     16<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-bug"></i>
-            <p class="icon-txt">Fumigadores/as</p>
-        </a>
-    </article> -->
-<!--     17<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <p class="icon-txt">Prof. Particulares</p>
-        </a>
-    </article> -->
-<!--     17<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <p class="icon-txt">Prof. Particulares</p>
-        </a>
-    </article> -->
-<!--     18<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-paw"></i>
-            <p class="icon-txt">Paseadores/as</p>
-        </a>
-    </article> -->
-<!--     19<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-swimming-pool"></i>
-            <p class="icon-txt">Pileteros/as</p>
-        </a>
-    </article> -->
-<!--     20<article class="icon-article">
-        <a href="professionals">
-            <i class="fas fa-seedling"></i>
-            <p class="icon-txt">Jardineros/as</p>
-        </a>
-    </article> -->
+      </article>
+    <% } %> 
+
+  </section>
