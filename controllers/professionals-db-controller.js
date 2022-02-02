@@ -15,12 +15,21 @@ const professionalDBController = {
 
   //Listing professions, professionals, professional
   professionsList: function (req, res) {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    let user = req.session.profFound
     db.Profession.findAll().then(function (professions) {
-      res.render("rubros", { professions: professions });
+      res.render("rubros", { professions: professions,
+        user: user,
+        userClient: userClient,
+        userProf: userProf, });
     });
   },
 
   profPerProfession: function (req, res) {
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    let user = req.session.profFound
     profRequested = req.params.profession;
     //
     //console.log(profRequested);
@@ -36,27 +45,35 @@ const professionalDBController = {
       },
     }).then(function (professionals) {
       console.log(professionals);
-      res.render("professionals/profPerProfession", { professionals: professionals, profRequested });
+      res.render("professionals/profPerProfession", { professionals: professionals, profRequested ,
+        user: user,
+        userClient: userClient,
+        userProf: userProf, });
     });
   },
   professionalDetail: function (req, res) {
-    profRequested = req.params.cuit;
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    let user = req.session.profFound;
+
+    profRequested = req.params.client_id;
     db.Professional.findOne({
-      include: [{ association: "clients" }, { association: "professions" }],
-      where: {
-        cuit: 'FR52 8027 7475 87US VXDM EVK8%'
-      }
-        //     {
-        // "$professions.profession$": {
-        //   //magia de pablo...
-        //   [Op.like]: "%" + profRequested + "%",
-        //   // `%${profRequested}%`
-        // },
-        // },
-    }).then(function (result) {
-      console.log(result);
-      res.render("prueba", { result: result });
-    });
+     include: [{ association: "clients" }, { association: "professions" },{ association: "workZones" }, { association: "workDays" }, { association: "shifts" }],
+      where: {client_id : profRequested}
+            
+          //magia de pablo...
+         
+          //`%${profRequested}%`
+        
+        
+    }).then(function (professional) {
+      //console.log(professional);
+      res.render("professionals/professionalDetail", { professional: professional, 
+        user: user,
+        userClient: userClient,
+        userProf: userProf, });
+    }).catch(function(error){console.log(error)})
+    ;
   },
 
   //Delete

@@ -32,7 +32,7 @@
         </p>
         <% for(let i=0; i<professionals.length; i++){ %>
           <div class="top-flex-mobile">
-            <a href="/<% professionals[i].professions[0].profession %>/<% professionals[i].cuit %>">
+            <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
               <div class="div-avatar">
                 <div class="prof-avatar">
 

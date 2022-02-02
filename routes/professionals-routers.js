@@ -31,9 +31,9 @@ const profController = require("../controllers/professionals-controller.js");
 profRoute.get("/", professionalDBController.professionsList);
 
 profRoute.get(
-  "/:rubro/:cuit",
+  "/:profession/:client_id",
   authLoggedtMiddleware,
-  profController.professionalDetail
+  professionalDBController.professionalDetail
 );
 
 profRoute.get(

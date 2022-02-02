@@ -26,11 +26,11 @@
         <div class="allProduct">
           <div class="prof-title-father">
             <p class="title-per-device-productDetail">
-              <%=profObject[0].jobTitle %>
+              <%=professional.professions.profession %>
 
             </p>
             <p class="name-per-device-productDetail">
-              <%= profObject[0].firstName + " " + profObject[0].lastName %>
+              <%= professional.clients.firstName + " " + professional.clients.lastName %>
             </p>
             <!--el nombre cambia segun el profesonial  -->
           </div>
@@ -87,21 +87,21 @@
 
               <div class=" details">
                 <div>
-                  <p>Zona:<%=" " +profObject[0].jobZone %>
+                  <p>Zona:<%=" " +professional.workZones.location %>
                   </p>
-                  <p>Matricula:<%if(profObject[0].license){%>
-                      <%=" " +profObject[0].license %> 
+                  <p>Matricula:<%if(professional.license){%>
+                      <%=" " +professional.license %> 
                   <%}else{ %>
                     <%=" No Posee" %>
                       <% } %>
                   </p>
-                  <p>Atiende Emergencias: <% if(profObject[0].emergency=="Si" ){ %>
+                  <p>Atiende Emergencias: <% if(professional.emergency== "1" ){ %>
                       Si
                       <% }else{ %>
                         No
                         <% } %>
                   </p>
-                  <p>Precio de Reserva: $<%=profObject[0].price %>
+                  <p>Precio de Reserva: $<%=professional.price %>
                   </p>
                 </div>
               </div>
@@ -112,7 +112,7 @@
           <div class=" prof-detail-text">
             <p class="prof-detail-title-text">Razones por cuales elegirme:</p>
             <p class="prof-txt">
-              <%=profObject[0].whyMe %>
+              <%=professional.whyMe %>
             </p>
           </div>
           <div class=" prof-detail-text">
@@ -125,14 +125,17 @@
             </p>
           </div>
           <% if(user!=undefined){ %>
-            <% if(user.cuit==profObject[0].cuit){ %>
+            <p>  %> </p>
+            
+            <% if(user.id==professional.client_id){ %>
+              <p>entre segundo if</p>
               <div class="buttons-below-avatar">
                 <div>
-                  <a href="/rubros/<%=profObject[0].jobTitle %>/<%=profObject[0].cuit %>/editProf">
+                  <a href="/rubros/<%=professional.professions.profession %>/<%=professional.client_id %>/editProf">
                     <button type="submit" style="width: 25vw;">Editar Perfil</button>
                   </a>
                 </div>
-                <a href="/rubros/<%= profObject[0].jobTitle %>/<%= profObject[0].cuit %>/deleteProf">
+                <a href="/rubros/<%=professional.professions.profession %>/<%=professional.client_id %>/deleteProf">
                   <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
                 </a>
               </div>
