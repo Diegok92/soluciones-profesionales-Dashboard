@@ -61,27 +61,13 @@
               <label>Profesiones:
                 <!-- class="selectpicker" multiple -->
                 <select name="jobTitle">
-                  <option value="Carpintero" selected>Carpintero/a</option>
-                  <option value="Plomero">Plomero/a</option>
-                  <option value="Pintor">Pintor/a</option>
-                  <option value="Electricista">Electricista</option>
-                  <option value="Odontologo">Odontologo/a</option>
-                  <option value="Mecanico">Mecanico/a</option>
-                  <option value="Fletero">Mudanza</option>
-                  <option value="Jardinero">Jardinero</option>
-                  <option value="Instalador AC">Instalador AC</option>
-                  <option value="Catering">Catering</option>
-                  <option value="Abogado">Abogado/a</option>
-                  <option value="Full Stack Web Dev">Full Stack Web Dev</option>
-                  <option value="Gasista">Gasista</option>
-                  <option value="Destapador">Destapador/a</option>
-                  <option value="Empapelador">Empapelador/a</option>
-                  <option value="Fumigador">Fumigador/a</option>
-                  <option value="Prof Particular">Prof. Particular</option>
-                  <option value="Paseador">Paseador/a</option>
-                  <option value="Piletero">Piletero/a</option>
-                  <option value="Contador">Contador/a</option>
-                  <option value="Cuidado de Menores">Cuidado de Menores</option>
+
+                  <% for (let i = 0 ; i < uniqueProfession.length ; i++){%> 
+                
+                  <option value="<%=uniqueProfession[i]%> " selected><%=uniqueProfession[i]%></option>
+                  
+                  
+                  <% } %> 
                   <option value="Otro">Otro</option>
                 </select>
               </label>
@@ -117,6 +103,12 @@
                   <option value="Cordoba">Cordoba</option>
                   <option value="Rosario">Rosario</option>
                   <option value="Lejano Oeste">Lejano Oeste</option>
+                  <% for (let i = 0 ; i < uniqueWorkZones.length ; i++){%> 
+                
+                    <option value="<%=uniqueWorkZones[i]%> " ><%=uniqueWorkZones[i]%></option>
+                    
+                    
+                    <% } %>
                 </select>
               </label>
             </div>

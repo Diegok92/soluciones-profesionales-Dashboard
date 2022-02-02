@@ -39,7 +39,7 @@ profRoute.get(
 profRoute.get(
   "/registerProf",
   authNotProftMiddleware,
-  profController.registerProf
+  professionalDBController.registerProf
 );
 profRoute.post(
   "/registerProf",
