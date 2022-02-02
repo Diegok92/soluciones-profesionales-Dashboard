@@ -21,12 +21,12 @@ const professionalDBController = {
   },
 
   profPerProfession: function (req, res) {
-    profRequested = req.params.rubro;
+    profRequested = req.params.profession;
     //
-    console.log(profRequested);
+    //console.log(profRequested);
     //console.log(Professional);
     db.Professional.findAll({
-      include: [{ association: "clients" }, { association: "professions" }],
+      include: [{ association: "clients" }, { association: "professions" }, { association: "workZones" }, { association: "workDays" }, { association: "shifts" }],
       where: {
         "$professions.profession$": {
           //magia de pablo...
@@ -34,9 +34,9 @@ const professionalDBController = {
           // `%${profRequested}%`
         },
       },
-    }).then(function (result) {
-      //console.log(result);
-      res.render("prueba", { result: result });
+    }).then(function (professionals) {
+      console.log(professionals);
+      res.render("professionals/profPerProfession", { professionals: professionals, profRequested });
     });
   },
   professionalDetail: function (req, res) {

@@ -10,15 +10,15 @@
 
 <body>
     <div>
-        <% for(let i=0; i<result.length; i++){ %>
+        <% for(let i=0; i<professionals.length; i++){ %>
             <p>
-                <a href="/<% result[i].professions[0].profession %>/<% result[i].cuit %> ">
-                <%= result[i].clients.firstName %>
+                <a href="/<% professionals[i].professions[0].profession %>/<% professionals[i].cuit %> ">
+                <%= professionals[i].clients.firstName %>
                     <!--magia de leo -->
                 </a>
             </p>
             <p>
-                <%= result[i].professions[0].profession %>
+                <%= professionals[i].professions[0].profession %>
             </p>
             <% } %>
                 <% %>

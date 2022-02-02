@@ -62,5 +62,5 @@ profRoute.get(
 profRoute.delete("/:rubro/:cuit", profController.deleteProf);
 
 //profRoute.get("/:rubro", profController.profPerRubro);
-profRoute.get("/:rubro", professionalDBController.profPerProfession);
+profRoute.get("/:profession", professionalDBController.profPerProfession);
 module.exports = profRoute;

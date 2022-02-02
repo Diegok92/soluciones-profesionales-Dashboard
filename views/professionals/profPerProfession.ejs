@@ -27,11 +27,12 @@
 
       <main>
         <p class="title-cart">
-          <%=rubro[0].jobTitle %>
+          <%= professionals[0].professions[0].profession %>
+          <% console.log(professionals) %> 
         </p>
-        <% for(let i=0; i<rubro.length; i++){ %>
+        <% for(let i=0; i<professionals.length; i++){ %>
           <div class="top-flex-mobile">
-            <a href="/rubros/<%=rubro[i].jobTitle%>/<%=rubro[i].cuit%>">
+            <a href="/<% professionals[i].professions[0].profession %>/<% professionals[i].cuit %>">
               <div class="div-avatar">
                 <div class="prof-avatar">
 
@@ -39,32 +40,35 @@
               </div>
               <div class="div-descrption">
                 <div class="title-per-device-productCart">
-                  <%=rubro[i].jobTitle %>:
+                  <%= professionals[i].professions[0].profession %>:
                 </div>
-                <div class="name-per-device-productCart">"<%=rubro[i].firstName +" "+ rubro[i].lastName%>" </div>
+                <div class="name-per-device-productCart">"<%= professionals[i].clients.firstName +" "+ professionals[i].clients.lastName%>" </div>
             </a>
           </div>
           <div class="reserved-date">
             <p>
-              <%=rubro[i].jobDay %>
+              <%=professionals[i].workDays[0].day %>
+            </p>
+            <p>
+              <%=professionals[i].shifts[0].shift %>
             </p>
           </div>
           <div class="reserved-date">
             <p>
-              <% if(rubro[i].emergency=="Si" ){ %>
+              <% if(professionals[i].emergency == 1){ %>
                 <i class="fas fa-shipping-fast"></i>
                 Urgencias
                 <% } %>
             </p>
-            <p>
-              <%= rubro[i].jobZone %>
+            <p> Zona:
+              <%= professionals[i].workZones.location %>
             </p>
           </div>
 
           <div class="price-button-preview">
             <div class="price-preview">
               <p>
-                $<%=rubro[i].price %>
+                <%=professionals[i].price %>
               </p>
             </div>
           </div>
