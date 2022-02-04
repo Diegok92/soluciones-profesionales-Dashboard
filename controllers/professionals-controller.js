@@ -98,7 +98,7 @@ module.exports = {
     const indexProfBuscado = professionals.findIndex(function (prof) {
       return prof.cuit == req.params.cuit;
     });
-    console.log(req.body);
+    //console.log(req.body);
     const updateProf = {
       ...req.body,
       password: userProf.password,
@@ -149,7 +149,7 @@ module.exports = {
     });
     function prueba() {
       db.Clientes.findAll().then(function (Client) {
-        console.log(Client);
+        //console.log(Client);
       });
     }
     prueba();

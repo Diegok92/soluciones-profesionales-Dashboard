@@ -76,14 +76,14 @@ module.exports = {
     const indexClientsBuscado = clients.findIndex(function (clients) {
       return clients.dni == userClient.dni;
     });
-    console.log(req);
+    //console.log(req);
     const updateClients = {
       ...req.body,
-      password: userClient.password
+      password: userClient.password,
     };
 
     clients[indexClientsBuscado] = updateClients; //reemplazo el actualizado en el listado original
-console.log(updateClients);
+    //console.log(updateClients);
     saveClients();
 
     res.redirect("/");
@@ -103,7 +103,6 @@ console.log(updateClients);
   },
 
   deleteClients: (req, res) => {
-   
     let clientsToDelete = clients.findIndex(
       (clients) => clients.dni == req.params.dni
     );

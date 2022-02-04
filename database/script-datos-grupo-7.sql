@@ -85,7 +85,7 @@ CREATE TABLE `clients` (
   `avatar` varchar(50) DEFAULT NULL,
   `role` varchar(12) DEFAULT NULL,
   `cart_Id` varchar(50) DEFAULT NULL,
-  `adress` varchar(50) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
   `city_Id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `clients_city` (`city_Id`),

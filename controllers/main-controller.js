@@ -19,34 +19,37 @@ const professionalsList = JSON.parse(professionalsFileText); //lo parseo para po
 
 module.exports = {
   home: (req, res) => {
+    db.Profession.findAll()
+      .then(function (response) {
+        return response;
+      })
+      .then(function (professions) {
+        if (
+          req.session.profFound != undefined &&
+          req.session.clientFound != undefined
+        ) {
+          let userProf = req.session.profFound;
+          let userClient = req.session.clientFound;
+          res.render("index", {
+            userClient: userClient,
+            userProf: userProf,
+            professions: professions,
+          });
+        }
 
-   db.Profession.findAll()
-    .then(function (response) {
-      return response;
-    })
-    .then( function (professions){
-  
-
-
-    if (
-      req.session.profFound != undefined &&
-      req.session.clientFound != undefined
-    ) {
-      let userProf = req.session.profFound;
-      let userClient = req.session.clientFound;
-      res.render("index", { userClient: userClient, userProf: userProf, professions : professions });
-    }
-
-    if (req.session.profFound != undefined) {
-      let userProf = req.session.profFound;
-      res.render("index", { userProf: userProf, professions : professions });
-    } else if (req.session.clientFound != undefined) {
-      let userClient = req.session.clientFound;
-      res.render("index", { userClient: userClient, professions : professions });
-    } else {
-      res.render("index", {professions : professions});
-    }
-  })
+        if (req.session.profFound != undefined) {
+          let userProf = req.session.profFound;
+          res.render("index", { userProf: userProf, professions: professions });
+        } else if (req.session.clientFound != undefined) {
+          let userClient = req.session.clientFound;
+          res.render("index", {
+            userClient: userClient,
+            professions: professions,
+          });
+        } else {
+          res.render("index", { professions: professions });
+        }
+      });
   },
   productCart: (req, res) => {
     let userProf = req.session.profFound;
@@ -76,13 +79,12 @@ module.exports = {
 
       //Busqueda en Listado Clientes
       db.Client.findOne({
-
         where: {
           email: req.body.email,
         },
       }).then((result) => {
         userFound = result;
-        console.log(userFound);
+        //console.log(userFound);
 
         if (userFound == undefined) {
           res.render("login", {

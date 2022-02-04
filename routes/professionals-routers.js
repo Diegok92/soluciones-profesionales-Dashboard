@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     file.filename = req.body.cuit;
     cb(
       null,
-      file.filename + "-avatar" + path.extname(file.originalname) //lograr q diga "cuit-avatar"
+      file.filename + "-avatar" + path.extname(file.originalname) //lograr q diga "dni-avatar"
     );
   },
 });
@@ -43,8 +43,8 @@ profRoute.get(
 );
 profRoute.post(
   "/registerProf",
-  uploadFile.single("avatar"),
-  profController.createProf
+  //uploadFile.single("jobImages"), (antes decia "avatar")
+  professionalDBController.createProf
 );
 
 profRoute.get(

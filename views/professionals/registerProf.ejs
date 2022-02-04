@@ -42,8 +42,8 @@
               </label>
             </div>
             <div class="registerInput">
-              <label for="adress">Dirección:
-                <input type="text" name="adress" id="adress" placeholder="Ej: Calle falsa 123 2A">
+              <label for="address">Dirección:
+                <input type="text" name="address" id="address" placeholder="Ej: Calle falsa 123 2A">
               </label>
             </div>
             <div class="registerInput">
@@ -53,8 +53,8 @@
             </div>
 
             <div class="registerInput">
-              <label for="cuit">CUIT (Sin Puntos ni Guiones):
-                <input type="cuit" name="cuit" id="cuit" placeholder="Clave Unica de Identificacion Tributaria">
+              <label for="dni">DNI (Sin Puntos ni Guiones):
+                <input type="dni" name="dni" id="dni" placeholder="Clave Unica de Identificacion Tributaria">
               </label>
             </div>
             <div class="registerInput profesiones-list">
@@ -62,13 +62,15 @@
                 <!-- class="selectpicker" multiple -->
                 <select name="jobTitle">
 
-                  <% for (let i = 0 ; i < uniqueProfession.length ; i++){%> 
-                
-                  <option value="<%=uniqueProfession[i]%> " selected><%=uniqueProfession[i]%></option>
-                  
-                  
-                  <% } %> 
-                  <option value="Otro">Otro</option>
+                  <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
+
+                    <option value="<%=uniqueProfession[i]%> " selected>
+                      <%=uniqueProfession[i]%>
+                    </option>
+
+
+                    <% } %>
+                      <option value="Otro">Otro</option>
                 </select>
               </label>
             </div>
@@ -95,6 +97,7 @@
             <div class="registerInput localidad-list">
               <label>Zona de Prestacion de Servicio:
                 <select name="jobZone">
+                  <!-- usar una API -->
                   <option value="Capital Federal" selected>Capital Federal</option>
                   <option value="GBA Norte">GBA Norte</option>
                   <option value="GBA Oeste">GBA Oeste</option>
@@ -103,11 +106,12 @@
                   <option value="Cordoba">Cordoba</option>
                   <option value="Rosario">Rosario</option>
                   <option value="Lejano Oeste">Lejano Oeste</option>
-                  <% for (let i = 0 ; i < uniqueWorkZones.length ; i++){%> 
-                
-                    <option value="<%=uniqueWorkZones[i]%> " ><%=uniqueWorkZones[i]%></option>
-                    
-                    
+                  <% for (let i=0 ; i < uniqueWorkZones.length ; i++){%>
+
+                    <option value="<%=uniqueWorkZones[i]%> ">
+                      <%=uniqueWorkZones[i]%>
+                    </option>
+
                     <% } %>
                 </select>
               </label>
@@ -158,7 +162,7 @@
                 <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Domingo-TT" selected>
                 </option>
               </p>
-              
+
             </div>
 
             <div class="registerInput whyme">
@@ -171,11 +175,7 @@
                 <input type="number" name="price" id="price" placeholder="300" value="300">
               </label>
             </div>
-            <div class="registerInput avatar">
-              <label for="avatar">Foto de Perfil
-                <input type="file" name="avatar" accept=".jpg, .png, .bmp">
-              </label>
-            </div>
+
             <div class="registerInput jobs">
               <label for="jobImages">Fotos de Trabajos Realizados (max 10)
                 <input type="file" name="jobImages" accept=".jpg, .png, .bmp" multiple>

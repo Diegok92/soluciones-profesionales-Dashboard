@@ -1,11 +1,13 @@
-const express = require("express");
-const { sequelize } = require("../database/models");
+const express = require("express"); //porq no se usa??
+const { sequelize } = require("../database/models"); //porq no se usa??
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
 const profRoute = require("../routes/professionals-routers");
+const bcrypt = require("bcryptjs");
 
 const professionalDBController = {
-  //cambiar nombre en enroutador anterior 'rubros'
+  //cambiar nombre en enroutador, anterior 'rubros'
+  //GET del registerProf
   registerProf: function (req, res) {
     db.Professional.findAll({
       include: [{ association: "professions" }, { association: "workZones" }],
@@ -24,7 +26,7 @@ const professionalDBController = {
           uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
         } //location es el nombre de la columna de DB
       }
-      console.log(uniqueWorkZones);
+      //console.log(uniqueWorkZones);
 
       res.render("professionals/registerProf", {
         userClient: userClient,
@@ -35,9 +37,41 @@ const professionalDBController = {
     });
   },
 
-  createProf: function (req, res) {},
+  //boton de crear en vista registerProf
+  createProf: function (req, res) {
+    let dniCreadoPrevio = res.locals.dniRegistered;
+    console.log("dniprevio vale " + dniCreadoPrevio); //UNDEFINEEEEEEED
+    db.Client.findOne({
+      where: {
+        dni: dniCreadoPrevio,
+      },
+    })
+      .then(function (result) {
+        console.log("result vale " + result);
 
-  //Edit
+        let clientFound = result.id;
+        return clientFound;
+      })
+      .then(function (clientId) {
+        db.Professional.create({
+          professional_profession_id: 100,
+          licence: "pDZNvyPYZ9oE",
+          workZone_id: 50,
+          emergency: "0",
+          professional_WorkDay_id: 100,
+          whyMe: "orci luctus et ultricesipit a",
+          price: "$9510.66",
+          workImage_id: 100,
+          cbu: "IS74 3493 0542 2584 1298 8646 70",
+          client_id: clientId,
+          workImage_id: 100,
+        });
+      });
+
+    //meter en prof el client_id
+  },
+
+  // Edit
   editProf: function (req, res) {},
   updateProf: function (req, res) {},
 
@@ -80,7 +114,7 @@ const professionalDBController = {
         },
       },
     }).then(function (professionals) {
-      console.log(professionals);
+      //console.log(professionals);
       res.render("professionals/profPerProfession", {
         professionals: professionals,
         profRequested,

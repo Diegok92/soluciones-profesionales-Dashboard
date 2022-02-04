@@ -95,7 +95,7 @@
                     <%=" No Posee" %>
                       <% } %>
                   </p>
-                  <p>Atiende Emergencias: <% if(professional.emergency== "1" ){ %>
+                  <p>Atiende Emergencias: <% if(professional.emergency=="1" ){ %>
                       Si
                       <% }else{ %>
                         No
@@ -125,10 +125,9 @@
             </p>
           </div>
           <% if(user!=undefined){ %>
-            <p>  %> </p>
-            
+            <p> %> </p>
+
             <% if(user.id==professional.client_id){ %>
-              <p>entre segundo if</p>
               <div class="buttons-below-avatar">
                 <div>
                   <a href="/rubros/<%=professional.professions.profession %>/<%=professional.client_id %>/editProf">
