@@ -1,0 +1,44 @@
+.footer {
+    background-color: #f5f5f7;
+    padding-top: 5px;
+  }
+  
+  .phrase-footer {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .titles-footer {
+    flex-wrap: wrap;
+  }
+  
+  .titles-footer a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .list-footer {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-evenly;
+    font-size: 14px;
+  }
+  
+  .list-footer li {
+    padding: 0.5rem 1rem;
+  }
+  
+  .Copyright {
+    margin-left: 1rem;
+    color: #333;
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+  
+  .c333 {
+    color: #333;
+  }
+  

@@ -1,19 +1,18 @@
-<nav class="nav-login">
-    <section class="categories">
+<nav class="bg-c-blue">
+    <div class="nav-login">
+        <section class="categories">
+            <div>
+                <a href="/rubros">
+                    <p class="yw-txt">RUBROS </p>
+                </a>
+            </div>
+            <!-- <div class="prof-zona">
+                <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
+                <!- ocultar boton en mobile, mostrar en el resto ->
+            </div> -->
+        </section>
+    
         <div class="login">
-            <a href="/rubros">
-                <p>RUBROS </p>
-            </a>
-        </div>
-        <div class="prof-zona">
-            <p>Prof. por Zona <i class="fas fa-hard-hat"></i></p>
-            <!-- ocultar boton en mobile, mostrar en el resto -->
-        </div>
-    </section>
-   
-        <div class="login">
-
-
             <% if(locals.userClient==undefined && locals.userProf==undefined){ %>
                 <a href="/login">
                     <p class="txt-ingresar">Ingresar</p>
@@ -44,4 +43,5 @@
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
         </div>
+    </div>
 </nav>
