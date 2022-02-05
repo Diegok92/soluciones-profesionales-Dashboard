@@ -26,45 +26,21 @@
       <main>
         <div class="all-registerProf">
           <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form">
-            <div class="registerInput">
-              <label for="firstName">Nombre:
-                <input type="text" name="firstName" id="firstName" placeholder="Ej: Cosme">
-              </label>
-            </div>
-            <div class="registerInput">
-              <label for="lastName">Apellido:
-                <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito">
-              </label>
-            </div>
-            <div class="registerInput">
-              <label for="email">Email:
-                <input type="email" name="email" id="email">
-              </label>
-            </div>
-            <div class="registerInput">
-              <label for="address">Dirección:
-                <input type="text" name="address" id="address" placeholder="Ej: Calle falsa 123 2A">
-              </label>
-            </div>
-            <div class="registerInput">
-              <label for="mobile">Telefono:
-                <input type="number" name="mobile" id="mobile" placeholder="Ej: 011-12345678">
-              </label>
-            </div>
+           
+           
+            
+           
+           
 
-            <div class="registerInput">
-              <label for="dni">DNI (Sin Puntos ni Guiones):
-                <input type="dni" name="dni" id="dni" placeholder="Clave Unica de Identificacion Tributaria">
-              </label>
-            </div>
+           
             <div class="registerInput profesiones-list">
               <label>Profesiones:
                 <!-- class="selectpicker" multiple -->
-                <select name="jobTitle">
+                <select name="professionId">
 
                   <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
 
-                    <option value="<%=uniqueProfession[i]%> " selected>
+                    <option value="<%=uniqueProfessionId[i]%> " selected>
                       <%=uniqueProfession[i]%>
                     </option>
 
@@ -89,38 +65,33 @@
                 </select>
               </label>
             </div>
+          
             <div class="registerInput">
-              <label for="license">Matricula (en Caso de Aplicar):
-                <input type="text" name="license" id="license">
+              <label for="licence">Matricula (en Caso de Aplicar):
+                <input type="text" name="licence" id="licence">
               </label>
             </div>
             <div class="registerInput localidad-list">
               <label>Zona de Prestacion de Servicio:
-                <select name="jobZone">
+                <select name="workZone">
                   <!-- usar una API -->
-                  <option value="Capital Federal" selected>Capital Federal</option>
-                  <option value="GBA Norte">GBA Norte</option>
-                  <option value="GBA Oeste">GBA Oeste</option>
-                  <option value="GBA Sur">GBA Sur</option>
-                  <option value="Mendoza">Mendoza</option>
-                  <option value="Cordoba">Cordoba</option>
-                  <option value="Rosario">Rosario</option>
-                  <option value="Lejano Oeste">Lejano Oeste</option>
-                  <% for (let i=0 ; i < uniqueWorkZones.length ; i++){%>
-
-                    <option value="<%=uniqueWorkZones[i]%> ">
-                      <%=uniqueWorkZones[i]%>
-                    </option>
-
-                    <% } %>
+                  <option value="1" selected>Capital Federal</option>
+                  <option value="2">GBA Norte</option>
+                  <option value="3">GBA Oeste</option>
+                  <option value="4">GBA Sur</option>
+                  <option value="5">Mendoza</option>
+                  <option value="6">Cordoba</option>
+                  <option value="7">Rosario</option>
+                  <option value="8">Lejano Oeste</option>
+               <!-- usar api -->
                 </select>
               </label>
             </div>
             <div class="registerInput expirience-list">
               <label>Atiende Emergencias:
                 <select name="emergency">
-                  <option value="Si" selected>Si</option>
-                  <option value="No">No</option>
+                  <option value="1" selected>Si</option>
+                  <option value="0">No</option>
                 </select>
               </label>
             </div>
@@ -177,8 +148,8 @@
             </div>
 
             <div class="registerInput jobs">
-              <label for="jobImages">Fotos de Trabajos Realizados (max 10)
-                <input type="file" name="jobImages" accept=".jpg, .png, .bmp" multiple>
+              <label for="workImages">Fotos de Trabajos Realizados (max 10)
+                <input type="file" name="workImages" accept=".jpg, .png, .bmp" multiple>
               </label>
             </div>
             <div class="registerInput">
@@ -186,16 +157,8 @@
                 <input type="number" name="cbu" id="cbu">
               </label>
             </div>
-            <div class="registerInput">
-              <label for="password">Contraseña:
-                <input type="password" name="password" id="password">
-              </label>
-            </div>
-            <div class="registerInput">
-              <label for="passwordConfirm">Confirmar Contraseña:
-                <input type="password" name="passwordConfirm" id="passwordConfirm">
-              </label>
-            </div>
+           
+           
             <div class="confirm-button">
               <button type="submit">Crear</button>
             </div>

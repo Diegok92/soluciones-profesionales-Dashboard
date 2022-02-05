@@ -18,7 +18,7 @@ const clientDbController = {
 
   //Boton del form de creacion cliente (POST)
   createClient: function (req, res) {
-    res.locals.dniRegistered = req.body.dni;
+    req.session.dniFound = req.body.dni;
 
     db.Client.create({
       firstName: req.body.firstName,
@@ -32,7 +32,7 @@ const clientDbController = {
       city_Id: req.body.city_Id, //viene num por form (futuro, API)
       role: req.body.role,
     });
-    console.log("antes del if");
+    //console.log("antes del if");
 
     if (req.body.role == "Client") {
       console.log("dentro del if para client");

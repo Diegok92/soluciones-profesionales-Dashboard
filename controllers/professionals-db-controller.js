@@ -15,57 +15,76 @@ const professionalDBController = {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
       const uniqueProfession = [];
+      const uniqueProfessionId = [];
       const uniqueWorkZones = [];
+      const uniqueWorkZonesId = [];
       for (let i = 0; i < profData.length; i++) {
         if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
           uniqueProfession.push(profData[i].professions[0].profession);
-        }
+          uniqueProfessionId.push(profData[i].professions[0].id);
+          //console.log("la profesion es "+ uniqueProfession);
+          // console.log("y su id es "+ uniqueProfessionId);
+
+      }
+       
       }
       for (let i = 0; i < profData.length; i++) {
         if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
           uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
+          uniqueWorkZonesId.push(profData[i].workZones.id);
+          // console.log("la work zone es "+ uniqueWorkZones);
+          // console.log("y su id es "+ uniqueWorkZonesId);
+        
         } //location es el nombre de la columna de DB
       }
-      //console.log(uniqueWorkZones);
-
+      console.log(uniqueWorkZonesId);
+      
       res.render("professionals/registerProf", {
         userClient: userClient,
         userProf: userProf,
         uniqueProfession: uniqueProfession,
+        uniqueProfessionId: uniqueProfessionId,
         uniqueWorkZones: uniqueWorkZones,
+        uniqueWorkZonesId: uniqueWorkZonesId,
       });
     });
   },
 
   //boton de crear en vista registerProf
   createProf: function (req, res) {
-    let dniCreadoPrevio = res.locals.dniRegistered;
-    console.log("dniprevio vale " + dniCreadoPrevio); //UNDEFINEEEEEEED
+    let dniCreadoPrevio = req.session.dniFound;
+    
     db.Client.findOne({
       where: {
         dni: dniCreadoPrevio,
       },
     })
       .then(function (result) {
-        console.log("result vale " + result);
+        //console.log("result vale " + result);
 
         let clientFound = result.id;
         return clientFound;
       })
       .then(function (clientId) {
+       
         db.Professional.create({
-          professional_profession_id: 100,
-          licence: "pDZNvyPYZ9oE",
-          workZone_id: 50,
-          emergency: "0",
-          professional_WorkDay_id: 100,
-          whyMe: "orci luctus et ultricesipit a",
-          price: "$9510.66",
-          workImage_id: 100,
-          cbu: "IS74 3493 0542 2584 1298 8646 70",
+          emergency: req.body.emergency,
+          whyMe: req.body.whyMe,
+          price: req.body.price,
+          cbu: req.body.cbu,
+          licence: req.body.licence,
           client_id: clientId,
-          workImage_id: 100,
-        });
+          workZone_id: req.body.workZone,
+          //professsion: professionId
+          //workImage_id:
+          //shift:
+          //workDays:
+        }).then(function(data){
+
+       res.redirect("/login")
+
+        })
+     
       });
 
     //meter en prof el client_id

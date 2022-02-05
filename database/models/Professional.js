@@ -10,14 +10,12 @@ module.exports = (sequelize) => {
     },
     emergency: Sequelize.INTEGER, //si no anda pasarlo a string (mokaroo da 1/0)
     whyMe: Sequelize.TEXT,
-    price: Sequelize.INTEGER,
-    cbu: Sequelize.BIGINT,
+    price: Sequelize.STRING,
+    cbu: Sequelize.STRING,
     licence: Sequelize.STRING,
-    client_id: Sequelize.STRING,
-    professional_profession_id: Sequelize.STRING,
-    workZone_id: Sequelize.STRING,
-    professional_WorkDay_id: Sequelize.STRING,
-    workImage_id: Sequelize.STRING,
+    client_id: Sequelize.INTEGER,
+    workZone_id: Sequelize.INTEGER,
+    workImage_id: Sequelize.INTEGER,
   };
   const config = {
     tableName: "professional",
