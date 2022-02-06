@@ -116,6 +116,13 @@ module.exports = {
     }
   },
 
+  signout : (req, res) => {
+    
+    req.session.destroy();
+    
+    res.redirect('/');
+  }
+
   //Busqueda Vieja (en JSON)
   // for (let i = 0; i < clientsList.length; i++) {
   //   if (clientsList[i].email == user) {
