@@ -39,12 +39,18 @@ clientsRoute.get(
   clientDbController.clientDetail
 ); //usar PrivateClient
 
-// clientsRoute.get(
-//   "/:dni/editClients",
-//   authPrivateClientMiddleware,
-//   clientsController.editClients
-// ); //muestro form de edicion
-// clientsRoute.put("/:dni", clientsController.updateClients);
+clientsRoute.get(
+  "/:dni/editClient",
+  uploadFile.single("avatar"),
+  authPrivateClientMiddleware,
+  clientDbController.editClient
+); //muestro form de edicion
+
+clientsRoute.put(
+  "/:dni",
+  uploadFile.single("avatar"),
+  clientDbController.updateClient
+); //por aca viaja al apretar el boton "edit" del formulario
 
 // clientsRoute.get(
 //   "/:dni/deleteClients",

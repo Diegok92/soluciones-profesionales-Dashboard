@@ -16,8 +16,8 @@ const clientDbController = {
     });
   },
 
-  //Boton del form de creacion cliente (POST)
   createClient: function (req, res) {
+    //Boton del form de creacion cliente (POST)
     req.session.dniFound = req.body.dni;
 
     db.Client.create({
@@ -42,14 +42,19 @@ const clientDbController = {
     }
   },
 
-  //Actualizar para usar la DB
-  //por (GET)
+  //muestra el id en lugar de la ciudad
   clientDetail: (req, res) => {
-    db.Client.findOne({
-      where: {
-        dni: req.params.dni,
-      },
-    }).then(function (result) {
+    //por (GET)
+    db.Client.findOne(
+      // {
+      //   include: [{ association: "cities" }],
+      // },
+      {
+        where: {
+          dni: req.params.dni,
+        },
+      }
+    ).then(function (result) {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
       let clientFound = result;
@@ -58,47 +63,64 @@ const clientDbController = {
       res.render("users/clientDetail", {
         userClient: userClient,
         userProf: userProf,
-        prueba: clientFound,
+        clientFound: clientFound,
       }); //render usa ruta en carpeta (users)
     });
   },
 
-  // //Actualizar para usar la DB
-  // //por (GET)
-  // editClient: (req, res) => {
-  //   let userProf = req.session.profFound;
-  //   let userClient = req.session.clientFound;
+  // la vista de edit no trae el value de ciudad
 
-  //   const aEditar = clients.filter(function (clients) {
-  //     return clients.dni == req.params.dni;
-  //   });
-  //   res.render("users/editClient", {
-  //     aEditar: aEditar,
-  //     userClient: userClient,
-  //     userProf: userProf,
-  //   }); //carpeta professionals
-  // },
-  // //Actualizar para usar la DB
-  // //por (PUT)
-  // updateClients: (req, res) => {
-  //   let userProf = req.session.profFound;
-  //   let userClient = req.session.clientFound;
-  //   //por aca viaja el boton "confirmar" del form editClient
-  //   const indexClientsBuscado = clients.findIndex(function (clients) {
-  //     return clients.dni == userClient.dni;
-  //   });
-  //   //console.log(req);
-  //   const updateClients = {
-  //     ...req.body,
-  //     password: userClient.password,
-  //   };
+  editClient: (req, res) => {
+    // por (GET)
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    console.log("Dentro req.params.dni " + req.params.dni);
 
-  //   clients[indexClientsBuscado] = updateClients; //reemplazo el actualizado en el listado original
-  //   //console.log(updateClients);
-  //   saveClients();
+    db.Client.findOne(
+      // {
+      //   include: [{ association: "cities" }],
+      // },
+      {
+        where: {
+          dni: req.params.dni,
+        },
+      }
+    ).then(function (result) {
+      let userProf = req.session.profFound;
+      let userClient = req.session.clientFound;
+      let clientFound = result;
 
-  //   res.redirect("/");
-  // },
+      res.render("users/editClient", {
+        userClient: userClient,
+        userProf: userProf,
+        clientFound: clientFound,
+      }); //carpeta professionals
+    });
+  },
+
+  //Actualizar para usar la DB
+  //por (PUT)
+  updateClient: (req, res) => {
+    req.session.dniFound = req.body.dni;
+
+    db.Client.update(
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        city_Id: req.body.city_Id, //viene num por form (futuro, API)
+        address: req.body.address,
+        dni: req.body.dni,
+        mobile: req.body.mobile,
+        avatar: req.file.filename,
+      },
+      {
+        where: { dni: req.session.dniFound },
+      }
+    );
+
+    res.redirect("/");
+  },
 };
 
 module.exports = clientDbController;

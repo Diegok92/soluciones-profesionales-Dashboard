@@ -20,52 +20,65 @@
         <%- include("../partials/nav-bar") %>
 
             <main>
-                <form action="/clients/<%=aEditar[0].dni%>?_method=PUT" method="POST" class="clientForm">
-                    
-                        <div class="registerInput">
-                            <label for="firstName">Nombre:
-                                <input type="text" name="firstName" id="firstNombre" placeholder="Ej: Cosme" value="<%=aEditar[0].firstName %>">
-                            </label>
-                        </div>
-                        <div class="registerInput">
-                            <label for="lastName">Apellido:
-                                <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito" value="<%=aEditar[0].lastName%>">
-                            </label>
-                        </div>
-                        <div class="registerInput">
-                            <label for="email">Email:
-                                <input type="email" name="email" id="email" value="<%=aEditar[0].email%>">
-                            </label>
-                        </div>
-                        <div class="registerInput localidad-list">
-                            <label>Localidad
-                                <select name="localidad">
-                                    <option value="Capital Federal" <%=(aEditar[0].localidad=="Capital Federal" ) ? "selected" : "" %>>Capital Federal</option>
-                                    <option value="Conurbano" <%=(aEditar[0].localidad=="Conurbano" ) ? "selected" : "" %>>Conurbano</option>
-                                    <option value="Interior" <%=(aEditar[0].localidad=="Interior" ) ? "selected" : "" %>>Interior</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="registerInput">
-                            <label for="adress">Dirección:
-                                <input type="text" name="adress" id="adress" placeholder="Calle falsa 123 2A" value="<%=aEditar[0].adress%>">
-                            </label>
-                        </div>
-                        <div class="registerInput">
-                            <label for="dni">DNI:
-                                <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad" value="<%=aEditar[0].dni%>">
-                            </label>
-                        </div>
-                        <div class="registerInput avatar">
-                            <label for="avatar">Foto de Perfil
-                                <input type="file" name="avatar" accept=".jpg, .png, .bmp" >
-                            </label>
-                        </div>
-                        
-                        <div class="confirm-button">
-                            <button type="submit">Enviar</button>
-                        </div>
-                    </form>
+                <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" class="clientForm">
+
+                    <div class="registerInput">
+                        <label for="firstName">Nombre:
+                            <input type="text" name="firstName" id="firstNombre" placeholder="Ej: Cosme"
+                                value="<%=clientFound.firstName %>">
+                        </label>
+                    </div>
+                    <div class="registerInput">
+                        <label for="lastName">Apellido:
+                            <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito"
+                                value="<%=clientFound.lastName%>">
+                        </label>
+                    </div>
+                    <div class="registerInput">
+                        <label for="email">Email:
+                            <input type="email" name="email" id="email" value="<%=clientFound.email%>">
+                        </label>
+                    </div>
+                    <div class="registerInput">
+                        <label for="mobile">Telefono (Sin espacios ni Guiones):
+                            <input type="number" name="mobile" id="mobile" placeholder="Ej: 01112345678"
+                                value="<%=clientFound.mobile%>">
+                        </label>
+                    </div>
+                    <div class="registerInput localidad-list">
+                        <label>Localidad donde Reside
+                            <select name="city_Id">
+                                <!-- usar una API -->
+                                <option value="1" <%=(clientFound.city_Id=="1" ) ? "selected" : "" %>>Capital Federal
+                                </option>
+                                <option value="2" <%=(clientFound.city_Id=="2" ) ? "selected" : "" %>>Conurbano</option>
+                                <option value="3" <%=(clientFound.city_Id=="3" ) ? "selected" : "" %>>Interior</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="registerInput">
+                        <label for="address">Dirección:
+                            <input type="text" name="address" id="address" placeholder="Calle falsa 123 2A"
+                                value="<%=clientFound.address%>">
+                        </label>
+                    </div>
+                    <div class="registerInput">
+                        <label for="dni">DNI:
+                            <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad"
+                                value="<%=clientFound.dni%>" disabled>
+                        </label>
+                    </div>
+                    <div class="registerInput avatar">
+                        <label for="avatar">Foto de Perfil
+                            <input src="images/clients/<%=clientFound.avatar%>" type="file" name="avatar"
+                                accept=".jpg, .png, .bmp" value="<%=clientFound.avatar%>">
+                        </label>
+                    </div>
+
+                    <div class="confirm-button">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
                 </section>
 
                 <%- include("../partials/ad-bottom-body") %>

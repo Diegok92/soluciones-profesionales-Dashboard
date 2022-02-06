@@ -29,7 +29,7 @@
 
                         </p>
                         <p class="name-per-device-productDetail">
-                            <%= prueba.firstName + " " + prueba.lastName %>
+                            <%= clientFound.firstName + " " + clientFound.lastName %>
                         </p>
                         <!--el nombre cambia segun el profesonial  -->
                     </div>
@@ -39,6 +39,8 @@
                             <div class="top-flex-mobile">
                                 <div class="prof-avatar">
                                     <!-- Foto cargada por el cliente (.jpg, .png, .bmp) -->
+
+                                    <img src="/images/clients/<%=clientFound.avatar%>">
                                 </div>
 
                             </div>
@@ -48,13 +50,13 @@
 
                             <div class=" details">
                                 <div>
-                                    <p>Email: <%=prueba.email %>
+                                    <p>Email: <%=clientFound.email %>
                                     </p>
-                                    <p>DNI: <%=prueba.dni%>
+                                    <p>DNI: <%=clientFound.dni%>
                                     </p>
-                                    <p>Ciudad: <%=prueba.city_Id%>
+                                    <p>Ciudad: <%=clientFound.city_Id%>
                                     </p>
-                                    <p>Direccion: <%=prueba.address %>
+                                    <p>Direccion: <%=clientFound.address %>
                                     </p>
                                 </div>
                             </div>
@@ -65,11 +67,11 @@
 
                     <div class="buttons-below-avatar">
                         <div>
-                            <a href="/clients/<%=prueba.dni %>/editClients">
+                            <a href="/clients/<%=clientFound.dni %>/editClient">
                                 <button type="submit" style="width: 25vw;">Editar Perfil</button>
                             </a>
                         </div>
-                        <a href="/clients/<%= prueba.dni %>/deleteClients">
+                        <a href="/clients/<%= clientFound.dni %>/deleteClient">
                             <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
                         </a>
                     </div>
