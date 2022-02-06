@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 
 const professionalDBController = {
   //cambiar nombre en enroutador, anterior 'rubros'
+
   //GET del registerProf
   registerProf: function (req, res) {
     db.Professional.findAll({
@@ -24,9 +25,7 @@ const professionalDBController = {
           uniqueProfessionId.push(profData[i].professions[0].id);
           //console.log("la profesion es "+ uniqueProfession);
           // console.log("y su id es "+ uniqueProfessionId);
-
-      }
-       
+        }
       }
       for (let i = 0; i < profData.length; i++) {
         if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
@@ -34,11 +33,10 @@ const professionalDBController = {
           uniqueWorkZonesId.push(profData[i].workZones.id);
           // console.log("la work zone es "+ uniqueWorkZones);
           // console.log("y su id es "+ uniqueWorkZonesId);
-        
         } //location es el nombre de la columna de DB
       }
-      console.log(uniqueWorkZonesId);
-      
+      //console.log(uniqueWorkZonesId);
+
       res.render("professionals/registerProf", {
         userClient: userClient,
         userProf: userProf,
@@ -50,10 +48,10 @@ const professionalDBController = {
     });
   },
 
-  //boton de crear en vista registerProf
+  //boton de crear en vista registerProf (POST)
   createProf: function (req, res) {
     let dniCreadoPrevio = req.session.dniFound;
-    
+
     db.Client.findOne({
       where: {
         dni: dniCreadoPrevio,
@@ -66,7 +64,6 @@ const professionalDBController = {
         return clientFound;
       })
       .then(function (clientId) {
-       
         db.Professional.create({
           emergency: req.body.emergency,
           whyMe: req.body.whyMe,
@@ -79,12 +76,9 @@ const professionalDBController = {
           //workImage_id:
           //shift:
           //workDays:
-        }).then(function(data){
-
-       res.redirect("/login")
-
-        })
-     
+        }).then(function (data) {
+          res.redirect("/login");
+        });
       });
 
     //meter en prof el client_id

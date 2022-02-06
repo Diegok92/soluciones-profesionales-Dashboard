@@ -29,7 +29,7 @@
 
                         </p>
                         <p class="name-per-device-productDetail">
-                            <%= clientsObject[0].firstName + " " + clientsObject[0].lastName %>
+                            <%= prueba.firstName + " " + prueba.lastName %>
                         </p>
                         <!--el nombre cambia segun el profesonial  -->
                     </div>
@@ -48,13 +48,13 @@
 
                             <div class=" details">
                                 <div>
-                                    <p>Email: <%=clientsObject[0].email %>
+                                    <p>Email: <%=prueba.email %>
                                     </p>
-                                    <p>DNI: <%=clientsObject[0].dni%>
+                                    <p>DNI: <%=prueba.dni%>
                                     </p>
-                                    <p>Ciudad: <%=clientsObject[0].city%>
+                                    <p>Ciudad: <%=prueba.city_Id%>
                                     </p>
-                                    <p>Direccion: <%=clientsObject[0].adress %>
+                                    <p>Direccion: <%=prueba.address %>
                                     </p>
                                 </div>
                             </div>
@@ -65,35 +65,35 @@
 
                     <div class="buttons-below-avatar">
                         <div>
-                            <a href="/clients/<%=clientsObject[0].dni %>/editClients">
+                            <a href="/clients/<%=prueba.dni %>/editClients">
                                 <button type="submit" style="width: 25vw;">Editar Perfil</button>
                             </a>
                         </div>
-                        <a href="/clients/<%= clientsObject[0].dni %>/deleteClients">
+                        <a href="/clients/<%= prueba.dni %>/deleteClients">
                             <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
                         </a>
                     </div>
 
                     <h3 class=" title-categories">Tambien te Puede Interesar</h3>
-                    <section class="icon-categories">
+                    <!-- <section class="icon-categories">
                         <article class="icon-article">
-                            <!-- meter if en los links para /rubros/plomero o /dentista -->
+                            
                             <a href="../rubros/Mecanico">
-                                <!-- mecanica auto 1-->
+                              
                                 <i class="fas fa-wrench"></i>
                                 <p class="icon-txt">Mecanicos/as</p>
                             </a>
                         </article>
                         <article class="icon-article">
                             <a href="../rubros/Electricista">
-                                <!-- electricista 2-->
+                                
                                 <i class="fas fa-plug"></i>
                                 <p class="icon-txt">Electricistas</p>
                             </a>
                         </article>
                         <article class="icon-article">
                             <a href="../rubros/Odontologo">
-                                <!-- dentistas 3-->
+                                
                                 <i class="fas fa-tooth"></i>
                                 <p class="icon-txt">Odontologos/as</p>
                             </a>
@@ -101,7 +101,7 @@
 
                         <article class="icon-article">
                             <a href="../rubros/Plomero">
-                                <!-- plomeria 4-->
+                               
                                 <i class="fas fa-faucet"></i>
                                 <p class="icon-txt">Plomeros/as</p>
                             </a>
@@ -109,7 +109,7 @@
 
                         <article class="icon-article">
                             <a href="../rubros/Carpintero">
-                                <!-- carpinteria 5-->
+                              
                                 <i class="fas fa-hammer"></i>
                                 <p class="icon-txt">Carpinteros/as/
                                     <p>
@@ -117,12 +117,12 @@
                         </article>
                         <article class="icon-article">
                             <a href="../rubros/Pintor">
-                                <!-- pintores 6-->
+                             
                                 <i class="fas fa-paint-roller"></i>
                                 <p class="icon-txt">Pintores/as</p>
                             </a>
                         </article>
-                    </section>
+                    </section> -->
 
                     <%- include("../partials/ad-bottom-body") %>
 

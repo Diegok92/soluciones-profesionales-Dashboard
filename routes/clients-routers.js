@@ -33,11 +33,11 @@ clientsRoute.post(
   clientDbController.createClient
 );
 
-// clientsRoute.get(
-//   "/:dni",
-//   authPrivateClientMiddleware,
-//   clientsController.clientsDetail
-// ); //usar PrivateClient
+clientsRoute.get(
+  "/:dni",
+  authPrivateClientMiddleware,
+  clientDbController.clientDetail
+); //usar PrivateClient
 
 // clientsRoute.get(
 //   "/:dni/editClients",

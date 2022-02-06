@@ -32,7 +32,6 @@ const clientDbController = {
       city_Id: req.body.city_Id, //viene num por form (futuro, API)
       role: req.body.role,
     });
-    //console.log("antes del if");
 
     if (req.body.role == "Client") {
       console.log("dentro del if para client");
@@ -42,6 +41,64 @@ const clientDbController = {
       res.redirect("/rubros/registerProf");
     }
   },
+
+  //Actualizar para usar la DB
+  //por (GET)
+  clientDetail: (req, res) => {
+    db.Client.findOne({
+      where: {
+        dni: req.params.dni,
+      },
+    }).then(function (result) {
+      let userProf = req.session.profFound;
+      let userClient = req.session.clientFound;
+      let clientFound = result;
+      //console.log("Dentro del result viene " + clientFound.email);
+
+      res.render("users/clientDetail", {
+        userClient: userClient,
+        userProf: userProf,
+        prueba: clientFound,
+      }); //render usa ruta en carpeta (users)
+    });
+  },
+
+  // //Actualizar para usar la DB
+  // //por (GET)
+  // editClient: (req, res) => {
+  //   let userProf = req.session.profFound;
+  //   let userClient = req.session.clientFound;
+
+  //   const aEditar = clients.filter(function (clients) {
+  //     return clients.dni == req.params.dni;
+  //   });
+  //   res.render("users/editClient", {
+  //     aEditar: aEditar,
+  //     userClient: userClient,
+  //     userProf: userProf,
+  //   }); //carpeta professionals
+  // },
+  // //Actualizar para usar la DB
+  // //por (PUT)
+  // updateClients: (req, res) => {
+  //   let userProf = req.session.profFound;
+  //   let userClient = req.session.clientFound;
+  //   //por aca viaja el boton "confirmar" del form editClient
+  //   const indexClientsBuscado = clients.findIndex(function (clients) {
+  //     return clients.dni == userClient.dni;
+  //   });
+  //   //console.log(req);
+  //   const updateClients = {
+  //     ...req.body,
+  //     password: userClient.password,
+  //   };
+
+  //   clients[indexClientsBuscado] = updateClients; //reemplazo el actualizado en el listado original
+  //   //console.log(updateClients);
+  //   saveClients();
+
+  //   res.redirect("/");
+  // },
 };
 
 module.exports = clientDbController;
