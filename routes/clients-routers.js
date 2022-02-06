@@ -1,11 +1,13 @@
 // const { application } = require("express");
 const express = require("express");
+const clientsRoute = express.Router();
 const multer = require("multer");
 const path = require("path");
 const authNotClientstMiddleware = require("../middlewares/authNotClientsMiddleware");
 const authClientsMiddleware = require("../middlewares/authClientsMiddleware");
 const authPrivateClientMiddleware = require("../middlewares/authPrivateClientMiddleware");
 const clientDbController = require("../controllers/clients-db-controller");
+const { ClientRequest } = require("http");
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -20,7 +22,7 @@ const storage = multer.diskStorage({
 
 const uploadFile = multer({ storage: storage });
 
-const clientsRoute = express.Router();
+// ---- Registration forms ----
 
 clientsRoute.get(
   "/registerClients",
@@ -32,6 +34,8 @@ clientsRoute.post(
   uploadFile.single("avatar"),
   clientDbController.createClient
 );
+
+// ---- Profile forms ----
 
 clientsRoute.get(
   "/:dni",
@@ -59,5 +63,9 @@ clientsRoute.put(
 //   clientsController.showDeleteClients
 // ); //muestro form de confirmación de eliminación
 // clientsRoute.delete("/:dni", clientsController.deleteClients);
+
+// ---- Delete route ----
+
+clientsRoute.delete('/:dni/deleteClient', clientDbController.delete)
 
 module.exports = clientsRoute;

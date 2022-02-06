@@ -71,9 +71,11 @@
                                 <button type="submit" style="width: 25vw;">Editar Perfil</button>
                             </a>
                         </div>
-                        <a href="/clients/<%= clientFound.dni %>/deleteClient">
-                            <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
-                        </a>
+                        <form action="/clients/<%= clientFound.dni %>/deleteClient?_method=DELETE" method="post">
+                            <a href=>
+                                <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
+                            </a>
+                        </form>
                     </div>
 
                     <h3 class=" title-categories">Tambien te Puede Interesar</h3>

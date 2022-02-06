@@ -112,7 +112,7 @@ const clientDbController = {
         address: req.body.address,
         dni: req.body.dni,
         mobile: req.body.mobile,
-        avatar: req.file.filename,
+        //avatar: req.file.filename,
       },
       {
         where: { dni: req.session.dniFound },
@@ -121,6 +121,19 @@ const clientDbController = {
 
     res.redirect("/");
   },
+
+  delete: async (req, res) => {
+    
+    await db.Client.destroy({
+      where:{
+        dni: req.params.dni,
+      },
+    });
+    
+    req.session.destroy();
+    
+    res.redirect('/');
+  }
 };
 
 module.exports = clientDbController;
