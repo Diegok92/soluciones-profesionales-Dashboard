@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
 
 WorkImage.associate= function(models){
 
-  WorkImage.belongsTo(models.Professional, {
+  WorkImage.hasOne(models.Professional, {
     as: "workImages",
     foreignKey: "workImage_id"
   });

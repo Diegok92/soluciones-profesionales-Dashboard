@@ -53,7 +53,7 @@ module.exports = (sequelize) => {
     Professional.belongsToMany(models.Shift, {
 
       as: "shifts",  //nombre de la asociación
-      through: "professionals_workDays",
+      through: "professionals_workdays",
       foreignKey: "professional_id",
       otherKey : "workDay_id",
       otherKey : "shift_id",
@@ -63,7 +63,7 @@ module.exports = (sequelize) => {
     Professional.belongsToMany(models.WorkDay, {
 
       as: "workDays",  //nombre de la asociación
-      through: "professionals_workDays",
+      through: "professionals_workdays",
       foreignKey: "professional_id",
       otherKey : "workDay_id",
       otherKey : "shift_id",

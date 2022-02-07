@@ -49,39 +49,48 @@ const professionalDBController = {
   },
 
   //boton de crear en vista registerProf (POST)
-  createProf: function (req, res) {
-    let dniCreadoPrevio = req.session.dniFound;
+  createProf: async function (req, res) {
+    // console.log(
+    //   "#########################################################################################"
+    // );
+    //console.log(req.body.jobDay[0]);
+    //console.log(req.body.jobDay[1])
 
-    db.Client.findOne({
+    const dniCreadoPrevio = await req.session.dniFound;
+
+    const clientDataFound = await db.Client.findOne({
       where: {
         dni: dniCreadoPrevio,
       },
-    })
-      .then(function (result) {
-        //console.log("result vale " + result);
+    });
+    const clientFound = await clientDataFound.id;
 
-        let clientFound = result.id;
-        return clientFound;
-      })
-      .then(function (clientId) {
-        db.Professional.create({
-          emergency: req.body.emergency,
-          whyMe: req.body.whyMe,
-          price: req.body.price,
-          cbu: req.body.cbu,
-          licence: req.body.licence,
-          client_id: clientId,
-          workZone_id: req.body.workZone,
-          //professsion: professionId
-          //workImage_id:
-          //shift:
-          //workDays:
-        }).then(function (data) {
-          res.redirect("/login");
-        });
-      });
+    const createWorkimage = await db.WorkImage.create({
+      imageTitle: req.file.filename,
+    });
 
-    //meter en prof el client_id
+    const prof = await db.Professional.create({
+      emergency: req.body.emergency,
+      whyMe: req.body.whyMe,
+      price: req.body.price,
+      cbu: req.body.cbu,
+      licence: req.body.licence,
+      client_id: clientFound,
+      workZone_id: req.body.workZone,
+
+      workImage_id: createWorkimage.id,
+
+      //shift:
+      //workDays:
+    });
+
+    await prof.setProfessions(req.body.professionId);
+
+    await prof.setWorkDays(1); //despues del Set va en mayuscula el alias de la asociacion
+
+    await prof.setShifts(2);
+
+    res.redirect("/login");
   },
 
   // Edit
