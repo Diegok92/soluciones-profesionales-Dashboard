@@ -12,9 +12,9 @@
     max-width: 150px;
   }
   .allProduct {
-    width: 90%;
+    /* width: 90%; */
     background-color: white;
     margin: auto;
-    padding: 10px;
+    /* padding: 10px; */
   }
 }

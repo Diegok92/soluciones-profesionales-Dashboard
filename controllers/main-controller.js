@@ -87,35 +87,41 @@ module.exports = {
         //console.log(userFound);
 
         if (userFound == undefined) {
-          res.render("login", {
+          return res.render("login", {
             errors: [{ msg: "email - Credenciales Invalidas" }],
             old: req.body,
           });
-          return res.redirect("/");
-        }
-
-        if (bcrypt.compareSync(req.body.password, userFound.password) == true) {
-          if (userFound.role == "Client") {
-            req.session.clientFound = userFound;
-            clientFound = userFound;
-          } else if (userFound.role == "Professional") {
-            req.session.profFound = userFound;
-            profFound = userFound;
-          } else if (userFound.role == "Admin") {
-            req.session.admin = userFound;
-            admin = userFound;
+          //return res.redirect("/");
+        } else if (userFound != undefined) {
+          if (bcrypt.compareSync(req.body.password, userFound.password) == true) {
+            if (userFound.role == "Client") {
+              req.session.clientFound = userFound;
+              clientFound = userFound;
+            } else if (userFound.role == "Professional") {
+              req.session.profFound = userFound;
+              profFound = userFound;
+            } else if (userFound.role == "Admin") {
+              req.session.admin = userFound;
+              admin = userFound;
+            }
+          } else {
+            return res.render("login", {
+              errors: [{ msg: "pass - Credenciales Invalidas" }],
+              old: req.body,
+            });
           }
-        } else {
-          res.render("login", {
-            errors: [{ msg: "pass - Credenciales Invalidas" }],
-            old: req.body,
-          });
         }
-
         return res.redirect("/");
       });
     }
   },
+
+  signout : (req, res) => {
+    
+    req.session.destroy();
+    
+    res.redirect('/');
+  }
 
   //Busqueda Vieja (en JSON)
   // for (let i = 0; i < clientsList.length; i++) {

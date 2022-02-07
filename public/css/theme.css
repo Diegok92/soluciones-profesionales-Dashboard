@@ -113,6 +113,14 @@ body {
   text-decoration: none;
 }
 
+.nav-login .login .session-icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 4rem;
+}
+
 .fa-shopping-cart {
   color: rgb(248, 212, 92);
 }
@@ -330,4 +338,11 @@ body {
 
 .c333 {
   color: #333;
+}
+
+.errors {
+  text-align: center;
+  color: darkred;
+  padding-top: 1rem;
+  font-weight: 600;
 }
