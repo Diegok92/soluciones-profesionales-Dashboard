@@ -24,10 +24,11 @@ module.exports = (sequelize) => {
     WorkDay.belongsToMany(models.Professional, {
   
       as: "professionals",  //nombre de la asociación
-      through: "professionals_workDays",
+      through: "professionals_workdays",
       foreignKey: "workDay_id",
-      otherKey : "shift_id",
       otherKey :"professional_id",
+      otherKey : "shift_id",
+      
       timestamps: false
     })};
 

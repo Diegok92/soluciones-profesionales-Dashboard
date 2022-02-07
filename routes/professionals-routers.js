@@ -43,7 +43,7 @@ profRoute.get(
 );
 profRoute.post(
   "/registerProf",
-  uploadFile.single("workImage"), //(antes decia "avatar")
+  uploadFile.single("workImages"), //(antes decia "avatar")
   professionalDBController.createProf
 );
 

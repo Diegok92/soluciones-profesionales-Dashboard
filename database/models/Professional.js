@@ -65,8 +65,8 @@ module.exports = (sequelize) => {
       as: "workDays",  //nombre de la asociación
       through: "professionals_workdays",
       foreignKey: "professional_id",
-      otherKey : "workDay_id",
       otherKey : "shift_id",
+      otherKey : "workDay_id",
       timestamps: false
     });
 

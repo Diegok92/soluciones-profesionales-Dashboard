@@ -25,10 +25,11 @@ Shift.associate = function(models){
   Shift.belongsToMany(models.Professional, {
 
     as: "professionals",  //nombre de la asociación
-    through: "professionals_workDays",
+    through: "professionals_workdays",
     foreignKey: "shift_id",
-    otherKey : "workDay_id",
     otherKey :"professional_id",
+    otherKey : "workDay_id",
+    
     timestamps: false
   });
 

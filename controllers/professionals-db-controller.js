@@ -86,10 +86,14 @@ const professionalDBController = {
 
     await prof.setProfessions(req.body.professionId);
 
-    await prof.setWorkDays(1); //despues del Set va en mayuscula el alias de la asociacion
+    await prof.setShifts(1)
+    
+    await prof.setWorkDays(2); //despues del Set va en mayuscula el alias de la asociacion
 
-    await prof.setShifts(2);
+    
 
+
+    
     res.redirect("/login");
   },
 
