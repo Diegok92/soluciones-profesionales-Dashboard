@@ -26,56 +26,64 @@
             <main>
                 <div class="allProduct">
                     <div class="prof-title-father">
-                        <p class="title-per-device-productDetail">
-                        <h2>Perfil de:</h2>
+                        
+                        <h2 class="title-per-device-productDetail">Perfil de:</h2>
 
-                        </p>
+                        
                         <p class="name-per-device-productDetail">
                             <%= clientFound.firstName + " " + clientFound.lastName %>
                         </p>
                         <!--el nombre cambia segun el profesonial  -->
                     </div>
                     <div class="columns-productDetail-father">
-                        <div class="column12-productDetail">
+                        <!-- <div class="column12-productDetail"> -->
 
-                            <div class="top-flex-mobile">
+                            <!-- <div class="top-flex-mobile"> -->
                                 <div class="prof-avatar">
                                     <!-- Foto cargada por el cliente (.jpg, .png, .bmp) -->
 
                                     <img src="/images/clients/<%=clientFound.avatar%>">
                                 </div>
 
-                            </div>
-                        </div>
-                        <div class="column22-productDetail">
-                            <p class="title-prof-name">Mis Datos</p>
-
-                            <div class=" details">
-                                <div>
-                                    <p>Email: <%=clientFound.email %>
-                                    </p>
-                                    <p>DNI: <%=clientFound.dni%>
-                                    </p>
-                                    <p>Ciudad: <%=clientFound.city_Id%>
-                                    </p>
-                                    <p>Direccion: <%=clientFound.address %>
-                                    </p>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="column22-productDetail"> -->
+                            
+                            <div class="details">
+                                <div class="details-info">
+                                    <h2 class="title-prof-name">Mis Datos</h2>
+                                </div>
+                                <div class="details-info">
+                                    <p>Email: </p>
+                                    <p> <%=clientFound.email %></p>
+                                </div>
+                                <div class="details-info">
+                                    <p>DNI: </p>
+                                    <p> <%=clientFound.dni%></p>
+                                </div>
+                                <div class="details-info">
+                                    <p>Ciudad: </p>
+                                    <p> <%=clientFound.city_Id%></p>
+                                </div>
+                                <div class="details-info">
+                                    <p>Direccion: </p>
+                                    <p> <%=clientFound.address %></p>
                                 </div>
                             </div>
 
-                        </div>
+                        <!-- </div> -->
 
                     </div>
 
                     <div class="buttons-below-avatar">
                         <div>
                             <a href="/clients/<%=clientFound.dni %>/editClient">
-                                <button type="submit" style="width: 25vw;">Editar Perfil</button>
+                                <button type="submit">Editar Perfil</button>
                             </a>
                         </div>
-                        <form action="/clients/<%= clientFound.dni %>/deleteClient?_method=DELETE" method="post">
+                        <form class="delete-form" action="/clients/<%= clientFound.dni %>/deleteClient?_method=DELETE" method="post">
                             <a href=>
-                                <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
+                                <button type="submit">Eliminar Perfil</button>
                             </a>
                         </form>
                     </div>

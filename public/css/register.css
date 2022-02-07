@@ -66,5 +66,5 @@ main {
   padding: 10px;
 }
 .confirm-button button:hover {
-  box-shadow: 6px 6px 30px rgb(248, 212, 92);
+  box-shadow: 0px 0px 7px 3px rgb(248, 212, 92);
 }
