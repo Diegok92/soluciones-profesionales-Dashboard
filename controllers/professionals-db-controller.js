@@ -57,8 +57,8 @@ const professionalDBController = {
     // console.log(
     //   "#########################################################################################"
     // );
-    //console.log(req.body.jobDay[0]);
-    //console.log(req.body.jobDay[1])
+    //console.log(req.body.dayShift[0]);
+    //console.log(req.body.dayShift[1])
 
     const dniCreadoPrevio = await req.session.dniFound;
 
@@ -91,12 +91,37 @@ const professionalDBController = {
     await prof.setProfessions(req.body.professionId);
 
     //pendiente de automatizar los dias/turnos (1=mañana )
-    await prof.createProfessionalWorkDayShift({
-      shift_id: 1,
-      workDay_id: 1,
-    });
 
-    //await prof.setWorkDays(2); // y 2=martes despues del Set va en mayuscula el alias de la asociacion
+    let dayShift = req.body.dayShift; //["1,1", "1,2", "3,1", "6,1"]
+    let shifts = [];
+    let days = [];
+
+    if (typeof dayShift != "string") {
+      //osea es un Array (cuando se registra con mas de un horario)
+      //recorro una sola vez el array y guardo todos los shift y days
+
+      dayShift.forEach((element) => {
+        shifts.push(element[2]); //la coma es el 1
+        days.push(element[0]);
+      });
+
+      for (let i = 0; i < dayShift.length; i++) {
+        await prof.createProfessionalWorkDayShift({
+          shift_id: shifts[i], //1=mañana // [1,2,1,1]
+          workDay_id: days[i], //2 = martes // [1,1,3,6]
+        });
+      }
+    } else {
+      let days = dayShift[0];
+      let shifts = dayShift[2];
+
+      await prof.createProfessionalWorkDayShift({
+        shift_id: shifts, //1=mañana // [1,2,1,1]
+        workDay_id: days, //2 = martes // [1,1,3,6]
+      });
+      //days.push(dayShift.charAt(0));
+      //shifts.push(dayShift.charAt(2));
+    }
 
     res.redirect("/login");
   },

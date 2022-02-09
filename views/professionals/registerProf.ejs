@@ -28,13 +28,7 @@
       <main>
         <div class="all-registerProf">
           <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form">
-           
-           
-            
-           
-           
 
-           
             <div class="registerInput profesiones-list">
               <label>Profesiones:
                 <!-- class="selectpicker" multiple -->
@@ -46,7 +40,6 @@
                       <%=uniqueProfession[i]%>
                     </option>
 
-
                     <% } %>
                       <option value="Otro">Otro</option>
                 </select>
@@ -57,8 +50,6 @@
                 <input type="text" name="otherJob" id="otherJob" placeholder="Ej: Programador WEB Full Stack">
               </label>
             </div>
-
-
             <div class="registerInput expirience-list">
               <label>Posee Matricula:
                 <select name="expirience">
@@ -67,7 +58,7 @@
                 </select>
               </label>
             </div>
-          
+
             <div class="registerInput">
               <label for="licence">Matricula (en Caso de Aplicar):
                 <input type="text" name="licence" id="licence">
@@ -85,7 +76,7 @@
                   <option value="6">Cordoba</option>
                   <option value="7">Rosario</option>
                   <option value="8">Lejano Oeste</option>
-               <!-- usar api -->
+                  <!-- usar api -->
                 </select>
               </label>
             </div>
@@ -100,39 +91,39 @@
 
             <div class="dispo-dias">
               <p>Dias de Prestacion de Servicio:</p>
-              <p>Lunes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Lunes-TM" selected>
+              <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="1,1" checked>
                 </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Lunes-TT" selected>
-                </option>
-              </p>
-              <p>Martes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Martes-TM" selected>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Martes-TT" selected>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="1,2" checked>
                 </option>
               </p>
-              <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Miercoles-TM" selected>
+              <p>Martes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="2,1" checked>
                 </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Miercoles-TT" selected>
-                </option>
-              </p>
-              <p>Jueves<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Jueves-TM" selected>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Jueves-TT" selected>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="2,2" checkedd>
                 </option>
               </p>
-              <p>Viernes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Viernes-TM" selected>
+              <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dayShift" value="3,1" checked>
                 </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Viernes-TT" selected>
-                </option>
-              </p>
-              <p>Sabado<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Sabado-TM" selected>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Sabado-TT" selected>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="3,2" checked>
                 </option>
               </p>
-              <p>Domingo<label>(9-12am)</label><input type="checkbox" name="jobDay" value="Domingo-TM" selected>
+              <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dayShift" value="4,1" checked>
                 </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="Domingo-TT" selected>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="4,2" checked>
+                </option>
+              </p>
+              <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="5,1" checked>
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="5,2" checked>
+                </option>
+              </p>
+              <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dayShift" value="6,1">
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="6,2">
+                </option>
+              </p>
+              <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dayShift" value="7,1">
+                </option>
+                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="7,2">
                 </option>
               </p>
 
@@ -159,8 +150,8 @@
                 <input type="number" name="cbu" id="cbu">
               </label>
             </div>
-           
-           
+
+
             <div class="confirm-button">
               <button type="submit">Crear</button>
             </div>
