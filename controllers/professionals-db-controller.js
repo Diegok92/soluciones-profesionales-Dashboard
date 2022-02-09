@@ -180,7 +180,7 @@ const professionalDBController = {
   },
 
   updateProf: async function (req, res) {
-    // const idEditar = await req.session.profFound.id; //trae el client_id del prof
+  const idEditar = req.session.profFound.id; //trae el client_id del prof
     // const clientDataFound = await db.Client.findOne({
     //   where: {
     //     dni: idEditar,
@@ -192,6 +192,7 @@ const professionalDBController = {
     //   imageTitle: req.file.filename,
     // });
     
+    
     const prof = await db.Professional.update({
       emergency: req.body.emergency,
       whyMe: req.body.whyMe,
@@ -199,47 +200,65 @@ const professionalDBController = {
       cbu: req.body.cbu,
       licence: req.body.licence,
       client_id: req.session.profFound.id,
-      workZone_id: req.body.workZone,
-//      workImage_id: createWorkimage.id,
-    });
+      workZone_id: req.body.WorkZoneId,
+//    workImage_id: createWorkimage.id,
 
-    await prof.setClients({
+    },{
+      where: { client_id: idEditar  },
+    }
+    );
+
+
+    //falta professions, dayshift, create image
+    
+    //await prof.setProfessions(req.body.professionId);
+
+    const client = await db.Client.update({
       email: req.body.email, 
       address: req.body.address, 
       mobile: req.body.mobile,
-      city_id: req.body.city_id,
+      city_Id: req.body.city_Id,
       //avatar: req.file.filename
-    });
+    }, {where : {id : idEditar}});
 
-    await prof.setProfessions(req.body.professionId);
+    //await prof.setWorkImages(req.file.filename)
+
+    //await prof.setProfessions(req.body.professionId);
+    
+    
     let dayShift = req.body.dayShift; //["1,1", "1,2", "3,1", "6,1"]
     let shifts = [];
     let days = [];
 
-    if (typeof dayShift != "string") {
-      //osea es un Array (cuando se registra con mas de un horario)
-      //recorro una sola vez el array y guardo todos los shift y days
+    // if (typeof dayShift != "string") {
+    //   //osea es un Array (cuando se registra con mas de un horario)
+    //   //recorro una sola vez el array y guardo todos los shift y days
 
-      dayShift.forEach((element) => {
-        shifts.push(element[2]); //la coma es el 1
-        days.push(element[0]);
-      });
+    //   dayShift.forEach((element) => {
+    //     shifts.push(element[2]); //la coma es el 1
+    //     days.push(element[0]);
+    //   });
 
-      for (let i = 0; i < dayShift.length; i++) {
-        await prof.createProfessionalWorkDayShift({
-          shift_id: shifts[i], //1=mañana // [1,2,1,1]
-          workDay_id: days[i], //2 = martes // [1,1,3,6]
-        });
-      }
-    } else {
-      let days = dayShift[0];
-      let shifts = dayShift[2];
+    //   for (let i = 0; i < dayShift.length; i++) {
+    //     await prof.setProfessionalWorkDayShift({
+    //       shift_id: shifts[i], //1=mañana // [1,2,1,1]
+    //       workDay_id: days[i], //2 = martes // [1,1,3,6]
+    //     });
+    //   }
+    // } else {
+    //   let days = dayShift[0];
+    //   let shifts = dayShift[2];
 
-      await prof.createProfessionalWorkDayShift({
-        shift_id: shifts, //1=mañana // [1,2,1,1]
-        workDay_id: days, //2 = martes // [1,1,3,6]
-      });
-    }
+    //   await prof.setProfessionalWorkDayShift({
+    //     shift_id: shifts, //1=mañana // [1,2,1,1]
+    //     workDay_id: days, //2 = martes // [1,1,3,6]
+    //   });
+    // }
+
+
+
+
+
     // await prof.setShifts(1);
     // await prof.setWorkDays([]); //despues del Set va en mayuscula el alias de la asociacion
     // //hacer for de todos los checkboxes (solo de los nuevos del editform)

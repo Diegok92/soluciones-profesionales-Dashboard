@@ -27,7 +27,7 @@
 
             <main>
                 <div class="all-registerProf">
-                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT"
+                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT" enctype="multipart/form-data"
                         method="POST" class="prof-form">
                         <!-- la ruta de "action", debe ser la ruta a la que tiene q ir la info del formulario -->
                         <div class="registerInput">
@@ -62,8 +62,8 @@
                             </label>
                         </div>
                         <div class="registerInput">
-                            <label for="adress">Dirección:
-                                <input type="text" name="adress" id="adress" value="<%=profFound.clients.address %>">
+                            <label for="address">Dirección:
+                                <input type="text" name="address" id="address" value="<%=profFound.clients.address %>">
                             </label>
                         </div>
                         <div class="registerInput">
@@ -113,7 +113,7 @@
                         </div>
                         <div class="registerInput">
                             <label for="matricula">Matricula (en Caso de Aplicar):
-                                <input type="text" name="license" id="matricula" value="<%=profFound.licence %>">
+                                <input type="text" name="licence" id="matricula" value="<%=profFound.licence %>">
                             </label>
                         </div>
                         <div class="registerInput localidad-list">
@@ -214,7 +214,7 @@
                         </div> -->
                         <div class="registerInput jobs">
                             <label for="jobs">Fotos de Trabajos Realizados (max 10)
-                                <input type="file" name="workImages" accept=".jpg, .png, .bmp" multiple>
+                                <input type="file" name="workImages" accept=".jpg, .png, .bmp" >
                             </label>
                         </div>
                         <div class="registerInput">
