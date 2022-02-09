@@ -54,11 +54,6 @@ const professionalDBController = {
 
   //boton de crear en vista registerProf (POST)
   createProf: async function (req, res) {
-    // console.log(
-    //   "#########################################################################################"
-    // );
-    //console.log(req.body.dayShift[0]);
-    //console.log(req.body.dayShift[1])
 
     const dniCreadoPrevio = await req.session.dniFound;
 
@@ -84,8 +79,6 @@ const professionalDBController = {
 
       workImage_id: createWorkimage.id,
 
-      //shift:
-      //workDays:
     });
 
     await prof.setProfessions(req.body.professionId);
@@ -126,15 +119,14 @@ const professionalDBController = {
     res.redirect("/login");
   },
 
-  // Edit
+  // Edit -- Falta que traiga los shifts y days (dayShift)
   editProf: function (req, res) {
     db.Professional.findAll({
       include: [
         { association: "clients" },
         { association: "professions" },
         { association: "workZones" },
-        { association: "workDays" },
-        { association: "shifts" },
+        { association: "ProfessionalWorkDayShift" },
       ],
     }).then(function (profData) {
       let userProf = req.session.profFound;
@@ -145,6 +137,7 @@ const professionalDBController = {
       const uniqueWorkZonesId = [];
       let profFound = 0;
 
+      // A CAMBIAR! recorrer tabla professions y traer los datos para mostrar en el desplegable
       for (let i = 0; i < profData.length; i++) {
         if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
           uniqueProfession.push(profData[i].professions[0].profession);
@@ -156,12 +149,22 @@ const professionalDBController = {
         }
         if (profData[i].client_id == req.params.id) {
           profFound = profData[i];
-          //console.log("dentro del if de prof data vale" + profData[i].id); //107
         }
       }
 
-      console.log("dentro de shift viene " + profFound.shifts[0].shift); //sin el [0] FUNCION NATIVA???
-      console.log("dentro del workDays viene " + profFound.workDays[0].day);
+      // let workDays = [];
+      // let workShifts = [];
+      // for (let i = 0; i < profFound.ProfessionalWorkDayShift.length; i++) {
+      //   workDays.push(profFound.ProfessionalWorkDayShift[i].workDay_id)
+      //   workShifts.push(profFound.ProfessionalWorkDayShift[i].shift_id)
+      // }
+      // console.log(profFound.ProfessionalWorkDayShift);
+      // console.log('####################################');
+      
+
+      //console.log("dentro de shift viene " + profFound.shifts[0].shift); //sin el [0] FUNCION NATIVA???
+      //console.log("dentro del workDays viene " + profFound.workDays[0].day);
+      
       res.render("professionals/editProfTest", {
         userClient: userClient,
         userProf: userProf,
@@ -170,83 +173,10 @@ const professionalDBController = {
         uniqueProfessionId: uniqueProfessionId,
         uniqueWorkZones: uniqueWorkZones,
         uniqueWorkZonesId: uniqueWorkZonesId,
+        // workDays: workDays,
+        // workShifts: workShifts
       });
     });
-
-    // console.log("Dentro del req.params.id viene " + req.params.id); //IdCLiente
-
-    // const professions = db.Professional.findAll({
-    //   include: [{ association: "professions" }, { association: "workZones" }],
-    // });
-
-    // const professional = db.Professional.findOne({
-    //   include: [
-    //     { association: "clients" },
-    //     { association: "professions" },
-    //     { association: "workZones" },
-    //     { association: "workDays" },
-    //     { association: "shifts" },
-    //   ],
-    //   where: {
-    //     "$professional.client_id$": {
-    //       //magia de pabloy de diego...
-    //       [Op.eq]: req.params.id,
-    //       // `%${profRequested}%`
-    //     },
-    //   },
-    // })
-    //   .then(function (result) {
-    //     // Promise.all([professions, professional]).then(function (
-    //     //   profession,
-    //     //   Professional
-    //     // ) {
-    //     // console.log("Dentro del profFound viene " + req.session.profFound.id);
-
-    //     // const uniqueProfession = [];
-    //     // const uniqueProfessionId = [];
-    //     let userProf = req.session.profFound;
-    //     let userClient = req.session.clientFound;
-    //     let profFound = result;
-
-    //     // for (let i = 0; i < profession.length; i++) {
-    //     //   if (!uniqueProfession.includes(profession[i].professions.profession)) {
-    //     //     uniqueProfession.push(profession[i].professions.profession);
-    //     //     uniqueProfessionId.push(profession[i].professions.id);
-    //     //   }
-    //     // }
-    //     //console.log("Dentro del uniqprofession viene " + uniqueProfession);
-    //     db.Professional.findAll({
-    //       include: [
-    //         { association: "professions" },
-    //         { association: "workZones" },
-    //       ],
-    //     });
-    //   })
-    //   .then(function (profData) {
-    //     const uniqueProfession = [];
-    //     const uniqueProfessionId = [];
-    //     //const uniqueWorkZones = [];
-    //     //const uniqueWorkZonesId = [];
-    //     for (let i = 0; i < profData.length; i++) {
-    //       if (
-    //         !uniqueProfession.includes(profData[i].professions[0].profession)
-    //       ) {
-    //         uniqueProfession.push(profData[i].professions[0].profession);
-    //         uniqueProfessionId.push(profData[i].professions[0].id);
-    //         //console.log("la profesion es "+ uniqueProfession);
-    //         // console.log("y su id es "+ uniqueProfessionId);
-    //       }
-    //     }
-    //   })
-    //   .then(function (result3) {
-    //     res.render("professionals/editProfTest", {
-    //       userClient: userClient,
-    //       userProf: userProf,
-    //       profFound: profFound,
-    //       uniqueProfession: uniqueProfession,
-    //       uniqueProfessionId: uniqueProfessionId,
-    //     }); //render usa ruta en carpeta (users)
-    //   });
   },
 
   updateProf: async function (req, res) {
@@ -258,10 +188,10 @@ const professionalDBController = {
     // });
     //const clientFound = await clientDataFound.id;
 
-    const createWorkimage = await db.WorkImage.update({
-      imageTitle: req.file.filename,
-    });
-
+    // const createWorkimage = await db.WorkImage.update({
+    //   imageTitle: req.file.filename,
+    // });
+    
     const prof = await db.Professional.update({
       emergency: req.body.emergency,
       whyMe: req.body.whyMe,
@@ -270,13 +200,49 @@ const professionalDBController = {
       licence: req.body.licence,
       client_id: req.session.profFound.id,
       workZone_id: req.body.workZone,
-      workImage_id: createWorkimage.id,
+//      workImage_id: createWorkimage.id,
+    });
+
+    await prof.setClients({
+      email: req.body.email, 
+      address: req.body.address, 
+      mobile: req.body.mobile,
+      city_id: req.body.city_id,
+      //avatar: req.file.filename
     });
 
     await prof.setProfessions(req.body.professionId);
-    await prof.setShifts(1);
-    await prof.setWorkDays([]); //despues del Set va en mayuscula el alias de la asociacion
-    //hacer for de todos los checkboxes (solo de los nuevos del editform)
+    let dayShift = req.body.dayShift; //["1,1", "1,2", "3,1", "6,1"]
+    let shifts = [];
+    let days = [];
+
+    if (typeof dayShift != "string") {
+      //osea es un Array (cuando se registra con mas de un horario)
+      //recorro una sola vez el array y guardo todos los shift y days
+
+      dayShift.forEach((element) => {
+        shifts.push(element[2]); //la coma es el 1
+        days.push(element[0]);
+      });
+
+      for (let i = 0; i < dayShift.length; i++) {
+        await prof.createProfessionalWorkDayShift({
+          shift_id: shifts[i], //1=mañana // [1,2,1,1]
+          workDay_id: days[i], //2 = martes // [1,1,3,6]
+        });
+      }
+    } else {
+      let days = dayShift[0];
+      let shifts = dayShift[2];
+
+      await prof.createProfessionalWorkDayShift({
+        shift_id: shifts, //1=mañana // [1,2,1,1]
+        workDay_id: days, //2 = martes // [1,1,3,6]
+      });
+    }
+    // await prof.setShifts(1);
+    // await prof.setWorkDays([]); //despues del Set va en mayuscula el alias de la asociacion
+    // //hacer for de todos los checkboxes (solo de los nuevos del editform)
 
     // await prof.createWorkDay({
     //   workDays_id: ,
@@ -314,8 +280,7 @@ const professionalDBController = {
         { association: "clients" },
         { association: "professions" },
         { association: "workZones" },
-        { association: "workDays" },
-        { association: "shifts" },
+        { association: "ProfessionalWorkDayShift" },
       ],
       where: {
         "$professions.profession$": {
@@ -348,8 +313,7 @@ const professionalDBController = {
         { association: "clients" },
         { association: "professions" },
         { association: "workZones" },
-        { association: "workDays" },
-        { association: "shifts" },
+        { association: "ProfessionalWorkDayShift" },
       ],
       where: { client_id: profRequested },
 

@@ -27,7 +27,7 @@
 
             <main>
                 <div class="all-registerProf">
-                    <form action="/rubros/<%=profFound.professions[0].profession %>/<%=profFound.id %>?_method=PUT"
+                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT"
                         method="POST" class="prof-form">
                         <!-- la ruta de "action", debe ser la ruta a la que tiene q ir la info del formulario -->
                         <div class="registerInput">
@@ -147,55 +147,51 @@
 
                         <div class="dispo-dias">
                             <p>Dias de Prestacion de Servicio:</p>
-                            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="1,1"
-                                    <%=profFound.shifts[0].shift.include("1,") &&
-                                    profFound.workDays[0].day.include(",1") ? "checked" : "" %>>
+                            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="1,1">
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="1,2"
-                                    <%=profFound.shifts[0].shift.include("1,") &&
-                                    profFound.workDays[0].day.include(",2") ? "checked" : "" %>>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="1,2">
                                 </option>
                             </p>
-                            <p>Martes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="2,1"
-                                    <%=//profFound.jobDay.includes("Martes-TM") ? "checked" : "" %>>
+                            <p>Martes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="2,1"
+                                    <%=//profFound.dayShift.includes("Martes-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="2,2"
-                                    <%=//profFound.jobDay.includes("Martes-TT") ? "checked" : "" %>>
-                                </option>
-                            </p>
-                            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="jobDay" value="3,1"
-                                    <%=//profFound.jobDay.includes("Miercoles-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="3,2"
-                                    <%=//profFound.jobDay.includes("Miercoles-TT") ? "checked" : "" %>>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="2,2"
+                                    <%=//profFound.dayShift.includes("Martes-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
-                            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="jobDay" value="4,1"
-                                    <%=//profFound.jobDay.includes("Jueves-TM") ? "checked" : "" %>>
+                            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dayShift" value="3,1"
+                                    <%=//profFound.dayShift.includes("Miercoles-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="4,2"
-                                    <%=//profFound.jobDay.includes("Jueves-TT") ? "checked" : "" %>>
-                                </option>
-                            </p>
-                            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="jobDay" value="5,1"
-                                    <%=//profFound.jobDay.includes("Viernes-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="5,2"
-                                    <%=//profFound.jobDay.includes("Viernes-TT") ? "checked" : "" %>>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="3,2"
+                                    <%=//profFound.dayShift.includes("Miercoles-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
-                            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="jobDay" value="6,1"
-                                    <%=//profFound.jobDay.includes("Sabado-TM") ? "checked" : "" %>>
+                            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dayShift" value="4,1"
+                                    <%=//profFound.dayShift.includes("Jueves-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="6,2"
-                                    <%=//profFound.jobDay.includes("Sabado-TT") ? "checked" : "" %>>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="4,2"
+                                    <%=//profFound.dayShift.includes("Jueves-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
-                            <p>Domingo<label>(9-12am)</label><input type="checkbox" name="jobDay" value="7,1"
-                                    <%=//profFound.jobDay.includes("Domingo-TM") ? "checked" : "" %>>
+                            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="5,1"
+                                    <%=//profFound.dayShift.includes("Viernes-TM") ? "checked" : "" %>>
                                 </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="jobDay" value="7,2"
-                                    <%=//profFound.jobDay.includes("Domingo-TT") ? "checked" : "" %>>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="5,2"
+                                    <%=//profFound.dayShift.includes("Viernes-TT") ? "checked" : "" %>>
+                                </option>
+                            </p>
+                            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dayShift" value="6,1"
+                                    <%=//profFound.dayShift.includes("Sabado-TM") ? "checked" : "" %>>
+                                </option>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="6,2"
+                                    <%=//profFound.dayShift.includes("Sabado-TT") ? "checked" : "" %>>
+                                </option>
+                            </p>
+                            <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dayShift" value="7,1"
+                                    <%=//profFound.dayShift.includes("Domingo-TM") ? "checked" : "" %>>
+                                </option>
+                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="7,2"
+                                    <%=//profFound.dayShift.includes("Domingo-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
 
@@ -211,14 +207,14 @@
                                 <input type="number" name="price" id="price" value="<%=profFound.price %>">
                             </label>
                         </div>
-                        <div class="registerInput avatar">
+                        <!-- <div class="registerInput avatar">
                             <label for="avatar">Foto de Perfil
                                 <input type="file" name="avatar" accept=".jpg, .png, .bmp">
                             </label>
-                        </div>
+                        </div> -->
                         <div class="registerInput jobs">
                             <label for="jobs">Fotos de Trabajos Realizados (max 10)
-                                <input type="file" name="jobs" accept=".jpg, .png, .bmp" multiple>
+                                <input type="file" name="workImages" accept=".jpg, .png, .bmp" multiple>
                             </label>
                         </div>
                         <div class="registerInput">

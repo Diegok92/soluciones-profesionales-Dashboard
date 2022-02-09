@@ -53,7 +53,8 @@ profRoute.get(
   professionalDBController.editProf
 ); //muestro form de edicion
 
-profRoute.put("/:rubro/:cuit", professionalDBController.editProf);
+profRoute.put("/:idProf", 
+professionalDBController.updateProf);
 //Boton confirm del form de edicion
 
 profRoute.get(
