@@ -22,7 +22,7 @@
         <%- include("../partials/nav-bar") %>
 
             <main>
-                <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" class="clientForm">
+                <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" enctype="multipart/form-data" class="clientForm">
 
                     <div class="registerInput">
                         <label for="firstName">Nombre:
@@ -64,12 +64,7 @@
                                 value="<%=clientFound.address%>">
                         </label>
                     </div>
-                    <div class="registerInput">
-                        <label for="dni">DNI:
-                            <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad"
-                                value="<%=clientFound.dni%>" disabled>
-                        </label>
-                    </div>
+                    
                     <div class="registerInput avatar">
                         <label for="avatar">Foto de Perfil
                             <input src="images/clients/<%=clientFound.avatar%>" type="file" name="avatar"

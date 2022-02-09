@@ -106,7 +106,7 @@ const clientDbController = {
   //Actualizar para usar la DB
   //por (PUT)
   updateClient: (req, res) => {
-    req.session.dniFound = req.body.dni;
+    
 
     db.Client.update(
       {
@@ -115,12 +115,11 @@ const clientDbController = {
         email: req.body.email,
         city_Id: req.body.city_Id, //viene num por form (futuro, API)
         address: req.body.address,
-        dni: req.body.dni,
         mobile: req.body.mobile,
-        //avatar: req.file.filename,
+        avatar: req.file.filename,
       },
       {
-        where: { dni: req.session.dniFound },
+        where: { dni: req.session.clientFound.dni },
       }
     );
 
