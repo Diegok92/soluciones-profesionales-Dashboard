@@ -5,6 +5,11 @@ const Op = db.Sequelize.Op;
 const profRoute = require("../routes/professionals-routers");
 const bcrypt = require("bcryptjs");
 
+/*
+  FALTA REVISAR EL UPDATE DE IMAGENES CON MULTER
+  CIUDAD DEL CLIENTDETAIL! SOLO TRAE ID DE ZONA NO EL NOMBRE
+*/
+
 const clientDbController = {
   //form de creacion cliente (GET)
   registerClient: (req, res) => {
@@ -129,7 +134,7 @@ const clientDbController = {
         dni: req.params.dni,
       },
     });
-    
+    //delete property 'clientFound' of session instead of completely destroying session
     req.session.destroy();
     
     res.redirect('/');

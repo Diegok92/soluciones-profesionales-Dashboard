@@ -14,6 +14,11 @@
         <link rel="stylesheet" href="/css/tablet.css" />
         <link rel="stylesheet" href="/css/desktop-index.css" />
         <link rel="stylesheet" href="/css/desktop-productDetail.css" />
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/js/deleteAlert.js"></script>
+
         <title>Soluciones Profesionales</title>
 </head>
 
@@ -81,10 +86,10 @@
                                 <button type="submit">Editar Perfil</button>
                             </a>
                         </div>
-                        <form class="delete-form" action="/clients/<%= clientFound.dni %>/deleteClient?_method=DELETE" method="post">
-                            <a href=>
+                        <form id="delete-form" class="delete-form" action="/clients/<%= clientFound.dni %>/deleteClient?_method=DELETE" method="post">
+
                                 <button type="submit">Eliminar Perfil</button>
-                            </a>
+
                         </form>
                     </div>
 
