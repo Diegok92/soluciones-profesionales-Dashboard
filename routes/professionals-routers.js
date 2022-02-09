@@ -43,22 +43,26 @@ profRoute.get(
 );
 profRoute.post(
   "/registerProf",
-  uploadFile.single("workImages"), //(antes decia "avatar")
+  uploadFile.single("workImages"), //verificar
   professionalDBController.createProf
 );
 
 profRoute.get(
-  "/:rubro/:cuit/editProf",
+  "/:rubro/:id/editProfTest",
   authPrivateProfMiddleware,
-  profController.editProf
+  professionalDBController.editProf
 ); //muestro form de edicion
-profRoute.put("/:rubro/:cuit", profController.updateProf);
+
+profRoute.put("/:rubro/:cuit", professionalDBController.editProf);
+//Boton confirm del form de edicion
 
 profRoute.get(
   "/:rubro/:cuit/deleteProf",
   authPrivateProfMiddleware,
+  uploadFile.single("workImages"), //verificar
   profController.showDeleteProf
 ); //muestro form de confirmación de eliminación
+
 profRoute.delete("/:rubro/:cuit", profController.deleteProf);
 
 //profRoute.get("/:rubro", profController.profPerRubro);

@@ -18,20 +18,15 @@ module.exports = (sequelize) => {
 
   const WorkDay = sequelize.define(alias, cols, config);
 
-  WorkDay.associate = function(models){
+  WorkDay.associate = function (models) {
+    WorkDay.hasMany(models.ProfessionalWorkDayShift, {
+      as: "professionalsDayAndShift", //nombre de la asociación
 
+      foreignKey: "workDay_id", //lo q toma la tabla
 
-    WorkDay.belongsToMany(models.Professional, {
-  
-      as: "professionals",  //nombre de la asociación
-      through: "professionals_workdays",
-      foreignKey: "workDay_id",
-      otherKey :"professional_id",
-      otherKey : "shift_id",
-      
-      timestamps: false
-    })};
-
+      timestamps: false,
+    });
+  };
 
   return WorkDay;
 };

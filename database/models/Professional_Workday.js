@@ -1,27 +1,40 @@
 const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
-  const alias = "professionals_workdays";
+  const alias = "ProfessionalWorkDayShift";
   const cols = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-
-    workDay_id: Sequelize.STRING,
-    professional_id: Sequelize.STRING,
-    shift_id: Sequelize.STRING,
   };
   const config = {
     tableName: "professionals_workdays",
     timestamps: false,
   };
 
-  const Professional_WorkDay_Shift = sequelize.define(alias, cols, config);
+  const ProfessionalWorkDayShift = sequelize.define(alias, cols, config);
 
+  ProfessionalWorkDayShift.associate = function (models) {
+    ProfessionalWorkDayShift.belongsTo(models.WorkDay, {
+      as: "workDays", //nombre de la asociación
+      foreignKey: "workDay_id",
+      timestamps: false,
+    });
 
+    ProfessionalWorkDayShift.belongsTo(models.Shift, {
+      as: "shifts", //nombre de la asociación
+      foreignKey: "shift_id",
+      timestamps: false,
+    });
 
-  
-  return Professional_WorkDay_Shift;
+    ProfessionalWorkDayShift.belongsTo(models.Professional, {
+      as: "professionals", //nombre de la asociación
+      foreignKey: "professional_id",
+      timestamps: false,
+    });
+  };
+
+  return ProfessionalWorkDayShift;
 };

@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
     //Consultar con Pablo
     Client.hasOne(models.Professional, {
       as: "profesionals",
-      foreignKey: "client_id",
+      foreignKey: "client_id", // lo q pide la otra tabla
     });
 
     Client.belongsTo(models.City, {

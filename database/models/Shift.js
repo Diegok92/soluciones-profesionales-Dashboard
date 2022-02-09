@@ -18,27 +18,15 @@ module.exports = (sequelize) => {
 
   const Shift = sequelize.define(alias, cols, config);
 
+  Shift.associate = function (models) {
+    Shift.hasMany(models.ProfessionalWorkDayShift, {
+      as: "professionalsDayAndShift", //nombre de la asociación
 
-Shift.associate = function(models){
+      foreignKey: "shift_id", //lo q pide la otra tabla
 
-
-  Shift.belongsToMany(models.Professional, {
-
-    as: "professionals",  //nombre de la asociación
-    through: "professionals_workdays",
-    foreignKey: "shift_id",
-    otherKey :"professional_id",
-    otherKey : "workDay_id",
-    
-    timestamps: false
-  });
-
-
-
-
-}
-
-
+      timestamps: false,
+    });
+  };
 
   return Shift;
 };

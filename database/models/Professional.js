@@ -24,52 +24,36 @@ module.exports = (sequelize) => {
 
   const Professional = sequelize.define(alias, cols, config);
 
-  Professional.associate = function(models){ 
-
+  Professional.associate = function (models) {
     Professional.belongsToMany(models.Profession, {
-
-      as: "professions",  //nombre de la asociación
+      as: "professions", //nombre de la asociación
       through: "professionals_profession",
       foreignKey: "professional_id",
-      otherKey : "profession_id",
-      timestamps: false
+      otherKey: "profession_id",
+      timestamps: false,
     });
 
     Professional.belongsTo(models.Client, {
       as: "clients",
-      foreignKey: "client_id"
+      foreignKey: "client_id",
     });
 
     Professional.hasMany(models.WorkImage, {
       as: "workImages",
-      foreignKey: "workImage_id"
+      foreignKey: "workImage_id",
     });
 
     Professional.belongsTo(models.WorkZone, {
+      // REVISAR SI NO ES HASMANY
       as: "workZones",
-      foreignKey: "workZone_id"
+      foreignKey: "workZone_id",
     });
 
-    Professional.belongsToMany(models.Shift, {
-
-      as: "shifts",  //nombre de la asociación
-      through: "professionals_workdays",
+    Professional.hasMany(models.ProfessionalWorkDayShift, {
+      as: "ProfessionalWorkDayShift", //nombre de la asociación
       foreignKey: "professional_id",
-      otherKey : "workDay_id",
-      otherKey : "shift_id",
-      timestamps: false
+      timestamps: false,
     });
-
-    Professional.belongsToMany(models.WorkDay, {
-
-      as: "workDays",  //nombre de la asociación
-      through: "professionals_workdays",
-      foreignKey: "professional_id",
-      otherKey : "shift_id",
-      otherKey : "workDay_id",
-      timestamps: false
-    });
-
   };
 
   return Professional;

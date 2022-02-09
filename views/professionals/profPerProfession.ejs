@@ -30,7 +30,7 @@
       <main>
         <p class="title-cart">
           <%= professionals[0].professions[0].profession %>
-          <% console.log(professionals) %> 
+
         </p>
         <% for(let i=0; i<professionals.length; i++){ %>
           <div class="top-flex-mobile">
@@ -44,7 +44,8 @@
                 <div class="title-per-device-productCart">
                   <%= professionals[i].professions[0].profession %>:
                 </div>
-                <div class="name-per-device-productCart">"<%= professionals[i].clients.firstName +" "+ professionals[i].clients.lastName%>" </div>
+                <div class="name-per-device-productCart">"<%= professionals[i].clients.firstName
+                    +" "+ professionals[i].clients.lastName%>" </div>
             </a>
           </div>
           <div class="reserved-date">
@@ -57,7 +58,7 @@
           </div>
           <div class="reserved-date">
             <p>
-              <% if(professionals[i].emergency == 1){ %>
+              <% if(professionals[i].emergency==1){ %>
                 <i class="fas fa-shipping-fast"></i>
                 Urgencias
                 <% } %>
