@@ -71,3 +71,22 @@ menos co-working ya que ahora si estamos parejos en los conocimientos entre todo
 
 Stop Doing:
 TBD
+
+---
+
+Reunion Retrospectiva dia 14/01/22 - Sprint 5
+
+Start Doing/Empezar a Hacer:
+Ponderar las dificultades de las tareas antes de empezar el sprint para poder organizarse mejor
+
+More of/Mas de:
+continuear con el cambio de realizar reuniones informativas en lugar de co-working constante
+
+Keep Doing/Seguir Haciendo :
+Mantener las comunicaciones semi-diarias, trabajo en equipo y reuniones de una periodicidad entre daily y weekly (mid-weekly).
+
+Less of/Menos de:
+Enfocarse menos en los detalles para lograr llegar a la entrega con mas tiempo de anticipacion para poder cumplir con todos los opcionales
+
+Stop Doing:
+TBD
