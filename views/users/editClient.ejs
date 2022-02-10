@@ -22,53 +22,53 @@
         <%- include("../partials/nav-bar") %>
 
             <main>
-                <form action="/clients/<%=clientFound.clients.dni%>?_method=PUT" method="POST" enctype="multipart/form-data" class="clientForm">
+                <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" enctype="multipart/form-data" class="clientForm">
 
                     <div class="registerInput">
                         <label for="firstName">Nombre:
                             <input type="text" name="firstName" id="firstNombre" placeholder="Ej: Cosme"
-                                value="<%=clientFound.clients.firstName %>">
+                                value="<%=clientFound.firstName %>">
                         </label>
                     </div>
                     <div class="registerInput">
                         <label for="lastName">Apellido:
                             <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito"
-                                value="<%=clientFound.clients.lastName%>">
+                                value="<%=clientFound.lastName%>">
                         </label>
                     </div>
                     <div class="registerInput">
                         <label for="email">Email:
-                            <input type="email" name="email" id="email" value="<%=clientFound.clients.email%>">
+                            <input type="email" name="email" id="email" value="<%=clientFound.email%>">
                         </label>
                     </div>
                     <div class="registerInput">
                         <label for="mobile">Telefono (Sin espacios ni Guiones):
                             <input type="number" name="mobile" id="mobile" placeholder="Ej: 01112345678"
-                                value="<%=clientFound.clients.mobile%>">
+                                value="<%=clientFound.mobile%>">
                         </label>
                     </div>
                     <div class="registerInput localidad-list">
                         <label>Localidad donde Reside
                             <select name="city_Id">
                                 <!-- usar una API -->
-                                <option value="1" <%=(clientFound.clients.city_Id=="1" ) ? "selected" : "" %>>Capital Federal
+                                <option value="1" <%=(clientFound.city_Id=="1" ) ? "selected" : "" %>>Capital Federal
                                 </option>
-                                <option value="2" <%=(clientFound.clients.city_Id=="2" ) ? "selected" : "" %>>Conurbano</option>
-                                <option value="3" <%=(clientFound.clients.city_Id=="3" ) ? "selected" : "" %>>Interior</option>
+                                <option value="2" <%=(clientFound.city_Id=="2" ) ? "selected" : "" %>>Conurbano</option>
+                                <option value="3" <%=(clientFound.city_Id=="3" ) ? "selected" : "" %>>Interior</option>
                             </select>
                         </label>
                     </div>
                     <div class="registerInput">
                         <label for="address">Dirección:
                             <input type="text" name="address" id="address" placeholder="Calle falsa 123 2A"
-                                value="<%=clientFound.clients.address%>">
+                                value="<%=clientFound.address%>">
                         </label>
                     </div>
                     
                     <div class="registerInput avatar">
                         <label for="avatar">Foto de Perfil
-                            <input src="images/clients/<%=clientFound.clients.avatar%>" type="file" name="avatar"
-                                accept=".jpg, .png, .bmp" value="<%=clientFound.clients.avatar%>">
+                            <input src="images/clients/<%=clientFound.avatar%>" type="file" name="avatar"
+                                accept=".jpg, .png, .bmp" value="<%=clientFound.avatar%>">
                         </label>
                     </div>
 

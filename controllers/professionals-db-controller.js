@@ -282,7 +282,7 @@ const professionalDBController = {
       //   shift_id:
       // });
   
-      res.redirect("/login");
+      res.redirect("/");
     },
 
   //Listing professions, professionals, professional

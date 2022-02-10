@@ -79,17 +79,27 @@ const clientDbController = {
     // por (GET)
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
-    console.log("Dentro req.params.dni " + req.params.dni);
 
-    db.Professional.findOne({
-      include: [
-        { association: "clients" },
-        { association: "professions" },
-        { association: "workZones" },
-        { association: "ProfessionalWorkDayShift" },
-        { association: "workImages" },
-      ],
-      where: { client_id: userClient.id }}
+    // db.Professional.findOne({
+    //   include: [
+    //     { association: "clients" },
+    //     { association: "professions" },
+    //     { association: "workZones" },
+    //     { association: "ProfessionalWorkDayShift" },
+    //     { association: "workImages" },
+    //   ],
+    //   where: { client_id: userClient.id }}
+    // ).then(function (result) {
+    //   let userProf = req.session.profFound;
+    //   let userClient = req.session.clientFound;
+    //   let clientFound = result;
+
+    db.Client.findOne(
+      {
+        where: {
+          dni: req.params.dni,
+        },
+      }
     ).then(function (result) {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
