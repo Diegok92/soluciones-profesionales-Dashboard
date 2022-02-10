@@ -18,20 +18,14 @@ module.exports = (sequelize) => {
 
   const WorkImage = sequelize.define(alias, cols, config);
 
-WorkImage.associate= function(models){
+  WorkImage.associate= function(models){
 
   WorkImage.hasOne(models.Professional, {
     as: "workImages",
     foreignKey: "workImage_id"
   });
 
-
-
-
-
-
 }
-
 
   return WorkImage;
 };

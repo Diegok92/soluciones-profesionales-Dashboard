@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       foreignKey: "client_id",
     });
 
-    Professional.hasMany(models.WorkImage, {
+    Professional.belongsTo(models.WorkImage, {
       as: "workImages",
       foreignKey: "workImage_id",
     });

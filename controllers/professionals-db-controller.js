@@ -162,7 +162,7 @@ const professionalDBController = {
       //console.log("dentro de shift viene " + profFound.shifts[0].shift); //sin el [0] FUNCION NATIVA???
       //console.log("dentro del workDays viene " + profFound.workDays[0].day);
 
-      res.render("professionals/editProfTest", {
+      res.render("professionals/editProf", {
         userClient: userClient,
         userProf: userProf,
         profFound: profFound,
@@ -327,6 +327,7 @@ const professionalDBController = {
         { association: "professions" },
         { association: "workZones" },
         { association: "ProfessionalWorkDayShift" },
+        { association: "workImages" },
       ],
       where: { client_id: profRequested },
 

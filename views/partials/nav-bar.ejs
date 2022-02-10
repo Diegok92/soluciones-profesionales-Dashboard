@@ -11,13 +11,13 @@
                 <!- ocultar boton en mobile, mostrar en el resto ->
             </div> -->
         </section>
-
+        
         <div class="login">
             <% if(locals.userClient==undefined && locals.userProf==undefined){ %>
                 <a href="/login">
                     <p class="txt-ingresar">Ingresar</p>
                 </a>
-                <% }else if(locals.userClient !=undefined){ %>
+                <% }else if(locals.userClient != undefined && locals.userProf == undefined){ %>
                     <div class="session-icons">
                         <a href="/clients/<%= locals.userClient.dni %>">
                             <p class="yw-txt"><i class="fas fa-user"></i></p>
@@ -28,9 +28,11 @@
                     </div>
                     <% }else if(locals.userProf !=undefined){ %>
                         <div class="session-icons">
-                            <a href="/clients/<%= locals.userProf.jobTitle %>/<%= locals.userProf.cuit %>">
+
+                            <a href="/rubros/professional/<%= userProf.id %>">
                                 <p><i class="fas fa-user"></i></p>
                             </a>
+
                             <a href="/signout">
                                 <p><i class="fas fa-sign-out-alt"></i></p>
                             </a>

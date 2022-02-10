@@ -190,3 +190,7 @@ main {
 .confirm-button button:hover {
   box-shadow: 6px 6px 30px rgb(248, 212, 92);
 }
+
+.workImages {
+  text-align: center;
+}

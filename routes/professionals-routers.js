@@ -48,7 +48,7 @@ profRoute.post(
 );
 
 profRoute.get(
-  "/:rubro/:id/editProfTest",
+  "/:rubro/:id/editProf",
   authPrivateProfMiddleware,
   professionalDBController.editProf
 ); //muestro form de edicion
