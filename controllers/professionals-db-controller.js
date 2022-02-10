@@ -54,7 +54,6 @@ const professionalDBController = {
 
   //boton de crear en vista registerProf (POST)
   createProf: async function (req, res) {
-
     const dniCreadoPrevio = await req.session.dniFound;
 
     const clientDataFound = await db.Client.findOne({
@@ -78,7 +77,6 @@ const professionalDBController = {
       workZone_id: req.body.workZone,
 
       workImage_id: createWorkimage.id,
-
     });
 
     await prof.setProfessions(req.body.professionId);
@@ -160,11 +158,10 @@ const professionalDBController = {
       // }
       // console.log(profFound.ProfessionalWorkDayShift);
       // console.log('####################################');
-      
 
       //console.log("dentro de shift viene " + profFound.shifts[0].shift); //sin el [0] FUNCION NATIVA???
       //console.log("dentro del workDays viene " + profFound.workDays[0].day);
-      
+
       res.render("professionals/editProfTest", {
         userClient: userClient,
         userProf: userProf,
@@ -180,7 +177,7 @@ const professionalDBController = {
   },
 
   updateProf: async function (req, res) {
-  const idEditar = req.session.profFound.id; //trae el client_id del prof
+    const idEditar = req.session.profFound.id; //trae el client_id del prof
     // const clientDataFound = await db.Client.findOne({
     //   where: {
     //     dni: idEditar,
@@ -191,41 +188,42 @@ const professionalDBController = {
     // const createWorkimage = await db.WorkImage.update({
     //   imageTitle: req.file.filename,
     // });
-    
-    
-    const prof = await db.Professional.update({
-      emergency: req.body.emergency,
-      whyMe: req.body.whyMe,
-      price: req.body.price,
-      cbu: req.body.cbu,
-      licence: req.body.licence,
-      client_id: req.session.profFound.id,
-      workZone_id: req.body.WorkZoneId,
-//    workImage_id: createWorkimage.id,
 
-    },{
-      where: { client_id: idEditar  },
-    }
+    const prof = await db.Professional.update(
+      {
+        emergency: req.body.emergency,
+        whyMe: req.body.whyMe,
+        price: req.body.price,
+        cbu: req.body.cbu,
+        licence: req.body.licence,
+        client_id: req.session.profFound.id,
+        workZone_id: req.body.WorkZoneId,
+        //    workImage_id: createWorkimage.id,
+      },
+      {
+        where: { client_id: idEditar },
+      }
     );
 
-
     //falta professions, dayshift, create image
-    
+
     //await prof.setProfessions(req.body.professionId);
 
-    const client = await db.Client.update({
-      email: req.body.email, 
-      address: req.body.address, 
-      mobile: req.body.mobile,
-      city_Id: req.body.city_Id,
-      //avatar: req.file.filename
-    }, {where : {id : idEditar}});
+    const client = await db.Client.update(
+      {
+        email: req.body.email,
+        address: req.body.address,
+        mobile: req.body.mobile,
+        city_Id: req.body.city_Id,
+        //avatar: req.file.filename
+      },
+      { where: { id: idEditar } }
+    );
 
     //await prof.setWorkImages(req.file.filename)
 
     //await prof.setProfessions(req.body.professionId);
-    
-    
+
     let dayShift = req.body.dayShift; //["1,1", "1,2", "3,1", "6,1"]
     let shifts = [];
     let days = [];
@@ -254,10 +252,6 @@ const professionalDBController = {
     //     workDay_id: days, //2 = martes // [1,1,3,6]
     //   });
     // }
-
-
-
-
 
     // await prof.setShifts(1);
     // await prof.setWorkDays([]); //despues del Set va en mayuscula el alias de la asociacion
@@ -356,7 +350,51 @@ const professionalDBController = {
 
   //Delete
   showDeleteProf: function (req, res) {},
-  deleteProf: function (req, res) {},
+
+  deleteProf: async (req, res) => {
+    const idBorrar = req.session.profFound.id; //client_id
+
+    const idProfDelte = await db.Professional.findOne({
+      where: {
+        client_id: idBorrar,
+      },
+    });
+
+    await db.professionals_profession.destroy({
+      where: {
+        professional_Id: idProfDelte.id,
+      },
+    });
+
+    await db.ProfessionalWorkDayShift.destroy({
+      where: {
+        professional_Id: idProfDelte.id,
+      },
+    });
+
+    await db.Professional.destroy({
+      where: {
+        client_id: idBorrar,
+      },
+    });
+
+    await db.WorkImage.destroy({
+      where: {
+        id: idProfDelte.workImage_id, //columna image del prof
+      },
+    });
+
+    await db.Client.destroy({
+      where: {
+        id: idBorrar,
+      },
+    });
+
+    //delete property 'clientFound' of session instead of completely destroying session
+    req.session.destroy();
+
+    res.redirect("/");
+  },
 };
 
 module.exports = professionalDBController;

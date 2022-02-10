@@ -53,19 +53,25 @@ profRoute.get(
   professionalDBController.editProf
 ); //muestro form de edicion
 
-profRoute.put("/:idProf", 
-uploadFile.single("workImages"),
-professionalDBController.updateProf);
+profRoute.put(
+  "/:idProf",
+  uploadFile.single("workImages"),
+  professionalDBController.updateProf
+);
 //Boton confirm del form de edicion
 
-profRoute.get(
-  "/:rubro/:cuit/deleteProf",
-  authPrivateProfMiddleware,
-  uploadFile.single("workImages"), //verificar
-  profController.showDeleteProf
-); //muestro form de confirmación de eliminación
+// profRoute.get(
+//   "/:rubro/:cuit/deleteProf",
+//   authPrivateProfMiddleware,
+//   uploadFile.single("workImages"), //verificar
+//   profController.showDeleteProf
+// ); //muestro form de confirmación de eliminación
 
-profRoute.delete("/:rubro/:cuit", profController.deleteProf);
+profRoute.delete(
+  "/:rubro/:idProf/deleteProf",
+  professionalDBController.deleteProf
+);
+///rubros/Pileteria/243/delete
 
 //profRoute.get("/:rubro", profController.profPerRubro);
 profRoute.get("/:profession", professionalDBController.profPerProfession);

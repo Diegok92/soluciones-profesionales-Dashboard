@@ -13,11 +13,13 @@ const loginStatusMiddleware = require("./middlewares/loginStatusMiddleware");
 
 app.set("view engine", "ejs");
 
-app.use(session({ 
-  secret: "Sol. Profesionales para todes",
-  resave: false,
-  saveUninitialized: false,
-}));
+app.use(
+  session({
+    secret: "Sol. Profesionales para todes",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -30,7 +32,7 @@ app.use("/clients", clientRoute);
 //   res.status(404).render("not-found")
 // })
 
-app.listen(3004, function () {
+app.listen(3000, function () {
   console.log("servidor activo");
 });
 

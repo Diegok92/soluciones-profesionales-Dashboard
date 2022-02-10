@@ -28,11 +28,12 @@
         <div class="allProduct">
           <div class="prof-title-father">
             <p class="title-per-device-productDetail">
-              <%=professional.professions.profession %>
+              <%=professional.professions[0].profession %>
 
             </p>
             <p class="name-per-device-productDetail">
               <%= professional.clients.firstName + " " + professional.clients.lastName %>
+                <%=professional.professions[0].profession %>
             </p>
             <!--el nombre cambia segun el profesonial  -->
           </div>
@@ -136,9 +137,13 @@
                     <button type="submit" style="width: 25vw;">Editar Perfil</button>
                   </a>
                 </div>
-                <a href="/rubros/<%=professional.professions.profession %>/<%=professional.client_id %>/deleteProf">
-                  <button type="submit" style="width: 25vw;">Eliminar Perfil</button>
-                </a>
+                <form id="delete-form" class="delete-form"
+                  action="/rubros/<%=professional.professions[0].profession %>/<%=professional.client_id %>/deleteProf?_method=DELETE"
+                  method="post">
+                  <!-- /rubros/Pileteria/243/delete -->
+                  <button type="submit">Eliminar Perfil</button>
+
+                </form>
               </div>
               <%} %>
                 <%} %>
