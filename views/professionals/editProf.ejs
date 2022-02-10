@@ -27,7 +27,7 @@
 
             <main>
                 <div class="all-registerProf">
-                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT" enctype="multipart/form-data"
+                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT" enctype="multipart/form-data" 
                         method="POST" class="prof-form">
                         <!-- la ruta de "action", debe ser la ruta a la que tiene q ir la info del formulario -->
                         <div class="registerInput">
@@ -153,45 +153,45 @@
                                 </option>
                             </p>
                             <p>Martes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="2,1"
-                                    <%=//profFound.dayShift.includes("Martes-TM") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Martes-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="2,2"
-                                    <%=//profFound.dayShift.includes("Martes-TT") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Martes-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dayShift" value="3,1"
-                                    <%=//profFound.dayShift.includes("Miercoles-TM") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Miercoles-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="3,2"
-                                    <%=//profFound.dayShift.includes("Miercoles-TT") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Miercoles-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dayShift" value="4,1"
-                                    <%=//profFound.dayShift.includes("Jueves-TM") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Jueves-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="4,2"
-                                    <%=//profFound.dayShift.includes("Jueves-TT") ? "checked" : "" %>>
+                                    <%#=ofFound.dayShift.includes("Jueves-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="5,1"
-                                    <%=//profFound.dayShift.includes("Viernes-TM") ? "checked" : "" %>>
+                                    <%#=ofFound.dayShift.includes("Viernes-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="5,2"
-                                    <%=//profFound.dayShift.includes("Viernes-TT") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Viernes-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dayShift" value="6,1"
-                                    <%=//profFound.dayShift.includes("Sabado-TM") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Sabado-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="6,2"
-                                    <%=//profFound.dayShift.includes("Sabado-TT") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Sabado-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
                             <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dayShift" value="7,1"
-                                    <%=//profFound.dayShift.includes("Domingo-TM") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Domingo-TM") ? "checked" : "" %>>
                                 </option>
                                 <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="7,2"
-                                    <%=//profFound.dayShift.includes("Domingo-TT") ? "checked" : "" %>>
+                                    <%#=profFound.dayShift.includes("Domingo-TT") ? "checked" : "" %>>
                                 </option>
                             </p>
 
@@ -210,10 +210,11 @@
                         <!-- <div class="registerInput avatar">
                             <label for="avatar">Foto de Perfil
                                 <input type="file" name="avatar" accept=".jpg, .png, .bmp">
-                            </label>
+                            </label> Pedir ayuda a Pablo
                         </div> -->
                         <div class="registerInput jobs">
-                            <label for="jobs">Fotos de Trabajos Realizados (max 10)
+                            <label for="jobs">Fotos de Trabajos Realizados (max 10) 
+                                <!-- como subir mas de una foto?? -->
                                 <input type="file" name="workImages" accept=".jpg, .png, .bmp" >
                             </label>
                         </div>

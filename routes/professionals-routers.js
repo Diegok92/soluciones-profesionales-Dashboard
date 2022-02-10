@@ -56,6 +56,7 @@ profRoute.get(
 profRoute.put(
   "/:idProf",
   uploadFile.single("workImages"),
+  //uploadFile.single("avatar"),
   professionalDBController.updateProf
 );
 //Boton confirm del form de edicion
