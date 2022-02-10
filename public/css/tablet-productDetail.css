@@ -17,4 +17,20 @@
     margin: auto;
     /* padding: 10px; */
   }
+  .top-flex-mobile{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .workImages {
+    width: 50%;
+  }
+  .buttons-below-avatar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .buttons-below-avatar button {
+    max-height: 3rem;
+  }
 }

@@ -26,7 +26,7 @@
                             <p class="yw-txt"><i class="fas fa-sign-out-alt"></i></p>
                         </a>
                     </div>
-                    <% }else if(locals.userProf !=undefined){ %>
+                    <% }else if(locals.userProf.id != undefined){ %>
                         <div class="session-icons">
 
                             <a href="/rubros/professional/<%= userProf.id %>">
@@ -39,7 +39,7 @@
                         </div>
 
                         <% } %>
-                            <% if(locals.userClient==undefined){ %>
+                            <% if(locals.userClient == undefined && locals.userProf == undefined){ %>
                                 <p> | </p>
                                 <a href="/clients/registerClients">
                                     <p class="txt-ingresar">Registrate</p>
@@ -48,7 +48,7 @@
 
                                     <div class="cart">
                                         <a href="/productCart"><i class="fas fa-shopping-cart"></i></a>
-                                        <i class="fas fa-chevron-down"></i>
+                                        <!-- <i class="fas fa-chevron-down"></i> -->
                                     </div>
         </div>
     </div>

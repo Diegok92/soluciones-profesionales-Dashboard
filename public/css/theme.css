@@ -8,6 +8,14 @@ body {
   font-family: "Oswald", sans-serif;
 }
 
+body a {
+  text-decoration: none;
+}
+
+body a:visited {
+  text-decoration: none;
+}
+
 .all-index {
   background-color: white;
   width: 100%;
@@ -106,6 +114,7 @@ body {
 }
 
 .nav-login a{
+  color: rgb(248, 212, 92);
   text-decoration: none;
 }
 

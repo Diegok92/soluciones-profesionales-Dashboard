@@ -33,7 +33,7 @@
             </p>
             <p class="name-per-device-productDetail">
               <%= professional.clients.firstName + " " + professional.clients.lastName %>
-                <%=professional.professions[0].profession %>
+                <%#=professional.professions[0].profession %>
             </p>
             <!--el nombre cambia segun el profesonial  -->
           </div>
@@ -47,29 +47,35 @@
 
                 <div class="rating-father">
                   <div class="rating-star">
-                    <div class="empty-star">
-                      <span>Resultado</span>
+                    <div class="empty-star rating">
+                      <p>Resultado</p>
+                      <p>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
+                      </p>
                     </div>
-                    <div class="full-star">
-                      <span>Precio</span>
+                    <div class="full-star rating">
+                      <p>Precio</p>
+                      <p>
                       <i class="fas fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
+                      </p>
                     </div>
-                    <div class="half-star">
-                      <span>Rapidez</span>
+                    <div class="half-star rating">
+                      <p>Rapidez</p>
+                      <p>
                       <i class="fas fa-star-half-alt"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
                       <i class="far fa-star"></i>
+                      </p>
                     </div>
                   </div>
                   <p class="average-phrase">Promedio entre: n Opiniones</p>
@@ -80,7 +86,7 @@
                   <p>Disponibilidad:</p>
                   <input type="date" id="date">
                 </div>
-                <button type="submit" style="width: 25vw;">
+                <button type="submit">
                   Agregar Servicio
                 </button>
               </div>
@@ -88,24 +94,34 @@
             <div class="column22-productDetail">
               <p class="title-prof-name">Detalles</p>
 
-              <div class=" details">
-                <div>
-                  <p>Zona:<%=" " +professional.workZones.location %>
-                  </p>
-                  <p>Matricula:<%if(professional.licence){%>
-                      <%=" " +professional.licence %> 
-                  <%}else{ %>
-                    <%=" No Posee" %>
+              <div class="details">
+                <div class="details-description">
+                <p>Zona:</p>
+                <p><%=professional.workZones.location %>
+                </p>
+                </div>
+                <div class="details-description">
+                <p>Matricula:</p>
+                <p><%if(professional.licence){%>
+                    <%=professional.licence %> 
+                <%}else{ %>
+                  <%=" No Posee" %>
+                    <% } %>
+                </p>
+                </div>
+                <div class="details-description">
+                <p>Atiende Emergencias:</p>
+                <p> <% if(professional.emergency=="1" ){ %>
+                    Si
+                    <% }else{ %>
+                      No
                       <% } %>
-                  </p>
-                  <p>Atiende Emergencias: <% if(professional.emergency=="1" ){ %>
-                      Si
-                      <% }else{ %>
-                        No
-                        <% } %>
-                  </p>
-                  <p>Precio de Reserva: $<%=professional.price %>
-                  </p>
+                </p>
+                </div>
+                <div class="details-description">
+                <p>Precio de Reserva:</p>
+                <p> $<%=professional.price %>
+                </p>
                 </div>
               </div>
 
@@ -129,7 +145,7 @@
               <div class="buttons-below-avatar">
                 <div>
                   <a href="/rubros/rubro/<%=professional.client_id %>/editProf">
-                    <button type="submit" style="width: 25vw;">Editar Perfil</button>
+                    <button type="submit">Editar Perfil</button>
                   </a>
                 </div>
                 <form id="delete-form" class="delete-form"
