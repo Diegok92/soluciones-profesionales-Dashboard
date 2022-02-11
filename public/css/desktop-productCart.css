@@ -1,12 +1,26 @@
 @media (min-width: 1000px) {
+  .card-wrapper {
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 70%;
+  }
   .top-flex-mobile {
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    width: 70%;
-    position: relative;
+    width: 100%;
+  }
+  .top-flex-mobile:hover{
+    box-shadow: 0px 5px 7px 3px gray;
+  }
+
+  .tfm-upper{
+    flex-direction: row;
+    align-items: center;
+  }
+  .title-per-device-productCart  {
+    display: block;
   }
   .title-cart {
     width: 70%;
@@ -18,17 +32,21 @@
     padding-top: 20px;
     padding-bottom: 20px;
   }
+  .div-descrption {
+    padding: 1rem;
+  }
   .div-descrption div {
     font-size: 1.5rem;
+  }
+
+  .tfm-lower{
+    flex-direction: row;
   }
   .reserved-date {
     font-size: 22px;
   }
   .price-button-preview p {
     font-size: 22px;
-    position: absolute;
-    top: 1em;
-    right: 5em;
   }
   .trash-button .fa-trash-alt {
     font-size: 30px;

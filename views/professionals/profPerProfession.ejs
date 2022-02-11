@@ -34,13 +34,14 @@
 
         </p>
         <% for(let i=0; i<professionals.length; i++){ %>
+          <div class="card-wrapper">
+          <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
           <div class="top-flex-mobile">
             <div class="tfm-upper">
-                <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
                     <div class="div-avatar">
                       <img class="prof-avatar" src="">
                     </div>
-                </a>
+                
 
                   <div class="div-descrption">
                     <div class="title-per-device-productCart">
@@ -80,6 +81,8 @@
               </div>
             </div>
           </div>
+        </a>
+      </div>
           <% } %>
             <div class="keepShopping-button">
               <a href="/rubros">
