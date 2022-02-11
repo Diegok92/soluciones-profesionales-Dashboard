@@ -69,6 +69,7 @@ main {
 } */
 
 .reserved-date {
+  font-weight: 500;
   font-size: 22px;
   text-align: center;
   /* width: 20%; */
@@ -78,7 +79,7 @@ main {
 }
 .price-button-preview {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .price-preview p {
@@ -86,10 +87,10 @@ main {
 }
 .title-per-device-productCart {
   display: none;
-  color: black;
+  color: #888;
   font-size: 16px;
   /* width: 90%; */
-  font-weight: 700;
+  font-weight: 500;
 }
 .name-per-device-productCart {
   font-size: 12px;

@@ -59,23 +59,22 @@
     /* box-shadow: 0px 0px 7px 3px rgb(248, 212, 92); */
     box-shadow: 0px 0px 7px 3px rgb(49, 71, 92);
   }
-  .icon-categories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    font-size: 36px;
-  }
-  .icon-article {
-    width: 25%;
+
+  .icon-article-wrapper {
     max-width: 200px;
-    text-align: center;
-    font-size: 36px;
-    /* margin: 10px; */
-    /* border: 10px rgb(49, 71, 92) double; */
   }
 
   .icon-article:hover {
     box-shadow: 0px 0px 7px 3px #333;
+  }
+
+  .icon-categories {
+    font-size: 36px;
+    margin: auto;
+    max-width: 1200px;
+  }
+  .icon-categories a {
+    width: 100%;
   }
 
   .icon-txt {
@@ -83,4 +82,5 @@
     color: rgb(49, 71, 92);
     font-weight: 400;
   }
+
 }

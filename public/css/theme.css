@@ -234,21 +234,28 @@ body a:visited {
   text-align: center;
   color: #333;
 }
+.icon-article-wrapper {
+  width: 35%;
+  max-width: 150px;
+  margin: 1rem;
+}
+.icon-article{
+  box-shadow: 0px 0px 5px 1px #333;
+  padding: 1.5rem;
+  border-radius: 25%;
+}
 .icon-categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+}
+.icon-categories a {
+  width: 100%;
 }
 .icon-article {
   color: rgb(49, 71, 92);
-  width: 35%;
-  max-width: 150px;
   text-align: center;
   font-size: 36px;
-  margin: 1rem;
-  box-shadow: 0px 0px 5px 1px #333;
-  padding: 33px;
-  border-radius: 25%;
 }
 
 .icon-article a {
