@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/theme.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/productDetail.css" />
+    <!-- <link rel="stylesheet" href="/css/productDetail.css" /> -->
     <link rel="stylesheet" href="/css/desktop-productDetail.css" />
     <link rel="stylesheet" href="/css/productCart.css" />
     <link rel="stylesheet" href="/css/tablet.css" />
@@ -35,48 +35,50 @@
         </p>
         <% for(let i=0; i<professionals.length; i++){ %>
           <div class="top-flex-mobile">
-            <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
-              <div class="div-avatar">
-                <div class="prof-avatar">
+            <div class="tfm-upper">
+                <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
+                    <div class="div-avatar">
+                      <img class="prof-avatar" src="">
+                    </div>
+                </a>
 
-                </div>
-              </div>
-              <div class="div-descrption">
-                <div class="title-per-device-productCart">
-                  <%= professionals[i].professions[0].profession %>:
-                </div>
-                <div class="name-per-device-productCart">"<%= professionals[i].clients.firstName
-                    +" "+ professionals[i].clients.lastName%>" </div>
-            </a>
-          </div>
-          <div class="reserved-date">
-            <p>
-              <%#=professionals[i].workDays[0].day %>
-            </p>
-            <p>
-              <%#=professionals[i].shifts[0].shift %>
-            </p>
-          </div>
-          <div class="reserved-date">
-            <p>
-              <% if(professionals[i].emergency==1){ %>
-                <i class="fas fa-shipping-fast"></i>
-                Urgencias
+                  <div class="div-descrption">
+                    <div class="title-per-device-productCart">
+                      <%= professionals[i].professions[0].profession %>:
+                    </div>
+                    <div class="name-per-device-productCart"><%= professionals[i].clients.firstName
+                        +" "+ professionals[i].clients.lastName%>
+                    </div>
+                  </div>
+            </div>  
+            
+              <!-- <div class="reserved-date">
+                <p>
+                  <%#=professionals[i].workDays[0].day %>
+                </p>
+                <p>
+                  <%#=professionals[i].shifts[0].shift %>
+                </p>
+              </div> -->
+            <div class="tfm-lower">
+              <div class="reserved-date">
+                <% if(professionals[i].emergency==1){ %>
+                  <i class="fas fa-shipping-fast"></i>
+                  <p class="urgency">
+                      Urgencias
+                  </p>
                 <% } %>
-            </p>
-            <p> Zona:
-              <%= professionals[i].workZones.location %>
-            </p>
-          </div>
+                <p> Zona:
+                  <%= professionals[i].workZones.location %>
+                </p>
+              </div>
 
-          <div class="price-button-preview">
-            <div class="price-preview">
-              <p>$
-                <%=professionals[i].price %>
-              </p>
+              <div class="price-button-preview">
+                
+                  <p>$<%=professionals[i].price %> </p>
+                
+              </div>
             </div>
-          </div>
-
           </div>
           <% } %>
             <div class="keepShopping-button">

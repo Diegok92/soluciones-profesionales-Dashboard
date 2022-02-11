@@ -1,5 +1,6 @@
 @media (min-width: 1000px) {
   .top-flex-mobile {
+    flex-direction: row;
     justify-content: space-between;
     padding: 20px;
     margin-bottom: 20px;
@@ -18,7 +19,7 @@
     padding-bottom: 20px;
   }
   .div-descrption div {
-    font-size: 22px;
+    font-size: 1.5rem;
   }
   .reserved-date {
     font-size: 22px;
@@ -44,15 +45,14 @@
 
   .keepShopping-button {
     margin: auto;
-    padding: 15px;
-    width: 60%;
     text-align: center;
   }
   .keepShopping-button button {
-    font-size: 25px;
-    border-radius: 5px;
     background-color: rgb(49, 71, 92);
     color: rgb(248, 212, 92);
-    width: 95%;
+  }
+  .keepShopping-button button:hover{
+    box-shadow: 0px 0px 7px 3px gray;
+    cursor: pointer;
   }
 }

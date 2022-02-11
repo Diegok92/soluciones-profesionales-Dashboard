@@ -160,11 +160,11 @@ body a:visited {
 
 .login {
   display: flex;
-  width: 30%;
+  /* width: 30%; */
   justify-content: space-between;
 }
 .txt-ingresar {
-  display: none;
+  /* display: none; */
 }
 .prof-zona {
   display: none;
