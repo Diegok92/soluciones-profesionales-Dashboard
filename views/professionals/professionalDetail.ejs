@@ -50,31 +50,31 @@
                     <div class="empty-star rating">
                       <p>Resultado</p>
                       <p>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                       </p>
                     </div>
                     <div class="full-star rating">
                       <p>Precio</p>
                       <p>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                       </p>
                     </div>
                     <div class="half-star rating">
                       <p>Rapidez</p>
                       <p>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                       </p>
                     </div>
                   </div>
@@ -96,32 +96,35 @@
 
               <div class="details">
                 <div class="details-description">
-                <p>Zona:</p>
-                <p><%=professional.workZones.location %>
-                </p>
+                  <p>Zona:</p>
+                  <p>
+                    <%=professional.workZones.location %>
+                  </p>
                 </div>
                 <div class="details-description">
-                <p>Matricula:</p>
-                <p><%if(professional.licence){%>
-                    <%=professional.licence %> 
-                <%}else{ %>
-                  <%=" No Posee" %>
-                    <% } %>
-                </p>
+                  <p>Matricula:</p>
+                  <p>
+                    <%if(professional.licence){%>
+                      <%=professional.licence %>
+                        <%}else{ %>
+                          <%=" No Posee" %>
+                            <% } %>
+                  </p>
                 </div>
                 <div class="details-description">
-                <p>Atiende Emergencias:</p>
-                <p> <% if(professional.emergency=="1" ){ %>
-                    Si
-                    <% }else{ %>
-                      No
-                      <% } %>
-                </p>
+                  <p>Atiende Emergencias:</p>
+                  <p>
+                    <% if(professional.emergency=="1" ){ %>
+                      Si
+                      <% }else{ %>
+                        No
+                        <% } %>
+                  </p>
                 </div>
                 <div class="details-description">
-                <p>Precio de Reserva:</p>
-                <p> $<%=professional.price %>
-                </p>
+                  <p>Precio de Reserva:</p>
+                  <p> $<%=professional.price %>
+                  </p>
                 </div>
               </div>
 
@@ -165,7 +168,7 @@
                 <%} %>
 
                   <h3 class=" title-categories">Tambien te Puede Interesar</h3>
-                  
+
                   <section class="icon-categories">
                     <article class="icon-article">
                       <!-- meter if en los links para /rubros/plomero o /dentista -->

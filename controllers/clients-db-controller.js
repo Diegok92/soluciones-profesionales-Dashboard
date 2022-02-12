@@ -15,9 +15,12 @@ const clientDbController = {
   registerClient: (req, res) => {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
+    let userRole = req.session.userRole;
+
     res.render("users/registerClients", {
       userClient: userClient,
       userProf: userProf,
+      userRole: userRole,
     });
   },
 
@@ -38,6 +41,8 @@ const clientDbController = {
       role: req.body.role,
     });
 
+    req.session.userRole = req.body.role;
+
     if (req.body.role == "Client") {
       console.log("dentro del if para client");
       res.redirect("/login");
@@ -56,19 +61,22 @@ const clientDbController = {
       // },
       {
         where: {
-          dni: req.params.dni,
+          dni: req.params.dni, //deberia ser el id de la tabla clientes
         },
       }
     ).then(function (result) {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
       let clientFound = result;
+      let userRole = req.session.userRole;
+
       //console.log("Dentro del result viene " + clientFound.email);
 
       res.render("users/clientDetail", {
         userClient: userClient,
         userProf: userProf,
         clientFound: clientFound,
+        userRole,
       }); //render usa ruta en carpeta (users)
     });
   },
@@ -77,8 +85,6 @@ const clientDbController = {
 
   editClient: (req, res) => {
     // por (GET)
-    let userProf = req.session.profFound;
-    let userClient = req.session.clientFound;
 
     // db.Professional.findOne({
     //   include: [
@@ -94,21 +100,21 @@ const clientDbController = {
     //   let userClient = req.session.clientFound;
     //   let clientFound = result;
 
-    db.Client.findOne(
-      {
-        where: {
-          dni: req.params.dni,
-        },
-      }
-    ).then(function (result) {
+    db.Client.findOne({
+      where: {
+        dni: req.params.dni, //deberia ser el id de la tabla clientes
+      },
+    }).then(function (result) {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
       let clientFound = result;
+      let userRole = req.session.userRole;
 
       res.render("users/editClient", {
         userClient: userClient,
         userProf: userProf,
         clientFound: clientFound,
+        userRole,
       }); //carpeta professionals
     });
   },
@@ -116,8 +122,6 @@ const clientDbController = {
   //Actualizar para usar la DB
   //por (PUT)
   updateClient: (req, res) => {
-    
-
     db.Client.update(
       {
         firstName: req.body.firstName,
@@ -137,17 +141,16 @@ const clientDbController = {
   },
 
   delete: async (req, res) => {
-    
     await db.Client.destroy({
-      where:{
+      where: {
         dni: req.params.dni,
       },
     });
     //delete property 'clientFound' of session instead of completely destroying session
     req.session.destroy();
-    
-    res.redirect('/');
-  }
+
+    res.redirect("/");
+  },
 };
 
 module.exports = clientDbController;

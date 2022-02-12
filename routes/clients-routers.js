@@ -39,14 +39,14 @@ clientsRoute.post(
 
 clientsRoute.get(
   "/:dni",
-  authPrivateClientMiddleware,
+  authPrivateClientMiddleware, //modificar para usar client id y no dni
   clientDbController.clientDetail
 ); //usar PrivateClient
 
 clientsRoute.get(
   "/:dni/editClient",
   uploadFile.single("avatar"),
-  authPrivateClientMiddleware,
+  authPrivateClientMiddleware, //modificar para usar client id y no dni
   clientDbController.editClient
 ); //muestro form de edicion
 
@@ -66,6 +66,6 @@ clientsRoute.put(
 
 // ---- Delete route ----
 
-clientsRoute.delete('/:dni/deleteClient', clientDbController.delete)
+clientsRoute.delete("/:dni/deleteClient", clientDbController.delete);
 
 module.exports = clientsRoute;

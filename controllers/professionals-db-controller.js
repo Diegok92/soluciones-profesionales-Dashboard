@@ -19,6 +19,8 @@ const professionalDBController = {
     }).then(function (profData) {
       let userProf = req.session.profFound;
       let userClient = req.session.clientFound;
+      let userRole = req.session.userRole;
+
       const uniqueProfession = [];
       const uniqueProfessionId = [];
       const uniqueWorkZones = [];
@@ -48,6 +50,7 @@ const professionalDBController = {
         uniqueProfessionId: uniqueProfessionId,
         uniqueWorkZones: uniqueWorkZones,
         uniqueWorkZonesId: uniqueWorkZonesId,
+        userRole: userRole,
       });
     });
   },
@@ -114,11 +117,15 @@ const professionalDBController = {
       //shifts.push(dayShift.charAt(2));
     }
 
+    req.session.userRole = "Professional";
+
     res.redirect("/login");
   },
 
   // Edit -- Falta que traiga los shifts y days (dayShift)
   editProf: function (req, res) {
+    //(GET) Muestra Form
+
     db.Professional.findAll({
       include: [
         { association: "clients" },
@@ -134,6 +141,7 @@ const professionalDBController = {
       const uniqueWorkZones = [];
       const uniqueWorkZonesId = [];
       let profFound = 0;
+      let userRole = req.session.userRole;
 
       // A CAMBIAR! recorrer tabla professions y traer los datos para mostrar en el desplegable
       for (let i = 0; i < profData.length; i++) {
@@ -170,6 +178,7 @@ const professionalDBController = {
         uniqueProfessionId: uniqueProfessionId,
         uniqueWorkZones: uniqueWorkZones,
         uniqueWorkZonesId: uniqueWorkZonesId,
+        userRole: userRole,
         // workDays: workDays,
         // workShifts: workShifts
       });
@@ -178,124 +187,115 @@ const professionalDBController = {
 
   updateProf: async function (req, res) {
     const idEditar = req.session.profFound.id; //trae el client_id del prof
-      
-    
+
     // const clientDataFound = await db.Client.findOne({
-      //   where: {
-      //     dni: idEditar,
-      //   },
-      // });
-      //const clientFound = await clientDataFound.id;
-  
-      const createWorkimage = await db.WorkImage.create({
-        imageTitle: req.file.filename,
-      });
+    //   where: {
+    //     dni: idEditar,
+    //   },
+    // });
+    //const clientFound = await clientDataFound.id;
 
+    const createWorkimage = await db.WorkImage.create({
+      imageTitle: req.file.filename,
+    });
 
-      const professional = await db.Professional.findOne(
-      
-      {where : {client_id: idEditar}})
-  
-      
-  
-      
-     await professional.update({
-        emergency: req.body.emergency,
-        whyMe: req.body.whyMe,
-        price: req.body.price,
-        cbu: req.body.cbu,
-        licence: req.body.licence,
-        workZone_id: req.body.WorkZoneId,
-        workImage_id: createWorkimage.id,
-  
-      });
-   
-  
-      //falta professions, dayshift, create image
-      
-      //await console.log("segundo professional" + )
-  
-      await db.Client.update({
-        email: req.body.email, 
-        address: req.body.address, 
+    const professional = await db.Professional.findOne({
+      where: { client_id: idEditar },
+    });
+
+    await professional.update({
+      emergency: req.body.emergency,
+      whyMe: req.body.whyMe,
+      price: req.body.price,
+      cbu: req.body.cbu,
+      licence: req.body.licence,
+      workZone_id: req.body.WorkZoneId,
+      workImage_id: createWorkimage.id,
+    });
+
+    //falta professions, dayshift, create image
+
+    //await console.log("segundo professional" + )
+
+    await db.Client.update(
+      {
+        email: req.body.email,
+        address: req.body.address,
         mobile: req.body.mobile,
         city_Id: req.body.city_Id,
         //avatar: req.file.filename
-      }, {where : {id : idEditar}});
-  
-  
-     await professional.setProfessions(req.body.professionId);
-      
-     //await console.log(professional)
+      },
+      { where: { id: idEditar } }
+    );
+
+    await professional.setProfessions(req.body.professionId);
+
+    //await console.log(professional)
     //await professional.setWorkImages(req.file.filename)
-  
-      //await prof.setProfessions(req.body.professionId);
-      
-      await db.ProfessionalWorkDayShift.destroy({
-        where: {
-          professional_Id: professional.id,
-        },
-      }); 
-     
 
-      let dayShift = req.body.dayShift; //["1,1", "1,2", "3,1", "6,1"]
-      let shifts = [];
-      let days = [];
-    
-      
+    //await prof.setProfessions(req.body.professionId);
 
-      if (typeof dayShift != "string") {
-        //osea es un Array (cuando se registra con mas de un horario)
-        //recorro una sola vez el array y guardo todos los shift y days
-  
-        dayShift.forEach((element) => {
-          shifts.push(element[2]); //la coma es el 1
-          days.push(element[0]);
-        });
-  
-        for (let i = 0; i < dayShift.length; i++) {
-          await professional.createProfessionalWorkDayShift({
-            shift_id: shifts[i], //1=mañana // [1,2,1,1]
-            workDay_id: days[i], //2 = martes // [1,1,3,6]
-          });
-        }
-      } else {
-        let days = dayShift[0];
-        let shifts = dayShift[2];
-  
+    await db.ProfessionalWorkDayShift.destroy({
+      where: {
+        professional_Id: professional.id,
+      },
+    });
+
+    let dayShift = req.body.dayShift; //["1,1", "1,2", "3,1", "6,1"]
+    let shifts = [];
+    let days = [];
+
+    if (typeof dayShift != "string") {
+      //osea es un Array (cuando se registra con mas de un horario)
+      //recorro una sola vez el array y guardo todos los shift y days
+
+      dayShift.forEach((element) => {
+        shifts.push(element[2]); //la coma es el 1
+        days.push(element[0]);
+      });
+
+      for (let i = 0; i < dayShift.length; i++) {
         await professional.createProfessionalWorkDayShift({
-          shift_id: shifts, //1=mañana // [1,2,1,1]
-          workDay_id: days, //2 = martes // [1,1,3,6]
+          shift_id: shifts[i], //1=mañana // [1,2,1,1]
+          workDay_id: days[i], //2 = martes // [1,1,3,6]
         });
       }
-  
-  
-  
-  
-  
-      // await prof.setShifts(1);
-      // await prof.setWorkDays([]); //despues del Set va en mayuscula el alias de la asociacion
-      // //hacer for de todos los checkboxes (solo de los nuevos del editform)
-  
-      // await prof.createWorkDay({
-      //   workDays_id: ,
-      //   shift_id:
-      // });
-  
-      res.redirect("/");
-    },
+    } else {
+      let days = dayShift[0];
+      let shifts = dayShift[2];
+
+      await professional.createProfessionalWorkDayShift({
+        shift_id: shifts, //1=mañana // [1,2,1,1]
+        workDay_id: days, //2 = martes // [1,1,3,6]
+      });
+    }
+
+    // await prof.setShifts(1);
+    // await prof.setWorkDays([]); //despues del Set va en mayuscula el alias de la asociacion
+    // //hacer for de todos los checkboxes (solo de los nuevos del editform)
+
+    // await prof.createWorkDay({
+    //   workDays_id: ,
+    //   shift_id:
+    // });
+
+    res.redirect("/");
+  },
 
   //Listing professions, professionals, professional
   professionsList: function (req, res) {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
     let user = req.session.profFound;
+    let userRole = req.session.userRole;
+
     db.Profession.findAll().then(function (professions) {
       res.render("rubros", {
         professions: professions,
         user: user,
         userClient: userClient,
         userProf: userProf,
+        userRole: userRole,
       });
     });
   },
@@ -305,7 +305,8 @@ const professionalDBController = {
     let userClient = req.session.clientFound;
     let user = req.session.profFound;
     profRequested = req.params.profession;
-    //
+    let userRole = req.session.userRole;
+
     //console.log(profRequested);
     //console.log(Professional);
     db.Professional.findAll({
@@ -330,6 +331,7 @@ const professionalDBController = {
         user: user,
         userClient: userClient,
         userProf: userProf,
+        userRole: userRole,
       });
     });
   },
@@ -339,6 +341,7 @@ const professionalDBController = {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
     let user = req.session.profFound;
+    let userRole = req.session.userRole;
 
     profRequested = req.params.client_id;
     db.Professional.findOne({
@@ -362,6 +365,7 @@ const professionalDBController = {
           user: user,
           userClient: userClient,
           userProf: userProf,
+          userRole: userRole,
         });
       })
       .catch(function (error) {

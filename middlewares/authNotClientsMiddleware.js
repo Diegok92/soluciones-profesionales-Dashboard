@@ -1,5 +1,8 @@
 function authNotClientstMiddleware(req, res, next) {
-  if (req.session.clientFound == undefined) {
+  if (
+    req.session.clientFound == undefined &&
+    req.session.userRole == undefined
+  ) {
     next();
   } else {
     res.redirect("/");

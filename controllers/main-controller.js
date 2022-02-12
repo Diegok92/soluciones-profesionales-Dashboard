@@ -26,15 +26,38 @@ module.exports = {
       .then(function (professions) {
         if (
           req.session.profFound != undefined &&
-          req.session.clientFound != undefined
+          req.session.clientFound != undefined &&
+          req.session.userRole != undefined
         ) {
           let userProf = req.session.profFound;
           let userClient = req.session.clientFound;
+          let userRole = req.session.userRole;
+
           res.render("index", {
             userClient: userClient,
             userProf: userProf,
             professions: professions,
+            userRole,
           });
+          switch (userRole) {
+            case "Client":
+              res.render("index", {
+                professions: professions,
+                userRole: userRole,
+              });
+              break;
+            case "Professional":
+              res.render("index", {
+                professions: professions,
+                userRole: userRole,
+              });
+              break;
+            default:
+              console.log("No es Cliente ni Prof");
+              res.render("index", {
+                professions: professions,
+              });
+          }
         }
 
         if (req.session.profFound != undefined) {
@@ -57,11 +80,19 @@ module.exports = {
 
     res.render("productCart", { userClient: userClient, userProf: userProf });
   },
+
   login: (req, res) => {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
-    res.render("login", { userClient: userClient, userProf: userProf });
+    let userRole = req.session.userRole;
+
+    res.render("login", {
+      userClient: userClient,
+      userProf: userProf,
+      userRole: userRole,
+    });
   },
+
   verificator: (req, res) => {
     //verificamos si hay errores en el formulario LOGIN
     let errors = validationResult(req);
@@ -93,16 +124,21 @@ module.exports = {
           });
           //return res.redirect("/");
         } else if (userFound != undefined) {
-          if (bcrypt.compareSync(req.body.password, userFound.password) == true) {
+          if (
+            bcrypt.compareSync(req.body.password, userFound.password) == true
+          ) {
             if (userFound.role == "Client") {
               req.session.clientFound = userFound;
               clientFound = userFound;
+              req.session.userRole = "Client";
             } else if (userFound.role == "Professional") {
               req.session.profFound = userFound;
               profFound = userFound;
+              req.session.userRole = "Professional";
             } else if (userFound.role == "Admin") {
               req.session.admin = userFound;
               admin = userFound;
+              req.session.userRole = "Admin";
             }
           } else {
             return res.render("login", {
@@ -116,12 +152,11 @@ module.exports = {
     }
   },
 
-  signout : (req, res) => {
-    
+  signout: (req, res) => {
     req.session.destroy();
-    
-    res.redirect('/');
-  }
+
+    res.redirect("/");
+  },
 
   //Busqueda Vieja (en JSON)
   // for (let i = 0; i < clientsList.length; i++) {
