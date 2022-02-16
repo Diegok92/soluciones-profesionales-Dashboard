@@ -33,4 +33,15 @@
   .buttons-below-avatar button {
     max-height: 3rem;
   }
+  .prof-detail-text{
+    width: 50%;
+  }
+  .columns-productDetail-father {
+    width: 60%;
+    padding: 1rem;
+  }
+  .prof-detail-text{
+    width: 60%;
+  }
+  
 }

@@ -43,6 +43,8 @@ main {
   justify-content: space-evenly;
   font-size: 1.5rem;
   align-items: center;
+  border: 1px solid rgb(49, 71, 92);
+  border-radius: 10px;
 }
 .prof-avatar {
   box-shadow: 0px 0px 7px 3px whitesmoke;
@@ -177,13 +179,17 @@ main {
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 70%;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgb(49, 71, 92);
+  border-radius: 10px;
 }
 .prof-txt {
+  width: fit-content;
+  padding: 5px 16px;
   margin: auto;
   margin-top: 10px;
-  padding: 5px;
-  border: double rgb(49, 71, 92) 10px;
+  /* border: double rgb(49, 71, 92) 10px; */
   font-weight: normal;
 }
 

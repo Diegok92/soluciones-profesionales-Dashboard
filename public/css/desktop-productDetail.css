@@ -21,7 +21,7 @@
   }
 
   .prof-avatar {
-    border: red 2px dotted;
+    /* border: red 2px dotted; */
     width: 200px;
     height: 200px;
     margin-left: 10px;
@@ -75,7 +75,7 @@
     font-size: 22px;
   }
   .prof-detail-title-text {
-    text-align: center;
+    text-align: left;
     font-weight: bold;
   }
   .title-prof-name {
@@ -85,5 +85,9 @@
   }
   .details {
     display: flex;
+  }
+
+  .prof-detail-text{
+    width: 50%;
   }
 }

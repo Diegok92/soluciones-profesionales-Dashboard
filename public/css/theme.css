@@ -247,7 +247,7 @@ body a:visited {
 .icon-categories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .icon-categories a {
   width: 100%;

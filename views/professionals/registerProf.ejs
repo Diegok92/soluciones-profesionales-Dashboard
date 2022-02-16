@@ -52,19 +52,23 @@
               </label>
             </div>
             <div class="registerInput experience-list">
-              <label>Posee Matricula:
+              <label for="have-licence">¿Tienes matrícula para realizar tu trabajo?
+                <input type="checkbox" name="have-licence" id="have-licence">
+                <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula">
+              </label>
+              <!-- <label>Posee Matricula:
                 <select name="have-licence">
                   <option value="no" selected>No</option>
                   <option value="yes">Si</option>
                 </select>
-              </label>
+              </label> -->
             </div>
 
-            <div class="registerInput licence" id="licence-div">
+            <!-- <div class="registerInput licence" id="licence-div">
               <label for="licence">Matricula (en Caso de Aplicar):
                 <input type="text" name="licence" id="licence">
               </label>
-            </div>
+            </div> -->
             <div class="registerInput localidad-list">
               <label>Zona de Prestacion de Servicio:
                 <select name="workZone">
@@ -92,40 +96,54 @@
 
             <div class="dispo-dias">
               <p>Dias de Prestacion de Servicio:</p>
-              <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="1,1" checked>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="1,2" checked>
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Lunes</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="1,1" checked></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="1,2" checked></label>
               </p>
-              <p>Martes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="2,1" checked>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="2,2" checkedd>
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Martes</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="2,1" checked></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="2,2" checkedd></label>
               </p>
-              <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dayShift" value="3,1" checked>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="3,2" checked>
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Miercoles</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="3,1" checked></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="3,2" checked></label>
               </p>
-              <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dayShift" value="4,1" checked>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="4,2" checked>
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Jueves</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="4,1" checked></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="4,2" checked></label>
               </p>
-              <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="5,1" checked>
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="5,2" checked>
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Viernes</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="5,1" checked></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="5,2" checked></label>
               </p>
-              <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dayShift" value="6,1">
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="6,2">
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Sabado</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="6,1"></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="6,2"></label>
               </p>
-              <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dayShift" value="7,1">
-                </option>
-                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="7,2">
-                </option>
+              <p class="shift-section">
+                <span class="shift-day">Domingo</span>
+                <label class="shift-range">(9-12am)
+                <input type="checkbox" name="dayShift" value="7,1"></label>
+                <label class="shift-range">(1pm-5pm)
+                <input type="checkbox" name="dayShift" value="7,2"></label>
               </p>
 
             </div>

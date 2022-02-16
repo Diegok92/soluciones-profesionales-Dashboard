@@ -81,6 +81,29 @@ main {
 }
 
 /* Cuando implementemos el script del select licence */
-/* .licence {
+
+input#have-licence + #licence {
   display: none;
-} */
+}
+
+input#have-licence:checked + #licence {
+  display: block;
+}
+
+#have-licence {
+  width: auto;
+  height: auto;
+}
+
+.shift-section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+.shift-day {
+  width: 4rem;
+}

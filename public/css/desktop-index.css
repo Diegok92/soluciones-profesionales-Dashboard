@@ -69,6 +69,7 @@
   }
 
   .icon-categories {
+    flex-wrap: nowrap;
     font-size: 36px;
     margin: auto;
     max-width: 1200px;
