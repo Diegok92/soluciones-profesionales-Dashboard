@@ -7,7 +7,7 @@ const authNotClientstMiddleware = require("../middlewares/authNotClientsMiddlewa
 const authClientsMiddleware = require("../middlewares/authClientsMiddleware");
 const authPrivateClientMiddleware = require("../middlewares/authPrivateClientMiddleware");
 const clientDbController = require("../controllers/clients-db-controller");
-const { ClientRequest } = require("http");
+const registerClientValidator = require("../validations/registerClientValidator");
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -32,6 +32,7 @@ clientsRoute.get(
 clientsRoute.post(
   "/registerClients",
   uploadFile.single("avatar"),
+  registerClientValidator,
   clientDbController.createClient
 );
 

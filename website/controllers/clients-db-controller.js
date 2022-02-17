@@ -4,6 +4,7 @@ const db = require("../database/models");
 const Op = db.Sequelize.Op;
 const profRoute = require("../routes/professionals-routers");
 const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator"); //trae los datos guardados en "validator"
 
 /*
   FALTA REVISAR EL UPDATE DE IMAGENES CON MULTER
@@ -27,6 +28,19 @@ const clientDbController = {
   createClient: function (req, res) {
     //Boton del form de creacion cliente (POST)
     req.session.dniFound = req.body.dni;
+
+    let errors = validationResult(req);
+    //console.log("el body tiene " + req.body);
+    if (!errors.isEmpty()) {
+      //console.log(errors);
+      //si hay errores
+      //console.log(errors);
+
+      return res.render("users/registerClients", {
+        errors: errors.array(),
+        old: req.body,
+      });
+    }
 
     db.Client.create({
       firstName: req.body.firstName,

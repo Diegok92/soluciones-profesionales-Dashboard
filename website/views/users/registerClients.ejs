@@ -23,24 +23,39 @@
 
       <main>
         <form action="/clients/registerClients" method="POST" enctype="multipart/form-data" class="clientForm">
-          <div class="registerInput">
-            <label for="firstName">Nombre:
-              <input type="text" name="firstName" id="firstName" placeholder="Ej: Cosme">
-            </label>
+          <div class="form-errors">
+            <% if ( locals.errors !=undefined ) { %>
+              <p>Uy, algo salio mal revisar:</p>
+              <ul>
+                <% for (let i=0; i < errors.length; i++) { %>
+                  <li>
+                    <%= errors[i].msg %>
+                  </li>
+                  <% } %>
+              </ul>
+              <% } %>
           </div>
           <div class="registerInput">
+            <label for="firstName">Nombre:
+              <input type="text" name="firstName" id="firstName" placeholder="Ej: Cosme" value=<%=locals.old ?
+                old.firstName : null%> >
+            </label>
+          </div>
+          <div class=" registerInput">
             <label for="lastName">Apellido:
-              <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito">
+              <input type="text" name="lastName" id="lastName" placeholder="Ej: Fulanito" value=<%=locals.old ?
+                old.lastName : null%>>
             </label>
           </div>
           <div class="registerInput">
             <label for="email">Email:
-              <input type="email" name="email" id="email">
+              <input type="email" name="email" id="email" value=<%=locals.old ? old.email : null%>>
             </label>
           </div>
           <div class="registerInput">
             <label for="mobile">Telefono (Sin espacios ni Guiones):
-              <input type="number" name="mobile" id="mobile" placeholder="Ej: 01112345678">
+              <input type="number" name="mobile" id="mobile" placeholder="Ej: 01112345678" value=<%=locals.old ?
+                old.mobile : null%>>
             </label>
           </div>
           <div class="registerInput localidad-list">
@@ -55,12 +70,14 @@
           </div>
           <div class="registerInput">
             <label for="address">Dirección:
-              <input type="text" name="address" id="address" placeholder="Calle falsa 123 2A">
+              <input type="text" name="address" id="address" placeholder="Calle falsa 123 2A" value=<%=locals.old ?
+                old.address : null%>>
             </label>
           </div>
           <div class="registerInput">
             <label for="dni">DNI (Revisar ya q no se puede cambiar):
-              <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad">
+              <input type="number" name="dni" id="dni" placeholder="Documento Nacional de Identidad" value=<%=locals.old
+                ? old.dni : null%>>
             </label>
           </div>
           <div class="registerInput avatar">

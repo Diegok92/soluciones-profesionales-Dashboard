@@ -102,12 +102,13 @@ module.exports = {
       res.render("login", { errors: errors.errors, old: req.body });
     } else {
       //si no hay errores:
+      //aca verificar q las pass coincidan
       const user = req.body.email;
       let clientFound;
       let profFound;
       let admin;
       let userFound;
-
+      //console.log(errors);
       //Busqueda en Listado Clientes
       db.Client.findOne({
         where: {
