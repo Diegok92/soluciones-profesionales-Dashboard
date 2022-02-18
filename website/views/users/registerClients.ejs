@@ -62,9 +62,9 @@
             <label>Localidad donde Reside
               <select name="city_Id">
                 <!-- usar una API -->
-                <option value="1" selected>Capital Federal</option>
-                <option value="2">Conurbano</option>
-                <option value="3">Interior</option>
+                <option value="1" <%=locals.city_Id=="1" ? "selected" : "" %>>Capital Federal</option>
+                <option value="2" <%=locals.city_Id=="2" ? "selected" : "" %>>Conurbano</option>
+                <option value="3" <%=locals.city_Id=="3" ? "selected" : "" %>>Interior</option>
               </select>
             </label>
           </div>

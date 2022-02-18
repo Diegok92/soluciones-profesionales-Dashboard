@@ -8,6 +8,7 @@ const authClientsMiddleware = require("../middlewares/authClientsMiddleware");
 const authPrivateClientMiddleware = require("../middlewares/authPrivateClientMiddleware");
 const clientDbController = require("../controllers/clients-db-controller");
 const registerClientValidator = require("../validations/registerClientValidator");
+const apiUsers = require("../api/apiUsers");
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -21,6 +22,9 @@ const storage = multer.diskStorage({
 });
 
 const uploadFile = multer({ storage: storage });
+
+//api de users (la url decide q api mostrar, ej metrics)
+clientsRoute.get("/api", apiUsers.clientList);
 
 // ---- Registration forms ----
 
