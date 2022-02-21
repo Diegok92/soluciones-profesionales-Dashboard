@@ -5,7 +5,7 @@ const path = require("path");
 const authLoggedtMiddleware = require("../middlewares/authLoggedMiddleware");
 const authNotProftMiddleware = require("../middlewares/authNotProfMiddleware");
 const authPrivateProfMiddleware = require("../middlewares/authPrivateProfMiddleware");
-
+const registerProfValidator = require("../validations/registerProfValidator")
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, path.join(__dirname, "../public/images/professionals"));
@@ -43,7 +43,8 @@ profRoute.get(
 );
 profRoute.post(
   "/registerProf",
-  uploadFile.single("workImages"), //verificar
+  uploadFile.single("workImages"),
+  registerProfValidator, //verificar
   professionalDBController.createProf
 );
 

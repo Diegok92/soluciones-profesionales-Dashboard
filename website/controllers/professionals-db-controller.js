@@ -4,6 +4,7 @@ const db = require("../database/models");
 const Op = db.Sequelize.Op;
 const profRoute = require("../routes/professionals-routers");
 const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator");
 
 const professionalDBController = {
   //cambiar nombre en enroutador, anterior 'rubros'
@@ -58,6 +59,63 @@ const professionalDBController = {
   //boton de crear en vista registerProf (POST)
   createProf: async function (req, res) {
     const dniCreadoPrevio = await req.session.dniFound;
+
+
+    const profData = await db.Professional.findAll({
+      include: [
+        { association: "professions" },
+        { association: "workZones" },
+        { association: "ProfessionalWorkDayShift" }, //asociacion, no tabla
+      ],
+    })
+    
+    
+      let userProf =  req.session.profFound;
+      let userClient =  req.session.clientFound;
+      let userRole =  req.session.userRole;
+
+      const uniqueProfession = [];
+      const uniqueProfessionId = [];
+      const uniqueWorkZones = [];
+      const uniqueWorkZonesId = [];
+      for (let i = 0; i < profData.length; i++) {
+        if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
+          uniqueProfession.push(profData[i].professions[0].profession);
+          uniqueProfessionId.push(profData[i].professions[0].id);
+          //console.log("la profesion es "+ uniqueProfession);
+          // console.log("y su id es "+ uniqueProfessionId);
+        }
+      }
+      for (let i = 0; i < profData.length; i++) {
+        if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
+          uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
+          uniqueWorkZonesId.push(profData[i].workZones.id);
+          // console.log("la work zone es "+ uniqueWorkZones);
+          // console.log("y su id es "+ uniqueWorkZonesId);
+        } //location es el nombre de la columna de DB
+      };
+      //console.log(uniqueWorkZonesId);
+
+
+
+
+    let errors = validationResult(req);
+    //console.log("el body tiene " + req.body);
+    if (!errors.isEmpty()) {
+      //console.log(errors);
+      //si hay errores
+      //console.log(errors);
+
+      return res.render("professionals/registerProf", {
+        errors: errors.array(),
+        old: req.body,
+        uniqueProfession: uniqueProfession,
+        uniqueProfessionId: uniqueProfessionId,
+        uniqueWorkZones: uniqueWorkZones,
+        uniqueWorkZonesId: uniqueWorkZonesId,
+
+      });
+    }
 
     const clientDataFound = await db.Client.findOne({
       where: {

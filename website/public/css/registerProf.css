@@ -82,15 +82,15 @@ main {
 
 /* Cuando implementemos el script del select licence */
 
-input#have-licence + #licence {
+input#haveLicence + #licence {
   display: none;
 }
 
-input#have-licence:checked + #licence {
+input#haveLicence:checked + #licence {
   display: block;
 }
 
-#have-licence {
+#haveLicence {
   width: auto;
   height: auto;
 }
