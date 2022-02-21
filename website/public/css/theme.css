@@ -256,6 +256,7 @@ body a:visited {
   color: rgb(49, 71, 92);
   text-align: center;
   font-size: 36px;
+  margin-right: 1rem;
 }
 
 .icon-article a {

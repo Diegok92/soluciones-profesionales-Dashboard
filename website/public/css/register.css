@@ -68,3 +68,15 @@ main {
 .confirm-button button:hover {
   box-shadow: 0px 0px 7px 3px rgb(248, 212, 92);
 }
+
+.form-errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+  color: #d74f3d;
+  line-height: 1.5;
+}
+.form-errors ul {
+  list-style: none;
+}

@@ -136,6 +136,17 @@ const clientDbController = {
   //Actualizar para usar la DB
   //por (PUT)
   updateClient: (req, res) => {
+    
+    let errors = validationResult(req);
+      
+    if (!errors.isEmpty()) {
+      return res.render("users/editClient", {
+        clientFound: req.session.clientFound,
+        errors: errors.array(),
+        old: req.body,
+      });
+    }
+
     db.Client.update(
       {
         firstName: req.body.firstName,

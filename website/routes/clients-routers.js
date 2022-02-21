@@ -8,6 +8,7 @@ const authClientsMiddleware = require("../middlewares/authClientsMiddleware");
 const authPrivateClientMiddleware = require("../middlewares/authPrivateClientMiddleware");
 const clientDbController = require("../controllers/clients-db-controller");
 const registerClientValidator = require("../validations/registerClientValidator");
+const editClientValidator = require("../validations/editClientValidator");
 const apiUsers = require("../api/apiUsers");
 
 const storage = multer.diskStorage({
@@ -58,6 +59,7 @@ clientsRoute.get(
 clientsRoute.put(
   "/:dni",
   uploadFile.single("avatar"),
+  editClientValidator,
   clientDbController.updateClient
 ); //por aca viaja al apretar el boton "edit" del formulario
 

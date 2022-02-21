@@ -69,10 +69,10 @@
   }
 
   .icon-categories {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     font-size: 36px;
     margin: auto;
-    max-width: 1200px;
+    justify-content: center;
   }
   .icon-categories a {
     width: 100%;
