@@ -1,5 +1,5 @@
 window.addEventListener('load', function(){
-    const haveLicence = document.getElementsByName('have-licence');
+    const haveLicence = document.getElementsByName('haveLicence');
     const licenceDiv = document.getElementsByClassName('licence-div');
     
 
