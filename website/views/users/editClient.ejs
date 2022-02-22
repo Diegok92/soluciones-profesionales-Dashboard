@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="/css/tablet.css" />
         <link rel="stylesheet" href="/css/desktop-index.css" />
         <title>Soluciones Profesionales</title>
+
+        <script src="/js/editClientValidator.js"></script>
+
 </head>
 
 <body>
@@ -23,6 +26,9 @@
 
             <main>
                 <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" enctype="multipart/form-data" class="clientForm">
+                    <div class="fe-errors form-errors">
+                        <ul></ul>
+                    </div>
                     <div class="form-errors">
                         <% if ( locals.errors !=undefined ) { %>
                           <p>Uy, algo salio mal revisar:</p>

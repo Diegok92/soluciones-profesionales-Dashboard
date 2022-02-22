@@ -8,7 +8,7 @@ const editClientValidator = [
 modificación de productos
 ○ Nombre
     ■ Obligatorio.
-    ■ Deberá tener al menos 5 caracteres.
+    ■ Deberá tener al menos 2 caracteres.
 ○ Descripción
     ■ Deberá tener al menos 20 caracteres.
 ○ Imagen
@@ -20,8 +20,8 @@ modificación de productos
     body("firstName")
         .notEmpty()
         .withMessage("Tu nombre no puede quedar vacío")
-        .isLength({ min: 5 })
-        .withMessage("Tu nombre debe tener al menos 5 caracteres")
+        .isLength({ min: 2 })
+        .withMessage("Tu nombre debe tener al menos 2 caracteres")
         .bail(),
     body("lastName")
         .notEmpty()
