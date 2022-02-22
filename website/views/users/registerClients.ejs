@@ -22,8 +22,14 @@
     <%- include("../partials/nav-bar") %>
 
       <main>
-        <form action="/clients/registerClients" method="POST" enctype="multipart/form-data" class="clientForm">
+        <form action="/clients/registerClients" method="POST" enctype="multipart/form-data" class="clientForm"
+          id="clientform">
           <div class="form-errors">
+            <div id="pruebaError">
+              <h2>Errores del FrontEnd</h2>
+              <ul id="prueba">
+              </ul>
+            </div>
             <% if ( locals.errors !=undefined ) { %>
               <p>Uy, algo salio mal revisar:</p>
               <ul>
@@ -60,7 +66,7 @@
           </div>
           <div class="registerInput localidad-list">
             <label>Localidad donde Reside
-              <select name="city_Id">
+              <select name="city_Id" id="city_Id">
                 <!-- usar una API -->
                 <option value="1" <%=locals.city_Id=="1" ? "selected" : "" %>>Capital Federal</option>
                 <option value="2" <%=locals.city_Id=="2" ? "selected" : "" %>>Conurbano</option>
@@ -87,7 +93,7 @@
           </div>
           <div class="registerInput localidad-list">
             <label>Perfil Usuario
-              <select name="role">
+              <select name="role" id="role">
                 <option value="Client" selected>Cliente</option>
                 <option value="Professional">Profesional</option>
               </select>
@@ -100,7 +106,7 @@
           </div>
           <div class="registerInput">
             <label for="passwordConfirm">Confirmar Contraseña:
-              <input type="password" name="passwordConfirm" id="passwordConfirm">
+              <input type="password" name="password2" id="password2">
             </label>
           </div>
           <div class="confirm-button">
@@ -114,6 +120,8 @@
       </main>
 
       <%- include("../partials/footer") %>
+
+        <script src="/js/clientValidator.js"></script>
 
 </body>
 
