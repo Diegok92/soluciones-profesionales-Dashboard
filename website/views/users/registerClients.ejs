@@ -26,12 +26,12 @@
           id="clientform">
           <div class="form-errors">
             <div id="pruebaError">
-              <h2>Errores del FrontEnd</h2>
+              <h2>Errores:</h2>
               <ul id="prueba">
               </ul>
             </div>
             <% if ( locals.errors !=undefined ) { %>
-              <p>Uy, algo salio mal revisar:</p>
+              <p>Uy, algo salio mal revisar (Lado Servidor):</p>
               <ul>
                 <% for (let i=0; i < errors.length; i++) { %>
                   <li>

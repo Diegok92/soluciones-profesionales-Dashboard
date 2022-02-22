@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
     let errors = [];
 
     const firstName = document.querySelector("#firstName");
-    const reName = new RegExp(/[^a-z]/);
+    const reName = new RegExp(/[^a-zA-Z]/);
 
     if (
       firstName.value == "" ||

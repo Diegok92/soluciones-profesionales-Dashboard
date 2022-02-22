@@ -1,4 +1,7 @@
 const { body } = require("express-validator");
+const db = require("../database/models");
+const { sequelize } = require("../database/models"); //porq no se usa??
+const Op = db.Sequelize.Op;
 
 const registerClientValidator = [
   body("firstName")
@@ -6,18 +9,45 @@ const registerClientValidator = [
     .withMessage("Campo Vacio")
     .isLength({ min: 2 })
     .withMessage("Completar Nombre (Min 2 caracteres)")
+    .custom(function (name) {
+      const reName = new RegExp(/[^a-zA-Z]/);
+      if (name.match(reName) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Nombre valido, sin espacios")
     .bail(),
   body("lastName")
     .notEmpty()
     .withMessage("Campo Vacio")
     .isLength({ min: 2 })
     .withMessage("Completar Apellido (Min 2 caracteres)")
+    .custom(function (name) {
+      const reName = new RegExp(/[^a-zA-Z]/);
+      if (name.match(reName) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Apellido valido, sin espacios")
     .bail(),
   body("email")
     .notEmpty()
     .withMessage("Campo Vacio")
     .isEmail()
     .withMessage("Debe ser email Valido")
+    .custom(async (emailGiven) => {
+      const existingEmail = await db.Client.findOne({
+        where: {
+          email: emailGiven,
+        },
+      });
+
+      if (existingEmail) {
+        throw new Error("ese Email ya fue registrado");
+      }
+    })
     .bail(),
   body("mobile")
     .notEmpty()
@@ -32,8 +62,16 @@ const registerClientValidator = [
     .withMessage("Completar Ciudad")
     .bail(), //poner como opcion predeterminada "Seleccione" y verficar contra esa
   body("address")
-    .isAlphanumeric()
-    .withMessage("Completar direccion acepta: alfanumerico y espacios")
+    .notEmpty()
+    .withMessage("Completar direccion")
+    .custom(function (name) {
+      const reAddress = new RegExp(/[^A-Za-z0-9\s]/);
+      if (name.match(reAddress) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Completar direccion: alfanumerico y espacios")
     .bail(),
   body("dni")
     .notEmpty()
@@ -53,13 +91,25 @@ const registerClientValidator = [
     .withMessage("Campo Vacio")
     .isLength({ min: 8 })
     .withMessage("las contraseña de tener min 8 caracteres")
+    .custom(function (name) {
+      const rePassword = new RegExp(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
+      );
+      if (name.match(rePassword) == null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage(
+      "password min 8 caracteres, una mayus, un numero, y algun: ! @ # $ % ^ & * "
+    )
     .bail(), //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-  body("passwordConfirm")
-    .notEmpty()
-    .withMessage("Campo Vacio")
-    .isLength({ min: 8 })
-    .withMessage("las contraseña de tener min 8 caracteres")
-    .bail(), //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
+  // body("password2")
+  //   .notEmpty()
+  //   .withMessage("Campo Vacio")
+  //   .isLength({ min: 8 })
+  //   .withMessage("las contraseña de tener min 8 caracteres")
+  //   .bail(), //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
 ];
 
 module.exports = registerClientValidator;
