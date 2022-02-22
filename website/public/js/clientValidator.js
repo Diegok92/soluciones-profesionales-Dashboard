@@ -1,7 +1,14 @@
 window.addEventListener("load", function () {
   const formulario = document.getElementById("clientform");
+  
 
+  
   formulario.addEventListener("submit", function (e) {
+    let ulErrors = document.querySelector('div.fe-errors ul')
+          
+    //Reset the ul to empty to avoid duplicating error render
+    ulErrors.innerHTML = '';
+
     let errors = [];
 
     const firstName = document.querySelector("#firstName");
@@ -89,7 +96,7 @@ window.addEventListener("load", function () {
     if (errors.length > 0) {
       e.preventDefault();
 
-      let ulErrors = document.querySelector("#prueba");
+      
 
       for (i = 0; i < errors.length; i++) {
         ulErrors.innerHTML += "<li>" + errors[i] + "</li>";

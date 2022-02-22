@@ -10,31 +10,32 @@ window.addEventListener('load', function(){
         
         let errors = [];
 
-        const firstName = document.getElementById('firstName');
-        const lastName = document.getElementById('lastName');
-        const email = document.getElementById('email');
-        const mobile = document.getElementById('mobile');
-        const address = document.getElementById('address');
-        const avatar = document.getElementById('avatar');
+        const firstName = document.querySelector('#firstName');
+        const lastName = document.querySelector('#lastName');
+        const email = document.querySelector('#email');
+        const mobile = document.querySelector('#mobile');
+        const address = document.querySelector('#address');
+        const avatar = document.querySelector('#avatar');
 
         //Valid RegEx structures for each input 
         const regexName = new RegExp(/[^a-zA-Z]/);
         const regexEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
         const regexNumber = new RegExp(/[^0-9]/);
-
-        if (firstName.value == '' || firstName.length < 2 || firstName.value.match(regexName) != null ) {
+        const regexAddress = new RegExp(/[^A-Za-z0-9\s]/);
+        
+        if (firstName.value == '' || firstName.value.length < 2 || firstName.value.match(regexName) != null ) {
             errors.push('Debes ingresar un nombre válido!!!')
         }
-        if ( lastName.value == ''  || lastName.length < 2 || firstName.value.match(regexName) != null ) {
+        if ( lastName.value == ''  || lastName.value.length < 2 || lastName.value.match(regexName) != null ) {
             errors.push('Debes ingresar un apellido válido!!!')
         }
-        if ( email.value == '' /*|| email.value.match(regexEmail) != null */) {
+        if ( email.value == '' || email.value.match(regexEmail) == null ) {
             errors.push('Debes ingresar un email válido!!!')
         }
         if ( mobile.value == '' || mobile.value.match(regexNumber) != null ) {
             errors.push('Debes ingresar un número de teléfono válido!!!')
         }
-        if ( address.value == '') {
+        if ( address.value == '' || address.value.match(regexAddress) != null ) {
             errors.push('Debes completar tu domicilio!!!')
         }
 

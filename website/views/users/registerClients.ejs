@@ -24,12 +24,10 @@
       <main>
         <form action="/clients/registerClients" method="POST" enctype="multipart/form-data" class="clientForm"
           id="clientform">
+          <div class="fe-errors form-errors">
+            <ul></ul>
+          </div>
           <div class="form-errors">
-            <div id="pruebaError">
-              <h2>Errores:</h2>
-              <ul id="prueba">
-              </ul>
-            </div>
             <% if ( locals.errors !=undefined ) { %>
               <p>Uy, algo salio mal revisar (Lado Servidor):</p>
               <ul>
