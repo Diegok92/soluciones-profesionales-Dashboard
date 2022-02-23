@@ -18,5 +18,13 @@ module.exports = (sequelize) => {
 
   const Professional_Professional = sequelize.define(alias, cols, config);
 
+  // professionals_profession.associate = function (models) {
+  //   professionals_profession.hasMany(models.Profession, {
+  //     as: "professionals_profession_title", //nombre de la asociación
+  //     foreignKey: "professional_id",
+  //     timestamps: false,
+  //   });
+  // };
+
   return Professional_Professional;
 };

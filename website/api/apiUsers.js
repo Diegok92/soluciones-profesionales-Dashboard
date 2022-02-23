@@ -11,33 +11,72 @@ const { validationResult } = require("express-validator"); //trae los datos guar
 
 const apiUsers = {
   //listado clientes
-  clientList: (req, res) => {
-    db.Client.findAll({
+  clientList: async function (req, res) {
+    const cliente = await db.Client.findAll({
       include: [{ association: "cities" }],
-    }).then(function (clients) {
-      clients.reduce(function () {});
+    });
+    //cliente.reduce(function () {});
 
-      roles = clients.map(function (client) {
-        return client.role;
-      });
+    // roles = cliente.map(function (cliente) {
+    //   return cliente.role;
+    // });
 
-      //   cantidad = await db.Client.count()
+    totalProfessionals = cliente.filter(function (prof) {
+      return prof.role == "Professional";
+    });
 
-      //   cantidad = await db.Role.findAll({
-      //       atributes: ["name"],
-      //       group: []
-      //   })
+    totalClients = cliente.filter(function (cliente) {
+      return cliente.role == "Client";
+    });
 
-      //FALTA filtrar cant por rol
+    totalAdmins = cliente.filter(function (admin) {
+      return admin.role == "Admin";
+    });
 
-      return res.status(200).json({
-        //data: clients,
-        roles: roles,
-        totalUsers: clients.length,
-        //profperzone:,
-        //totalAdmin:
-        //totalProfesional,
-      });
+    const professions = await db.Profession.findAll();
+
+    const uniqProfessions = professions.filter(function (valor) {
+      return valor.profession;
+    });
+
+    const professionsName = professions.map(function (x) {
+      return x.profession;
+    });
+
+    const totalPerProf = [];
+    for (let i = 1; i <= uniqProfessions.length; i++) {
+      totalPerProf.push(
+        await db.professionals_profession.count({
+          where: {
+            profession_id: {
+              [Op.like]: i,
+            },
+          },
+        })
+      );
+      await db.Profession.findByPk(i);
+    }
+
+    //   cantidad = await db.Client.count()
+
+    //   cantidad = await db.Role.findAll({
+    //       atributes: ["name"],
+    //       group: []
+    //   })
+
+    //FALTA filtrar cant por rol
+
+    return res.status(200).json({
+      //data: clients,
+      totalUsers: cliente.length,
+      //profperzone:,
+      //totalAdmin:
+      totalProfessionals: totalProfessionals.length,
+      totalClients: totalClients.length,
+      totalAdmins: totalAdmins.length,
+      professions: professions,
+      totalProfessions: uniqProfessions.length,
+      totalPerProf: totalPerProf,
     });
   },
   //listado profesionales
