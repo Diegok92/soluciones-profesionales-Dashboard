@@ -1,13 +1,11 @@
 window.addEventListener("load", function () {
   const formulario = document.getElementById("clientform");
-  
 
-  
   formulario.addEventListener("submit", function (e) {
-    let ulErrors = document.querySelector('div.fe-errors ul')
-          
+    let ulErrors = document.querySelector("div.fe-errors ul");
+
     //Reset the ul to empty to avoid duplicating error render
-    ulErrors.innerHTML = '';
+    ulErrors.innerHTML = "";
 
     let errors = [];
 
@@ -72,6 +70,32 @@ window.addEventListener("load", function () {
       errors.push("DNI sin espacios, puntos ni guiones");
     }
 
+    var avatarFile = document.getElementById("avatarFile");
+
+    var files = avatarFile.files;
+    if (files.length == 0) {
+      errors.push("Debe cargar una imagen");
+    } else {
+      var filename = files[0].name;
+
+      var extension = filename.substr(filename.lastIndexOf("."));
+
+      var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+      var isAllowed = allowedExtensionsRegx.test(extension);
+
+      if (!isAllowed) {
+        errors.push("La imagen debe ser: .jpg, .jpeg, .png, .gif");
+      }
+      var fileSize = files[0].size;
+
+      var size = Math.round(fileSize / 1024);
+
+      if (size > 1024) {
+        errors.push("La imagen debe pesar menos de 1mb");
+      }
+    }
+
     const role = document.querySelector("#role");
 
     if (role.value == "") {
@@ -95,8 +119,6 @@ window.addEventListener("load", function () {
 
     if (errors.length > 0) {
       e.preventDefault();
-
-      
 
       for (i = 0; i < errors.length; i++) {
         ulErrors.innerHTML += "<li>" + errors[i] + "</li>";
