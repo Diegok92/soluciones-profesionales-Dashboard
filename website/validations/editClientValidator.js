@@ -1,10 +1,8 @@
-const { body }  = require("express-validator");
-
-console.log("Entro al validador")
+const { body } = require("express-validator");
+const path = require("path");
 
 const editClientValidator = [
-
-/*
+  /*
 modificación de productos
 ○ Nombre
     ■ Obligatorio.
@@ -17,28 +15,49 @@ modificación de productos
     ■ Verificar que los valores existan en base. Es decir, que los valores
     de talles, colores, etc. que lleguen sean válidos en la base.
 */
-    body("firstName")
-        .notEmpty()
-        .withMessage("Tu nombre no puede quedar vacío")
-        .isLength({ min: 2 })
-        .withMessage("Tu nombre debe tener al menos 2 caracteres")
-        .bail(),
-    body("lastName")
-        .notEmpty()
-        .withMessage("Tu apellido es obligatorio!")
-        .bail(),
-    body("email")
-        .notEmpty()
-        .withMessage("Debes completar tu email")
-        .isEmail()
-        .withMessage("Debes ingresar un email válido")
-        .bail(),    
-    body("mobile")
-        .isNumeric()
-        .withMessage("Debes ingresar tu numero de celular sin el 0 y sin el 15"),
-    body("address")
-        .notEmpty()
-        .withMessage("Tu domicilio no puede quedar vacío"),
+  body("firstName")
+    .notEmpty()
+    .withMessage("Tu nombre no puede quedar vacío")
+    .isLength({ min: 2 })
+    .withMessage("Tu nombre debe tener al menos 2 caracteres")
+    .bail(),
+  body("lastName").notEmpty().withMessage("Tu apellido es obligatorio!").bail(),
+  body("email")
+    .notEmpty()
+    .withMessage("Debes completar tu email")
+    .isEmail()
+    .withMessage("Debes ingresar un email válido")
+    .bail(),
+  body("mobile")
+    .isNumeric()
+    .withMessage("Debes ingresar tu numero de celular sin el 0 y sin el 15")
+    .bail(),
+  body("address")
+    .notEmpty()
+    .withMessage("Tu domicilio no puede quedar vacío")
+    .bail(),
+  body("avatar")
+    .custom((value, { req }) => {
+      if (!req.file) throw new Error("Falta Imagen de Avatar");
+      return true;
+    })
+    .custom(function (value, { req }) {
+      var extension = path.extname(req.file.originalname).toLowerCase();
+      switch (extension) {
+        case ".jpg":
+          return true;
+        case ".jpeg":
+          return true;
+        case ".png":
+          return true;
+        case ".gif":
+          return true;
+        default:
+          return false;
+      }
+    })
+    .withMessage("la imagen debe ser: .jpg .jpeg .png o .gif")
+    .bail(),
 ];
 
 module.exports = editClientValidator;

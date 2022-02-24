@@ -2,6 +2,7 @@ const { body } = require("express-validator");
 const db = require("../database/models");
 const { sequelize } = require("../database/models"); //porq no se usa??
 const Op = db.Sequelize.Op;
+const path = require("path");
 
 const registerClientValidator = [
   body("firstName")
@@ -80,6 +81,28 @@ const registerClientValidator = [
     .withMessage("numeros solos")
     .isLength({ min: 8, max: 8 })
     .withMessage("Completar dni")
+    .bail(),
+  body("avatar")
+    .custom((value, { req }) => {
+      if (!req.file) throw new Error("Falta Imagen de Avatar");
+      return true;
+    })
+    .custom(function (value, { req }) {
+      var extension = path.extname(req.file.originalname).toLowerCase();
+      switch (extension) {
+        case ".jpg":
+          return true;
+        case ".jpeg":
+          return true;
+        case ".png":
+          return true;
+        case ".gif":
+          return true;
+        default:
+          return false;
+      }
+    })
+    .withMessage("la imagen debe ser: .jpg .jpeg .png o .gif")
     .bail(),
   body("role")
     .notEmpty()

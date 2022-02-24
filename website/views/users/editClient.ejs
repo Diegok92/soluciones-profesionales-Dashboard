@@ -25,21 +25,22 @@
         <%- include("../partials/nav-bar") %>
 
             <main>
-                <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" enctype="multipart/form-data" class="clientForm">
+                <form action="/clients/<%=clientFound.dni%>?_method=PUT" method="POST" enctype="multipart/form-data"
+                    class="clientForm">
                     <div class="fe-errors form-errors">
                         <ul></ul>
                     </div>
                     <div class="form-errors">
                         <% if ( locals.errors !=undefined ) { %>
-                          <p>Uy, algo salio mal revisar:</p>
-                          <ul>
-                            <% for (let i=0; i < errors.length; i++) { %>
-                              <li>
-                                <%= errors[i].msg %>
-                              </li>
-                              <% } %>
-                          </ul>
-                        <% } %>
+                            <p>Uy, algo salio mal revisar:</p>
+                            <ul>
+                                <% for (let i=0; i < errors.length; i++) { %>
+                                    <li>
+                                        <%= errors[i].msg %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                            <% } %>
                     </div>
                     <div class="registerInput">
                         <label for="firstName">Nombre:
@@ -81,11 +82,11 @@
                                 value="<%=clientFound.address%>">
                         </label>
                     </div>
-                    
+
                     <div class="registerInput avatar">
-                        <label for="avatar">Foto de Perfil
+                        <label for="avatar">Foto de Perfil (.jpg, .png, .jepg ó .gif)
                             <input src="images/clients/<%=clientFound.avatar%>" type="file" name="avatar"
-                                accept=".jpg, .png, .bmp" value="<%=clientFound.avatar%>">
+                                accept=".jpg, .png, .jpeg, .gif" value="<%=clientFound.avatar%>">
                         </label>
                     </div>
 
