@@ -9,6 +9,7 @@ main {
   max-width: 600px;
   background-color: white;
   margin-top: 20px;
+  border-radius: 10px;
 }
 
 .registerInput {

@@ -20,8 +20,29 @@ modificación de productos
     .withMessage("Tu nombre no puede quedar vacío")
     .isLength({ min: 2 })
     .withMessage("Tu nombre debe tener al menos 2 caracteres")
+    .custom(function (name) {
+      const reName = new RegExp(/[^a-zA-Z]/);
+      if (name.match(reName) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Nombre valido, sin espacios")
     .bail(),
-  body("lastName").notEmpty().withMessage("Tu apellido es obligatorio!").bail(),
+  body("lastName")
+    .notEmpty()
+    .withMessage("Tu apellido es obligatorio!")
+    .isLength({ min: 2 })
+    .withMessage("Tu nombre debe tener al menos 2 caracteres")
+    .custom(function (name) {
+      const reName = new RegExp(/[^a-zA-Z]/);
+      if (name.match(reName) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Nombre valido, sin espacios")
+    .bail(),
   body("email")
     .notEmpty()
     .withMessage("Debes completar tu email")
@@ -35,6 +56,14 @@ modificación de productos
   body("address")
     .notEmpty()
     .withMessage("Tu domicilio no puede quedar vacío")
+    .custom(function (name) {
+      const reAddress = new RegExp(/[^A-Za-z0-9\s]/);
+      if (name.match(reAddress) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Completar direccion: alfanumerico y espacios")
     .bail(),
   body("avatar")
     .custom((value, { req }) => {
