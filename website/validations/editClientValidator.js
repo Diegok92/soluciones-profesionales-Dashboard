@@ -1,4 +1,7 @@
 const { body } = require("express-validator");
+const db = require("../database/models");
+const { sequelize } = require("../database/models"); //porq no se usa??
+const Op = db.Sequelize.Op;
 const path = require("path");
 
 const editClientValidator = [
@@ -27,13 +30,13 @@ modificación de productos
       }
       return true;
     })
-    .withMessage("Nombre valido, sin espacios")
+    .withMessage("1er Nombre, sin espacios")
     .bail(),
   body("lastName")
     .notEmpty()
     .withMessage("Tu apellido es obligatorio!")
     .isLength({ min: 2 })
-    .withMessage("Tu nombre debe tener al menos 2 caracteres")
+    .withMessage("Tu Apellido debe tener al menos 2 caracteres")
     .custom(function (name) {
       const reName = new RegExp(/[^a-zA-Z]/);
       if (name.match(reName) != null) {
@@ -41,18 +44,36 @@ modificación de productos
       }
       return true;
     })
-    .withMessage("Nombre valido, sin espacios")
+    .withMessage("1er Apellido, sin espacios")
     .bail(),
   body("email")
     .notEmpty()
     .withMessage("Debes completar tu email")
     .isEmail()
     .withMessage("Debes ingresar un email válido")
+    .custom(async (emailGiven) => {
+      const existingEmail = await db.Client.findOne({
+        where: {
+          email: emailGiven,
+        },
+      });
+      if (existingEmail) {
+        throw new Error("Ese Email ya fue registrado");
+      }
+    })
     .bail(),
   body("mobile")
+    .notEmpty()
+    .withMessage("Completar Telefono")
     .isNumeric()
     .withMessage("Debes ingresar tu numero de celular sin el 0 y sin el 15")
     .bail(),
+  body("city_Id")
+    .notEmpty()
+    .withMessage("Elegir Ciudad")
+    .isNumeric()
+    .withMessage("Elegir Ciudad")
+    .bail(), //poner como opcion predeterminada "Seleccione" y verficar contra esa
   body("address")
     .notEmpty()
     .withMessage("Tu domicilio no puede quedar vacío")
@@ -86,6 +107,17 @@ modificación de productos
       }
     })
     .withMessage("la imagen debe ser: .jpg .jpeg .png o .gif")
+    .custom(function (value, { req }) {
+      var fileSize = req.file.size;
+      var size = Math.round(fileSize / 1024);
+
+      if (size > 1024) {
+        return false;
+      } else {
+        return true;
+      }
+    })
+    .withMessage("La imagen debe pesar menos de 1mb")
     .bail(),
 ];
 

@@ -19,7 +19,7 @@ Clientes {
       firstName: 'Tiphanie',
       lastName: 'Byfford',
       email: 'tbyfford2r@wix.com',
-      cuit: 'SK55 4423 4903 9317 3615 1465',
+      dni: 'SK55 4423 4903 9317 3615 1465',
       mobile: '3005909869',
       avatar: 'http://dummyimage.com/190x100.png/ff4444/ffffff',
       password: 'TzUZF6j',

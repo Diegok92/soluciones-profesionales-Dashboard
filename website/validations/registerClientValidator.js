@@ -7,7 +7,7 @@ const path = require("path");
 const registerClientValidator = [
   body("firstName")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Completar Nombre")
     .isLength({ min: 2 })
     .withMessage("Completar Nombre (Min 2 caracteres)")
     .custom(function (name) {
@@ -17,11 +17,11 @@ const registerClientValidator = [
       }
       return true;
     })
-    .withMessage("Nombre valido, sin espacios")
+    .withMessage("1er Nombre, sin espacios")
     .bail(),
   body("lastName")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Completar Apellido")
     .isLength({ min: 2 })
     .withMessage("Completar Apellido (Min 2 caracteres)")
     .custom(function (name) {
@@ -31,13 +31,13 @@ const registerClientValidator = [
       }
       return true;
     })
-    .withMessage("Apellido valido, sin espacios")
+    .withMessage("1er Apellido, sin espacios")
     .bail(),
   body("email")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Completar Email")
     .isEmail()
-    .withMessage("Debe ser email Valido")
+    .withMessage("Debe ser un Email valido")
     .custom(async (emailGiven) => {
       const existingEmail = await db.Client.findOne({
         where: {
@@ -46,21 +46,21 @@ const registerClientValidator = [
       });
 
       if (existingEmail) {
-        throw new Error("ese Email ya fue registrado");
+        throw new Error("Ese Email ya fue registrado");
       }
     })
     .bail(),
   body("mobile")
     .notEmpty()
-    .withMessage("Campo Vacio")
-    .isNumeric()
     .withMessage("Completar Telefono")
+    .isNumeric()
+    .withMessage("Completar Telefono Valido")
     .bail(),
   body("city_Id")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Elegir Ciudad")
     .isNumeric()
-    .withMessage("Completar Ciudad")
+    .withMessage("Elegir Ciudad")
     .bail(), //poner como opcion predeterminada "Seleccione" y verficar contra esa
   body("address")
     .notEmpty()
@@ -76,11 +76,11 @@ const registerClientValidator = [
     .bail(),
   body("dni")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Completar DNI")
     .isNumeric()
-    .withMessage("numeros solos")
+    .withMessage("Solo Numeros (ni puntos, guiones ni espacios")
     .isLength({ min: 8, max: 8 })
-    .withMessage("Completar dni")
+    .withMessage("DNI Invalido")
     .bail(),
   body("avatar")
     .custom((value, { req }) => {
@@ -102,18 +102,29 @@ const registerClientValidator = [
           return false;
       }
     })
-    .withMessage("la imagen debe ser: .jpg .jpeg .png o .gif")
+    .withMessage("La imagen debe ser: .jpg .jpeg .png o .gif")
+    .custom(function (value, { req }) {
+      var fileSize = req.file.size;
+      var size = Math.round(fileSize / 1024);
+
+      if (size > 1024) {
+        return false;
+      } else {
+        return true;
+      }
+    })
+    .withMessage("La imagen debe pesar menos de 1mb")
     .bail(),
   body("role")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Elegir un Perfil de usuario")
     .isAlpha()
     .withMessage("Debes especificar Cliente o Profesional"), //poner como opcion predeterminada "Seleccione" y verficar contra esa
   body("password")
     .notEmpty()
-    .withMessage("Campo Vacio")
+    .withMessage("Completar Contraseña")
     .isLength({ min: 8 })
-    .withMessage("las contraseña de tener min 8 caracteres")
+    .withMessage("La contraseña de tener min 8 caracteres")
     .custom(function (name) {
       const rePassword = new RegExp(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
@@ -124,7 +135,7 @@ const registerClientValidator = [
       return true;
     })
     .withMessage(
-      "password min 8 caracteres, una mayus, un numero, y algun: ! @ # $ % ^ & * "
+      "Contraseña: min 8 caracteres, una mayus, un numero, y algun: ! @ # $ % ^ & * "
     )
     .bail(), //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
   // body("password2")
