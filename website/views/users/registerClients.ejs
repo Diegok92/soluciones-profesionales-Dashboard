@@ -25,7 +25,8 @@
         <form action="/clients/registerClients" method="POST" enctype="multipart/form-data" class="clientForm"
           id="clientform">
           <div class="fe-errors form-errors">
-            <ul></ul>
+            <ul>
+            </ul>
           </div>
           <div class="form-errors">
             <% if ( locals.errors !=undefined ) { %>
@@ -86,7 +87,7 @@
           </div>
           <div class="registerInput avatar">
             <label for="avatar">Foto de Perfil (.jpg, .png, .jepg ó .gif)
-              <input type="file" name="avatar" id="avatarFile" accept=".jpg, .png, .jepg, .gif">
+              <input type="file" name="avatar" id="avatarFile" accept=".jpg, .png, .jpeg, .gif">
             </label>
           </div>
           <div class="registerInput localidad-list">

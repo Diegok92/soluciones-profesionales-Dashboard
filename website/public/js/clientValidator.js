@@ -17,7 +17,9 @@ window.addEventListener("load", function () {
       firstName.value.length < 3 ||
       firstName.value.match(reName) != null //sera nulo solo cuando haya letras
     ) {
-      errors.push("tu Nombre debe contener al menos 2 letras");
+      errors.push(
+        "Tu 1er Nombre debe tener al menos 2 letras y no poseer espacios"
+      );
     }
     const lastName = document.querySelector("#lastName");
 
@@ -26,7 +28,9 @@ window.addEventListener("load", function () {
       lastName.value.length < 3 ||
       lastName.value.match(reName) != null
     ) {
-      errors.push("tu Apellido debe contener al menos 2 letras");
+      errors.push(
+        "Tu 1er Apellido debe tener al menos 2 letras y no poseer espacios"
+      );
     }
     const email = document.querySelector("#email");
 
