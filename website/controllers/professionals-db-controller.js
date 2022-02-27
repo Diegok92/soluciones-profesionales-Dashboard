@@ -357,18 +357,34 @@ const professionalDBController = {
 
     //await console.log("segundo professional" + )
 
-    await db.Client.update(
-      {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        address: req.body.address,
-        mobile: req.body.mobile,
-        city_Id: req.body.city_Id,
-        //avatar: req.file.filename
-      },
-      { where: { id: idEditar } }
-    );
+   if(req.body.email == "")
+   
+   
+   {await db.Client.update(
+    {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      address: req.body.address,
+      mobile: req.body.mobile,
+      city_Id: req.body.city_Id,
+      //avatar: req.file.filename
+    },
+    { where: { id: idEditar } }
+  );
+} else {await db.Client.update(
+  {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    address: req.body.address,
+    mobile: req.body.mobile,
+    city_Id: req.body.city_Id,
+    //avatar: req.file.filename
+  },
+  { where: { id: idEditar } }
+);}
+   
+    
 
     await professional.setProfessions(req.body.professionId);
 

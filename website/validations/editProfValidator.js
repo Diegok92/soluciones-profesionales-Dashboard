@@ -33,21 +33,32 @@ const editProfValidator = [
     })
     .withMessage("1er Apellido, sin espacios")
     .bail(),
-  body("email")
-    .notEmpty()
-    .withMessage("Debes completar tu email")
-    .isEmail()
-    .withMessage("Debes ingresar un email válido")
-    .custom(async (emailGiven) => {
+    body("email")
+    .custom(async function (email) {
+      if (email == "") {
+        return true;
+      }
+      const reEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+      if (email.match(reEmail) == null) {
+       
+        throw new Error("Debes ingresar un Email valido");
+       
+      }
       const existingEmail = await db.Client.findOne({
         where: {
-          email: emailGiven,
+          email: email,
         },
       });
       if (existingEmail) {
         throw new Error("Ese Email ya fue registrado");
+       
       }
+
+
+      return true;
     })
+
     .bail(),
   body("mobile")
     .notEmpty()
