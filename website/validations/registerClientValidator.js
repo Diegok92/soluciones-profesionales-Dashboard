@@ -81,6 +81,17 @@ const registerClientValidator = [
     .withMessage("Solo Numeros (ni puntos, guiones ni espacios")
     .isLength({ min: 8, max: 8 })
     .withMessage("DNI Invalido")
+    .custom(async (dniGiven) => {
+      const existingDni = await db.Client.findOne({
+        where: {
+          dni: dniGiven,
+        },
+      });
+
+      if (existingDni) {
+        throw new Error("Ese dni ya fue registrado");
+      }
+    })
     .bail(),
   body("avatar")
     .custom((value, { req }) => {
