@@ -6,7 +6,7 @@ const authLoggedtMiddleware = require("../middlewares/authLoggedMiddleware");
 const authNotProftMiddleware = require("../middlewares/authNotProfMiddleware");
 const authPrivateProfMiddleware = require("../middlewares/authPrivateProfMiddleware");
 const registerProfValidator = require("../validations/registerProfValidator");
-const editProfValidator = require("../validations/editProfValidator")
+const editProfValidator = require("../validations/editProfValidator");
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, path.join(__dirname, "../public/images/professionals"));
@@ -25,7 +25,7 @@ const uploadFile = multer({ storage: storage });
 
 const profRoute = express.Router();
 const professionalDBController = require("../controllers/professionals-db-controller.js");
-const profController = require("../controllers/professionals-controller.js");
+//const profController = require("../controllers/professionals-controller.js");
 
 //aca hicimos los cambios
 //profRoute.get("/", profController.rubros);

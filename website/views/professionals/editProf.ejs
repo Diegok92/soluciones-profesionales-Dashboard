@@ -27,41 +27,41 @@
 
             <main>
                 <div class="all-registerProf">
-                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT" enctype="multipart/form-data" 
+                    <form action="/rubros/<%=profFound.client_id %>?_method=PUT" enctype="multipart/form-data"
                         method="POST" class="prof-form">
                         <!-- la ruta de "action", debe ser la ruta a la que tiene q ir la info del formulario -->
-                        
+
                         <div class="form-errors">
-                            
-                               
-                            
-                            
-    
-                            
-                                        <% if ( locals.errors !=undefined ) { %>
-                                          <p>Uy, algo salio mal revisar:</p>
-                                          <ul>
-                                            <% for (let i=0; i < errors.length; i++) { %>
-                                              <li>
-                                                <%= errors[i].msg %>
-                                              </li>
-                                              <% } %>
-                                          </ul>
-                                          <% } %>
-                                      </div>
-                        
-                        
-                        
+
+
+
+
+
+
+                            <% if ( locals.errors !=undefined ) { %>
+                                <p>Uy, algo salio mal revisar:</p>
+                                <ul>
+                                    <% for (let i=0; i < errors.length; i++) { %>
+                                        <li>
+                                            <%= errors[i].msg %>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                                <% } %>
+                        </div>
+
+
+
                         <div class="registerInput">
                             <label for="firstName">Nombre:
                                 <input type="text" name="firstName" id="firstName"
-                                    value="<%=profFound.clients.firstName %>" >
+                                    value="<%=profFound.clients.firstName %>">
                             </label>
                         </div>
                         <div class="registerInput">
                             <label for="lastName">Apellido:
                                 <input type="text" name="lastName" id="lastName"
-                                    value="<%=profFound.clients.lastName %>" >
+                                    value="<%=profFound.clients.lastName %>">
                             </label>
                         </div>
                         <div class="registerInput">
@@ -101,6 +101,8 @@
                         </div>
                         <div class="registerInput profesiones-list">
                             <label>Profesiones:
+                                <!-- *ponerle link a la palabra "nosotros" -->
+                                <h5>(en caso de no estar listada, comuniquese con nosotros)</h5>
                                 <!-- class="selectpicker" multiple -->
                                 <select name="professionId" id="professionId">
 
@@ -113,7 +115,7 @@
                                         </option>
 
                                         <% } %>
-                                            <option value="Otro">Otro</option>
+
                                 </select>
                             </label>
                         </div>
@@ -126,8 +128,10 @@
 
                         <div class="registerInput experience-list">
                             <label for="haveLicence">¿Tienes matrícula para realizar tu trabajo?
-                              <input type="checkbox" name="haveLicence" id="haveLicence" <%=!profFound.licence ? null : "checked"%>>
-                              <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula" value= <%=profFound.licence ? profFound.licence : ""%>>
+                                <input type="checkbox" name="haveLicence" id="haveLicence" <%=!profFound.licence ? null
+                                    : "checked" %>>
+                                <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula"
+                                    value=<%=profFound.licence ? profFound.licence : "" %>>
                             </label>
                             <!-- <label>Posee Matricula:
                               <select name="have-licence">
@@ -135,7 +139,7 @@
                                 <option value="yes">Si</option>
                               </select>
                             </label> -->
-                          </div>
+                        </div>
 
 
 
@@ -149,7 +153,7 @@
 
                                         <option value=<%=uniqueWorkZonesId[i]%>
                                             <%=(profFound.workZones.location==uniqueWorkZones[i]) ? "selected" : "" %>>
-                                            <%=uniqueWorkZones[i]%>
+                                                <%=uniqueWorkZones[i]%>
                                         </option>
 
                                         <% } %>
@@ -171,56 +175,56 @@
                         <div class="dispo-dias">
                             <p>Dias de Prestacion de Servicio:</p>
                             <p class="shift-section">
-                              <span class="shift-day">Lunes</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="1,1" ></label >
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="1,2" ></label>
+                                <span class="shift-day">Lunes</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="1,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="1,2"></label>
                             </p>
                             <p class="shift-section">
-                              <span class="shift-day">Martes</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="2,1" ></label>
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="2,2" ></label>
+                                <span class="shift-day">Martes</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="2,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="2,2"></label>
                             </p>
                             <p class="shift-section">
-                              <span class="shift-day">Miercoles</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="3,1" ></label>
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="3,2" ></label>
+                                <span class="shift-day">Miercoles</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="3,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="3,2"></label>
                             </p>
                             <p class="shift-section">
-                              <span class="shift-day">Jueves</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="4,1" ></label>
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="4,2" ></label>
+                                <span class="shift-day">Jueves</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="4,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="4,2"></label>
                             </p>
                             <p class="shift-section">
-                              <span class="shift-day">Viernes</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="5,1" ></label>
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="5,2" ></label>
+                                <span class="shift-day">Viernes</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="5,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="5,2"></label>
                             </p>
                             <p class="shift-section">
-                              <span class="shift-day">Sabado</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="6,1" ></label>
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="6,2" ></label>
+                                <span class="shift-day">Sabado</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="6,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="6,2"></label>
                             </p>
                             <p class="shift-section">
-                              <span class="shift-day">Domingo</span>
-                              <label class="shift-range">(9-12am)
-                              <input id="workDays" type="checkbox" name="dayShift" value="7,1" ></label>
-                              <label class="shift-range">(1pm-5pm)
-                              <input id="workDays" type="checkbox" name="dayShift" value="7,2" ></label>
+                                <span class="shift-day">Domingo</span>
+                                <label class="shift-range">(9-12am)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="7,1"></label>
+                                <label class="shift-range">(1pm-5pm)
+                                    <input id="workDays" type="checkbox" name="dayShift" value="7,2"></label>
                             </p>
-              
-                          </div>
+
+                        </div>
 
                         <div class="registerInput whyme">
                             <label for="whyme">Porque Deberian Elegirte?
@@ -238,9 +242,9 @@
                             </label> Pedir ayuda a Pablo
                         </div> -->
                         <div class="registerInput jobs">
-                            <label for="jobs">Fotos de Trabajos Realizados (max 10) 
+                            <label for="jobs">Fotos de Trabajos Realizados (max 10)
                                 <!-- como subir mas de una foto?? -->
-                                <input type="file" name="workImages" accept=".jpg, .png, .bmp" >
+                                <input type="file" name="workImages" accept=".jpg, .png, .bmp">
                             </label>
                         </div>
                         <div class="registerInput">

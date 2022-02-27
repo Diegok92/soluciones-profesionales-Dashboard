@@ -1,10 +1,8 @@
 const { body } = require("express-validator");
 const db = require("../database/models");
-const { sequelize } = require("../database/models"); 
+const { sequelize } = require("../database/models");
 const Op = db.Sequelize.Op;
 const path = require("path");
-
-
 
 const editProfValidator = [
   body("firstName")
@@ -45,7 +43,7 @@ const editProfValidator = [
         where: {
           email: emailGiven,
         },
-      });      
+      });
       if (existingEmail) {
         throw new Error("Ese Email ya fue registrado");
       }
@@ -79,18 +77,18 @@ const editProfValidator = [
     .notEmpty()
     .withMessage("Debe elegir una Profesión")
     .bail(),
-  body("otherJob")
-  .if(body("otherJob").notEmpty())
-    .isLength({ min: 2 })
-    .withMessage("Completa la Profesión(minimo 2 caracteres)")
-    .isAlpha()
-    .withMessage("El nombre de la Profesión solo puede tener letras")
-    .bail(),
+  // body("otherJob")
+  // .if(body("otherJob").notEmpty())
+  //   .isLength({ min: 2 })
+  //   .withMessage("Completa la Profesión(minimo 2 caracteres)")
+  //   .isAlpha()
+  //   .withMessage("El nombre de la Profesión solo puede tener letras")
+  //   .bail(),
   body("licence")
-  .if(body("haveLicence").exists())
-  .notEmpty()
-  .withMessage("Completa la licencia") 
-  .isString()
+    .if(body("haveLicence").exists())
+    .notEmpty()
+    .withMessage("Completa la licencia")
+    .isString()
     .withMessage("La licencia puede tener numeros y letras")
     .bail(),
   body("workZone")
@@ -102,10 +100,10 @@ const editProfValidator = [
   body("emergency")
     .notEmpty()
     .withMessage("Debe completar el campo Atiende Emergencias")
-    .bail(), 
+    .bail(),
   body("dayShift")
-  .notEmpty()
-  .withMessage("Debe completar los Dias de Prestación")
+    .notEmpty()
+    .withMessage("Debe completar los Dias de Prestación")
     .bail(),
   body("whyMe")
     .notEmpty()
@@ -120,8 +118,8 @@ const editProfValidator = [
     .withMessage("El precio no puede estar vacio")
     .isNumeric()
     .withMessage("El precio debe ser un numero sin signos")
-    .bail(), 
-    body("workImage")
+    .bail(),
+  body("workImage")
     .custom((value, { req }) => {
       if (!req.file) throw new Error("Falta Imagen de trabajos realizados");
       return true;
@@ -162,7 +160,7 @@ const editProfValidator = [
     .withMessage("El numero de CBU debe contener 22 numeros")
     .isNumeric()
     .withMessage("El numero de CBU debe contener solo numeros")
-    .bail(), 
+    .bail(),
 ];
 
 module.exports = editProfValidator;

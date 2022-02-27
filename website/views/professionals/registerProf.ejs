@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/css/tablet.css" />
     <link rel="stylesheet" href="/css/desktop-index.css" />
     <link rel="stylesheet" href="/css/registerProf.css" />
-   
-    
+
+
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
@@ -30,62 +30,70 @@
 
       <main>
         <div class="all-registerProf">
-          <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form" id="prof-form">
+          <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form"
+            id="prof-form">
 
             <div class="fe-errors form-errors">
               <ul>
               </ul>
             </div>
-            
+
 
 
 
             <div class="form-errors">
-<% if ( locals.errors !=undefined ) { %>
-              <p>Uy, algo salio mal revisar:</p>
-              <ul>
-                <% for (let i=0; i < errors.length; i++) { %>
-                  <li>
-                    <%= errors[i].msg %>
-                  </li>
-                  <% } %>
-              </ul>
-              <% } %>
-          </div>
-            
-          <div class="registerInput profesiones-list">
+              <% if ( locals.errors !=undefined ) { %>
+                <p>Uy, algo salio mal revisar:</p>
+                <ul>
+                  <% for (let i=0; i < errors.length; i++) { %>
+                    <li>
+                      <%= errors[i].msg %>
+                    </li>
+                    <% } %>
+                </ul>
+                <% } %>
+            </div>
+
+            <div class="registerInput profesiones-list">
+              <!-- *ponerle link a la palabra "nosotros" -->
               <label>Profesiones:
+                <h5>(en caso de no estar listada, comuniquese con nosotros)</h5>
                 <!-- class="selectpicker" multiple -->
                 <select name="professionId" id="professionId">
-                
-                <% if (locals.old) {%>  <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
 
-                  <option value="<%=uniqueProfessionId[i]%> " <%=old.professionId && old.professionId==uniqueProfessionId[i] ? "selected" : "" %>>
-                    <%=uniqueProfession[i]%>
-                  </option>
+                  <% if (locals.old) {%>
+                    <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
 
-                  <% } %> <% } else { %> 
-                  <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
+                      <option value="<%=uniqueProfessionId[i]%> " <%=old.professionId &&
+                        old.professionId==uniqueProfessionId[i] ? "selected" : "" %>>
+                        <%=uniqueProfession[i]%>
+                      </option>
 
-                    <option value="<%=uniqueProfessionId[i]%> " >
-                      <%=uniqueProfession[i]%>
-                    </option>
+                      <% } %>
+                        <% } else { %>
+                          <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
 
-                    <% } %> <% } %> 
-                      <option value="Otro" >Otro</option>
+                            <option value="<%=uniqueProfessionId[i]%> ">
+                              <%=uniqueProfession[i]%>
+                            </option>
+
+                            <% } %>
+                              <% } %>
                 </select>
               </label>
             </div>
-           
-            <div class="registerInput">
+
+            <!-- <div class="registerInput">
               <label for="otherJob">Profesión (En Caso de No Estar Listada):
                 <input type="text" name="otherJob" id="otherJob" placeholder="Ej: Programador WEB Full Stack" value= <%=locals.old ? old.otherJob : ""%>>
               </label>
-            </div>
+            </div> -->
             <div class="registerInput experience-list">
               <label for="haveLicence">¿Tienes matrícula para realizar tu trabajo?
-                <input type="checkbox" name="haveLicence" id="haveLicence" <%=!locals.old ? null : !locals.old.haveLicence ? null : "checked"%>>
-                <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula" value= <%=locals.old ? old.licence : ""%>>
+                <input type="checkbox" name="haveLicence" id="haveLicence" <%=!locals.old ? null :
+                  !locals.old.haveLicence ? null : "checked" %>>
+                <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula" value=<%=locals.old ?
+                  old.licence : "" %>>
               </label>
               <!-- <label>Posee Matricula:
                 <select name="have-licence">
@@ -104,14 +112,16 @@
               <label>Zona de Prestacion de Servicio:
                 <select name="workZone" id="workZone">
                   <!-- usar una API -->
-                  <option value="1" <%=!locals.old ? null : old.workZone=="1" ? "selected" : null %>>Capital Federal</option>
+                  <option value="1" <%=!locals.old ? null : old.workZone=="1" ? "selected" : null %>>Capital Federal
+                  </option>
                   <option value="2" <%=!locals.old ? null : old.workZone=="2" ? "selected" : null %>>GBA Norte</option>
                   <option value="3" <%=!locals.old ? null : old.workZone=="3" ? "selected" : null %>>GBA Oeste</option>
                   <option value="4" <%=!locals.old ? null : old.workZone=="4" ? "selected" : null %>>GBA Sur</option>
                   <option value="5" <%=!locals.old ? null : old.workZone=="5" ? "selected" : null %>>Mendoza</option>
                   <option value="6" <%=!locals.old ? null : old.workZone=="6" ? "selected" : null %>>Cordoba</option>
                   <option value="7" <%=!locals.old ? null : old.workZone=="7" ? "selected" : null %>>Rosario</option>
-                  <option value="8" <%=!locals.old ? null : old.workZone=="8" ? "selected" : null %>>Lejano Oeste</option>
+                  <option value="8" <%=!locals.old ? null : old.workZone=="8" ? "selected" : null %>>Lejano Oeste
+                  </option>
                   <!-- usar api -->
                 </select>
               </label>
@@ -130,63 +140,78 @@
               <p class="shift-section">
                 <span class="shift-day">Lunes</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="1,1" <%=!locals.old ? null : !locals.old.dayShift ? null : locals.old.dayShift.includes("1,1") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="1,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null : locals.old.dayShift.includes("1,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="1,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("1,2") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="1,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("1,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Martes</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="2,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("2,1") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="2,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("2,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="2,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("2,2") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="2,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("2,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Miercoles</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="3,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("3,1") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="3,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("3,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="3,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("3,2") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="3,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("3,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Jueves</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="4,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("4,1")? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="4,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("4,1")? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="4,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("4,2")? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="4,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("4,2")? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Viernes</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="5,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("5,1") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="5,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("5,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="5,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("5,2") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="5,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("5,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Sabado</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="6,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("6,1") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="6,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("6,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="6,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("6,2")? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="6,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("6,2")? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Domingo</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="7,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("7,1") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="7,1" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("7,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="7,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("7,2") ? "checked" : null %>></label>
+                  <input id="workDays" type="checkbox" name="dayShift" value="7,2" <%=!locals.old ? null :
+                    !locals.old.dayShift ? null :locals.old.dayShift.includes("7,2") ? "checked" : null %>></label>
               </p>
 
             </div>
 
             <div class="registerInput whyme">
               <label for="whyMe">Porque Deberian Elegirte?
-                <textarea name="whyMe" id="whyMe" placeholder="Max 600 Caracteres" ><%=locals.old ? old.whyMe : ""%></textarea>
+                <textarea name="whyMe" id="whyMe"
+                  placeholder="Max 600 Caracteres"><%=locals.old ? old.whyMe : ""%></textarea>
               </label>
             </div>
             <div class="registerInput">
               <label for="price">Precio de tu Reserva en $:
-                <input type="number" name="price" id="price" placeholder="300" value=<%=locals.old ? old.price : ""%>>
+                <input type="number" name="price" id="price" placeholder="300" value=<%=locals.old ? old.price : "" %>>
               </label>
             </div>
 
@@ -197,7 +222,7 @@
             </div>
             <div class="registerInput">
               <label for="cbu">N° de CBU/CVU (para deposito de reservas):
-                <input type="number" name="cbu" id="cbu" value=<%=locals.old ? old.cbu : ""%>>
+                <input type="number" name="cbu" id="cbu" value=<%=locals.old ? old.cbu : "" %>>
               </label>
             </div>
 
@@ -215,8 +240,8 @@
       </main>
 
       <%- include("../partials/footer") %>
-     
-      <script src="/js/profValidator.js"></script>  
+
+        <script src="/js/profValidator.js"></script>
 </body>
 
 </html>

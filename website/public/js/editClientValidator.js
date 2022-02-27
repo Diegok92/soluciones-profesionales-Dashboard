@@ -40,8 +40,10 @@ window.addEventListener("load", function () {
         "Tu 1er Apellido debe tener al menos 2 letras y no poseer espacios"
       );
     }
-    if (email.value == "" || email.value.match(regexEmail) == null) {
-      errors.push("Debes ingresar un email válido");
+    if (email.value != "") {
+      if (email.value.match(regexEmail) == null) {
+        errors.push("Debes ingresar un email válido");
+      }
     }
     if (mobile.value == "" || mobile.value.match(regexNumber) != null) {
       errors.push("Debes ingresar un número de teléfono válido");

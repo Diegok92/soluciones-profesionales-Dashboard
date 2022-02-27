@@ -136,9 +136,8 @@ const clientDbController = {
   //Actualizar para usar la DB
   //por (PUT)
   updateClient: (req, res) => {
-    
     let errors = validationResult(req);
-      
+
     if (!errors.isEmpty()) {
       return res.render("users/editClient", {
         clientFound: req.session.clientFound,
@@ -147,21 +146,36 @@ const clientDbController = {
       });
     }
 
-    db.Client.update(
-      {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        city_Id: req.body.city_Id, //viene num por form (futuro, API)
-        address: req.body.address,
-        mobile: req.body.mobile,
-        avatar: req.file.filename,
-      },
-      {
-        where: { dni: req.session.clientFound.dni },
-      }
-    );
-
+    if (req.body.email == "") {
+      db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          city_Id: req.body.city_Id, //viene num por form (futuro, API)
+          address: req.body.address,
+          mobile: req.body.mobile,
+          avatar: req.file.filename,
+        },
+        {
+          where: { dni: req.session.clientFound.dni },
+        }
+      );
+    } else {
+      db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          city_Id: req.body.city_Id, //viene num por form (futuro, API)
+          address: req.body.address,
+          mobile: req.body.mobile,
+          avatar: req.file.filename,
+        },
+        {
+          where: { dni: req.session.clientFound.dni },
+        }
+      );
+    }
     res.redirect("/");
   },
 
