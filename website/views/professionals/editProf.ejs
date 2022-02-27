@@ -30,16 +30,38 @@
                     <form action="/rubros/<%=profFound.client_id %>?_method=PUT" enctype="multipart/form-data" 
                         method="POST" class="prof-form">
                         <!-- la ruta de "action", debe ser la ruta a la que tiene q ir la info del formulario -->
+                        
+                        <div class="form-errors">
+                            
+                               
+                            
+                            
+    
+                            
+                                        <% if ( locals.errors !=undefined ) { %>
+                                          <p>Uy, algo salio mal revisar:</p>
+                                          <ul>
+                                            <% for (let i=0; i < errors.length; i++) { %>
+                                              <li>
+                                                <%= errors[i].msg %>
+                                              </li>
+                                              <% } %>
+                                          </ul>
+                                          <% } %>
+                                      </div>
+                        
+                        
+                        
                         <div class="registerInput">
-                            <label for="first-name">Nombre:
-                                <input type="text" name="firstName" id="first-nombre"
-                                    value="<%=profFound.clients.firstName %>" disabled>
+                            <label for="firstName">Nombre:
+                                <input type="text" name="firstName" id="firstName"
+                                    value="<%=profFound.clients.firstName %>" >
                             </label>
                         </div>
                         <div class="registerInput">
-                            <label for="last-name">Apellido:
-                                <input type="text" name="lastName" id="last-name"
-                                    value="<%=profFound.clients.lastName %>" disabled>
+                            <label for="lastName">Apellido:
+                                <input type="text" name="lastName" id="lastName"
+                                    value="<%=profFound.clients.lastName %>" >
                             </label>
                         </div>
                         <div class="registerInput">
@@ -80,7 +102,7 @@
                         <div class="registerInput profesiones-list">
                             <label>Profesiones:
                                 <!-- class="selectpicker" multiple -->
-                                <select name="professionId">
+                                <select name="professionId" id="professionId">
 
                                     <% for (let i=0 ; i < uniqueProfession.length ; i++){%>
 
@@ -102,29 +124,30 @@
                             </label>
                         </div> -->
 
-                        <div class="registerInput expirience-list">
-                            <label>Posee Matricula:
-                                <!-- mandar en register prof y create el boleano de matricula -->
-                                <select name="matricula">
-                                    <option value="yes" <%=(profFound.licence) ? "selected" : "" %>>Si</option>
-                                    <option value="no" <%=(!profFound.licence) ? "selected" : "" %>>No</option>
-                                </select>
+                        <div class="registerInput experience-list">
+                            <label for="haveLicence">¿Tienes matrícula para realizar tu trabajo?
+                              <input type="checkbox" name="haveLicence" id="haveLicence" <%=!profFound.licence ? null : "checked"%>>
+                              <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula" value= <%=profFound.licence ? profFound.licence : ""%>>
                             </label>
-                        </div>
-                        <div class="registerInput">
-                            <label for="matricula">Matricula (en Caso de Aplicar):
-                                <input type="text" name="licence" id="matricula" value="<%=profFound.licence %>">
-                            </label>
-                        </div>
+                            <!-- <label>Posee Matricula:
+                              <select name="have-licence">
+                                <option value="no" selected>No</option>
+                                <option value="yes">Si</option>
+                              </select>
+                            </label> -->
+                          </div>
+
+
+
                         <div class="registerInput localidad-list">
                             <label>Zona de Prestacion de Servicio:
 
                                 <!-- class="selectpicker" multiple -->
-                                <select name="WorkZoneId">
+                                <select name="workZone" id="workZone">
 
                                     <% for (let i=0 ; i < uniqueWorkZones.length ; i++){%>
 
-                                        <option value="<%=uniqueWorkZonesId[i]%> "
+                                        <option value=<%=uniqueWorkZonesId[i]%>
                                             <%=(profFound.workZones.location==uniqueWorkZones[i]) ? "selected" : "" %>>
                                             <%=uniqueWorkZones[i]%>
                                         </option>
@@ -136,7 +159,7 @@
                         </div>
                         <div class="registerInput expirience-list">
                             <label>Atiende Emergencias:
-                                <select name="emergency">
+                                <select name="emergency" id="emergency">
                                     <option value="1" <%=(profFound.emergency=="1" ) ? "selected" : "" %>>Si
                                     </option>
                                     <option value="0" <%=(profFound.emergency=="0" ) ? "selected" : "" %>>No
@@ -147,55 +170,57 @@
 
                         <div class="dispo-dias">
                             <p>Dias de Prestacion de Servicio:</p>
-                            <p>Lunes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="1,1">
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="1,2">
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Lunes</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="1,1" ></label >
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="1,2" ></label>
                             </p>
-                            <p>Martes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="2,1"
-                                    <%#=profFound.dayShift.includes("Martes-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="2,2"
-                                    <%#=profFound.dayShift.includes("Martes-TT") ? "checked" : "" %>>
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Martes</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="2,1" ></label>
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="2,2" ></label>
                             </p>
-                            <p>Miercoles<label>(9-12am)</label><input type="checkbox" name="dayShift" value="3,1"
-                                    <%#=profFound.dayShift.includes("Miercoles-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="3,2"
-                                    <%#=profFound.dayShift.includes("Miercoles-TT") ? "checked" : "" %>>
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Miercoles</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="3,1" ></label>
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="3,2" ></label>
                             </p>
-                            <p>Jueves<label>(9-12am)</label><input type="checkbox" name="dayShift" value="4,1"
-                                    <%#=profFound.dayShift.includes("Jueves-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="4,2"
-                                    <%#=ofFound.dayShift.includes("Jueves-TT") ? "checked" : "" %>>
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Jueves</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="4,1" ></label>
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="4,2" ></label>
                             </p>
-                            <p>Viernes<label>(9-12am)</label><input type="checkbox" name="dayShift" value="5,1"
-                                    <%#=ofFound.dayShift.includes("Viernes-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="5,2"
-                                    <%#=profFound.dayShift.includes("Viernes-TT") ? "checked" : "" %>>
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Viernes</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="5,1" ></label>
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="5,2" ></label>
                             </p>
-                            <p>Sabado<label>(9-12am)</label><input type="checkbox" name="dayShift" value="6,1"
-                                    <%#=profFound.dayShift.includes("Sabado-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="6,2"
-                                    <%#=profFound.dayShift.includes("Sabado-TT") ? "checked" : "" %>>
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Sabado</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="6,1" ></label>
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="6,2" ></label>
                             </p>
-                            <p>Domingo<label>(9-12am)</label><input type="checkbox" name="dayShift" value="7,1"
-                                    <%#=profFound.dayShift.includes("Domingo-TM") ? "checked" : "" %>>
-                                </option>
-                                <label>(1pm-5pm)</label><input type="checkbox" name="dayShift" value="7,2"
-                                    <%#=profFound.dayShift.includes("Domingo-TT") ? "checked" : "" %>>
-                                </option>
+                            <p class="shift-section">
+                              <span class="shift-day">Domingo</span>
+                              <label class="shift-range">(9-12am)
+                              <input id="workDays" type="checkbox" name="dayShift" value="7,1" ></label>
+                              <label class="shift-range">(1pm-5pm)
+                              <input id="workDays" type="checkbox" name="dayShift" value="7,2" ></label>
                             </p>
-
-                        </div>
+              
+                          </div>
 
                         <div class="registerInput whyme">
                             <label for="whyme">Porque Deberian Elegirte?

@@ -31,16 +31,17 @@
       <main>
         <div class="all-registerProf">
           <form action="/rubros/registerProf" method="POST" enctype="multipart/form-data" class="prof-form" id="prof-form">
- <div class="form-errors">
-<div id="pruebaError">    
-<ul id="prueba">
-</ul>
-</div>    
+
+            <div class="fe-errors form-errors">
+              <ul>
+              </ul>
+            </div>
+            
 
 
 
-
-            <% if ( locals.errors !=undefined ) { %>
+            <div class="form-errors">
+<% if ( locals.errors !=undefined ) { %>
               <p>Uy, algo salio mal revisar:</p>
               <ul>
                 <% for (let i=0; i < errors.length; i++) { %>
@@ -83,7 +84,7 @@
             </div>
             <div class="registerInput experience-list">
               <label for="haveLicence">¿Tienes matrícula para realizar tu trabajo?
-                <input type="checkbox" name="haveLicence" id="haveLicence" <%=locals.old ? "checked" : null %>>
+                <input type="checkbox" name="haveLicence" id="haveLicence" <%=!locals.old ? null : !locals.old.haveLicence ? null : "checked"%>>
                 <input type="text" name="licence" id="licence" placeholder="Ingresa tu matrícula" value= <%=locals.old ? old.licence : ""%>>
               </label>
               <!-- <label>Posee Matricula:
@@ -129,51 +130,51 @@
               <p class="shift-section">
                 <span class="shift-day">Lunes</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="1,1" <%=!locals.old ? null : locals.old.dayShift.includes("1,1") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="1,1" <%=!locals.old ? null : !locals.old.dayShift ? null : locals.old.dayShift.includes("1,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="1,2" <%=!locals.old ? null : locals.old.dayShift.includes("1,2") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="1,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("1,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Martes</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="2,1" <%=!locals.old ? null : locals.old.dayShift.includes("2,1") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="2,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("2,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="2,2" <%=!locals.old ? null : locals.old.dayShift.includes("2,2") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="2,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("2,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Miercoles</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="3,1" <%=!locals.old ? null : locals.old.dayShift.includes("3,1") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="3,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("3,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="3,2" <%=!locals.old ? null : locals.old.dayShift.includes("3,2") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="3,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("3,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Jueves</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="4,1" <%=!locals.old ? null : locals.old.dayShift.includes("4,1")? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="4,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("4,1")? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="4,2" <%=!locals.old ? null : locals.old.dayShift.includes("4,2")? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="4,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("4,2")? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Viernes</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="5,1" <%=!locals.old ? null : locals.old.dayShift.includes("5,1") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="5,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("5,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="5,2" <%=!locals.old ? null : locals.old.dayShift.includes("5,2") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="5,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("5,2") ? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Sabado</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="6,1" <%=!locals.old ? null : locals.old.dayShift.includes("6,1") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="6,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("6,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="6,2" <%=!locals.old ? null : locals.old.dayShift.includes("6,2")? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="6,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("6,2")? "checked" : null %>></label>
               </p>
               <p class="shift-section">
                 <span class="shift-day">Domingo</span>
                 <label class="shift-range">(9-12am)
-                <input id="workDays" type="checkbox" name="dayShift" value="7,1" <%=!locals.old ? null : locals.old.dayShift.includes("7,1") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="7,1" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("7,1") ? "checked" : null %>></label>
                 <label class="shift-range">(1pm-5pm)
-                <input id="workDays" type="checkbox" name="dayShift" value="7,2" <%=!locals.old ? null : locals.old.dayShift.includes("7,2") ? "checked" : null %>></label>
+                <input id="workDays" type="checkbox" name="dayShift" value="7,2" <%=!locals.old ? null : !locals.old.dayShift ? null :locals.old.dayShift.includes("7,2") ? "checked" : null %>></label>
               </p>
 
             </div>
@@ -191,7 +192,7 @@
 
             <div class="registerInput jobs">
               <label for="workImages">Fotos de Trabajos Realizados (max 10)
-                <input type="file" name="workImages" accept=".jpg, .png, .bmp" multiple>
+                <input type="file" name="workImages" id="workImages" accept=".jpg, .png, .bmp" multiple>
               </label>
             </div>
             <div class="registerInput">
@@ -215,7 +216,7 @@
 
       <%- include("../partials/footer") %>
      
-      <script src="/js/validationFrontEnd.js"></script>  
+      <script src="/js/profValidator.js"></script>  
 </body>
 
 </html>

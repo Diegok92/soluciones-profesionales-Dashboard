@@ -1,12 +1,80 @@
 const { body } = require("express-validator");
 const db = require("../database/models");
-const { sequelize } = require("../database/models"); //porq no se usa??
+const { sequelize } = require("../database/models"); 
 const Op = db.Sequelize.Op;
 const path = require("path");
 
 
-const registerProfValidator = [
-  
+
+const editProfValidator = [
+  body("firstName")
+    .notEmpty()
+    .withMessage("Tu nombre no puede quedar vacío")
+    .isLength({ min: 2 })
+    .withMessage("Tu nombre debe tener al menos 2 caracteres")
+    .custom(function (name) {
+      const reName = new RegExp(/[^a-zA-Z]/);
+      if (name.match(reName) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("1er Nombre, sin espacios")
+    .bail(),
+  body("lastName")
+    .notEmpty()
+    .withMessage("Tu apellido es obligatorio!")
+    .isLength({ min: 2 })
+    .withMessage("Tu Apellido debe tener al menos 2 caracteres")
+    .custom(function (name) {
+      const reName = new RegExp(/[^a-zA-Z]/);
+      if (name.match(reName) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("1er Apellido, sin espacios")
+    .bail(),
+  body("email")
+    .notEmpty()
+    .withMessage("Debes completar tu email")
+    .isEmail()
+    .withMessage("Debes ingresar un email válido")
+    .custom(async (emailGiven) => {
+      const existingEmail = await db.Client.findOne({
+        where: {
+          email: emailGiven,
+        },
+      });      
+      if (existingEmail) {
+        throw new Error("Ese Email ya fue registrado");
+      }
+    })
+    .bail(),
+  body("mobile")
+    .notEmpty()
+    .withMessage("Completar Telefono")
+    .isNumeric()
+    .withMessage("Debes ingresar tu numero de celular sin el 0 y sin el 15")
+    .bail(),
+  body("city_Id")
+    .notEmpty()
+    .withMessage("Elegir Ciudad")
+    .isNumeric()
+    .withMessage("Elegir Ciudad")
+    .bail(), //poner como opcion predeterminada "Seleccione" y verficar contra esa
+  body("address")
+    .notEmpty()
+    .withMessage("Tu domicilio no puede quedar vacío")
+    .custom(function (name) {
+      const reAddress = new RegExp(/[^A-Za-z0-9\s]/);
+      if (name.match(reAddress) != null) {
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Completar direccion: alfanumerico y espacios")
+    .bail(),
   body("professionId")
     .notEmpty()
     .withMessage("Debe elegir una Profesión")
@@ -97,4 +165,4 @@ const registerProfValidator = [
     .bail(), 
 ];
 
-module.exports = registerProfValidator;
+module.exports = editProfValidator;

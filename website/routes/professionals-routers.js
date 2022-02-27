@@ -5,14 +5,15 @@ const path = require("path");
 const authLoggedtMiddleware = require("../middlewares/authLoggedMiddleware");
 const authNotProftMiddleware = require("../middlewares/authNotProfMiddleware");
 const authPrivateProfMiddleware = require("../middlewares/authPrivateProfMiddleware");
-const registerProfValidator = require("../validations/registerProfValidator")
+const registerProfValidator = require("../validations/registerProfValidator");
+const editProfValidator = require("../validations/editProfValidator")
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, path.join(__dirname, "../public/images/professionals"));
   },
   filename: function (req, file, cb) {
     //cb(null, `${Date.now()}_img_${path.extname(file.originalname)}`);
-    file.filename = req.body.cuit;
+    file.filename = req.body.cbu;
     cb(
       null,
       file.filename + "workImages" + path.extname(file.originalname) //lograr q diga "dni-avatar"
@@ -58,6 +59,7 @@ profRoute.put(
   "/:idProf",
   uploadFile.single("workImages"),
   //uploadFile.single("avatar"),
+  editProfValidator,
   professionalDBController.updateProf
 );
 //Boton confirm del form de edicion
