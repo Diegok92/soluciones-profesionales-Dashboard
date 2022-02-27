@@ -81,3 +81,10 @@ main {
 .form-errors ul {
   list-style: none;
 }
+
+.fe-errors {
+  text-align: center;
+  color: darkred;
+  padding-top: 1rem;
+  font-weight: 600;
+}
