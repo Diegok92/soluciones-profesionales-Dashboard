@@ -107,3 +107,10 @@ input#haveLicence:checked + #licence {
 .shift-day {
   width: 4rem;
 }
+
+.fe-errors {
+  text-align: center;
+  color: darkred;
+  padding-top: 1rem;
+  font-weight: 600;
+}

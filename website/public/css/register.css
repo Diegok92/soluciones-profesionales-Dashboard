@@ -1,5 +1,6 @@
 main {
   background-color: rgb(49, 71, 92);
+  padding-top: 1rem;
 }
 
 .clientForm {
@@ -8,7 +9,6 @@ main {
   padding: 10px;
   max-width: 600px;
   background-color: white;
-  margin-top: 20px;
   border-radius: 10px;
 }
 
@@ -80,4 +80,11 @@ main {
 }
 .form-errors ul {
   list-style: none;
+}
+
+.fe-errors {
+  text-align: center;
+  color: darkred;
+  padding-top: 1rem;
+  font-weight: 600;
 }
