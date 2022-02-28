@@ -151,9 +151,10 @@ window.addEventListener("load", function () {
       var workImagesFile = document.getElementById("workImages");
   
       var files = workImagesFile.files;
-      if (files.length == 0) {
-        errors.push("Debe cargar una imagen");
-      } else {
+      
+      
+      if (!files.length == 0) {
+        
         var filename = files[0].name;
   
         var extension = filename.substr(filename.lastIndexOf("."));
