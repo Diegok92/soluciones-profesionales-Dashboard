@@ -90,3 +90,23 @@ Enfocarse menos en los detalles para lograr llegar a la entrega con mas tiempo d
 
 Stop Doing:
 TBD
+
+---
+
+Reunion Retrospectiva dia 18/02/22 - Sprint 6
+
+Start Doing/Empezar a Hacer:
+Lograr hacer divisiones en bloques mas pequeños para poder avanzar y encontrar dificultades, asi como tambien distribuirlos mejor en el tablero de trabajo
+
+More of/Mas de:
+Lograr un analisis mas riguroso sobre las dificultades de las tareas antes de empezar el sprint para poder organizarse mejor.
+Ademas estaria bueno poder avanzar mas con los extras que fuimos pensado pero q no nos dieron los tiempos
+
+Keep Doing/Seguir Haciendo :
+Seguir dividiendo las tareas tal como acordamos en retros pasadas. Mantener las comunicaciones semi-diarias, trabajo en equipo y reuniones de una periodicidad entre daily y weekly (mid-weekly).
+
+Less of/Menos de:
+Enfocarse menos en los detalles para lograr llegar a la entrega con mas tiempo de anticipacion para poder cumplir con todos los opcionales
+
+Stop Doing:
+Dejar afrontar solos todas las dificultades que se nos presenten sin utilizar los canales designados por los profes para pedir su asistencia/ayuda, teniendolos disponibles
