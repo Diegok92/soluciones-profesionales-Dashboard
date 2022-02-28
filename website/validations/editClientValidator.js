@@ -118,37 +118,32 @@ modificación de productos
     .withMessage("Completar direccion: alfanumerico y espacios")
     .bail(),
   body("avatar")
-    .custom((value, { req }) => {
-      if (!req.file) throw new Error("Falta Imagen de Avatar");
-      return true;
-    })
     .custom(function (value, { req }) {
-      var extension = path.extname(req.file.originalname).toLowerCase();
-      switch (extension) {
-        case ".jpg":
-          return true;
-        case ".jpeg":
-          return true;
-        case ".png":
-          return true;
-        case ".gif":
-          return true;
-        default:
-          return false;
-      }
-    })
-    .withMessage("la imagen debe ser: .jpg .jpeg .png o .gif")
-    .custom(function (value, { req }) {
-      var fileSize = req.file.size;
-      var size = Math.round(fileSize / 1024);
-
-      if (size > 1024) {
-        return false;
-      } else {
+      if (!req.file) {
         return true;
+      } else {
+        var extension = path.extname(req.file.originalname).toLowerCase();
+
+        switch (extension) {
+          case ".jpg":
+          case ".jpeg":
+          case ".png":
+          case ".gif":
+            var fileSize = req.file.size;
+            var size = Math.round(fileSize / 1024);
+
+            if (size > 1024) {
+              throw new Error("La imagen debe pesar menos de 1mb");
+              //return false;
+            } else {
+              return true;
+            }
+          default:
+            throw new Error("la imagen debe ser: .jpg .jpeg .png o .gif");
+          //return false;
+        }
       }
     })
-    .withMessage("La imagen debe pesar menos de 1mb")
     .bail(),
 ];
 
