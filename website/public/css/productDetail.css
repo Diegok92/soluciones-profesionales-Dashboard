@@ -175,6 +175,9 @@ main {
   margin: 10px;
   font-weight: bold;
 }
+.prof-detail-title-text{
+  font-weight: 600;
+}
 .prof-detail-text {
   margin: auto;
   margin-top: 1rem;
@@ -186,7 +189,7 @@ main {
 }
 .prof-txt {
   width: fit-content;
-  padding: 5px 16px;
+  /* padding: 5px 16px; */
   margin: auto;
   margin-top: 10px;
   /* border: double rgb(49, 71, 92) 10px; */
