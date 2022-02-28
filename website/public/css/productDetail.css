@@ -191,6 +191,7 @@ main {
   margin-top: 10px;
   /* border: double rgb(49, 71, 92) 10px; */
   font-weight: normal;
+  text-align: justify;
 }
 
 .confirm-button {
