@@ -146,21 +146,8 @@ const clientDbController = {
       });
     }
 
-    if (req.body.email == "") {
-      db.Client.update(
-        {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          city_Id: req.body.city_Id, //viene num por form (futuro, API)
-          address: req.body.address,
-          mobile: req.body.mobile,
-          avatar: req.file.filename,
-        },
-        {
-          where: { dni: req.session.clientFound.dni },
-        }
-      );
-    } else {
+    if (req.file != undefined && req.body.email != "") {
+      console.log("IF 1");
       db.Client.update(
         {
           firstName: req.body.firstName,
@@ -175,8 +162,181 @@ const clientDbController = {
           where: { dni: req.session.clientFound.dni },
         }
       );
+    } else if (req.file == undefined && req.body.email != "") {
+      console.log("IF 2 - reqbody avatar" + req.body.avatar);
+      db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          city_Id: req.body.city_Id, //viene num por form (futuro, API)
+          address: req.body.address,
+          mobile: req.body.mobile,
+          //avatar: req.file.filename,
+        },
+        {
+          where: { dni: req.session.clientFound.dni },
+        }
+      );
+    } else if (req.file != undefined && req.body.email == "") {
+      console.log("IF 3");
+      db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          //email: req.body.email,
+          city_Id: req.body.city_Id, //viene num por form (futuro, API)
+          address: req.body.address,
+          mobile: req.body.mobile,
+          avatar: req.file.filename,
+        },
+        {
+          where: { dni: req.session.clientFound.dni },
+        }
+      );
+    } else if (req.file == undefined && req.body.email == "") {
+      console.log("IF 4 - req body avatar" + req.body.avatar);
+      db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          // email: req.body.email,
+          city_Id: req.body.city_Id, //viene num por form (futuro, API)
+          address: req.body.address,
+          mobile: req.body.mobile,
+          //avatar: req.file.filename,
+        },
+        {
+          where: { dni: req.session.clientFound.dni },
+        }
+      );
+    } else {
+      console.log("NO ENTRO EN NADA Y req avatar: " + req.body.avatar);
+      console.log("NO ENTRO EN NADA Y req email: " + req.body.email);
     }
+
     res.redirect("/");
+    // switch (req.body.avatarFile | req.body.email) {
+    //   case req.body.avatarFile != undefined && req.body.email != "":
+    //     console.log("entro al email y avatar con algo");
+    //     db.Client.update(
+    //       {
+    //         firstName: req.body.firstName,
+    //         lastName: req.body.lastName,
+    //         email: req.body.email,
+    //         city_Id: req.body.city_Id, //viene num por form (futuro, API)
+    //         address: req.body.address,
+    //         mobile: req.body.mobile,
+    //         avatar: req.file.filename,
+    //       },
+    //       {
+    //         where: { dni: req.session.clientFound.dni },
+    //       }
+    //     );
+    //     break;
+    //   case req.body.avatarFile != undefined && req.body.email == "":
+    //     console.log("entro al email vacio y avatar con algo");
+    //     db.Client.update(
+    //       {
+    //         firstName: req.body.firstName,
+    //         lastName: req.body.lastName,
+    //         //email: req.body.email,
+    //         city_Id: req.body.city_Id,
+    //         address: req.body.address,
+    //         mobile: req.body.mobile,
+    //         avatar: req.file.filename,
+    //       },
+    //       {
+    //         where: { dni: req.session.clientFound.dni },
+    //       }
+    //     );
+    //     break;
+    //   case req.body.avatarFile == undefined && req.body.email != "":
+    //     console.log("entro al email con algo y avatar vacios");
+    //     db.Client.update(
+    //       {
+    //         firstName: req.body.firstName,
+    //         lastName: req.body.lastName,
+    //         email: req.body.email,
+    //         city_Id: req.body.city_Id,
+    //         address: req.body.address,
+    //         mobile: req.body.mobile,
+    //         //avatar: req.file.filename,
+    //       },
+    //       {
+    //         where: { dni: req.session.clientFound.dni },
+    //       }
+    //     );
+    //     break;
+    //   case req.body.avatarFile == undefined && req.body.email == "":
+    //     console.log("entro al email y avatar vacios");
+    //     db.Client.update(
+    //       {
+    //         firstName: req.body.firstName,
+    //         lastName: req.body.lastName,
+    //         //email: req.body.email,
+    //         city_Id: req.body.city_Id,
+    //         address: req.body.address,
+    //         mobile: req.body.mobile,
+    //         //avatar: req.file.filename,
+    //       },
+    //       {
+    //         where: { dni: req.session.clientFound.dni },
+    //       }
+    //     );
+    //     break;
+    //   default:
+    //     console.log("req avatarFile: " + req.body.avatarFile);
+    //     console.log("req email: " + req.body.email);
+    // }
+    //res.redirect("/");
+    //////////////////////////////////////////////////////////////
+    // if (req.file.filename) {
+    //   db.Client.update(
+    //     {
+    //       firstName: req.body.firstName,
+    //       lastName: req.body.lastName,
+    //       //email: req.body.email,
+    //       city_Id: req.body.city_Id, //viene num por form (futuro, API)
+    //       address: req.body.address,
+    //       mobile: req.body.mobile,
+    //       avatar: req.file.filename,
+    //     },
+    //     {
+    //       where: { dni: req.session.clientFound.dni },
+    //     }
+    //   );
+    // }
+    // if (req.body.email == "") {
+    //   db.Client.update(
+    //     {
+    //       firstName: req.body.firstName,
+    //       lastName: req.body.lastName,
+    //       city_Id: req.body.city_Id, //viene num por form (futuro, API)
+    //       address: req.body.address,
+    //       mobile: req.body.mobile,
+    //       //avatar: req.file.filename,
+    //     },
+    //     {
+    //       where: { dni: req.session.clientFound.dni },
+    //     }
+    //   );
+    // } else {
+    //   db.Client.update(
+    //     {
+    //       firstName: req.body.firstName,
+    //       lastName: req.body.lastName,
+    //       email: req.body.email,
+    //       city_Id: req.body.city_Id, //viene num por form (futuro, API)
+    //       address: req.body.address,
+    //       mobile: req.body.mobile,
+    //       avatar: req.file.filename,
+    //     },
+    //     {
+    //       where: { dni: req.session.clientFound.dni },
+    //     }
+    //   );
+    // }
   },
 
   delete: async (req, res) => {

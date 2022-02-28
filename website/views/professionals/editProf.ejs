@@ -174,7 +174,7 @@
                         </div>
 
                         <div class="dispo-dias">
-                            <p>Dias de Prestacion de Servicio:</p>
+                            <p>Dias de Prestacion de Servicio: Completar los horarios de prestacion</p>
                             <p class="shift-section">
                                 <span class="shift-day">Lunes</span>
                                 <label class="shift-range">(9-12am)
@@ -242,17 +242,18 @@
                                 <input type="file" name="avatar" accept=".jpg, .png, .bmp">
                             </label> Pedir ayuda a Pablo
                         </div> -->
+                        <div class="registerInput">
+                            <label for="cbu">N° de CBU/CVU (para deposito de reservas):
+                                <input type="number" name="cbu" id="cbu" value="<%=profFound.cbu %>">
+                            </label>
+                        </div>
                         <div class="registerInput jobs">
                             <label for="jobs">Fotos de Trabajos Realizados (max 10)
                                 <!-- como subir mas de una foto?? -->
                                 <input type="file" name="workImages" id="workImages" accept=".jpg, .png, .jpeg, .gif">
                             </label>
                         </div>
-                        <div class="registerInput">
-                            <label for="cbu">N° de CBU/CVU (para deposito de reservas):
-                                <input type="number" name="cbu" id="cbu" value="<%=profFound.cbu %>">
-                            </label>
-                        </div>
+                       
 
                         <div class="confirm-button">
                             <button type="submit">Confirmar</button>

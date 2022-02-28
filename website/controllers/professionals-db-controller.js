@@ -326,23 +326,32 @@ const professionalDBController = {
     //   },
     // });
     //const clientFound = await clientDataFound.id;
+ 
+    
 
-    const createWorkimage = await db.WorkImage.create({
-      imageTitle: req.file.filename,
-    });
+let createWorkimage = undefined;
+
+    if(req.file != undefined){
+     
+    createWorkimage = await db.WorkImage.create({
+      imageTitle: req.file.filename
+      
+    })};
 
     const professional = await db.Professional.findOne({
       where: { client_id: idEditar },
     });
 
-  // console.log(req.body.haveLicence);
+  console.log(req.file);
+  console.log(createWorkimage);
+  
 
 
   //   const  licenceValue = 0;
     
   //   if(req.body.haveLicence == "undefined"){ return licenceValue = ""  } else { return  licenceValue = req.body.licence};
 
-
+if (createWorkimage){
     await professional.update({
       emergency: req.body.emergency,
       whyMe: req.body.whyMe,
@@ -351,7 +360,16 @@ const professionalDBController = {
       licence: req.body.licence,
       workZone_id: req.body.workZone,
       workImage_id: createWorkimage.id,
-    });
+    })} else {
+      await professional.update({
+        emergency: req.body.emergency,
+        whyMe: req.body.whyMe,
+        price: req.body.price,
+        cbu: req.body.cbu,
+        licence: req.body.licence,
+        workZone_id: req.body.workZone,
+        // workImage_id: createWorkimage.id,
+    })};
 
     //falta professions, dayshift, create image
 

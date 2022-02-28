@@ -131,39 +131,34 @@ const editProfValidator = [
     .withMessage("El precio debe ser un numero sin signos")
     .bail(),
   body("workImage")
-    .custom((value, { req }) => {
-      if (!req.file) throw new Error("Falta Imagen de trabajos realizados");
+  .custom(function (value, { req }) {
+    if (!req.file) {
       return true;
-    })
-    .custom(function (value, { req }) {
+    } else {
       var extension = path.extname(req.file.originalname).toLowerCase();
+
       switch (extension) {
         case ".jpg":
-          return true;
         case ".jpeg":
-          return true;
         case ".png":
-          return true;
         case ".gif":
-          return true;
+          var fileSize = req.file.size;
+          var size = Math.round(fileSize / 1024);
+
+          if (size > 1024) {
+            throw new Error("La imagen debe pesar menos de 1mb");
+            //return false;
+          } else {
+            return true;
+          }
         default:
-          return false;
+          throw new Error("la imagen debe ser: .jpg .jpeg .png o .gif");
+        //return false;
       }
-    })
-    .withMessage("La imagen debe ser: .jpg .jpeg .png o .gif")
-    .custom(function (value, { req }) {
-      var fileSize = req.file.size;
-      var size = Math.round(fileSize / 1024);
-
-      if (size > 1024) {
-        return false;
-      } else {
-        return true;
-      }
-    })
-    .withMessage("La imagen debe pesar menos de 1mb")
-    .bail(),
-
+    }
+  })
+  .bail(),
+   
   body("cbu")
     .notEmpty()
     .withMessage("Debe completar el CBU")
