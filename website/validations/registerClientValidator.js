@@ -3,13 +3,14 @@ const db = require("../database/models");
 const { sequelize } = require("../database/models"); //porq no se usa??
 const Op = db.Sequelize.Op;
 const path = require("path");
+const { SSL_OP_NO_TLSv1_1 } = require("constants");
 
 const registerClientValidator = [
   body("firstName")
     .notEmpty()
     .withMessage("Completar Nombre")
-    .isLength({ min: 2 })
-    .withMessage("Completar Nombre (Min 2 caracteres)")
+    .isLength({ min: 2, max: 20 })
+    .withMessage("Completar Nombre (Min 2 caracteres, max 20)")
     .custom(function (name) {
       const reName = new RegExp(/[^a-zA-Z]/);
       if (name.match(reName) != null) {
@@ -22,8 +23,8 @@ const registerClientValidator = [
   body("lastName")
     .notEmpty()
     .withMessage("Completar Apellido")
-    .isLength({ min: 2 })
-    .withMessage("Completar Apellido (Min 2 caracteres)")
+    .isLength({ min: 2, max: 20 })
+    .withMessage("Completar Apellido (Min 2 caracteres, max 20)")
     .custom(function (name) {
       const reName = new RegExp(/[^a-zA-Z]/);
       if (name.match(reName) != null) {
@@ -36,8 +37,17 @@ const registerClientValidator = [
   body("email")
     .notEmpty()
     .withMessage("Completar Email")
-    .isEmail()
-    .withMessage("Debe ser un Email valido")
+    .custom(function (email) {
+      const reEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+      if (email.match(reEmail) == null) {
+        //errors.push("Debes ingresar un Email valido");
+        throw new Error("Debes ingresar un Email valido");
+      }
+      return true;
+    })
+    .isLength({ min: 5, max: 40 })
+    .withMessage("El email debe tener entre 5 y 40 caracteres")
     .custom(async (emailGiven) => {
       const existingEmail = await db.Client.findOne({
         where: {
@@ -55,16 +65,22 @@ const registerClientValidator = [
     .withMessage("Completar Telefono")
     .isNumeric()
     .withMessage("Completar Telefono Valido")
+    .isLength({ min: 8, max: 20 })
+    .withMessage("Telefono debe tener entre 8 y 20 numeros")
     .bail(),
   body("city_Id")
     .notEmpty()
     .withMessage("Elegir Ciudad")
     .isNumeric()
     .withMessage("Elegir Ciudad")
+    .isLength({ min: 1, max: 4 }) //9999
+    .withMessage("Debes elegir una ciudad de las listadas")
     .bail(), //poner como opcion predeterminada "Seleccione" y verficar contra esa
   body("address")
     .notEmpty()
     .withMessage("Completar direccion")
+    .isLength({ min: 2, max: 30 })
+    .withMessage("la direccion debe tener entre 2 y 30 caracteres")
     .custom(function (name) {
       const reAddress = new RegExp(/[^A-Za-z0-9\s]/);
       if (name.match(reAddress) != null) {
@@ -79,7 +95,7 @@ const registerClientValidator = [
     .withMessage("Completar DNI")
     .isNumeric()
     .withMessage("Solo Numeros (ni puntos, guiones ni espacios")
-    .isLength({ min: 8, max: 8 })
+    .isLength({ min: 7, max: 8 })
     .withMessage("DNI Invalido")
     .custom(async (dniGiven) => {
       const existingDni = await db.Client.findOne({
@@ -95,7 +111,9 @@ const registerClientValidator = [
     .bail(),
   body("avatar")
     .custom((value, { req }) => {
-      if (!req.file) throw new Error("Falta Imagen de Avatar");
+      if (!req.file) {
+        throw new Error("Falta Imagen de Avatar");
+      }
       return true;
     })
     .custom(function (value, { req }) {
@@ -129,8 +147,16 @@ const registerClientValidator = [
   body("role")
     .notEmpty()
     .withMessage("Elegir un Perfil de usuario")
-    .isAlpha()
-    .withMessage("Debes especificar Cliente o Profesional"), //poner como opcion predeterminada "Seleccione" y verficar contra esa
+    .custom(function (role) {
+      //poner como opcion predeterminada "Seleccione" y verficar contra esa
+      switch (role) {
+        case "Client":
+        case "Professional":
+          return true;
+        default:
+          throw new Error("Debes elegir de las opciones listadas");
+      }
+    }),
   body("password")
     .notEmpty()
     .withMessage("Completar Contraseña")

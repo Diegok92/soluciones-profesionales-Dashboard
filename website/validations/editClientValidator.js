@@ -3,6 +3,7 @@ const db = require("../database/models");
 const { sequelize } = require("../database/models"); //porq no se usa??
 const Op = db.Sequelize.Op;
 const path = require("path");
+const express = require("express");
 
 const editClientValidator = [
   /*
@@ -21,8 +22,8 @@ modificación de productos
   body("firstName")
     .notEmpty()
     .withMessage("Tu nombre no puede quedar vacío")
-    .isLength({ min: 2 })
-    .withMessage("Tu nombre debe tener al menos 2 caracteres")
+    .isLength({ min: 2, max: 20 })
+    .withMessage("Completar Nombre (Min 2 caracteres, max 20)")
     .custom(function (name) {
       const reName = new RegExp(/[^a-zA-Z]/);
       if (name.match(reName) != null) {
@@ -35,8 +36,8 @@ modificación de productos
   body("lastName")
     .notEmpty()
     .withMessage("Tu apellido es obligatorio!")
-    .isLength({ min: 2 })
-    .withMessage("Tu Apellido debe tener al menos 2 caracteres")
+    .isLength({ min: 2, max: 20 })
+    .withMessage("Completar Apellido (Min 2 caracteres, max 20)")
     .custom(function (name) {
       const reName = new RegExp(/[^a-zA-Z]/);
       if (name.match(reName) != null) {
@@ -96,6 +97,8 @@ modificación de productos
   body("mobile")
     .notEmpty()
     .withMessage("Completar Telefono")
+    .isLength({ min: 8, max: 20 })
+    .withMessage("Telefono debe tener entre 8 y 20 numeros")
     .isNumeric()
     .withMessage("Debes ingresar tu numero de celular sin el 0 y sin el 15")
     .bail(),
@@ -104,10 +107,14 @@ modificación de productos
     .withMessage("Elegir Ciudad")
     .isNumeric()
     .withMessage("Elegir Ciudad")
+    .isLength({ min: 1, max: 4 }) //9999
+    .withMessage("Debes elegir una ciudad de las listadas")
     .bail(), //poner como opcion predeterminada "Seleccione" y verficar contra esa
   body("address")
     .notEmpty()
     .withMessage("Tu domicilio no puede quedar vacío")
+    .isLength({ min: 2, max: 30 })
+    .withMessage("la direccion debe tener entre 2 y 30 caracteres")
     .custom(function (name) {
       const reAddress = new RegExp(/[^A-Za-z0-9\s]/);
       if (name.match(reAddress) != null) {

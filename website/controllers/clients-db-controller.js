@@ -32,9 +32,7 @@ const clientDbController = {
     let errors = validationResult(req);
     //console.log("el body tiene " + req.body);
     if (!errors.isEmpty()) {
-      //console.log(errors);
-      //si hay errores
-      //console.log(errors);
+      //borrar la imagen creada ern nuestro carpeta (si es q hay)
 
       return res.render("users/registerClients", {
         errors: errors.array(),
@@ -52,7 +50,7 @@ const clientDbController = {
       avatar: req.file.filename,
       password: bcrypt.hashSync(req.body.password, 10),
       city_Id: req.body.city_Id, //viene num por form (futuro, API)
-      role: req.body.role,
+      role: "Client", //req.body.role,
     });
 
     req.session.userRole = req.body.role;
@@ -139,10 +137,16 @@ const clientDbController = {
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
+      let userProf = req.session.profFound;
+      let userClient = req.session.clientFound;
+      let userRole = req.session.userRole;
       return res.render("users/editClient", {
         clientFound: req.session.clientFound,
         errors: errors.array(),
         old: req.body,
+        userClient: userClient,
+        userProf: userProf,
+        userRole: userRole,
       });
     }
 

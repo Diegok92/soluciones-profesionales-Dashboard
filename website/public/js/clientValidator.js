@@ -44,6 +44,7 @@ window.addEventListener("load", function () {
     if (
       mobile.value == "" ||
       mobile.value.length < 8 ||
+      mobile.value.length > 20 ||
       mobile.value.match(reNumber) != null
     ) {
       errors.push("Debes ingresar un telefono valido");

@@ -6,7 +6,6 @@ const profRoute = require("../routes/professionals-routers");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 
-
 const professionalDBController = {
   //cambiar nombre en enroutador, anterior 'rubros'
 
@@ -23,9 +22,6 @@ const professionalDBController = {
       let userClient = req.session.clientFound;
       let userRole = req.session.userRole;
 
-
-
-      
       const uniqueProfession = [];
       const uniqueProfessionId = [];
       const uniqueWorkZones = [];
@@ -64,44 +60,39 @@ const professionalDBController = {
   createProf: async function (req, res) {
     const dniCreadoPrevio = await req.session.dniFound;
 
-
     const profData = await db.Professional.findAll({
       include: [
         { association: "professions" },
         { association: "workZones" },
         { association: "ProfessionalWorkDayShift" }, //asociacion, no tabla
       ],
-    })
-    
-    
-      let userProf =  req.session.profFound;
-      let userClient =  req.session.clientFound;
-      let userRole =  req.session.userRole;
+    });
 
-      const uniqueProfession = [];
-      const uniqueProfessionId = [];
-      const uniqueWorkZones = [];
-      const uniqueWorkZonesId = [];
-      for (let i = 0; i < profData.length; i++) {
-        if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
-          uniqueProfession.push(profData[i].professions[0].profession);
-          uniqueProfessionId.push(profData[i].professions[0].id);
-          //console.log("la profesion es "+ uniqueProfession);
-          // console.log("y su id es "+ uniqueProfessionId);
-        }
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    let userRole = req.session.userRole;
+
+    const uniqueProfession = [];
+    const uniqueProfessionId = [];
+    const uniqueWorkZones = [];
+    const uniqueWorkZonesId = [];
+    for (let i = 0; i < profData.length; i++) {
+      if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
+        uniqueProfession.push(profData[i].professions[0].profession);
+        uniqueProfessionId.push(profData[i].professions[0].id);
+        //console.log("la profesion es "+ uniqueProfession);
+        // console.log("y su id es "+ uniqueProfessionId);
       }
-      for (let i = 0; i < profData.length; i++) {
-        if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
-          uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
-          uniqueWorkZonesId.push(profData[i].workZones.id);
-          // console.log("la work zone es "+ uniqueWorkZones);
-          // console.log("y su id es "+ uniqueWorkZonesId);
-        } //location es el nombre de la columna de DB
-      };
-      //console.log(uniqueWorkZonesId);
-
-
-
+    }
+    for (let i = 0; i < profData.length; i++) {
+      if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
+        uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
+        uniqueWorkZonesId.push(profData[i].workZones.id);
+        // console.log("la work zone es "+ uniqueWorkZones);
+        // console.log("y su id es "+ uniqueWorkZonesId);
+      } //location es el nombre de la columna de DB
+    }
+    //console.log(uniqueWorkZonesId);
 
     let errors = validationResult(req);
     //console.log("el body tiene " + req.body);
@@ -117,7 +108,6 @@ const professionalDBController = {
         uniqueProfessionId: uniqueProfessionId,
         uniqueWorkZones: uniqueWorkZones,
         uniqueWorkZonesId: uniqueWorkZonesId,
-
       });
     }
 
@@ -127,6 +117,13 @@ const professionalDBController = {
       },
     });
     const clientFound = await clientDataFound.id;
+
+    await db.Client.update(
+      {
+        role: "Professional",
+      },
+      { where: { dni: dniCreadoPrevio } }
+    );
 
     const createWorkimage = await db.WorkImage.create({
       imageTitle: req.file.filename,
@@ -227,15 +224,10 @@ const professionalDBController = {
       //   workShifts.push(profFound.ProfessionalWorkDayShift[i].shift_id)
       // }
 
-
-      
       // console.log('####################################');
 
       //console.log("dentro de shift viene " + profFound.shifts[0].shift); //sin el [0] FUNCION NATIVA???
       //console.log("dentro del workDays viene " + profFound.workDays[0].day);
-
-
-
 
       res.render("professionals/editProf", {
         userClient: userClient,
@@ -253,8 +245,6 @@ const professionalDBController = {
   },
 
   updateProf: async function (req, res) {
-   
-   
     const profData = await db.Professional.findAll({
       include: [
         { association: "clients" },
@@ -264,60 +254,51 @@ const professionalDBController = {
       ],
     });
 
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    const uniqueProfession = [];
+    const uniqueProfessionId = [];
+    const uniqueWorkZones = [];
+    const uniqueWorkZonesId = [];
+    let profFound = 0;
+    let userRole = req.session.userRole;
 
-      let userProf = req.session.profFound;
-      let userClient = req.session.clientFound;
-      const uniqueProfession = [];
-      const uniqueProfessionId = [];
-      const uniqueWorkZones = [];
-      const uniqueWorkZonesId = [];
-      let profFound = 0;
-      let userRole = req.session.userRole;
+    // A CAMBIAR! recorrer tabla professions y traer los datos para mostrar en el desplegable
 
-      // A CAMBIAR! recorrer tabla professions y traer los datos para mostrar en el desplegable
-      
-      for (let i = 0; i < profData.length; i++) {
-        if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
-          uniqueProfession.push(profData[i].professions[0].profession);
-          uniqueProfessionId.push(profData[i].professions[0].id);
-        }
-        if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
-          uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
-          uniqueWorkZonesId.push(profData[i].workZones.id);
-        }
-        if (profData[i].client_id == userProf.id) {
-          profFound = profData[i];
-        }
+    for (let i = 0; i < profData.length; i++) {
+      if (!uniqueProfession.includes(profData[i].professions[0].profession)) {
+        uniqueProfession.push(profData[i].professions[0].profession);
+        uniqueProfessionId.push(profData[i].professions[0].id);
       }
-   
-      let errors = validationResult(req);
-      //console.log("el body tiene " + req.body);
-      if (!errors.isEmpty()) {
-        //console.log(errors);
-        //si hay errores
-        //console.log(errors);
-  
-
-
-
-        return res.render("professionals/editProf", {
-          errors: errors.array(),
-          userClient: userClient,
-          userProf: userProf,
-          profFound: profFound,
-          uniqueProfession: uniqueProfession,
-          uniqueProfessionId: uniqueProfessionId,
-          uniqueWorkZones: uniqueWorkZones,
-          uniqueWorkZonesId: uniqueWorkZonesId,
-          userRole: userRole,
-          
-  
-        });
+      if (!uniqueWorkZones.includes(profData[i].workZones.location)) {
+        uniqueWorkZones.push(profData[i].workZones.location); //workZones es el nombre de la "Association" //
+        uniqueWorkZonesId.push(profData[i].workZones.id);
       }
-   
-   
-   
-   
+      if (profData[i].client_id == userProf.id) {
+        profFound = profData[i];
+      }
+    }
+
+    let errors = validationResult(req);
+    //console.log("el body tiene " + req.body);
+    if (!errors.isEmpty()) {
+      //console.log(errors);
+      //si hay errores
+      //console.log(errors);
+
+      return res.render("professionals/editProf", {
+        errors: errors.array(),
+        userClient: userClient,
+        userProf: userProf,
+        profFound: profFound,
+        uniqueProfession: uniqueProfession,
+        uniqueProfessionId: uniqueProfessionId,
+        uniqueWorkZones: uniqueWorkZones,
+        uniqueWorkZonesId: uniqueWorkZonesId,
+        userRole: userRole,
+      });
+    }
+
     const idEditar = req.session.profFound.id; //trae el client_id del prof
 
     // const clientDataFound = await db.Client.findOne({
@@ -326,41 +307,37 @@ const professionalDBController = {
     //   },
     // });
     //const clientFound = await clientDataFound.id;
- 
-    
 
-let createWorkimage = undefined;
+    let createWorkimage = undefined;
 
-    if(req.file != undefined){
-     
-    createWorkimage = await db.WorkImage.create({
-      imageTitle: req.file.filename
-      
-    })};
+    if (req.file != undefined) {
+      createWorkimage = await db.WorkImage.create({
+        imageTitle: req.file.filename,
+      });
+    }
 
     const professional = await db.Professional.findOne({
       where: { client_id: idEditar },
     });
 
-  console.log(req.file);
-  console.log(createWorkimage);
-  
+    console.log(req.file);
+    console.log(createWorkimage);
 
+    //   const  licenceValue = 0;
 
-  //   const  licenceValue = 0;
-    
-  //   if(req.body.haveLicence == "undefined"){ return licenceValue = ""  } else { return  licenceValue = req.body.licence};
+    //   if(req.body.haveLicence == "undefined"){ return licenceValue = ""  } else { return  licenceValue = req.body.licence};
 
-if (createWorkimage){
-    await professional.update({
-      emergency: req.body.emergency,
-      whyMe: req.body.whyMe,
-      price: req.body.price,
-      cbu: req.body.cbu,
-      licence: req.body.licence,
-      workZone_id: req.body.workZone,
-      workImage_id: createWorkimage.id,
-    })} else {
+    if (createWorkimage) {
+      await professional.update({
+        emergency: req.body.emergency,
+        whyMe: req.body.whyMe,
+        price: req.body.price,
+        cbu: req.body.cbu,
+        licence: req.body.licence,
+        workZone_id: req.body.workZone,
+        workImage_id: createWorkimage.id,
+      });
+    } else {
       await professional.update({
         emergency: req.body.emergency,
         whyMe: req.body.whyMe,
@@ -369,40 +346,39 @@ if (createWorkimage){
         licence: req.body.licence,
         workZone_id: req.body.workZone,
         // workImage_id: createWorkimage.id,
-    })};
+      });
+    }
 
     //falta professions, dayshift, create image
 
     //await console.log("segundo professional" + )
 
-   if(req.body.email == "")
-   
-   
-   {await db.Client.update(
-    {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      address: req.body.address,
-      mobile: req.body.mobile,
-      city_Id: req.body.city_Id,
-      //avatar: req.file.filename
-    },
-    { where: { id: idEditar } }
-  );
-} else {await db.Client.update(
-  {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    address: req.body.address,
-    mobile: req.body.mobile,
-    city_Id: req.body.city_Id,
-    //avatar: req.file.filename
-  },
-  { where: { id: idEditar } }
-);}
-   
-    
+    if (req.body.email == "") {
+      await db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          address: req.body.address,
+          mobile: req.body.mobile,
+          city_Id: req.body.city_Id,
+          //avatar: req.file.filename
+        },
+        { where: { id: idEditar } }
+      );
+    } else {
+      await db.Client.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          address: req.body.address,
+          mobile: req.body.mobile,
+          city_Id: req.body.city_Id,
+          //avatar: req.file.filename
+        },
+        { where: { id: idEditar } }
+      );
+    }
 
     await professional.setProfessions(req.body.professionId);
 

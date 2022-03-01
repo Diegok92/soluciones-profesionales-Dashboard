@@ -17,8 +17,11 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     //cb(null, `${Date.now()}_img_${path.extname(file.originalname)}`);
-    file.filename = req.body.dni;
-    cb(null, file.filename + "-avatar" + path.extname(file.originalname));
+    file.filename = req.body.dni; //undefined cuando error back en register y en edicion
+    cb(
+      null,
+      file.filename + "-avatar" + Date.now() + path.extname(file.originalname)
+    );
   },
 });
 
