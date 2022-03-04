@@ -12,9 +12,23 @@ const { validationResult } = require("express-validator"); //trae los datos guar
 const apiUsers = {
   //listado clientes
   clientList: async function (req, res) {
+    //
     const cliente = await db.Client.findAll({
       include: [{ association: "cities" }],
     });
+
+    //{id:1,name:pedro,email:pedro.com, detail: "api/user/1"}
+
+    const listado = await cliente.map(function (element) {
+      return {
+        id: element.id,
+        firstName: element.firstName,
+        lastName: element.lastName,
+        email: element.email,
+        url: `api/users/${element.id}`,
+      };
+    });
+    console.log(listado);
     //cliente.reduce(function () {});
 
     // roles = cliente.map(function (cliente) {
@@ -74,11 +88,38 @@ const apiUsers = {
       totalProfessionals: totalProfessionals.length,
       totalClients: totalClients.length,
       totalAdmins: totalAdmins.length,
-      professions: professions,
+      //professions: professions,
       totalProfessions: uniqProfessions.length,
       totalPerProf: totalPerProf,
+      listado: listado,
     });
   },
+  clientDetail: async function (req, res) {
+    const cliente = await db.Client.findAll({
+      include: [{ association: "cities" }],
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    const listado = await cliente.map(function (element) {
+      return {
+        id: element.id,
+        firstName: element.firstName,
+        lastName: element.lastName,
+        email: element.email,
+        city_Id: element.cities.province,
+        mobile: element.mobile,
+        role: element.role,
+        urlAvatar: `/images/clients/${element.avatar}`,
+      };
+    });
+
+    return res.status(200).json({
+      listado: listado,
+    });
+  },
+
   //listado profesionales
 
   //listado profesiones (analizar si hacer en otra api)

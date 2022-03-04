@@ -7,6 +7,7 @@ const authNotProftMiddleware = require("../middlewares/authNotProfMiddleware");
 const authPrivateProfMiddleware = require("../middlewares/authPrivateProfMiddleware");
 const registerProfValidator = require("../validations/registerProfValidator");
 const editProfValidator = require("../validations/editProfValidator");
+const apiProfessionals = require("../api/apiProfessionals");
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -34,6 +35,8 @@ const professionalDBController = require("../controllers/professionals-db-contro
 //aca hicimos los cambios
 //profRoute.get("/", profController.rubros);
 profRoute.get("/", professionalDBController.professionsList);
+
+profRoute.get("/api/professionals", apiProfessionals.professionalList);
 
 profRoute.get(
   "/:profession/:client_id",

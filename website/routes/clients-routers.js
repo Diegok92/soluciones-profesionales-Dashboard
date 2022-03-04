@@ -28,8 +28,10 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage: storage });
 
 //api de users (la url decide q api mostrar, ej metrics)
-clientsRoute.get("/api", apiUsers.clientList);
+clientsRoute.get("/api/users", apiUsers.clientList);
 
+//api de users/id (la url decide q api mostrar, ej metrics)
+clientsRoute.get("/api/users/:id", apiUsers.clientDetail);
 // ---- Registration forms ----
 
 clientsRoute.get(
