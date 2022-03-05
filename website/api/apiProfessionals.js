@@ -8,133 +8,130 @@ const { validationResult } = require("express-validator"); //trae los datos guar
 
 const apiProfessional = {
   professionalList: async function (req, res) {
-    // const client = await db.Client.findAll({
-    //   include: [{ association: "cities" }],
-    // });
-
     const profesionales = await db.Professional.findAll({
       include: [
         { association: "professions" },
         { association: "workZones" },
         { association: "ProfessionalWorkDayShift" },
+        { association: "clients" },
       ],
     });
 
     const totalProfessionals = profesionales.length;
 
+    const dayShifts = await db.ProfessionalWorkDayShift.findAll({
+      include: [{ association: "workDays" }, { association: "shifts" }],
+    });
+
     const professions = await db.Profession.findAll();
 
-    // {
-    //  total: 500,
-    //  Profesiones:[{id:1,Profesion:Mecanica,total:24},
-    //  {id:2,Profesion:pintor,total:27}]
-    // }
     let infoProfession = [];
-
-    for (let i = 1; i <= professions.length; i++) {
-      //21
+    let cont = 1;
+    for (let i = 0; i < professions.length; i++) {
       let cantPerProf = await db.professionals_profession.count({
         where: {
           profession_id: {
-            [Op.like]: i,
+            [Op.like]: cont,
           },
         },
       });
-      //cantPerProf = [45,76,34,56]
 
-      //   await db.Profession.findByPk(i);
+      cont++;
 
-      let professionTitle = professions[i];
-      //   [mecanico,pintor,piletero]
-      infoProfession.push({
-        //id: [i],
-        profession: professionTitle,
+      let professionTitle = await professions[i];
+
+      await infoProfession.push({
+        Info: professionTitle,
         total: cantPerProf,
       });
-      // [35,piletero,35,mecanico,56,pintor]
     }
 
-    const uniqProfessions = professions.filter(function (valor) {
-      return valor.profession;
-    });
-
-    const professionsName = professions.map(function (x) {
-      return x.profession;
-    });
-
-    return res.status(200).json({
-      totalProfessionals: totalProfessionals, //102
-      infoProfession: infoProfession,
-      //totalAdmins: totalAdmins.length,
-      //professions: professions,
-      //totalProfessions: uniqProfessions.length,
-      //totalPerProf: totalPerProf,
-      //listado: listado,
-    });
-
-    const cliente = await db.Client.findAll({
-      include: [{ association: "cities" }],
-    });
-
-    //{id:1,name:pedro,email:pedro.com, detail: "api/user/1"}
-
-    const listado = await cliente.map(function (element) {
+    const listado = await profesionales.map(function (element) {
+      const day = dayShifts.filter(function (ele) {
+        return ele.professional_id == element.id;
+      });
       return {
         id: element.id,
-        firstName: element.firstName,
-        lastName: element.lastName,
-        email: element.email,
-        url: `api/users/${element.id}`,
+        firstName: element.clients.firstName,
+        lastName: element.clients.lastName,
+        workDays: day.map(function (elements) {
+          return {
+            day: elements.workDays.day,
+            shift: elements.shifts.shift,
+          };
+        }),
+        workZones: element.workZones.location,
+        profession: element.professions[0].profession,
+        url: `api/professionals/${element.id}`,
       };
     });
-    console.log(listado);
-    //cliente.reduce(function () {});
 
-    // roles = cliente.map(function (cliente) {
-    //   return cliente.role;
-    // });
+    const data = {
+      totalProfessionals: totalProfessionals,
+      infoProfession: infoProfession,
+      listado: listado,
+    };
 
-    // totalClients = cliente.filter(function (cliente) {
-    //   return cliente.role == "Client";
-    // });
-
-    // totalAdmins = cliente.filter(function (admin) {
-    //   return admin.role == "Admin";
-    // });
-
-    //   cantidad = await db.Client.count()
-
-    //   cantidad = await db.Role.findAll({
-    //       atributes: ["name"],
-    //       group: []
-    //   })
-
-    //FALTA filtrar cant por rol
+    return res.status(200).json({
+      data,
+    });
   },
 
   professionalDetail: async function (req, res) {
-    const cliente = await db.Client.findAll({
-      include: [{ association: "cities" }],
+    const profesionales = await db.Professional.findAll({
+      include: [
+        { association: "professions" },
+        { association: "workZones" },
+        { association: "ProfessionalWorkDayShift" },
+        { association: "workImages" },
+        { association: "clients" },
+      ],
       where: {
         id: req.params.id,
       },
     });
 
-    const listado = await cliente.map(function (element) {
+    function emergencia(parametro) {
+      if (parametro == 1) {
+        return "Yes";
+      } else {
+        return "No";
+      }
+    }
+
+    const dayShifts = await db.ProfessionalWorkDayShift.findAll({
+      include: [{ association: "workDays" }, { association: "shifts" }],
+      where: {
+        professional_id: req.params.id,
+      },
+    });
+
+    //console.log(dayShifts[0].workDays.day)
+    //whyMe:element.whyMe,
+    //price: element.price,
+
+    const listado = await profesionales.map(function (element) {
       return {
         id: element.id,
-        firstName: element.firstName,
-        lastName: element.lastName,
-        email: element.email,
-        city_Id: element.cities.province,
-        mobile: element.mobile,
-        role: element.role,
-        urlAvatar: `/images/clients/${element.avatar}`,
+        firstName: element.clients.firstName,
+        lastName: element.clients.lastName,
+        emergency: emergencia(element.emergency),
+        price: element.price,
+        licence: element.licence,
+        workDays: dayShifts.map(function (elements) {
+          return {
+            day: elements.workDays.day,
+            shift: elements.shifts.shift,
+          };
+        }),
+        workZones: element.workZones.location,
+        profession: element.professions[0].profession,
+        urlWorkImage: `/images/professionals/${element.workImages.imageTitle}`,
       };
     });
 
     return res.status(200).json({
-      listado: listado,
+      ProfessionalDetail: listado,
     });
   },
 };

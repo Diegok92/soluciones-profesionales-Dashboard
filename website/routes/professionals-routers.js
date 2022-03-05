@@ -38,6 +38,8 @@ profRoute.get("/", professionalDBController.professionsList);
 
 profRoute.get("/api/professionals", apiProfessionals.professionalList);
 
+profRoute.get("/api/professionals/:id", apiProfessionals.professionalDetail);
+
 profRoute.get(
   "/:profession/:client_id",
   authLoggedtMiddleware,
