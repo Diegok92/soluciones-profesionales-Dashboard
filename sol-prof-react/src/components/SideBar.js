@@ -1,7 +1,7 @@
 import React from "react";
 import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
-import Rubros from "./GenresInDb";
+import Rubros from "./Rubros";
 import LastMovieInDb from "./LastMovieInDb";
 import ContentRowMovies from "./ContentRowMovies";
 import NotFound from "./NotFound";
@@ -45,7 +45,7 @@ function SideBar() {
 
         {/*<!-- Nav Item - Pages -->*/}
         <li className="nav-item">
-          <Link className="nav-link" to="/GenresInDb">
+          <Link className="nav-link" to="/Rubros">
             <i className="fas fa-fw fa-folder"></i>
             <span>Rubros</span>
           </Link>
@@ -72,19 +72,19 @@ function SideBar() {
       </ul>
       {/*<!-- End of Sidebar -->*/}
 
-      {/*<!-- Microdesafio 1 -->*/}
-      {/*<!--<Route exact path="/">
+      {/* <!-- Microdesafio 1 -->*/}
+     {/* <Route exact path="/">
                 <ContentWrapper />
             </Route>
-            <Route path="/GenresInDb">
-                <GenresInDb />
+            <Route path="/Rubros">
+                <Rubros/>
             </Route>
             <Route path="/LastMovieInDb">
                 <LastMovieInDb />
             </Route>
             <Route path="/ContentRowMovies">
                 <ContentRowMovies />
-            </Route>*/}
+            </Route> */}
       {/*<!-- End Microdesafio 1 -->*/}
 
       {/*<!-- End Microdesafio 2 -->*/}
@@ -92,7 +92,7 @@ function SideBar() {
         <Route exact path="/">
           <ContentWrapper />
         </Route>
-        <Route path="/GenresInDb">
+        <Route path="/Rubros">
           <Rubros />
         </Route>
         <Route path="/LastMovieInDb">
@@ -103,7 +103,7 @@ function SideBar() {
         </Route>
         <Route component={NotFound} />
       </Switch>
-      {/*<!-- End Microdesafio 2 -->*/}
+      {/*<!-- End Microdesafio 2 --> */}
     </React.Fragment>
   );
 }

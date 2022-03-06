@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 const session = require("express-session");
 
@@ -10,6 +11,8 @@ const mainRoute = require("./routes/main-routers.js");
 const profRoute = require("./routes/professionals-routers.js");
 const clientRoute = require("./routes/clients-routers.js");
 const loginStatusMiddleware = require("./middlewares/loginStatusMiddleware");
+
+app.use(cors())
 
 app.set("view engine", "ejs");
 
@@ -32,7 +35,7 @@ app.use("/clients", clientRoute);
 //   res.status(404).render("not-found")
 // })
 
-app.listen(3000, function () {
+app.listen(3001, function () {
   console.log("servidor activo");
 });
 

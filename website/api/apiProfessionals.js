@@ -1,3 +1,4 @@
+// const fetch = require("node-fetch");
 const express = require("express"); //porq no se usa??
 const { sequelize } = require("../database/models"); //porq no se usa??
 const db = require("../database/models");
@@ -131,6 +132,7 @@ const apiProfessional = {
     });
 
     return res.status(200).json({
+      
       ProfessionalDetail: listado,
     });
   },
