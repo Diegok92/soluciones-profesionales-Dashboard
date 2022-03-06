@@ -5,6 +5,7 @@ import Rubros from "./Rubros";
 import LastMovieInDb from "./LastMovieInDb";
 import ContentRowData from "./ContentRowData";
 import NotFound from "./NotFound";
+import Chart from "./Chart";
 import { Link, Route, Switch } from "react-router-dom";
 
 function SideBar() {
@@ -53,9 +54,9 @@ function SideBar() {
 
         {/*<!-- Nav Item - Charts -->*/}
         <li className="nav-item">
-          <Link className="nav-link" to="/LastMovieInDb">
+          <Link className="nav-link" to="/Chart">
             <i className="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
+            <span>Clientes</span>
           </Link>
         </li>
 
@@ -98,6 +99,9 @@ function SideBar() {
       <Switch>
         <Route exact path="/">
           <ContentWrapper />
+        </Route>
+        <Route path="/chart">
+          <Chart />
         </Route>
         <Route path="/Rubros">
           <Rubros />
