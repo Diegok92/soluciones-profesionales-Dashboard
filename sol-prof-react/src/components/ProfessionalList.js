@@ -7,8 +7,8 @@ function ProfessionalList(props) {
       <td>{props.firstName}</td>
       <td>{props.lastName}</td>
       <td>
-        {props.workDays.map((element) => {
-          return <p>{element.day + " - " + element.shift}</p>;
+        {props.workDays.map((element, i) => {
+          return <p key={i}>{element.day + " - " + element.shift}</p>;
         })}
       </td>
       <td>{props.workZones}</td>
