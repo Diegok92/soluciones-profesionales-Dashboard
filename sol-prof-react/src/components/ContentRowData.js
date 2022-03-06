@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 //
 
-function ContentRowMovies() {
+function ContentRowData() {
   const [totalProfessionals, setTotalProfessionals] = useState([]);
 
   const [totalProfessions, setTotalProfessions] = useState([]);
@@ -67,4 +67,4 @@ function ContentRowMovies() {
   );
 }
 
-export default ContentRowMovies;
+export default ContentRowData;

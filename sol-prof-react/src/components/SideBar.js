@@ -3,7 +3,7 @@ import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
 import Rubros from "./Rubros";
 import LastMovieInDb from "./LastMovieInDb";
-import ContentRowMovies from "./ContentRowMovies";
+import ContentRowData from "./ContentRowData";
 import NotFound from "./NotFound";
 import { Link, Route, Switch } from "react-router-dom";
 
@@ -59,9 +59,16 @@ function SideBar() {
           </Link>
         </li>
 
+        <li className="nav-item">
+          <Link className="nav-link" to="/LastMovieInDb">
+            <i className="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span>
+          </Link>
+        </li>
+
         {/*<!-- Nav Item - Tables -->*/}
         <li className="nav-item nav-link">
-          <Link className="nav-link" to="/ContentRowMovies">
+          <Link className="nav-link" to="/ContentRowData">
             <i className="fas fa-fw fa-table"></i>
             <span>Tablas</span>
           </Link>
@@ -82,8 +89,8 @@ function SideBar() {
             <Route path="/LastMovieInDb">
                 <LastMovieInDb />
             </Route>
-            <Route path="/ContentRowMovies">
-                <ContentRowMovies />
+            <Route path="/ContentRowData">
+                <ContentRowData />
             </Route> */}
       {/*<!-- End Microdesafio 1 -->*/}
 
@@ -98,8 +105,8 @@ function SideBar() {
         <Route path="/LastMovieInDb">
           <LastMovieInDb />
         </Route>
-        <Route path="/ContentRowMovies">
-          <ContentRowMovies />
+        <Route path="/ContentRowData">
+          <ContentRowData />
         </Route>
         <Route component={NotFound} />
       </Switch>
