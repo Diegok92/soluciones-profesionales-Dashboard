@@ -42,7 +42,7 @@ useEffect(() => {
        {infoRequerida.map((element, i) => {return <div className="row" key={i}>
     <div className="col-lg-6 mb-4">
       <div className="card bg-dark text-white shadow">
-        <div className="card-body"  >{element.Info.profession}</div>
+        <div className="card-body"  >{element.Info.profession} {"Total " +element.total}</div>
       </div>
     </div>
    

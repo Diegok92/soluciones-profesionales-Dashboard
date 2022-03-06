@@ -1,50 +1,70 @@
-import React from 'react';
-import SmallCard from './SmallCard';
+import React from "react";
+import SmallCard from "./SmallCard";
+import { useState, useEffect } from "react";
 
-/*  Cada set de datos es un objeto literal */
 
-/* <!-- Movies in DB --> */
 
-let moviesInDB = {
-    title: 'Movies in Data Base',
-    color: 'primary', 
-    cuantity: 21,
-    icon: 'fa-clipboard-list'
-}
+//
 
-/* <!-- Total awards --> */
+function ContentRowMovies() {
+  const [totalProfessionals, setTotalProfessionals] = useState([]);
 
-let totalAwards = {
-    title:' Total awards', 
-    color:'success', 
-    cuantity: '79',
-    icon:'fa-award'
-}
+  const [totalProfessions, setTotalProfessions] = useState([]);
 
-/* <!-- Actors quantity --> */
+  const [totalClients, setTotalClients] = useState([]);
+ 
+  const [totalUser, setTotalUser] = useState([]);
 
-let actorsQuantity = {
-    title:'Actors quantity' ,
-    color:'warning',
-    cuantity:'49',
-    icon:'fa-user-check'
-}
+  useEffect(() => {
+    fetch("http://localhost:3001/rubros/api/professionals")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setTotalProfessionals({
+          quantity: data.data.totalProfessionals,
+          title: "Total de Profesionales",
+          color: "primary",
+        });
+        setTotalProfessions({
+          quantity: data.data.infoProfession.length,
+          title: "Total de Profesiones",
+          color: "success",
+        });
+        
+      });
+  }, []);
 
-let cartProps = [moviesInDB, totalAwards, actorsQuantity];
+  useEffect(() => {
+    fetch("http://localhost:3001/clients/api/users")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setTotalClients({
+            quantity: data.totalClients,
+            title: "Total de Clientes",
+            color: "info",
+          });
+          setTotalUser({
+            quantity: data.totalUsers,
+            title: "Total de Usuarios",
+            color: "warning",
+          });
+      });
+  }, []);
 
-function ContentRowMovies(){
-    return (
-    
-        <div className="row">
-            
-            {cartProps.map( (movie, i) => {
+  
 
-                return <SmallCard {...movie} key={i}/>
-            
-            })}
+  let cartProps = [totalUser,totalClients, totalProfessionals, totalProfessions,  ];
 
-        </div>
-    )
+  return (
+    <div className="row">
+      {cartProps.map((movie, i) => {
+        return <SmallCard {...movie} key={i} />;
+      })}
+    </div>
+  );
 }
 
 export default ContentRowMovies;

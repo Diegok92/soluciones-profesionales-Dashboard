@@ -13,6 +13,9 @@ const apiUsers = {
   //listado clientes
   clientList: async function (req, res) {
     //
+
+
+
     const cliente = await db.Client.findAll({
       include: [{ association: "cities" }],
     });
@@ -35,9 +38,24 @@ const apiUsers = {
     //   return cliente.role;
     // });
 
-    totalProfessionals = cliente.filter(function (prof) {
-      return prof.role == "Professional";
+
+
+    const profesionales = await db.Professional.findAll({
+      include: [
+        { association: "professions" },
+        { association: "workZones" },
+        { association: "ProfessionalWorkDayShift" },
+        { association: "clients" },
+      ],
     });
+
+    const totalProfessionals = profesionales.length;
+
+
+   
+    
+    
+    
 
     totalClients = cliente.filter(function (cliente) {
       return cliente.role == "Client";
@@ -82,15 +100,15 @@ const apiUsers = {
 
     return res.status(200).json({
       //data: clients,
-      totalUsers: cliente.length,
+      totalUsers: (totalProfessionals + totalClients.length),
       //profperzone:,
       //totalAdmin:
-      totalProfessionals: totalProfessionals.length,
+      totalProfessionals: totalProfessionals,
       totalClients: totalClients.length,
       totalAdmins: totalAdmins.length,
       //professions: professions,
-      totalProfessions: uniqProfessions.length,
-      totalPerProf: totalPerProf,
+      //totalProfessions: uniqProfessions.length,
+      //totalPerProf: totalPerProf,
       listado: listado,
     });
   },
