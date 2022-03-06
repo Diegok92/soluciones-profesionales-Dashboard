@@ -1,20 +1,17 @@
-import React from 'react';
-import LastMovieInDb from './LastMovieInDb';
-import Rubros from './Rubros';
+import React from "react";
+import LastClientDb from "./LastClientDb";
+import Rubros from "./Rubros";
 
-function ContentRowCenter(){
-    return (
-        <div className="row">
-            
-            {/*<!-- Last Movie in DB -->*/}
-            <LastMovieInDb />
-            {/*<!-- End content row last movie in Data Base -->*/}
+function ContentRowCenter() {
+  return (
+    <div className="row">
+      {/*<!-- Last Movie in DB -->*/}
+      <LastClientDb />
+      {/*<!-- End content row last movie in Data Base -->*/}
 
-           
-            <Rubros />
-
-        </div>
-    )
+      <Rubros />
+    </div>
+  );
 }
 
 export default ContentRowCenter;

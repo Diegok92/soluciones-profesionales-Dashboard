@@ -2,10 +2,11 @@ import React from "react";
 import image from "../assets/images/logo-DH.png";
 import ContentWrapper from "./ContentWrapper";
 import Rubros from "./Rubros";
-import LastMovieInDb from "./LastMovieInDb";
+import LastClientDb from "./LastClientDb";
 import ContentRowData from "./ContentRowData";
 import NotFound from "./NotFound";
-import Chart from "./Chart";
+import Clients from "./Clients";
+import Professionals from "./Professionals";
 import { Link, Route, Switch } from "react-router-dom";
 
 function SideBar() {
@@ -52,26 +53,40 @@ function SideBar() {
           </Link>
         </li>
 
-        {/*<!-- Nav Item - Charts -->*/}
+        {/*<!-- Nav Item - Clientss -->*/}
         <li className="nav-item">
-          <Link className="nav-link" to="/Chart">
-            <i className="fas fa-fw fa-chart-area"></i>
+          <Link className="nav-link" to="/Clients">
+            <i className="fas fa-fw fa-Clients-area"></i>
             <span>Clientes</span>
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" to="/LastMovieInDb">
-            <i className="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
+          <Link className="nav-link" to="/Professionals">
+            <i className="fas fa-fw fa-Clients-area"></i>
+            <span>Profesionales</span>
           </Link>
         </li>
+
+        <li className="nav-item">
+          <Link className="nav-link" to="/LastClientDb">
+            <i className="fas fa-fw fa-Clients-area"></i>
+            <span>Ultimo Cliente</span>
+          </Link>
+        </li>
+
+        {/* <li className="nav-item">
+          <Link className="nav-link" to="/LastClientDb">
+            <i className="fas fa-fw fa-Clients-area"></i>
+            <span>Ultimo Profesional</span>
+          </Link>
+        </li> */}
 
         {/*<!-- Nav Item - Tables -->*/}
         <li className="nav-item nav-link">
           <Link className="nav-link" to="/ContentRowData">
             <i className="fas fa-fw fa-table"></i>
-            <span>Tablas</span>
+            <span>Totales</span>
           </Link>
         </li>
 
@@ -81,14 +96,14 @@ function SideBar() {
       {/*<!-- End of Sidebar -->*/}
 
       {/* <!-- Microdesafio 1 -->*/}
-     {/* <Route exact path="/">
+      {/* <Route exact path="/">
                 <ContentWrapper />
             </Route>
             <Route path="/Rubros">
                 <Rubros/>
             </Route>
-            <Route path="/LastMovieInDb">
-                <LastMovieInDb />
+            <Route path="/LastClientDb">
+                <LastClientDb />
             </Route>
             <Route path="/ContentRowData">
                 <ContentRowData />
@@ -100,15 +115,21 @@ function SideBar() {
         <Route exact path="/">
           <ContentWrapper />
         </Route>
-        <Route path="/chart">
-          <Chart />
+        <Route path="/Clients">
+          <Clients />
+        </Route>
+        <Route path="/Professionals">
+          <Professionals />
         </Route>
         <Route path="/Rubros">
           <Rubros />
         </Route>
-        <Route path="/LastMovieInDb">
-          <LastMovieInDb />
+        <Route path="/LastClientDb">
+          <LastClientDb />
         </Route>
+        {/* <Route path="/LastClientDb">
+          <LastClientDb />
+        </Route> */}
         <Route path="/ContentRowData">
           <ContentRowData />
         </Route>

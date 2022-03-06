@@ -14,15 +14,17 @@ const apiUsers = {
   clientList: async function (req, res) {
     //
 
-
-
     const cliente = await db.Client.findAll({
       include: [{ association: "cities" }],
     });
 
     //{id:1,name:pedro,email:pedro.com, detail: "api/user/1"}
 
-    const listado = await cliente.map(function (element) {
+    const soloClientes = cliente.filter(function (valor) {
+      return valor.role != "Professional";
+    });
+
+    const listado = await soloClientes.map(function (element) {
       return {
         id: element.id,
         firstName: element.firstName,
@@ -38,8 +40,6 @@ const apiUsers = {
     //   return cliente.role;
     // });
 
-
-
     const profesionales = await db.Professional.findAll({
       include: [
         { association: "professions" },
@@ -50,12 +50,6 @@ const apiUsers = {
     });
 
     const totalProfessionals = profesionales.length;
-
-
-   
-    
-    
-    
 
     totalClients = cliente.filter(function (cliente) {
       return cliente.role == "Client";
@@ -100,11 +94,11 @@ const apiUsers = {
 
     return res.status(200).json({
       //data: clients,
-      totalUsers: (totalProfessionals + totalClients.length),
+      totalUsers: totalProfessionals + totalClients.length + totalAdmins.length,
       //profperzone:,
       //totalAdmin:
       totalProfessionals: totalProfessionals,
-      totalClients: totalClients.length,
+      totalClients: totalClients.length + totalAdmins.length,
       totalAdmins: totalAdmins.length,
       //professions: professions,
       //totalProfessions: uniqProfessions.length,
