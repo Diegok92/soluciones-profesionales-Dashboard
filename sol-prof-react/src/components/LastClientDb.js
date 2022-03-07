@@ -41,14 +41,14 @@ function LastClientDb() {
               />
             </div>
             <p>Email: {infoRequerida[0].email}</p>
-            <a
+            {/* <a
               className="btn btn-danger"
               target="_blank"
               rel="nofollow"
               href="/"
             >
               View movie detail
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

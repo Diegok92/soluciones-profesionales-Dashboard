@@ -1,5 +1,6 @@
 import React from "react";
-import image from "../assets/images/logo-DH.png";
+//import image from "../assets/images/logo-DH.png";
+import image from "../assets/images/favicon.png";
 import ContentWrapper from "./ContentWrapper";
 import Rubros from "./Rubros";
 import LastClientDb from "./LastClientDb";
@@ -25,7 +26,7 @@ function SideBar() {
         >
           {/* Cambiar Imagen a SolProf */}
           <div className="sidebar-brand-icon">
-            <img className="w-100" src={image} alt="Digital House" />
+            <img className="w-25" src={image} alt="Digital House" />
           </div>
         </a>
 

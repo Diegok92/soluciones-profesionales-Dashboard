@@ -110,3 +110,22 @@ Enfocarse menos en los detalles para lograr llegar a la entrega con mas tiempo d
 
 Stop Doing:
 Dejar afrontar solos todas las dificultades que se nos presenten sin utilizar los canales designados por los profes para pedir su asistencia/ayuda, teniendolos disponibles
+
+---
+
+Reunion Retrospectiva dia 03/03/22 - Sprint 7
+
+Start Doing/Empezar a Hacer:
+Profundizar mas los conocimientos de React antes de ponerse a hacer las tareas del proyecto, para poder avanzar de manera mas fluida
+
+More of/Mas de:
+Si logramos Terminar con los obligatorios a tiempo, Llevar a cabo mas tareas extras que nos fuimos planteando y no logramos realizar por falta de tiempo y/o Conocimiento
+
+Keep Doing/Seguir Haciendo :
+Seguir dividiendo las tareas tal como acordamos en retros pasadas. Mantener las comunicaciones semi-diarias, trabajo en equipo y reuniones de una periodicidad entre daily y weekly (mid-weekly).
+
+Less of/Menos de:
+Enfocarse menos en los estilos antes que de la funcionalidad, para poder llegar a la entrega con mas tiempo de anticipacion y asi cumplir con todos los opcionales y extras.
+
+Stop Doing:
+TBD
