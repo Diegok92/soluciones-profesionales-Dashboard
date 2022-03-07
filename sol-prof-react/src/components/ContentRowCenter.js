@@ -1,12 +1,12 @@
 import React from "react";
-import LastClientDb from "./LastClientDb";
+import LastUserDetail from "./LastUserDetail";
 import Rubros from "./Rubros";
 
 function ContentRowCenter() {
   return (
     <div className="row">
       {/*<!-- Last Movie in DB -->*/}
-      <LastClientDb />
+      <LastUserDetail />
       {/*<!-- End content row last movie in Data Base -->*/}
 
       <Rubros />

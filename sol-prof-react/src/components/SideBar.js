@@ -7,6 +7,7 @@ import ContentRowData from "./ContentRowData";
 import NotFound from "./NotFound";
 import Clients from "./Clients";
 import Professionals from "./Professionals";
+import LastUserDetail from "./LastUserDetail";
 import { Link, Route, Switch } from "react-router-dom";
 
 function SideBar() {
@@ -69,12 +70,13 @@ function SideBar() {
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" to="/LastClientDb">
+          <Link className="nav-link" to="/LastUserDetail">
             <i className="fas fa-fw fa-Clients-area"></i>
             <span>Ultimo Cliente</span>
           </Link>
         </li>
 
+        {/* En un futuro implementar detalle del ultimo profesional creado */}
         {/* <li className="nav-item">
           <Link className="nav-link" to="/LastClientDb">
             <i className="fas fa-fw fa-Clients-area"></i>
@@ -95,22 +97,6 @@ function SideBar() {
       </ul>
       {/*<!-- End of Sidebar -->*/}
 
-      {/* <!-- Microdesafio 1 -->*/}
-      {/* <Route exact path="/">
-                <ContentWrapper />
-            </Route>
-            <Route path="/Rubros">
-                <Rubros/>
-            </Route>
-            <Route path="/LastClientDb">
-                <LastClientDb />
-            </Route>
-            <Route path="/ContentRowData">
-                <ContentRowData />
-            </Route> */}
-      {/*<!-- End Microdesafio 1 -->*/}
-
-      {/*<!-- End Microdesafio 2 -->*/}
       <Switch>
         <Route exact path="/">
           <ContentWrapper />
@@ -124,12 +110,9 @@ function SideBar() {
         <Route path="/Rubros">
           <Rubros />
         </Route>
-        <Route path="/LastClientDb">
-          <LastClientDb />
+        <Route path="/LastUserDetail">
+          <LastUserDetail />
         </Route>
-        {/* <Route path="/LastClientDb">
-          <LastClientDb />
-        </Route> */}
         <Route path="/ContentRowData">
           <ContentRowData />
         </Route>

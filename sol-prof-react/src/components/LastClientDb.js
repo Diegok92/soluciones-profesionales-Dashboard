@@ -13,16 +13,14 @@ function LastClientDb() {
       .then((data) => {
         setInfoRequerida(
           data.listado.filter((element) => {
-            return data.listado.indexOf(element) == data.listado.length - 1;
+            return data.listado.indexOf(element) === data.listado.length - 1;
           })
         );
       });
   }, []);
 
-  //   console.log("ultimo Cliente ojala sea........: " + infoRequerida[0]);
-
   if (infoRequerida.length < 1) {
-    return <div className="col-lg-6 mb-4">Awantiiaaaaa Cargando ...</div>;
+    return <div className="col-lg-6 mb-4">Cargando ...</div>;
   } else {
     return (
       <div className="col-lg-6 mb-4">
