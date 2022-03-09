@@ -67,11 +67,13 @@ const clientDbController = {
   //muestra el id en lugar de la ciudad
   clientDetail: (req, res) => {
     //por (GET)
+
     db.Client.findOne(
       // {
       //   include: [{ association: "cities" }],
       // },
       {
+        include: [{ association: "cities" }],
         where: {
           dni: req.params.dni, //deberia ser el id de la tabla clientes
         },
@@ -151,7 +153,7 @@ const clientDbController = {
     }
 
     if (req.file != undefined && req.body.email != "") {
-      console.log("IF 1");
+      //console.log("IF 1");
       db.Client.update(
         {
           firstName: req.body.firstName,
@@ -167,7 +169,7 @@ const clientDbController = {
         }
       );
     } else if (req.file == undefined && req.body.email != "") {
-      console.log("IF 2 - reqbody avatar" + req.body.avatar);
+      // console.log("IF 2 - reqbody avatar" + req.body.avatar);
       db.Client.update(
         {
           firstName: req.body.firstName,
@@ -183,7 +185,7 @@ const clientDbController = {
         }
       );
     } else if (req.file != undefined && req.body.email == "") {
-      console.log("IF 3");
+      // console.log("IF 3");
       db.Client.update(
         {
           firstName: req.body.firstName,
@@ -199,7 +201,7 @@ const clientDbController = {
         }
       );
     } else if (req.file == undefined && req.body.email == "") {
-      console.log("IF 4 - req body avatar" + req.body.avatar);
+      //console.log("IF 4 - req body avatar" + req.body.avatar);
       db.Client.update(
         {
           firstName: req.body.firstName,
@@ -215,8 +217,8 @@ const clientDbController = {
         }
       );
     } else {
-      console.log("NO ENTRO EN NADA Y req avatar: " + req.body.avatar);
-      console.log("NO ENTRO EN NADA Y req email: " + req.body.email);
+      //console.log("NO ENTRO EN NADA Y req avatar: " + req.body.avatar);
+      //console.log("NO ENTRO EN NADA Y req email: " + req.body.email);
     }
 
     res.redirect("/");
