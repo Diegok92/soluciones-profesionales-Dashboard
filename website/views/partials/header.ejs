@@ -1,10 +1,12 @@
 <header class="header-ppal bg-c-blue">
     <div class="header-top">
         <a href="/"><img src="/images/logo-fondo-azul.svg" alt="logo sin fondo" /></a>
-        <div class="search-bar"> 
-            <input type="text" name="search-item" placeholder="Buscá por oficio, profesión, zona... ">
-            <button class="search-button"><i class="fas fa-search"></i></button>
-        </div>
+
+        <form class="search-bar" method="GET" action="/search">
+            <input type=" text" name="searchedItem" placeholder="Buscá la Profesion que Necesitas ">
+            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+        </form>
+
         <div class="top-phrase">
 
             <p><i class="fas fa-handshake"></i>Reservá sin demoras</p>

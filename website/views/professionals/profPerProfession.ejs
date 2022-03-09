@@ -30,59 +30,59 @@
 
       <main>
         <p class="title-cart">
-          <%= professionals[0].professions[0].profession %>
-
+          <%= profRequested %>
         </p>
         <% for(let i=0; i<professionals.length; i++){ %>
           <div class="card-wrapper">
-          <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
-          <div class="top-flex-mobile">
-            <div class="tfm-upper">
-                    <div class="div-avatar">
-                      <img class="prof-avatar" src="">
-                    </div>
-                
+            <a href="/rubros/<%= professionals[i].professions[0].profession %>/<%= professionals[i].client_id %>">
+              <div class="top-flex-mobile">
+                <div class="tfm-upper">
+                  <div class="div-avatar">
+                    <img class="prof-avatar" src="/images/clients/<%= professionals[i].clients.avatar%> ">
+                  </div>
+
 
                   <div class="div-descrption">
                     <div class="title-per-device-productCart">
                       <%= professionals[i].professions[0].profession %>:
                     </div>
-                    <div class="name-per-device-productCart"><%= professionals[i].clients.firstName
-                        +" "+ professionals[i].clients.lastName%>
+                    <div class="name-per-device-productCart">
+                      <%= professionals[i].clients.firstName +" "+ professionals[i].clients.lastName%>
                     </div>
                   </div>
             </div>  
             
-              <!-- <div class="reserved-date">
-                <p>
-                  <%#=professionals[i].workDays[0].day %>
-                </p>
-                <p>
-                  <%#=professionals[i].shifts[0].shift %>
-                </p>
-              </div> -->
-            <div class="tfm-lower">
-              <div class="reserved-date">
-                <% if(professionals[i].emergency==1){ %>
-                  <i class="fas fa-shipping-fast"></i>
-                  <p class="urgency">
-                      Urgencias
-                  </p>
-                <% } %>
-                <p> Zona:
-                  <%= professionals[i].workZones.location %>
-                </p>
-              </div>
+              <!-- <div class=" reserved-date">
+                        <p>
+                          <%#=professionals[i].workDays[0].day %>
+                        </p>
+                        <p>
+                          <%#=professionals[i].shifts[0].shift %>
+                        </p>
+                    </div> -->
+                    <div class="tfm-lower">
+                      <div class="reserved-date">
+                        <% if(professionals[i].emergency==1){ %>
+                          <i class="fas fa-shipping-fast"></i>
+                          <p class="urgency">
+                            Urgencias
+                          </p>
+                          <% } %>
+                            <p> Zona:
+                              <%= professionals[i].workZones.location %>
+                            </p>
+                      </div>
 
-              <div class="price-button-preview">
-                
-                  <p>$<%=professionals[i].price %> </p>
-                
-              </div>
-            </div>
+                      <div class="price-button-preview">
+
+                        <p>$<%=professionals[i].price %>
+                        </p>
+
+                      </div>
+                    </div>
+                  </div>
+            </a>
           </div>
-        </a>
-      </div>
           <% } %>
             <div class="keepShopping-button">
               <a href="/rubros">

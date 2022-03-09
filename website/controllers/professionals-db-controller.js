@@ -434,7 +434,7 @@ const professionalDBController = {
     res.redirect("/");
   },
 
-  //Listing professions, professionals, professional
+  //API: Listing professions, professionals, professional
   professionsList: function (req, res) {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;

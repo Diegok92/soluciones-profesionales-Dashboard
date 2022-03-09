@@ -11,5 +11,6 @@ route.get("/productCart", authLoggedtMiddleware, mainController.productCart);
 route.get("/login", mainController.login);
 route.post("/login", loginValidator, mainController.verificator);
 route.get("/signout", mainController.signout);
+route.get("/search?", mainController.search);
 
 module.exports = route;

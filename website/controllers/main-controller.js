@@ -17,6 +17,12 @@ const professionalsFilePath = path.join(
 const professionalsFileText = fs.readFileSync(professionalsFilePath, "utf-8"); // me traigo los datos de JSON (formato txt)
 const professionalsList = JSON.parse(professionalsFileText); //lo parseo para poder tener el ARRAY DE PRODUCTOS (array de obj)
 
+const express = require("express"); //porq no se usa??
+const { sequelize } = require("../database/models"); //porq no se usa??
+
+const Op = db.Sequelize.Op;
+const profRoute = require("../routes/professionals-routers");
+
 module.exports = {
   home: (req, res) => {
     db.Profession.findAll()
@@ -157,6 +163,74 @@ module.exports = {
     req.session.destroy();
 
     res.redirect("/");
+  },
+
+  search: function (req, res) {
+    let searched = req.query.searchedItem;
+
+    //console.log(searched);
+
+    let userProf = req.session.profFound;
+    let userClient = req.session.clientFound;
+    let user = req.session.profFound;
+    let profRequested = searched;
+    let userRole = req.session.userRole;
+
+    //console.log(profRequested);
+    //console.log(Professional);
+    db.Professional.findAll({
+      include: [
+        { association: "clients" },
+        { association: "professions" },
+        { association: "workZones" },
+        { association: "ProfessionalWorkDayShift" },
+      ],
+      where: {
+        [Op.or]: [
+          {
+            "$professions.profession$": {
+              [Op.like]: "%" + profRequested + "%",
+              // `%${profRequested}%`
+            },
+          },
+          {
+            "$clients.firstName$": {
+              [Op.like]: "%" + profRequested + "%",
+              // `%${profRequested}%`
+            },
+          },
+          {
+            "$clients.lastName$": {
+              [Op.like]: "%" + profRequested + "%",
+              // `%${profRequested}%`
+            },
+          },
+          {
+            "$workZones.location$": {
+              [Op.like]: "%" + profRequested + "%",
+              // `%${profRequested}%`
+            },
+          },
+        ],
+      },
+    }).then(function (professionals) {
+      //console.log("professionals tiene:" + professionals);
+      if (professionals == "") {
+        profRequested = "Estos no son los resultados que estas buscando";
+        //console.log("professionals = []");
+      }
+      console.log("ProfRequested tiene: " + profRequested);
+      res.render("professionals/profPerProfession", {
+        professionals: professionals,
+        profRequested,
+        user: user,
+        userClient: userClient,
+        userProf: userProf,
+        userRole: userRole,
+      });
+    });
+
+    // res.redirect(searched);
   },
 
   //Busqueda Vieja (en JSON)
