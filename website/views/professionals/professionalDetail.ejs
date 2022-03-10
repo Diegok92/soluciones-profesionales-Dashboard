@@ -84,6 +84,12 @@
               <div class="buttons-below-avatar">
                 <div>
                   <p>Disponibilidad:</p>
+                  <div class="details-description">
+                    <p>
+                      <%= availability.workDays.map((element)=> { return " " +element.day + " - " +
+                        element.shift})%>
+                    </p>
+                  </div>
                   <input type="date" id="date">
                 </div>
                 <button type="submit">
@@ -101,6 +107,7 @@
                     <%=professional.workZones.location %>
                   </p>
                 </div>
+
                 <div class="details-description">
                   <p>Matricula:</p>
                   <p>

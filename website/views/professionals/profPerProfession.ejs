@@ -52,14 +52,10 @@
                   </div>
             </div>  
             
-              <!-- <div class=" reserved-date">
-                        <p>
-                          <%#=professionals[i].workDays[0].day %>
-                        </p>
-                        <p>
-                          <%#=professionals[i].shifts[0].shift %>
-                        </p>
-                    </div> -->
+              <div class=" reserved-date">
+
+
+                    </div>
                     <div class="tfm-lower">
                       <div class="reserved-date">
                         <% if(professionals[i].emergency==1){ %>
@@ -70,6 +66,10 @@
                           <% } %>
                             <p> Zona:
                               <%= professionals[i].workZones.location %>
+                            </p>
+                            <p>
+                              <%= availability[i].workDays.map((element)=> { return " " +element.day + " - " +
+                                element.shift})%>
                             </p>
                       </div>
 

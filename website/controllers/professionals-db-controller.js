@@ -452,12 +452,16 @@ const professionalDBController = {
     });
   },
 
-  profPerProfession: function (req, res) {
+  profPerProfession: async function (req, res) {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
     let user = req.session.profFound;
     profRequested = req.params.profession;
     let userRole = req.session.userRole;
+
+    const dayShifts = await db.ProfessionalWorkDayShift.findAll({
+      include: [{ association: "workDays" }, { association: "shifts" }],
+    });
 
     //console.log(profRequested);
     //console.log(Professional);
@@ -470,13 +474,27 @@ const professionalDBController = {
       ],
       where: {
         "$professions.profession$": {
-          //magia de pablo...
           [Op.like]: "%" + profRequested + "%",
           // `%${profRequested}%`
         },
       },
     }).then(function (professionals) {
       //console.log(professionals);
+
+      const availability = professionals.map(function (element) {
+        const day = dayShifts.filter(function (ele) {
+          return ele.professional_id == element.id;
+        });
+        return {
+          workDays: day.map(function (elements) {
+            return {
+              day: elements.workDays.day,
+              shift: elements.shifts.shift,
+            };
+          }),
+        };
+      });
+
       res.render("professionals/profPerProfession", {
         professionals: professionals,
         profRequested,
@@ -484,18 +502,24 @@ const professionalDBController = {
         userClient: userClient,
         userProf: userProf,
         userRole: userRole,
+        availability: availability,
       });
     });
   },
 
   //en la URL viaja el ID en lugar del DNI -- CAMBIAR (para dejarlo igual a client)
-  professionalDetail: function (req, res) {
+  professionalDetail: async function (req, res) {
     let userProf = req.session.profFound;
     let userClient = req.session.clientFound;
     let user = req.session.profFound;
     let userRole = req.session.userRole;
 
     profRequested = req.params.client_id;
+
+    const dayShifts = await db.ProfessionalWorkDayShift.findAll({
+      include: [{ association: "workDays" }, { association: "shifts" }],
+    });
+
     db.Professional.findOne({
       include: [
         { association: "clients" },
@@ -506,11 +530,23 @@ const professionalDBController = {
       ],
       where: { client_id: profRequested },
 
-      //magia de pablo...
-
       //`%${profRequested}%`
     })
       .then(function (professional) {
+        const day = dayShifts.filter(function (e) {
+          return e.professional_id == professional.id;
+        });
+
+        const workDays = day.map(function (elements) {
+          return {
+            day: elements.workDays.day,
+            shift: elements.shifts.shift,
+          };
+        });
+        availability = {
+          workDays: workDays,
+        };
+
         //console.log(professional);
         res.render("professionals/professionalDetail", {
           professional: professional,
@@ -518,6 +554,7 @@ const professionalDBController = {
           userClient: userClient,
           userProf: userProf,
           userRole: userRole,
+          availability: availability,
         });
       })
       .catch(function (error) {

@@ -165,7 +165,7 @@ module.exports = {
     res.redirect("/");
   },
 
-  search: function (req, res) {
+  search: async function (req, res) {
     let searched = req.query.searchedItem;
 
     //console.log(searched);
@@ -178,6 +178,10 @@ module.exports = {
 
     //console.log(profRequested);
     //console.log(Professional);
+    const dayShifts = await db.ProfessionalWorkDayShift.findAll({
+      include: [{ association: "workDays" }, { association: "shifts" }],
+    });
+
     db.Professional.findAll({
       include: [
         { association: "clients" },
@@ -215,6 +219,19 @@ module.exports = {
       },
     }).then(function (professionals) {
       //console.log("professionals tiene:" + professionals);
+      const availability = professionals.map(function (element) {
+        const day = dayShifts.filter(function (ele) {
+          return ele.professional_id == element.id;
+        });
+        return {
+          workDays: day.map(function (elements) {
+            return {
+              day: elements.workDays.day,
+              shift: elements.shifts.shift,
+            };
+          }),
+        };
+      });
       if (professionals == "") {
         profRequested = "Estos no son los resultados que estas buscando";
         //console.log("professionals = []");
@@ -227,6 +244,7 @@ module.exports = {
         userClient: userClient,
         userProf: userProf,
         userRole: userRole,
+        availability: availability,
       });
     });
 
