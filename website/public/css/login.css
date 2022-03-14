@@ -1,10 +1,9 @@
 .form-login {
   margin: auto;
-
   text-align: left;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   width: 90%;
   padding: 20px;
   max-width: 700px;
@@ -16,16 +15,24 @@
 }
 
 .username {
-  width: 100%;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: flex-start;
 }
 .username input {
-  width: 100%;
+  width: 350px;
 }
 .password {
-  width: 100%;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: flex-start;
 }
 .password input {
-  width: 100%;
+  width: 350px;
 }
 .login-button {
   margin: auto;
@@ -44,7 +51,7 @@
   width: 95%;
 }
 .login-button button:hover {
-  box-shadow: 6px 6px 30px rgb(248, 212, 92);
+  box-shadow: 0px 0px 7px 3px rgb(248 212 92);
 }
 
 .password-forgotten {
