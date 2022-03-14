@@ -58,7 +58,7 @@ const professionalDBController = {
 
   //boton de crear en vista registerProf (POST)
   createProf: async function (req, res) {
-    const dniCreadoPrevio = await req.session.dniFound;
+    const dniCreadoPrevio = await req.session.dniFound!=undefined ? req.session.dniFound : req.session.clientFound.dni ;
 
     const profData = await db.Professional.findAll({
       include: [

@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
     cb(
       null,
       file.filename +
-        "-workImages" +
+        "-wImg" +
         Date.now() +
         path.extname(file.originalname) //lograr q diga "dni-avatar"
     );
